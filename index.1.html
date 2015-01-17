@@ -29,8 +29,8 @@
       <div id="nav" class="grid_16">
         <div class="menu clearfix">
           <ul>
-            <li class="page_item page-item-2"><a href="http://ahui.us/index.php/about/">About</a></li>
-            <li class="page_item page-item-7"><a href="http://ahui.us/index.php/aboutahui/">关于Ahui</a></li>
+            <li class="page_item page-item-2"><a href="http://ahui.us/post/about.html/">About</a></li>
+            <li class="page_item page-item-7"><a href="http://ahui.us/post/about.html/">关于Ahui</a></li>
           </ul>
         </div>
       </div>
@@ -42,6 +42,55 @@
       <div class="grid_11">
         
   <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2014-01-20 11:39:30">
+            <a href="post/openerp-7-add-menu.html" title="2014-01-20 11:39:30" rel="bookmark">
+              <span class="entry-date-day">20</span>
+              <span class="entry-date-month-year">2014-01</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/openerp-7-add-menu.html">OPENERP 7:菜单添加</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/openerp.html" rel="tag">openerp</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>菜单大体上分三层:顶层，侧边，子菜单
+添加子菜单分为二种情况，一是添加全新的菜单，此时必须先添加顶层和侧边菜单，只用指定name及id，然后挂上子菜单.
+其中顶层菜单不用指定parent,子菜单是必须指定action.</p>
+
+<pre><code>&lt;menuitem id=&quot;top_menu&quot; name=&quot;Top&quot;/&gt;
+&lt;menuitem id=&quot;section_top_menu&quot; parent=&quot;top_menu&quot; /&gt;
+&lt;menuitem id=&quot;sub_menu&quot; parent=&quot;section_top_menu&quot; action=&quot;your_action&quot;/&gt;
+</code></pre>
+
+<p>二是挂上已经存在的侧边菜单，此时parent的取值为:对象.菜单id</p>
+
+<pre><code>&lt;menuitem id=&quot;real_menu&quot; parent=&quot;name_of_module_of_parent.section_top_menu&quot; action=&quot;your_action&quot;&gt;;
+</code></pre>
+
+<p>不指定对象则会重复建立同名菜单(三层均如此)，哪怕id值也相同。</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
@@ -423,42 +472,6 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2013-01-31 22:02:02">
-            <a href="post/adsl20.html" title="2013-01-31 22:02:02" rel="bookmark">
-              <span class="entry-date-day">31</span>
-              <span class="entry-date-month-year">2013-01</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/adsl20.html">总算用上光纤了</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>从12年12月起跑联通营业厅折腾五六趟才算光改完成,然后又经过一个月的2M包月,才用上20M的光纤,不过上传依然限速1M.</p>
-
-<p><a href="http://ahui.us/wp-content/uploads/2013/01/2475759828.png"><img src="http://ahui.us/wp-content/uploads/2013/01/2475759828.png" alt="" title="2475759828"></a></p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -470,6 +483,7 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
   <a class='page-numbers' href='index.5.html'>6</a>
   <a class='page-numbers' href='index.6.html'>7</a>
   <a class='page-numbers' href='index.7.html'>8</a>
+  <a class='page-numbers' href='index.8.html'>9</a>
   <a class="next page-numbers" href="index.2.html">Next &raquo;</a>  <div class="clear"></div>
 </div>
       </div> 
@@ -496,11 +510,12 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/network.html">network &sdot; (53)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
@@ -520,6 +535,7 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/about.html'>about</a></li>
         <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
         <li><a href='post/HACKPAD_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
         <li><a href='post/R6300V2_shang_neng_yong_de_SHADOWSOCKS-LIBEV.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
@@ -529,7 +545,6 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
         <li><a href='post/wang_zhan_jing_tai_hua.html'>网站静态化</a></li>
         <li><a href='post/openerp-7-add-menu.html'>OPENERP 7:菜单添加</a></li>
         <li><a href='post/tips-upload-with-web-py.html'>Tips : upload with web.py</a></li>
-        <li><a href='post/netgear-r6300v2-ngrep.html'>Netgear R6300v2上编译ngrep</a></li>
       </ul>
     </div>
   </div>

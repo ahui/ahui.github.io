@@ -29,8 +29,8 @@
       <div id="nav" class="grid_16">
         <div class="menu clearfix">
           <ul>
-            <li class="page_item page-item-2"><a href="http://ahui.us/index.php/about/">About</a></li>
-            <li class="page_item page-item-7"><a href="http://ahui.us/index.php/aboutahui/">关于Ahui</a></li>
+            <li class="page_item page-item-2"><a href="http://ahui.us/post/about.html/">About</a></li>
+            <li class="page_item page-item-7"><a href="http://ahui.us/post/about.html/">关于Ahui</a></li>
           </ul>
         </div>
       </div>
@@ -42,6 +42,206 @@
       <div class="grid_11">
         
   <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2011-06-21 16:23:36">
+            <a href="post/tomato-firmware-v1-28-7820-mipsr1-toastman-k26-usb-vpn.html" title="2011-06-21 16:23:36" rel="bookmark">
+              <span class="entry-date-day">21</span>
+              <span class="entry-date-month-year">2011-06</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/tomato-firmware-v1-28-7820-mipsr1-toastman-k26-usb-vpn.html">Tomato Toastman 之 SIP Server : siproxd 安装与使用</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/sip.html" rel="tag">sip</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>原本使用的SIP Server是sip ser,后来改用kamailio. 二者的配置和使用都基本一样. kamailio放在VPS上,程序本身相当稳定,但随着通话时间的增长,随机在5到10分钟后,会因为一些已知或未知的原因,通话质量迅速下降. 挂掉重拨后能且只正常一小会儿,然后又必须重拨, 很是烦人.</p>
+
+<p>后来把sip流量放在vpn里,情况好了很多. 至少不会因为莫名的干扰导致通话质量下降. 不过这样一来,sip流量必须通过vps进行中转, 而出国线路每天会不定期的抽风随机的一段时间......全国LAN网时代大概不远了吧?</p>
+
+<p>暂时方案,把sip server放在家里的router上,然后再挂上vpn,这样二方通话就能直接走国内线路vpn里. 虽然我也曾发现国内有时候也丢包15%~30%,但总比去VPS丢50%+要好. 而且国内线路抽风的时候要少些, 因为大多数G点都不在国内.</p>
+
+<p>翻出落了不少灰尘的中兴h618,吹吹. 其实我蛮看好开源的Netgear WNR 3500L,5个1000M端口有木有?480M的CPU有木有?64M内存有木有?到手的3500L被人抢走了有木有? 可惜只有8M FLASH,抢就抢吧, 我也主要用无线,1000M的有线端口暂时用处不大. 我还是再吹吹h618吧,干净了.</p>
+
+<p>firmware换成Tomato Firmware v1.28.7820 MIPSR1-Toastman K26 USB VPN了,为了它的IPV6功能.</p>
+
+<p>中兴h618有16M FLASH,安装完firmware后,还能空8M+,用来安装ipkg及sip server. 如果其他开源router没有足够的FLASH空间,则要有usb接口,mount一个小u盘到/opt,8M以上容量就可以了,实际安装完占用约3.5M的空间.</p>
+
+<p>ipkg包里,选择极其轻巧的siproxd做为sip server,功能自然没有ser及kamailio多,但足够满足简单的通话要求.</p>
+
+<p>ssh到路由器里,Enable jffs并且mount到/opt,然后安装ipkg基本包,也可参考<a href="http://ahui.us/index.php/2010/08/tomato-pandora-optware/"> Tomato Pandora之Optware软件安装</a>.</p>
+
+<p>cat opt.sh 或下载 http://www.3iii.dk/linux/optware/optware-install-ddwrt.sh.txt</p>
+
+<pre><code>#!/bin/sh
+# Optware pre-installation script, Leon Kos 2006, 2008
+# added -verbose_wget to some lines, MrAlvin 2009
+
+REPOSITORY=http://ipkg.nslu2-linux.org/feeds/optware/ddwrt/cross/stable
+TMP=/tmp
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
+unset LD_PRELOAD
+unset LD_LIBRARY_PATH
+
+_check_config()
+{
+    echo &quot;Checking system config ...&quot;
+    GATEWAY=$(netstat -rn |
+    sed -n &#39;s/^0.0.0.0[ \t]\{1,\}\([0-9.]\{8,\}\).*/\1/p&#39; )
+    if [ -n &quot;${GATEWAY}&quot; ]; then
+    echo &quot;Using ${GATEWAY} as default gateway.&quot;
+    else
+    echo &quot;Error: No default gateway set!&quot;
+    exit 2
+    fi
+    if [ -s /etc/resolv.conf ]; then
+    echo &quot;Using the following nameserver(s):&quot;
+    if grep nameserver /etc/resolv.conf ; then
+            GATEWAY_SUBNET=$(echo &quot;${GATEWAY}&quot; |
+        sed &#39;s/\.[0-9]\{1,3\}\.[0-9]\{1,3\}$//&#39;)
+        if [ &quot;${GATEWAY_SUBNET}&quot; = &quot;192.168&quot; ]; then
+        if grep -q ${GATEWAY} /etc/resolv.conf ; then
+            echo &quot;Gateway ${GATEWAY} is also nameserver.&quot;
+        else
+            echo &quot;Warning: local nameserver is different than gateway!&quot;
+            echo &quot;Check config or enter:&quot;
+            if test -L /etc/resolv.conf ; then 
+              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /tmp/resolv.conf&quot;
+            else
+              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /etc/resolv.conf&quot;
+            fi
+            echo &quot;and try again - or wait to see if your download continues anyway.&quot;
+        fi
+        fi
+    else
+        echo &quot;Error: No nameserver specified in /etc/resolv.conf&quot;
+        exit 5
+    fi
+    else
+    echo &quot;Error: Empty or nonexistent /etc/resolv.conf&quot;
+    exit 3
+    fi
+
+    if mount | grep -q /opt ; then
+    [ -d /opt/etc ] &amp;&amp; echo &quot;Warning: /opt partition not empty!&quot;
+    else
+    echo &quot;Error: /opt partition not mounted.&quot;
+    echo &quot;for running Optware on JFFS (not recommended), Enter&quot;
+    echo &quot;    mkdir /jffs/opt&quot;
+    echo &quot;    mount -o bind /jffs/opt /opt&quot;
+    echo &quot;to correct this.&quot;
+    exit 4
+    fi
+}
+
+_install_package()
+{
+    PACKAGE=$1
+    echo &quot;Installing package ${PACKAGE} ...&quot;
+    echo &quot;   Some newer versions of DD-WRT does not show download progress bar,&quot;
+    echo &quot;   so just be patient - or check STATUS -&gt; BANDWIDTH tab for download&quot;
+    echo &quot;   activity in your routers Web-GUI&quot;
+    wget -O ${TMP}/${PACKAGE} ${REPOSITORY}/${PACKAGE}
+    cd  ${TMP} 
+    tar xzf ${TMP}/${PACKAGE} 
+    tar xzf ${TMP}/control.tar.gz
+    cd /
+    if [ -f ${TMP}/preinst ] ; then
+    sh ${TMP}/preinst
+    rm -f ${TMP}/preints
+    fi
+    tar xzf ${TMP}/data.tar.gz
+    if [ -f ${TMP}/postinst ] ; then
+    sh ${TMP}/postinst
+    rm -f ${TMP}/postinst
+    fi
+    rm -f ${TMP}/data.tar.gz
+    rm -f ${TMP}/control.tar.gz
+    rm -f ${TMP}/control
+    rm -f ${TMP}/${PACKAGE}
+}
+
+_check_config
+_install_package uclibc-opt_0.9.28-13_mipsel.ipk
+_install_package ipkg-opt_0.99.163-10_mipsel.ipk
+/opt/sbin/ldconfig
+/opt/bin/ipkg -verbose_wget update 
+/opt/bin/ipkg -force-reinstall -verbose_wget install uclibc-opt
+/opt/bin/ipkg -force-reinstall -verbose_wget install ipkg-opt
+</code></pre>
+
+<p>安装</p>
+
+<pre><code>cd /opt
+sh ./opt.sh
+ipkg update
+</code></pre>
+
+<p>先安装libtool库,打包sipproxd时人没把这个依赖加进去</p>
+
+<pre><code>ipkg install libtool
+</code></pre>
+
+<p>安装好用的ngrep工具,这个没有依赖,不安装也可以省点空量.</p>
+
+<pre><code>ipkg install ngrep
+</code></pre>
+
+<p>安装sipproxd</p>
+
+<pre><code>ipkg install siproxd
+</code></pre>
+
+<p>此时会提示</p>
+
+<pre><code>To complete the installation, you must edit /opt/etc/siproxd.conf-example and rename it to /opt/etc/siproxd.conf,
+and then run /opt/etc/init.d/S90siproxd to start siproxd.
+</code></pre>
+
+<p>其实应该先改/opt/etc/siproxd_passwd.cfg文件,把sip帐号增加进去,格式很简单.
+然后 </p>
+
+<pre><code>cp /opt/etc/siproxd.conf-example /opt/etc/siproxd.conf
+</code></pre>
+
+<p>修改if<em>inbound及if</em>outbound为br0就可以了. 我这里因为用vpn连接了远程的路由器, 可视为全走内网,所以把rtp<em>proxy</em>enable也设为0了.
+最后启动</p>
+
+<pre><code>/opt/etc/init.d/S98siproxd
+</code></pre>
+
+<p>siproxd会在TCP以及UDP的 0.0.0.0:5060上监听.</p>
+
+<p>这样我把自己路由器里的sip电话以及远端vpn连接的路由器里的sip电话都设置为自己路由器内网ip就可以了. </p>
+
+<p>简单示意图:
+sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt;-----&gt;GW2,openvpn client &lt;-----sip phone2</p>
+
+<p>好了,你就真变成国内大LAN网,也影响不了我打电话了.</p>
+
+<p>siproxd比较可惜的是不支持ipv6,没有查看注册及通话情况等管理功能.如果有啥问题,直接动用ngrep监听数据吧.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
@@ -363,56 +563,6 @@ http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaode
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-02-21 15:06:24">
-            <a href="post/pidgin-qq.html" title="2011-02-21 15:06:24" rel="bookmark">
-              <span class="entry-date-day">21</span>
-              <span class="entry-date-month-year">2011-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/pidgin-qq.html">Pidgin中QQ协议失效</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>大约一二周前,发现pidgin中的qq无法login,查看log显示</p>
-
-<p>QQ: Server busy for 尊敬的用户，您的QQ版本已经停止使用，</p>
-
-<p>请到http://im.qq.com</p>
-
-<p>下载并安装最新的QQ版本。</p>
-
-<p>给您带来不便，敬请谅解！</p>
-
-<p>看来是2008协议已经失效.查找了一下,只发现
-http://code.google.com/p/libqq-pidgin/
-在准备开发2010版本的qq协议,不过还不能使用.只能等待了.</p>
-
-<p>其实最佳方法,还是不要用QQ那玩意了.</p>
-
-<p>update:
-http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替换掉pidgin安装目录/plugins下的libqq.dll即可. </p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -424,6 +574,7 @@ http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替�
   <a class='page-numbers' href='index.5.html'>6</a>
   <a class='page-numbers' href='index.6.html'>7</a>
   <a class='page-numbers' href='index.7.html'>8</a>
+  <a class='page-numbers' href='index.8.html'>9</a>
   <a class="next page-numbers" href="index.4.html">Next &raquo;</a>  <div class="clear"></div>
 </div>
       </div> 
@@ -450,11 +601,12 @@ http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替�
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/network.html">network &sdot; (53)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
@@ -474,6 +626,7 @@ http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替�
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/about.html'>about</a></li>
         <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
         <li><a href='post/HACKPAD_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
         <li><a href='post/R6300V2_shang_neng_yong_de_SHADOWSOCKS-LIBEV.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
@@ -483,7 +636,6 @@ http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替�
         <li><a href='post/wang_zhan_jing_tai_hua.html'>网站静态化</a></li>
         <li><a href='post/openerp-7-add-menu.html'>OPENERP 7:菜单添加</a></li>
         <li><a href='post/tips-upload-with-web-py.html'>Tips : upload with web.py</a></li>
-        <li><a href='post/netgear-r6300v2-ngrep.html'>Netgear R6300v2上编译ngrep</a></li>
       </ul>
     </div>
   </div>
