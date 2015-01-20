@@ -45,6 +45,72 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2011-06-21 17:58:09">
+            <a href="post/tomato-toastman-ipv6-he-net.html" title="2011-06-21 17:58:09" rel="bookmark">
+              <span class="entry-date-day">21</span>
+              <span class="entry-date-month-year">2011-06</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/tomato-toastman-ipv6-he-net.html">Tomato Toastman完美支持he.net的IPV6</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/ipv6.html" rel="tag">ipv6</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>he.net申请到的免费IPV6地址块只用到一台机器上太浪费了, 而Toastman的Tomato修改版, 对he.net的ipv6地址块支持得相当完美了. 这样可以把申请到的地址块放在路由器上, 并自动分配IPV6地址给所有接入路由器的机器.</p>
+
+<p>首先去https://www.tunnelbroker.net/申请一个64位的IPV6地址块,并记下</p>
+
+<pre><code>Server IPv4 Address
+Server IPv6 Address
+Client IPv4 Address
+Client IPv6 Address
+</code></pre>
+
+<p>然后你要有一个能刷tomato的路由器,并刷上相应的Tomato Toastman版. 我用的中兴h618b对应的版本是Tomato Firmware v1.28.7820 MIPSR1-Toastman K26 USB VPN.</p>
+
+<p>login到router,进入basic-&gt;ipv6菜单.</p>
+
+<p><a href="http://ahui.us/wp-content/uploads/2011/06/setipipv6.png"><img src="http://ahui.us/wp-content/uploads/2011/06/setipipv6.png" alt="" title="setipipv6"></a></p>
+
+<ul>
+<li>IPv6 Service Type 选择 6in4 Static Tunnel</li>
+<li>Assigned / Routed Prefix 填写要分配给接入机器的ipv6前缀,比如你申请到的是类x.x.x.x::1的地址,这儿填写x.x.x.x::</li>
+<li>Prefix Length填64</li>
+<li>Router IPv6 Address选择Default,会自动填写成he.net分配的Server IPv6 Address,不然选择Manual手工填写成Server IPv6 Address.</li>
+<li>Enable Router Advertisements勾上,</li>
+<li>Tunnel Remote Endpoint (IPv4 Address)填写he.net分配的Server IPv4 Address,</li>
+<li>Tunnel Client IPv6 Address填写he.net分配的Client IPv6 Address,64位长.</li>
+</ul>
+
+<p>如果你好运气路由器是固定的IPV4地址,那么设置这些就ok了.保存后radvd会自动启动用于分配ipv6地址.</p>
+
+<p>如果是pppoe之类拿的动态IP地址,那么这时候he.net上显示的Client IPv4 Address则会和你现在路由器地址不符. 这个时候所说的&quot;完美&quot;支持就表示出来了.
+进入basic-&gt;ddns菜单,看,下拉列表里有个&quot;HE.net IPv6 Tunnel Broker&quot;,贴心吧.帐号填写完后保存,这样地址改动后,会自动update he.net上的Client IPv4 Address数据.</p>
+
+<p>之后路由器给接入的机器分配IPv4地址时,会自动也分配一个IPv6地址. 这样router后面带的所有机器,都能实现IPV6接入了.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2011-06-21 16:23:36">
             <a href="post/tomato-firmware-v1-28-7820-mipsr1-toastman-k26-usb-vpn.html" title="2011-06-21 16:23:36" rel="bookmark">
               <span class="entry-date-day">21</span>
@@ -498,71 +564,6 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-02-21 15:10:02">
-            <a href="post/youku去掉在线播放时的广告.html" title="2011-02-21 15:10:02" rel="bookmark">
-              <span class="entry-date-day">21</span>
-              <span class="entry-date-month-year">2011-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/youku去掉在线播放时的广告.html">Youku去掉在线播放时的广告</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>最简单的,在hosts文件中,加入</p>
-
-<pre><code>127.0.0.1 valf.atm.youku.com
-</code></pre>
-
-<p>就能去掉播放前的广告.
-要想去掉所有广告,则要在hosts文件中加入下列行:</p>
-
-<pre><code>127.0.0.1 atm.youku.com 
-127.0.0.1 Fvid.atm.youku.com 
-127.0.0.1 html.atm.youku.com 
-127.0.0.1 valb.atm.youku.com 
-127.0.0.1 valf.atm.youku.com 
-127.0.0.1 valo.atm.youku.com 
-127.0.0.1 valp.atm.youku.com 
-127.0.0.1 lstat.youku.com 
-127.0.0.1 speed.lstat.youku.com 
-127.0.0.1 urchin.lstat.youku.com 
-127.0.0.1 stat.youku.com 
-127.0.0.1 static.lstat.youku.com 
-127.0.0.1 valc.atm.youku.com 
-127.0.0.1 vid.atm.youku.com 
-127.0.0.1 walp.atm.youku.com
-</code></pre>
-
-<p>win7系统下
-C:\Users\当前用户\AppData\Roaming\Macromedia\Flash Player#SharedObjects\随机串
-static.youku.com目录改名，并新建同名文件。</p>
-
-<p>参考连接</p>
-
-<p>http://www.itopdog.cn/software-tech/noad.html
-http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaodezuiquanzuijiandanfangfa.htm</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -603,7 +604,7 @@ http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaode
       <ul>
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (53)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (54)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
@@ -615,8 +616,9 @@ http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaode
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (36)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (37)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
       </ul>
     </div>
@@ -626,6 +628,7 @@ http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaode
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
         <li><a href='post/about.html'>about</a></li>
         <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
         <li><a href='post/HACKPAD_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
@@ -635,7 +638,6 @@ http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaode
         <li><a href='post/PYTENJINCACHE_wen_ti.html'>PYTENJIN CACHE问题</a></li>
         <li><a href='post/wang_zhan_jing_tai_hua.html'>网站静态化</a></li>
         <li><a href='post/openerp-7-add-menu.html'>OPENERP 7:菜单添加</a></li>
-        <li><a href='post/tips-upload-with-web-py.html'>Tips : upload with web.py</a></li>
       </ul>
     </div>
   </div>
