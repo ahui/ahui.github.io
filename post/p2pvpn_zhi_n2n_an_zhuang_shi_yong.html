@@ -126,6 +126,11 @@ deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted
 
 <p><a href="http://right.com.cn/forum/thread-72025-1-1.html">下载地址1</a> 以及 <a href="http://tomato.groov.pl/repo/n2n_r5895-1_mipsel.ipk">下载地址2</a></p>
 
+<p>加载一下 tun 设备</p>
+
+<pre><code>modprobe tun
+</code></pre>
+
 <p>运行很简单</p>
 
 <pre><code>./edge -d n2n0 -a 10.1.1.20 -c ahuin2nvpn -u nobody -g nobody -k ahuin2nvpn -l a.b.c.d:999 -m ae:e0:4f:e7:47:2a
