@@ -45,6 +45,50 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-07-26 23:45:53">
+            <a href="post/vps1.html" title="2010-07-26 23:45:53" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2010-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/vps1.html">PS1值保存待用</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>常用的bash PS1值
+<pre class="brush:plain">
+PS1=&quot;[\033[35m]\t[\033[m] [\033[36m]\u[\033[m]@[\033[32m]\h:[\033[33;1m]\w[\033[m] -&gt;&quot;
+</pre>
+效果如下
+<a href="http://ahui.us/wp-content/uploads/2010/07/ps1.bmp"><img src="http://ahui.us/wp-content/uploads/2010/07/ps1.bmp" alt="" title="ps1"></a></p>
+
+<p>or
+<pre class="brush:plain">
+PS1=&quot;[\033[37m]\t[\033[m] [\033[36m]\u[\033[m]@[\033[32m]\h:[\033[33;1m]\w[\033[m]&gt;&quot;
+</pre></p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-07-25 15:03:58">
             <a href="post/linuxversion.html" title="2010-07-25 15:03:58" rel="bookmark">
               <span class="entry-date-day">25</span>
@@ -1042,60 +1086,6 @@ Path To mysql:/usr/local/mysql/bin/mysql
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-16 00:40:13">
-            <a href="post/mmore.html" title="2010-07-16 00:40:13" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2010-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/mmore.html">修改more标签</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p><a href="http://codex.wordpress.org/Customizing_the_Read_More">参考地址</a></p>
-
-<p>修改loop.php
-查找第二处&quot;continue reading&quot;，该行改为</p>
-
-<pre><code>&lt;?php the_content(&quot;......点此阅读&lt;span class=\&quot;widget-title\&quot;&gt;t &quot; . get_the_title(&#39;&#39;, &#39;&#39;, false) . &quot;&lt;/span&gt; 全文......&quot;); &gt;
-</code></pre>
-
-<p>function.php底部加入脚本，用于跳转到文章开头.</p>
-
-<pre><code>function remove_more_jump_link($link) { 
-    $offset = strpos($link, &#39;#more-&#39;);
-    if ($offset) {
-        $end = strpos($link, &#39;&quot;&#39;,$offset);
-    }
-    if ($end) {
-        $link = substr_replace($link, &#39;&#39;, $offset, $end-$offset);
-    }
-    return $link;
-}
-add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
-</code></pre>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -1136,8 +1126,8 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
       <ul>
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (54)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (55)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
@@ -1148,7 +1138,7 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (37)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (38)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
@@ -1160,6 +1150,7 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
         <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
         <li><a href='post/about.html'>about</a></li>
         <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
@@ -1169,7 +1160,6 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
         <li><a href='post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_Blog.html'>用addpost生成的第一篇静态Blog</a></li>
         <li><a href='post/PYTENJINCACHE_wen_ti.html'>PYTENJIN CACHE问题</a></li>
         <li><a href='post/wang_zhan_jing_tai_hua.html'>网站静态化</a></li>
-        <li><a href='post/openerp-7-add-menu.html'>OPENERP 7:菜单添加</a></li>
       </ul>
     </div>
   </div>
