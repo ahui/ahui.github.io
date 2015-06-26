@@ -45,6 +45,54 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-08-18 15:17:23">
+            <a href="post/freeisocreator.html" title="2010-08-18 15:17:23" rel="bookmark">
+              <span class="entry-date-day">18</span>
+              <span class="entry-date-month-year">2010-08</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/freeisocreator.html">小巧免费的ISO制做软件IsoCreator及imgburn</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/sofeware.html" rel="tag">sofeware</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>今天要在虚拟机里安装一套比较久远的系统，发现没有现成的ISO文件，以前刻录的一张光盘还在．</p>
+
+<p>于是想直接用光盘安装，结果不但读盘速度慢，读盘声音也很吓人，不得不想办法做成ISO再安装．</p>
+
+<p>平时用的ones做记录软件，可惜ones只能做成di格式，VB无法使用．</p>
+
+<p>winiso,ultraiso之类的都是收费软件，不考虑．sf上查找到IsoCreator,非常短小，400K多点，能把指定的文件目录或盘符做成iso文件．
+<a href="http://sourceforge.net/projects/iso-creator-cs/">下载点</a></p>
+
+<p><a href="http://ahui.us/wp-content/uploads/2010/08/isocreator.jpg"><img src="http://ahui.us/wp-content/uploads/2010/08/isocreator.jpg" alt="" title="isocreator"></a></p>
+
+<p>可惜的是IsoCreator不能读取boot记录，不能用于制做可引导的iso文件．</p>
+
+<p>个头大点的imgburn可以用来对付可引导的光盘，包括制做可引导的iso及其刻录．
+<a href="http://www.imgburn.com/">下载点</a></p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-08-17 14:50:01">
             <a href="post/android-2-2-x86iso-google-code-sf-net.html" title="2010-08-17 14:50:01" rel="bookmark">
               <span class="entry-date-day">17</span>
@@ -503,67 +551,6 @@ sh optware-install.sh
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-30 12:07:07">
-            <a href="post/related-posts-by-category.html" title="2010-07-30 12:07:07" rel="bookmark">
-              <span class="entry-date-day">30</span>
-              <span class="entry-date-month-year">2010-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/related-posts-by-category.html">相关文章Related Posts by Category的配置</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>编辑single.php,放到comments_template之前.</p>
-
-<pre><code>&lt;div class=&quot;entry-title&quot;&quot;&gt;
-相关文章
-&lt;/div&gt;
-&lt;div id=&quot;related_posts&quot; class=&quot;box&quot;&gt;
-   &lt;?php do_action(
-    &#39;related_posts_by_category&#39;,
-    array(
-      &#39;orderby&#39; =&gt; &#39;post_date&#39;,
-      &#39;order&#39; =&gt; &#39;DESC&#39;,
-      &#39;limit&#39; =&gt; 5,
-      &#39;echo&#39; =&gt; true,
-      &#39;before&#39; =&gt; &#39;&amp;lt;li&gt;&#39;,
-      &#39;inside&#39; =&gt; &#39;&amp;raquo; &#39;,
-      &#39;outside&#39; =&gt; &#39;&#39;,
-      &#39;after&#39; =&gt; &#39;&amp;lt;/li&gt;&#39;,
-      &#39;rel&#39; =&gt; &#39;nofollow&#39;,
-      &#39;type&#39; =&gt; &#39;post&#39;,
-      &#39;image&#39; =&gt; array(50, 50),
-      &#39;hidden&#39; =&gt; &#39;image&#39;,
-      &#39;message&#39; =&gt; &#39;没有相关文章.&#39;
-    )
-  ) ?&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>其中&#39;hidden&#39; =&gt; &#39;image&#39;防止自动显示相关图片.</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -613,7 +600,7 @@ sh optware-install.sh
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/blog.html">blog &sdot; (23)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/linux.html">linux &sdot; (38)</a></li>
@@ -628,6 +615,7 @@ sh optware-install.sh
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/test.html'>test</a></li>
         <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
         <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
         <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
@@ -637,7 +625,6 @@ sh optware-install.sh
         <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
         <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
         <li><a href='post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_blog.html'>用addpost生成的第一篇静态Blog</a></li>
-        <li><a href='post/pytenjincache_wen_ti.html'>PYTENJIN CACHE问题</a></li>
       </ul>
     </div>
   </div>

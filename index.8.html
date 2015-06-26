@@ -45,6 +45,58 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-07-16 22:12:36">
+            <a href="post/m-shcp.html" title="2010-07-16 22:12:36" rel="bookmark">
+              <span class="entry-date-day">16</span>
+              <span class="entry-date-month-year">2010-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/m-shcp.html">修正Syntax Highlighter ComPress的自动换行问题</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>Syntax Highlighter ComPress语法加亮插件在我用的模板中不能自动换行．改了下ＣＳＳ先用着．可惜这个插件在IE下有小部分不能正常显示，FF下大部分正常．</p>
+
+<p>查找syntax-highlighter-compress/styles/shCoreEclipse.css中的
+<pre class="brush:css">
+.syntaxhighlighter .line {
+  white-space: pre !important;
+}
+</pre>
+改为
+<pre class="brush:css">
+.syntaxhighlighter .line {
+ white-space: pre-wrap;<br>
+ white-space: -moz-pre-wrap; 
+ white-space: -pre-wrap;<br>
+ white-space: -o-pre-wrap; 
+ word-wrap: break-word;
+}
+</pre>
+保存就ok了.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-07-16 18:13:14">
             <a href="post/m-wp-dbmanager-mail.html" title="2010-07-16 18:13:14" rel="bookmark">
               <span class="entry-date-day">16</span>
@@ -520,7 +572,7 @@ drwxr-xr-x 6 daemon daemon 4096 Jul 15 22:33 /usr/local/apache2/htdocs/
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/blog.html">blog &sdot; (23)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/linux.html">linux &sdot; (38)</a></li>
@@ -535,6 +587,7 @@ drwxr-xr-x 6 daemon daemon 4096 Jul 15 22:33 /usr/local/apache2/htdocs/
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/test.html'>test</a></li>
         <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
         <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
         <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
@@ -544,7 +597,6 @@ drwxr-xr-x 6 daemon daemon 4096 Jul 15 22:33 /usr/local/apache2/htdocs/
         <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
         <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
         <li><a href='post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_blog.html'>用addpost生成的第一篇静态Blog</a></li>
-        <li><a href='post/pytenjincache_wen_ti.html'>PYTENJIN CACHE问题</a></li>
       </ul>
     </div>
   </div>
