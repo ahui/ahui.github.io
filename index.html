@@ -45,39 +45,6 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2015-06-26 03:01:58">
-            <a href="post/test.html" title="2015-06-26 03:01:58" rel="bookmark">
-              <span class="entry-date-day">26</span>
-              <span class="entry-date-month-year">2015-06</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/test.html">test</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/notag.html" rel="tag">notag</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>正文</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2015-05-05 12:02:26">
             <a href="post/abb_geng_xin_ji_bo_ke_diao_zheng.html" title="2015-05-05 12:02:26" rel="bookmark">
               <span class="entry-date-day">05</span>
@@ -534,6 +501,113 @@ make
     </div>
 
  
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2014-02-06 07:30:17">
+            <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html" title="2014-02-06 07:30:17" rel="bookmark">
+              <span class="entry-date-day">06</span>
+              <span class="entry-date-month-year">2014-02</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html">用git同步静态网站</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>ABB(Ahui Blog Build)生成的静态html文件，可以用git比较方便的同步到VPS Server上。</p>
+
+<p>首先Server和Client二边都安装好git.</p>
+
+<p>VPS Server上做如下设定后，就不用管了：</p>
+
+<p>创建git仓库目录为www.git，要安全起见，可以换用个普通用户帐号，并修改相应目录及权限。</p>
+
+<pre><code>cd /root/tmp
+mkdir www.git
+cd www.git
+git --bare init
+</code></pre>
+
+<p>建立www根目录，并配置nginx指向。</p>
+
+<pre><code>mkdir /home/wwwstatic/public
+</code></pre>
+
+<p>建立git hook,在Client push文件后，自动checkout到指定的www根目录</p>
+
+<pre><code>cat &gt; hooks/post-receive
+#!/bin/bash
+GIT_WORK_TREE=/home/wwwstatic/public git checkout -f
+</code></pre>
+
+<p>加上可执行属性</p>
+
+<pre><code>chmod +x post-receive
+</code></pre>
+
+<p>Server端设置完毕。</p>
+
+<p>Client端如果还没有ssh key,则用</p>
+
+<pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
+</code></pre>
+
+<p>生成key,然后将~/.ssh/id<em>rsa.pub中的内容复制到Server端的 /root/.ssh/authorized</em>keys中。</p>
+
+<p>然后进入静态html生成目录，做一次初始化。</p>
+
+<pre><code>cd public
+git init
+git remote add ahuius root@ahui.us:/root/tmp/www.git
+</code></pre>
+
+<p>设定完毕。</p>
+
+<p>这样每次用abb bulid整个站点后，执行下sync.sh就可以将新生成的html文件同步到vps的www根目录了。</p>
+
+<pre><code>cat sync.sh
+
+#!/bin/bash
+cd public
+git add .
+git commit -m &quot;ok&quot;
+git push -f ahuius master
+</code></pre>
+
+<p>这篇Blog是完成设定后第一篇被同步的文章.</p>
+
+<pre><code>./sync.sh
+[master 97bc2d2] ok
+ 84 files changed, 1000 insertions(+), 671 deletions(-)
+ create mode 100644 post/yong_git_tong_bu_jing_tai_wang_zhan.html
+Counting objects: 174, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (88/88), done.
+Writing objects: 100% (88/88), 21.61 KiB, done.
+Total 88 (delta 84), reused 0 (delta 0)
+To root@ahui.us:/root/tmp/www.git
+   7167c21..97bc2d2  master -&gt; master
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -583,7 +657,7 @@ make
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/blog.html">blog &sdot; (23)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/linux.html">linux &sdot; (38)</a></li>
@@ -598,7 +672,6 @@ make
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
-        <li><a href='post/test.html'>test</a></li>
         <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
         <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
         <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
@@ -608,6 +681,7 @@ make
         <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
         <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
         <li><a href='post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_blog.html'>用addpost生成的第一篇静态Blog</a></li>
+        <li><a href='post/pytenjincache_wen_ti.html'>PYTENJIN CACHE问题</a></li>
       </ul>
     </div>
   </div>

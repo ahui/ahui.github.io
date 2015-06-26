@@ -45,52 +45,6 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-04-12 23:05:09">
-            <a href="post/ulipadautoinput.html" title="2011-04-12 23:05:09" rel="bookmark">
-              <span class="entry-date-day">12</span>
-              <span class="entry-date-month-year">2011-04</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/ulipadautoinput.html">UliPad自动输入括号和引号</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/sofeware.html" rel="tag">sofeware</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>打开 ulipad/conf/python.acp文件,在
-[autostring_append]
-行之后加入</p>
-
-<pre class="brush:html">
-' = "!^'"
-" = '!^"'
-< = "!^>"
-( = "!^)"
-{ = "!^}"
-&lt;square> = "!^]"
-
-</pre>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2011-04-11 17:03:54">
             <a href="post/flower2011.html" title="2011-04-11 17:03:54" rel="bookmark">
               <span class="entry-date-day">11</span>
@@ -431,6 +385,63 @@ alias ls=&#39;ls $LS_OPTIONS&#39;
     </div>
 
  
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-12-10 11:16:43">
+            <a href="post/linux-kernel-econet-root-shell.html" title="2010-12-10 11:16:43" rel="bookmark">
+              <span class="entry-date-day">10</span>
+              <span class="entry-date-month-year">2010-12</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/linux-kernel-econet-root-shell.html">[转贴]Linux Kernel Econet漏洞权限提升脚本</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/ssh.html" rel="tag">ssh</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>原贴出处
+http://www.vpsee.com/2010/12/linux-kernel-root-level-exploit-leveraging-multiple-previous-vulnerabilities/
+脚本出处
+http://marc.info/?l=full-disclosure&amp;m=129175358621826&amp;w=2</p>
+
+<p>受影响系统：
+Debian Linux 5.0 x
+Linux kernel 2.6.0 - 2.6.36
+Linux kernel 2.6.0 - 2.6.26
+Ubuntu Linux 9.10 - 10.04</p>
+
+<p>已测试系统
+Ubuntu 10.4 提升成功
+Centos 5.5 提升失败</p>
+
+<p>脚本下载
+http://ahui.us/get/public/ahui/root.c.txt
+已编译脚本
+http://ahui.us/get/public/ahui/root.txt</p>
+
+<p>Acorn Econet/AUN 协议
+Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑上，用于访问文件和打印机服务器。它使用本地的Econet 网络卡。AUN 是高层的 Econet 协议，运行于通常的以太网连接，它运行在 UDP 包协议之上，这两个协议轮流运行于IP协议上。
+参考:http://en.wikipedia.org/wiki/Econet</p>
+</p>
+      </div>
+
+    </div>
+
+ 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -480,7 +491,7 @@ alias ls=&#39;ls $LS_OPTIONS&#39;
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/blog.html">blog &sdot; (23)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/linux.html">linux &sdot; (38)</a></li>
@@ -495,7 +506,6 @@ alias ls=&#39;ls $LS_OPTIONS&#39;
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
-        <li><a href='post/test.html'>test</a></li>
         <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
         <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
         <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
@@ -505,6 +515,7 @@ alias ls=&#39;ls $LS_OPTIONS&#39;
         <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
         <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
         <li><a href='post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_blog.html'>用addpost生成的第一篇静态Blog</a></li>
+        <li><a href='post/pytenjincache_wen_ti.html'>PYTENJIN CACHE问题</a></li>
       </ul>
     </div>
   </div>
