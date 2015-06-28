@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>[转贴]Linux Kernel Econet漏洞权限提升脚本</title>
+  <title>ABB加入在线编辑功能</title>
   <link href="../css/main.css" rel="stylesheet" type="text/css" />
   <link href="../css/960.css" rel="stylesheet" type="text/css" />
   <style type="text/css" id="custom-background-css">
@@ -44,53 +44,67 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-12-10 11:16:43">
-            <a href="../post/linux-kernel-econet-root-shell.html" title="2010-12-10 11:16:43" rel="bookmark">
-              <span class="entry-date-day">10</span>
-              <span class="entry-date-month-year">2010-12</span>
+          <time class="entry-date entry-time updated" datetime="2015-06-26 05:03:28">
+            <a href="../post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html" title="2015-06-26 05:03:28" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2015-06</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="../post/linux-kernel-econet-root-shell.html">[转贴]Linux Kernel Econet漏洞权限提升脚本</a>
+            <a href="../post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html">ABB加入在线编辑功能</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="../tag/linux.html" rel="tag">linux</a>
-              <a href="../tag/network.html" rel="tag">network</a>
-              <a href="../tag/ssh.html" rel="tag">ssh</a>
+              <a href="../tag/blog.html" rel="tag">blog</a>
+              <a href="../tag/abb.html" rel="tag">abb</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>原贴出处
-http://www.vpsee.com/2010/12/linux-kernel-root-level-exploit-leveraging-multiple-previous-vulnerabilities/
-脚本出处
-http://marc.info/?l=full-disclosure&amp;m=129175358621826&amp;w=2</p>
+        <p><p>ABB 加入在线编辑功能,可以在线新建,编辑 md 文件,并发布静态网站.</p>
 
-<p>受影响系统：
-Debian Linux 5.0 x
-Linux kernel 2.6.0 - 2.6.36
-Linux kernel 2.6.0 - 2.6.26
-Ubuntu Linux 9.10 - 10.04</p>
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/abbonlineeditor.png-small" onclick="popme(this.src)" /></p>
 
-<p>已测试系统
-Ubuntu 10.4 提升成功
-Centos 5.5 提升失败</p>
+<p>为简化代码</p>
 
-<p>脚本下载
-http://ahui.us/get/public/ahui/root.c.txt
-已编译脚本
-http://ahui.us/get/public/ahui/root.txt</p>
+<ul>
+<li>图片功能用 七牛存储 解决.(所以上传功能没有开发.)</li>
+<li>访问控制用 nginx 解决.</li>
+<li>文件同步用 git 解决.</li>
+</ul>
 
-<p>Acorn Econet/AUN 协议
-Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑上，用于访问文件和打印机服务器。它使用本地的Econet 网络卡。AUN 是高层的 Econet 协议，运行于通常的以太网连接，它运行在 UDP 包协议之上，这两个协议轮流运行于IP协议上。
-参考:http://en.wikipedia.org/wiki/Econet</p>
+<p>使用方法:</p>
+
+<h2>写新文章</h2>
+
+<ul>
+<li>点击 新建,会生成 md 模板,在模板中修改 tags 并加入正文. 插入图片用 七牛存储 的外链.</li>
+<li>点击 保存,会在服务端保存 md 文件. 未保存的文件不会被发布, 但会自动保存在客户端.</li>
+<li>点击 发布,会生成整个网站的静态页面,并发布到指定的目录.</li>
+</ul>
+
+<h2>编辑文章</h2>
+
+<ul>
+<li>点击 打开,选择要编辑的文章名</li>
+<li>编辑 tags 或正文</li>
+<li>点击 保存</li>
+<li>点击 发布</li>
+</ul>
+
+<h2>删除文章</h2>
+
+<ul>
+<li>点击 打开,打开要删除的文章.</li>
+<li>点击 删除</li>
+<li>确认后,会删除当前打开(编辑)的文章.</li>
+</ul>
 </p>
       </div>
 
@@ -98,7 +112,7 @@ Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑�
 
  
 <!-- Duoshuo Comment BEGIN -->
-  <!-- <div class="ds-thread" data-title="[转贴]Linux Kernel Econet漏洞权限提升脚本" data-thread-key="linux-kernel-econet-root-shell.html" ></div> -->
+  <!-- <div class="ds-thread" data-title="ABB加入在线编辑功能" data-thread-key="abb_jia_ru_zai_xian_bian_ji_gong_neng.html" ></div> -->
 
   </div>
       </div> 
