@@ -1537,7 +1537,7 @@ p.nocomments {
 	position: relative;
 	margin: 0;
 	padding: 0;
-	z-index: 9999;
+/*	z-index: 9999; */
 }
 
 .menu ul,
