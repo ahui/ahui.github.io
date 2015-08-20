@@ -45,236 +45,66 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-04-16 05:07:04">
-            <a href="post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html" title="2014-04-16 05:07:04" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2014-04</span>
+          <time class="entry-date entry-time updated" datetime="2015-07-28 11:54:07">
+            <a href="post/2015turkey_you_ji_day4bodrum.html" title="2015-07-28 11:54:07" rel="bookmark">
+              <span class="entry-date-day">28</span>
+              <span class="entry-date-month-year">2015-07</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html">R6300V2上能用的SHADOWSOCKS-LIBEV</a>
+            <a href="post/2015turkey_you_ji_day4bodrum.html">2015 turkey 游记 day 4 Bodrum</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/turkey.html" rel="tag">turkey</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>R6300v2上安装opkg，opkg再安装python，然后运行python版本的shadowsocks成功．不过加密方式只能用table，无法正常访问google的相关服务．</p>
-
-<p>一时没搞定python的m2crypto，无法启用其他加密方式，于是直接编译shadowsocks-libev，　ss-local采用命令行方式指定参数运行成功，采用aes-256-cfb加密方式，google相关网站访问正常．</p>
-
-<p>移步下载 <a href="http://pan.baidu.com/s/1bncR2CB">shadowsocks-libev on R6300v2</a></p>
-
-<p>Arm7系cpu应该通用，但未测试．</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-06 07:30:17">
-            <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html" title="2014-02-06 07:30:17" rel="bookmark">
-              <span class="entry-date-day">06</span>
-              <span class="entry-date-month-year">2014-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html">用git同步静态网站</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>ABB(Ahui Blog Build)生成的静态html文件，可以用git比较方便的同步到VPS Server上。</p>
-
-<p>首先Server和Client二边都安装好git.</p>
-
-<p>VPS Server上做如下设定后，就不用管了：</p>
-
-<p>创建git仓库目录为www.git，要安全起见，可以换用个普通用户帐号，并修改相应目录及权限。</p>
-
-<pre><code>cd /root/tmp
-mkdir www.git
-cd www.git
-git --bare init
-</code></pre>
-
-<p>建立www根目录，并配置nginx指向。</p>
-
-<pre><code>mkdir /home/wwwstatic/public
-</code></pre>
-
-<p>建立git hook,在Client push文件后，自动checkout到指定的www根目录</p>
-
-<pre><code>cat &gt; hooks/post-receive
-#!/bin/bash
-GIT_WORK_TREE=/home/wwwstatic/public git checkout -f
-</code></pre>
-
-<p>加上可执行属性</p>
-
-<pre><code>chmod +x post-receive
-</code></pre>
-
-<p>Server端设置完毕。</p>
-
-<p>Client端如果还没有ssh key,则用</p>
-
-<pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
-</code></pre>
-
-<p>生成key,然后将~/.ssh/id<em>rsa.pub中的内容复制到Server端的 /root/.ssh/authorized</em>keys中。</p>
-
-<p>然后进入静态html生成目录，做一次初始化。</p>
-
-<pre><code>cd public
-git init
-git remote add ahuius root@ahui.us:/root/tmp/www.git
-</code></pre>
-
-<p>设定完毕。</p>
-
-<p>这样每次用abb bulid整个站点后，执行下sync.sh就可以将新生成的html文件同步到vps的www根目录了。</p>
-
-<pre><code>cat sync.sh
-
-#!/bin/bash
-cd public
-git add .
-git commit -m &quot;ok&quot;
-git push -f ahuius master
-</code></pre>
-
-<p>这篇Blog是完成设定后第一篇被同步的文章.</p>
-
-<pre><code>./sync.sh
-[master 97bc2d2] ok
- 84 files changed, 1000 insertions(+), 671 deletions(-)
- create mode 100644 post/yong_git_tong_bu_jing_tai_wang_zhan.html
-Counting objects: 174, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (88/88), done.
-Writing objects: 100% (88/88), 21.61 KiB, done.
-Total 88 (delta 84), reused 0 (delta 0)
-To root@ahui.us:/root/tmp/www.git
-   7167c21..97bc2d2  master -&gt; master
-</code></pre>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-06 03:58:17">
-            <a href="post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_blog.html" title="2014-02-06 03:58:17" rel="bookmark">
-              <span class="entry-date-day">06</span>
-              <span class="entry-date-month-year">2014-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_blog.html">用addpost生成的第一篇静态Blog</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/python.html" rel="tag">python</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>静态网站生成程序上站测试。
-ohoh,还没取名字...</p>
-
-<p>已完成功能:</p>
+        <p><h1>day 4 Bodrum</h1>
 
 <ul>
-<li> cli生成post模板</li>
-<li>根据md文件生成对应的html文件</li>
-<li>根据目录生成整站html文件</li>
-<li>生成首页面index.html</li>
-<li>首页下部生成页码导航</li>
-<li>生成tag目录</li>
-<li>生成最新文章列表</li>
-<li>包含多说的ajax评论</li>
-<li>除多说的ajax评论不支持file://,其他页面均能用file://方式浏览.</li>
-<li>用Contango Theme做了一个默认模板。</li>
+<li>7.24</li>
 </ul>
 
-<p>wordpress转移方式</p>
+<p>吃完早餐去 Efes,早餐做得很不错,种类很丰富,味道也挺好,有好吃的大樱桃. 一直到后来吃了不少家的早餐,这家都能排在前列.</p>
 
-<ol>
-<li> 在wordpress中导入所有post到xml文件中</li>
-<li>hexo Pelican 二者都有对应工具，从xml中提取所有post为对应的.md格式文件。建议用hexo的工具，转换得更好一点。本程序支持这二者转换后的格式。</li>
-<li>md格式修正。主要是换行，代码块等，多加点空行。</li>
-<li>生成全站静态html。</li>
-</ol>
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1958.JPG-small" onclick="popme(this.src)" /></p>
 
-<p>运行环境(Ubuntu on Virtualbox)</p>
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1965.JPG-small" onclick="popme(this.src)" /></p>
 
-<p>uname -a</p>
+<p>efes 很近,2KM 左右.早一点去的好,不会太热. 10点后人一下多了起来, 团体旅客也相当多. 就是去得稍晚,有点热.</p>
 
-<pre><code>Linux openerp7 3.5.0-17-generic #28-Ubuntu SMP Tue Oct 9 19:32:08 UTC 2012 i686 i686 i686 GNU/Linux
-</code></pre>
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1997.JPG-small" onclick="popme(this.src)" /></p>
 
-<p>cat /proc/cpuinfo</p>
+<p>再顺着开20KM 左右,到kusadasi吃完午饭,然后开车到150KM 外的Bodrum. 
+Kusadasi 是个干净漂亮的海边小镇,估计游客很少来.</p>
 
-<pre><code>...
-processor       : 3
-vendor_id       : GenuineIntel
-cpu family      : 6
-model           : 58
-model name      : Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
-stepping        : 9
-cpu MHz         : 2394.400
-bogomips        : 4788.80
-</code></pre>
+<p>全程 D 级路,进市区时红灯时间奇长.</p>
 
-<p>生成速度</p>
+<p>入住的宾馆出乎意料的差,4点到达,check in 骗我们等半小时最多了，结果居然等了一个半小时.房间在破仓库边上，一进门就是床垫，而且居然是地上铺个床垫,满屋都是蚊子也不去说，连个桌子都没有，简陋的比招待所还差，EUR60的酒店居然这么差，果断第二天不退钱也不住了，马上就修改行程.</p>
 
-<pre><code> ls ./sources | wc
-     59      59    1206
+<p>也因此整个行程下来, Bodrum 给人的感觉很差. 如果自驾, 建议跳过这个地方.</p>
 
- time ./main.py build
+<p>晚餐吃上了正宗土耳其烤肉.</p>
 
-real    0m0.390s
-user    0m0.092s
-sys     0m0.120s
-</code></pre>
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_2195.JPG-small" onclick="popme(this.src)" />
+<img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_2199.JPG-small" onclick="popme(this.src)" /></p>
 
-<p>如果按照这个速度不变，生成一万篇文章需时一分钟多点。</p>
+<h2>tips</h2>
+
+<ul>
+<li>Bodrum消费果然和 istanbul 差不多,油费也普遍贵一点.</li>
+<li>海边有一溜的船可以提前租.</li>
+<li>土国做菜,大概除了烤,也只会烤了.</li>
+<li>kusadasi游人少得多,自驾可以考虑下代替其他人多城市.</li>
+</ul>
 </p>
       </div>
 
@@ -285,57 +115,392 @@ sys     0m0.120s
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-05 15:40:08">
-            <a href="post/pytenjincache_wen_ti.html" title="2014-02-05 15:40:08" rel="bookmark">
+          <time class="entry-date entry-time updated" datetime="2015-07-28 11:28:54">
+            <a href="post/2015turkey_you_ji_day3selcuk.html" title="2015-07-28 11:28:54" rel="bookmark">
+              <span class="entry-date-day">28</span>
+              <span class="entry-date-month-year">2015-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/2015turkey_you_ji_day3selcuk.html">2015 turkey 游记 day 3 Selcuk</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/turkey.html" rel="tag">turkey</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h1>day 3 Selcuk</h1>
+
+<ul>
+<li>7.23</li>
+</ul>
+
+<p>早上睡不着,很早就起来了.</p>
+
+<p>今天市内随便看看,吃吃. 然后不到100KM 去塞尔丘克,时间比较充足. 上午太阳刚出来,海边吹过来的还很凉快,大概是一天中最舒服的时候了.</p>
+
+<p>有熟肉及米饭的餐馆都是12点左右才 OPEN,只能吃到三明治之类的早餐,不过味道还不错. 咸酸奶味道果然很怪异啊.</p>
+
+<p>到 塞尔丘克 可以一直走 D550,中间可选30多公里的 E81. 高速路是双向6车道,路况很不错,限速120,出来 HGS 扣费1.8TL. 车流感觉要比 D550稍多.</p>
+
+<p>塞尔丘克 温度低不少,吹过来的是很凉快的风.别让太阳直接晒到就行.</p>
+
+<p>家庭式旅馆,房间虽然稍小,倒是应有尽有,干净舒服. 午饭就在旅馆吃了. 味道还不错,就是事后收费才知道他们家都用 EURO 收费的.</p>
+
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1775.JPG-small" onclick="popme(this.src)" /></p>
+
+<p>教堂和堡垒比要想象中要大,门票处给我们推荐了通票,包括接下来的以弗所博物馆以及明天的以弗所都可以用,75TL 一张.</p>
+
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1838.JPG-small" onclick="popme(this.src)" /></p>
+
+<p>google maps 导航到efes muzesi 时出错,定位到了一个错误的地方. 所以用 IOS 内置地图对比定位是有必要的.</p>
+
+<p>加了100TL 油.</p>
+
+<h2>tips</h2>
+
+<ul>
+<li>Agora,kizlaragasi这类的可以8,9点去逛,太早都还没 OPEN,太晚会热.</li>
+<li>路上都有指示牌,步行最方便.</li>
+<li>停车费很贵,10TL 起</li>
+<li>能走 E 级高速路尽量走高速,当然别忘记多让出里车道,让开那些160+的人.</li>
+</ul>
+
+<h2>导航</h2>
+
+<p>主要在 ipad mini 2 4G上,使用软件进行导航. 无流量卡时必须使用离线地图. 另外,在使用 usb 充电时,语音不起作用.估计和车充及车型有关.</p>
+
+<h3>Sygic with Turkey map</h3>
+
+<p>没流量卡之前只能用这个,免费有广告,能显示当前速度,总体感觉不错,最大问题是语音播报只有土语,另外设置目的地时不太方便. 适用于无流量时,大城市之间的导航.</p>
+
+<h3>google map</h3>
+
+<p>必须有流量卡才能使用.最大好外是能用中文查询目的地.最大问题是 ios 版本没有语音导航.适用于城市内导航.</p>
+
+<h3>ios 原生地图 app</h3>
+
+<p>必须有流量卡才能使用.有中文语音导航,地图好象用的 tomtom,综合来说,相当好用. 缺点是路径计算速度稍慢.</p>
+
+<h3>navmii turkey</h3>
+
+<p>功能完备的导航软件,有中文语音包,无流量也可用,可完全代替 sygic,用于城市之间导航,配合 goole map 用于找酒店. 这个组合相当好用.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-07-23 04:26:42">
+            <a href="post/2015turkey_you_ji_day2.html" title="2015-07-23 04:26:42" rel="bookmark">
+              <span class="entry-date-day">23</span>
+              <span class="entry-date-month-year">2015-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/2015turkey_you_ji_day2.html">2015 turkey 游记 day 2 Izmir</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/turkey.html" rel="tag">turkey</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h1>day 2 Izmir</h1>
+
+<ul>
+<li>7.22</li>
+</ul>
+
+<p>4点多就醒来了,不睡了. check out 后,跟着 Sygic 绕了半天,辛苦到达 Ido 车船渡码头. 提前网上买票会便宜点, 到码头后要换票.</p>
+
+<p>大船有三层,下二层装车,最上层装人. 提前定好有小桌子的位子更好, 比如现在就能在小桌子上放电脑写 blog. 当然依然没有 wifi,我们也依然没有搞定流量卡.
+<img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1667.JPG-small" onclick="popme(this.src)" /></p>
+
+<p>在码头找到四叶草,总算取到了TL现金. 码头工作人员很贴心的开铁门让我们抄进路 ATM 来回.</p>
+
+<p>船开得要比想象中快.</p>
+
+<p>到 Bandırma 后直接开往 Izmir,在上 D565前看到有个比较大的超市,进去补充饮用水. 樱桃是三块多,但太成熟. 边上的 CAFE 吃了午饭,很便宜也挺好吃.</p>
+
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1676.JPG-small" onclick="popme(this.src)" /></p>
+
+<p>300KM 约三个小时到达 Izmir,温度一下高了起来,38度左右.</p>
+
+<p>流量卡是头等大事,问了 N 家未果,主要问题是语言不通. 最后在AEVA解决家解决,经理给我们定制了一个2.5G,为期一个月的流量卡.
+<img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1768.JPG-small" onclick="popme(this.src)" /></p>
+
+<p>晚餐去了附近天书推荐的老餐厅,生意很好,味道还行,价格稍贵.</p>
+
+<h2>tips</h2>
+
+<ul>
+<li>D565看起来要升级到 E881,大部分路都做了翻新,只有小部分是老路.总路况都相当好.</li>
+<li>有路口或经过小镇,都会有90,70,50不等的限速标志,要控制下车速.</li>
+<li>路上车辆还是比较少的.</li>
+<li>开在左车道,后面还是很经常有车闪你,滴滴你,让开让他们飞走吧. </li>
+<li>5个小时的时差,晚上9点会开始感觉人在飘了.</li>
+<li>晚上8点太阳太落山,要防晒防热.</li>
+</ul>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-07-23 04:15:11">
+            <a href="post/2015turkey_you_ji_day1.html" title="2015-07-23 04:15:11" rel="bookmark">
+              <span class="entry-date-day">23</span>
+              <span class="entry-date-month-year">2015-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/2015turkey_you_ji_day1.html">2015 turkey 游记 day 1 Istanbul</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/turkey.html" rel="tag">turkey</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h1>day 1 Istanbul</h1>
+
+<ul>
+<li>7.21</li>
+</ul>
+
+<p>今天大部分时间都在空中度过了,SU209 9个小时,SU2132 5个小时.转机莫斯科约一个小时.</p>
+
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_1610_2.JPG-small" onclick="popme(this.src)" /></p>
+
+<p>值得高兴的是碰上了 SU209 只有15%的准点率, 提前5分钟到达莫斯科,因为很远很远的登机口,刚刚够赶上 SU2312.</p>
+
+<p>仍然提前5分钟到达 istanbul，不过，筒子们，苦难刚刚开始，入境处的混乱长龙先吓了一跳，无人管理，粗粗的龙啊，眼熟吗？然后，科普一下，土国机场的行李车是人力驱动的，对，你没看错，人拉的！！！一车也就6～8个箱子，我那个去啊，等行李整整45分钟！！！320的小飞机啊！！！！</p>
+
+<p>要在机场买上网卡的估计要失望了，Vodafone的说没有旅客上网卡，Avea的人多的等死，最后Turkcell柜台像菜市场，最终只能放弃。</p>
+
+<p>AVIS 取车很顺利,运气很好,是辆全新的车,总里程27KM.</p>
+
+<ul>
+<li>没有免费 wifi</li>
+<li>行李车要准备1TL 硬币</li>
+<li>托运行李要等很久</li>
+<li>没买到流量卡</li>
+</ul>
+
+<p>1TL硬币可以多准备点,不少地方的洗手间用得上的.</p>
+
+<p>Holiday inn 机场店服务人员挺热情,硬件差了点,关键没拖鞋...</p>
+
+<h2>tips</h2>
+
+<ul>
+<li>AVIS 车上已经贴好 HGS, 还车时结算通行费</li>
+<li>只查看了中国驾照,没要求出示翻译件或公证书</li>
+<li>刷了2000TL 作保证金</li>
+<li>买了全险,出任何问题 CALL AVIS 就行</li>
+<li>满油给的车</li>
+<li>当前油价4.6TL/L 左右</li>
+</ul>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-06-26 05:03:28">
+            <a href="post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html" title="2015-06-26 05:03:28" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2015-06</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html">ABB加入在线编辑功能</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/abb.html" rel="tag">abb</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>ABB 加入在线编辑功能,可以在线新建,编辑 md 文件,并发布静态网站.</p>
+
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/abbonlineeditor.png-small" onclick="popme(this.src)" /></p>
+
+<p>为简化代码</p>
+
+<ul>
+<li>图片功能用 七牛存储 解决.(所以上传功能没有开发.)</li>
+<li>访问控制用 nginx 解决.</li>
+<li>文件同步用 git 解决.</li>
+</ul>
+
+<p>使用方法:</p>
+
+<h2>写新文章</h2>
+
+<ul>
+<li>点击 新建,会生成 md 模板,在模板中修改 tags 并加入正文. 插入图片用 七牛存储 的外链.</li>
+<li>点击 保存,会在服务端保存 md 文件. 未保存的文件不会被发布, 但会自动保存在客户端.</li>
+<li>点击 发布,会生成整个网站的静态页面,并发布到指定的目录.</li>
+</ul>
+
+<h2>编辑文章</h2>
+
+<ul>
+<li>点击 打开,选择要编辑的文章名</li>
+<li>编辑 tags 或正文</li>
+<li>点击 保存</li>
+<li>点击 发布</li>
+</ul>
+
+<h2>删除文章</h2>
+
+<ul>
+<li>点击 打开,打开要删除的文章.</li>
+<li>点击 删除</li>
+<li>确认后,会删除当前打开(编辑)的文章.</li>
+</ul>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-06-26 04:47:59">
+            <a href="post/macgit_da_xiao_xie_wen_ti.html" title="2015-06-26 04:47:59" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2015-06</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/macgit_da_xiao_xie_wen_ti.html">mac os 及 git 大小写问题</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/mac.html" rel="tag">mac</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>mac os 默认文件系统不区分大小写. 简单解决方法建立一个新的磁盘映像,并使用大小写相关的文件系统,装载后将需要大小写相关的文件放在映像盘上.</p>
+
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/macosfilesystem.png-small" alt="文件系统"></p>
+
+<p>另外 git 默认也不关心大小写问题,临时可用先删除文件，再添加进去的方式解决,或者加入配置选项:</p>
+
+<pre><code>git config core.ignorecase false
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-05-05 12:02:26">
+            <a href="post/abb_geng_xin_ji_bo_ke_diao_zheng.html" title="2015-05-05 12:02:26" rel="bookmark">
               <span class="entry-date-day">05</span>
-              <span class="entry-date-month-year">2014-02</span>
+              <span class="entry-date-month-year">2015-05</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/pytenjincache_wen_ti.html">PYTENJIN CACHE问题</a>
+            <a href="post/abb_geng_xin_ji_bo_ke_diao_zheng.html">ABB 更新及博客调整</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/network.html" rel="tag">network</a>
               <a href="tag/python.html" rel="tag">python</a>
+              <a href="tag/blog.html" rel="tag">blog</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>Tenjin是个好模板. (签名)</p>
-
-<p>满足我喜欢的三个要求：</p>
+        <p><p>ABB(Ahui Blog Build)断断续续自己一个人在用着, 基本上没太大问题. 为方便生成另外的站点,做了些调整.</p>
 
 <ul>
-<li>快速</li>
-<li>HTML友好</li>
-<li>能直接用python代码。</li>
+<li>config.py 中设置新站点参数,模板调整为通用,从 config中取得站点信息.</li>
+<li>生成的 html 文件名,全部用小写.</li>
+<li>模板加入 goto.html 文件,用于跳转以前的老旧页面到首页.</li>
+<li>模板中加入网站统计变量,统计代码可在 config.py 中设置.</li>
+<li>生成整站时,输出相关信息.</li>
+<li>github 地址为 https://github.com/ahui/abb</li>
 </ul>
 
-<p>当然能直接用python代码是件好事也是件坏事。</p>
+<p>其中 goto.html 主要用于自己博客. 因为最早用 wordpress, 后来的 abb 又生成过大小写敏感的 html,导致搜索过来的页面地址有差异. 而生成整站静态 html 时,为了能本地查看,均使用了相对地址, 这样 nginx 的 try_file 重定向的首页,会导致 css,js 无法正常取得,最简便的方法是定向到 goto.html,然后用 JS 重定向到首页.</p>
 
-<p>在做静态html生成程序时，因为动态生成了不同内容的同名模板，导致Tenjin解析时总是取缓存中的内容。
-Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法为：</p>
+<p>另外 duosuo 评论,偶尔会导致加载时间达10秒,暂时在模板中去除. </p>
 
-<ol>
-<li>sleep 1s吧，喝个茶什么的等缓存失效…</li>
-<li>将Tenjin里的timestamp_interval参数由原1s,改为一个更小的值，0.001什么的。小手术。</li>
-<li>给Tenjin添加个属性，记住文件大小，在文件大小改变时，总是重新生成缓存。大手术啊~~~~</li>
-<li>动态生成的模板，别用同样的文件名.</li>
-</ol>
+<p>ABB 程序与 <a href="https://github.com/ahui/abb">GITHUB</a> 同步.</p>
 
-<p>1会带来时间浪费，测试中生成50+ html文件才半秒不到，不能浪费2倍的生命。
-2，3都要改动Tenjin,通用性不好。
-4算比较满意的，会稍提高点代码的复杂度。</p>
+<p>最近一次生成信息:</p>
 
-<p>BTW,如果要压榨性能，通过2中将值改大，或者3增加文件大小检查，模板文件不变时直接用.cache文件，应该有不少的性能提升。</p>
+<pre><code>./abb.py build
+总共生成 68 篇文章.
+总共花费时间: 0.098921 秒.
+</code></pre>
+
+<p>生成性能大约为每秒700篇文章,硬件为 RMBP 15, CPU i7.</p>
 </p>
       </div>
 
@@ -346,102 +511,16 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-04 20:41:24">
-            <a href="post/wang_zhan_jing_tai_hua.html" title="2014-02-04 20:41:24" rel="bookmark">
+          <time class="entry-date entry-time updated" datetime="2015-05-04 06:15:48">
+            <a href="post/ssh_wu_fa_lian_jie.html" title="2015-05-04 06:15:48" rel="bookmark">
               <span class="entry-date-day">04</span>
-              <span class="entry-date-month-year">2014-02</span>
+              <span class="entry-date-month-year">2015-05</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/wang_zhan_jing_tai_hua.html">网站静态化</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/python.html" rel="tag">python</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>连续碰到几次BLOG打开卡住的情形，在VPS上重启一下nginx及php就好了。原因不详，但有可能是因为wordpress连续升级导致？</p>
-
-<p>最好的解决方案就是将博客网站静态化。</p>
-
-<p>试用了一下现成的解决方案，比较好用的有<a href="http://zespia.tw/hexo/">hexo</a>以及<a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a>。
-这二个都有工具能将wordpress导出的xml转化为md格式的文件。</p>
-
-<p>其中hexo转化并生成静态网站后，效果相当不错。但问题是在使用时发现50+ md文件，生成时间在20s左右，这个速度太慢了一点。比较奇怪的是其他使用者都反应hexo是相当快的，所以也有可能是我这有个什么地方设置有问题。
-同样的环境下Pelican的速度相当理想，同样多的md文件，生成时间3s左右。问题是他自己生成的md文件格式有点奇怪，和hexo的相比有差别，且感觉hexo的md文件格式更好点。</p>
-
-<p>如果再考虑长远点，比如有海量的md文件要生成，那么就要求生成工具要么有极快的速度，要么有增量生成功能(已经生成的文件不用再生成)。这样hexo一者因为速度原因不能不放弃，二者可惜是node写的，我更偏好python一点。而pelican刚可能要修改一下格式问题，以及增加其他功能。</p>
-
-<p>本着轮子不怕多的精神，干脆再做个相关工具好了。</p>
-
-<p>初期目标</p>
-
-<p>博客类小型网站，静态页面生成</p>
-
-<p>生成方式</p>
-
-<ol>
-<li>全静态生成，所有文件需要更新。可用目录控制生成层次。</li>
-<li>shtml包含，只更新必要文件</li>
-<li>ajax包含，只更新必要文件</li>
-</ol>
-
-<p>工作方式</p>
-
-<ol>
-<li>cli</li>
-<li>web gui</li>
-</ol>
-
-<p>文章分类(初期只考虑tag)</p>
-
-<ol>
-<li>分类，一对一或一对多</li>
-<li>tag标记，一对多</li>
-</ol>
-
-<p>页面分类</p>
-
-<ol>
-<li>index.html</li>
-<li>tags.html</li>
-<li>tag.html</li>
-<li>comment.html</li>
-<li>side_right.html</li>
-<li>side_left.html</li>
-<li>head.html</li>
-<li>body.html -&gt;要生成的主体文件</li>
-<li>foot.html</li>
-</ol>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-01-20 11:39:30">
-            <a href="post/openerp-7-add-menu.html" title="2014-01-20 11:39:30" rel="bookmark">
-              <span class="entry-date-day">20</span>
-              <span class="entry-date-month-year">2014-01</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/openerp-7-add-menu.html">OPENERP 7:菜单添加</a>
+            <a href="post/ssh_wu_fa_lian_jie.html">ssh无法连接</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
@@ -449,151 +528,71 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
               <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/openerp.html" rel="tag">openerp</a>
+              <a href="tag/vps.html" rel="tag">vps</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>菜单大体上分三层:顶层，侧边，子菜单
-添加子菜单分为二种情况，一是添加全新的菜单，此时必须先添加顶层和侧边菜单，只用指定name及id，然后挂上子菜单.
-其中顶层菜单不用指定parent,子菜单是必须指定action.</p>
+        <p><p>ssh 登录阿里云远VPS,提示</p>
 
-<pre><code>&lt;menuitem id=&quot;top_menu&quot; name=&quot;Top&quot;/&gt;
-&lt;menuitem id=&quot;section_top_menu&quot; parent=&quot;top_menu&quot; /&gt;
-&lt;menuitem id=&quot;sub_menu&quot; parent=&quot;section_top_menu&quot; action=&quot;your_action&quot;/&gt;
+<pre><code>ssh_exchange_identification: read: Connection reset by peer
 </code></pre>
 
-<p>二是挂上已经存在的侧边菜单，此时parent的取值为:对象.菜单id</p>
+<p>几月前出过一次同样问题, 表现在开发机无法登录阿里云 VPS,但可以正常登录HK VPS,而且 HK VPS 也可以正常登录阿里云VPS. 检查下来是阿里云机房误判攻击并阻断了我当前在用的移动IP(移动出网 ip 会被 nat 到一组特定 ip 上),提交工单后才解决.</p>
 
-<pre><code>&lt;menuitem id=&quot;real_menu&quot; parent=&quot;name_of_module_of_parent.section_top_menu&quot; action=&quot;your_action&quot;&gt;;
+<p>这次再用 HK VPS 检查,发现也无法登录,应该不是原来的老问题.
+本机详细登录日志:</p>
+
+<pre><code>#ssh ahui$ ssh -vvv -l root serverip
+OpenSSH_6.2p2, OSSLShim 0.9.8r 8 Dec 2011
+debug1: Reading configuration data /etc/ssh_config
+debug1: /etc/ssh_config line 20: Applying options for *
+debug1: /etc/ssh_config line 102: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to serverip [serverip] port 22.
+debug1: Connection established.
+debug3: Incorrect RSA1 identifier
+debug3: Could not load &quot;/Users/ahui/.ssh/id_rsa&quot; as a RSA1 public key
+debug1: identity file /Users/ahui/.ssh/id_rsa type 1
+debug1: identity file /Users/ahui/.ssh/id_rsa-cert type -1
+debug1: identity file /Users/ahui/.ssh/id_dsa type -1
+debug1: identity file /Users/ahui/.ssh/id_dsa-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.2
+ssh_exchange_identification: read: Connection reset by peer
 </code></pre>
 
-<p>不指定对象则会重复建立同名菜单(三层均如此)，哪怕id值也相同。</p>
-</p>
-      </div>
+<p>本机改过 hostname,rsa 没做更改, 同样的 rsa 能登录 HK VPS,应该和证书没关系.</p>
 
-    </div>
+<p>阿里终端连接进去,发现 ssh localhost 居然也无法正常登录,问题应该在 sshd 服务本身.</p>
 
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-01-12 11:37:07">
-            <a href="post/tips-upload-with-web-py.html" title="2014-01-12 11:37:07" rel="bookmark">
-              <span class="entry-date-day">12</span>
-              <span class="entry-date-month-year">2014-01</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/tips-upload-with-web-py.html">Tips : upload with web.py</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
+<p>想到服务器几周前做过一次 apt-get upgrade, 应该是更新导致 sshd 出了问题. 重启 sshd, 问题依旧.</p>
 
-      <div class="entry-content clearfix">
-        <p><p>1.不同的jquery upload插件，发送的字段有很大差别，可以通过打印wsgi_input来查看。</p>
+<p>google 结果大部分说是 hosts.allow 的问题,加入 sshd:ALL 后,问题依旧.</p>
 
-<p>2.文件在比较小时，直接用web.input()取得上传的文件内容及其他相关值。官网例子在这种情况下能正常工作。</p>
+<p>最后查看 sshd log:</p>
 
-<p>3.文件在很大时，web.input无法一次读写，此时可以用rawinput，一次读入一部分数据再写入.  原理上rawinput的数据应该是已经放在磁盘上，这样会有二次写入操作。但能够写入超过内存容量的数据。
-此时有二种方法取得文件大小:一是客户端传入一个filesize字段，html5能取得上传文件的大小，IE不支持; 二是服务端用file.seek方法，取得rawinput.file的长度.</p>
-
-<p>4.文件特别大且，不想二次写入时，可用wsgi_input,一边读取传入的数据，一边进行写入。但此时读到的是原始数据，会包含一些文件相关的信息，写入后要进行数据整形。可以客户端传入时，简化传入数据以方便整形。</p>
-
-<p>大多数情况下， 可以采用方式３。
-方式4最安全，服务端能根据情况随时中断传输。但没测试是否会阻塞后续页面请求。当然阻塞可以用其他方式解决(eg,协程等)。</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2013-10-09 13:33:44">
-            <a href="post/netgear-r6300v2-ngrep.html" title="2013-10-09 13:33:44" rel="bookmark">
-              <span class="entry-date-day">09</span>
-              <span class="entry-date-month-year">2013-10</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/netgear-r6300v2-ngrep.html">Netgear R6300v2上编译ngrep</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>R6300v2的dd-wrt已经<a href="http://www.myopenrouter.com/download/50404/DD-WRT-for-R6300v2">有一个版本可用</a>，但可惜wifi接入还是有问题，只好换回原厂固件。打算稍修改一下原厂固件，让它能自动运行usb设备上指定目录下的脚本，这样暂时没有好用的dd-wrt的时候，可以满足现有的大部分情况。</p>
-
-<p>第一步，则是要先完成能用的编译环境，并能成功编译出能在R6300v2上运行的程序。因为常用ngrep，所以第一步则以编译能用的ngrep为目标.</p>
-
-<p><a href="http://wikidevi.com/wiki/Netgear_R6300_v2">R6300v2硬件参数</a></p>
-
-<p>工具链是hndtools-arm-linux-2.6.36-uclibc-4.5.3,和R6250的一样，可以下载<a href="ftp://downloads.netgear.com/files/GPL/R6250-V1.0.0.62_with_toolchain_source.zip">R6250的原代码</a>，取得工具链。并顺便下载<a href="ftp://downloads.netgear.com/files/GPL/R6300v2-V1.0.1.72_1.0.21-src.tar.zip">R6300的源代码</a>备用.</p>
-
-<p>主系统为ubuntu 12.04 32位，创建/projects/hnd/tools/linux目录，并解压R6250源码包中的hndtools-arm-linux-2.6.36-uclibc-4.5.3.tar到此目录。</p>
-
-<p>将新编译工具目录放到PATH环境的最前面:</p>
-
-<pre><code>export PATH=/projects/hnd/tools/linux/hndtools-arm-linux-2.6.36-uclibc-4.5.3/bin:$PATH
+<pre><code>May  4 17:05:15 AY1407211542405399a6Z sshd[17586]: fatal: Missing privilege separation directory: /var/run/sshd
 </code></pre>
 
-<p>下载libpcap-1.4.0.tar.gz及ngrep-1.45.tar并解压。</p>
+<p>发现/var 下 run 目录不存在. </p>
 
-<p>编译libpcap: </p>
-
-<pre><code>./configure CC=arm-uclibc-linux-2.6.36-gcc --host=arm-linux --with-pcap=linux &amp;&amp; make
+<pre><code>cd /var
+mkdir run
+cd run
+mkdir sshd
 </code></pre>
 
-<p>编译ngrep: </p>
+<p>重启 sshd,问题解决.</p>
 
-<pre><code>./configure CC=arm-uclibc-linux-2.6.36-gcc CXX=arm-uclibc-linux-2.6.36-g++ AR=arm-uclibc-linux-2.6.36-ar RANLIB=arm-uclibc-linux-2.6.36-ranlib LD=arm-uclibc-linux-2.6.36-ld  --prefix=/usr/local/arm/ngrep --host=arm-linux --build=arm --with-pcap-includes=../libpcap-1.4.0 &amp;&amp; make
-</code></pre>
+<p>问题可能出在 apt-get upgrade 后,服务器没重新启动导致问题出现. 或者本次 upgrade有 bug,重启也不能解决. 没证实. 记录下,系统为:</p>
 
-<p>检查编译出来的文件:</p>
-
-<pre><code>file ngrep
-ngrep: ELF 32-bit LSB executable, ARM, version 1 (SYSV), dynamically linked (uses shared libs), stripped
-</code></pre>
-
-<p>开启R6300v2的telnet(R6300v2 ip为192.168.1.1)
-下载<a href="https://code.google.com/p/netgear-telnetenable/">telnetenable.py</a></p>
-
-<pre><code>python telnetenable.py 192.168.1.1 $(arp -n | awk &quot;/192.168.1.1/&quot;&#39;  { gsub(/:/, &quot;&quot;, $3); print toupper($3)}&#39;) Gearguy Geardog
-</code></pre>
-
-<p>出现&quot;Sent telnet enable payload to &#39;192.168.1.1:23&#39;&quot;则成功，否则多运行几次.</p>
-
-<p>将ngrep copy到u盘，并在R6300上挂载，然后telnet到R6300v2,到/tmp/mnt/usb0/part1下找到ngrep并运行之。</p>
-
-<pre><code>./ngrep -V
-ngrep: V1.45, $Revision: 1.93 $
+<pre><code>uname -a
+Linux AY1407211542405399a6Z 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+cat /etc/issue
+Ubuntu 14.04.2 LTS \n \l
 </code></pre>
 </p>
       </div>
@@ -613,6 +612,8 @@ ngrep: V1.45, $Revision: 1.93 $
   <a class='page-numbers' href='index.6.html'>7</a>
   <a class='page-numbers' href='index.7.html'>8</a>
   <a class='page-numbers' href='index.8.html'>9</a>
+  <a class='page-numbers' href='index.9.html'>10</a>
+  <a class='page-numbers' href='index.10.html'>11</a>
   <a class="next page-numbers" href="index.2.html">Next &raquo;</a>  <div class="clear"></div>
 </div>
       </div> 
@@ -639,25 +640,26 @@ ngrep: V1.45, $Revision: 1.93 $
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (110)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (8)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (8)</a></li>
-        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (48)</a></li>
-        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/game.html">game &sdot; (10)</a></li>
-        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (76)</a></li>
-        <li class="cat-item"><a href="tag/android.html">android &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (6)</a></li>
+        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (56)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (39)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
       </ul>
     </div>
   </div>
@@ -666,16 +668,16 @@ ngrep: V1.45, $Revision: 1.93 $
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
-        <li><a href='post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html'>ABB加入在线编辑功能</a></li>
-        <li><a href='post/macgit_da_xiao_xie_wen_ti.html'>mac os 及 git 大小写问题</a></li>
-        <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
-        <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
-        <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
-        <li><a href='post/about.html'>about</a></li>
-        <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
-        <li><a href='post/hackpad_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
-        <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
-        <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
+        <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
+        <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
+        <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
+        <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
+        <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
+        <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
+        <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
+        <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
+        <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
+        <li><a href='post/2015turkey_you_ji_day3selcuk.html'>2015 turkey 游记 day 3 Selcuk</a></li>
       </ul>
     </div>
   </div>

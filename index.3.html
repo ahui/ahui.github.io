@@ -45,29 +45,82 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2012-07-10 19:21:11">
-            <a href="post/skype-en.html" title="2012-07-10 19:21:11" rel="bookmark">
-              <span class="entry-date-day">10</span>
-              <span class="entry-date-month-year">2012-07</span>
+          <time class="entry-date entry-time updated" datetime="2014-02-04 20:41:24">
+            <a href="post/wang_zhan_jing_tai_hua.html" title="2014-02-04 20:41:24" rel="bookmark">
+              <span class="entry-date-day">04</span>
+              <span class="entry-date-month-year">2014-02</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/skype-en.html">skype 国际版下载地址</a>
+            <a href="post/wang_zhan_jing_tai_hua.html">网站静态化</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
               <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/python.html" rel="tag">python</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>http://download.skype.com/SkypeSetupFull.exe </p>
+        <p><p>连续碰到几次BLOG打开卡住的情形，在VPS上重启一下nginx及php就好了。原因不详，但有可能是因为wordpress连续升级导致？</p>
+
+<p>最好的解决方案就是将博客网站静态化。</p>
+
+<p>试用了一下现成的解决方案，比较好用的有<a href="http://zespia.tw/hexo/">hexo</a>以及<a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a>。
+这二个都有工具能将wordpress导出的xml转化为md格式的文件。</p>
+
+<p>其中hexo转化并生成静态网站后，效果相当不错。但问题是在使用时发现50+ md文件，生成时间在20s左右，这个速度太慢了一点。比较奇怪的是其他使用者都反应hexo是相当快的，所以也有可能是我这有个什么地方设置有问题。
+同样的环境下Pelican的速度相当理想，同样多的md文件，生成时间3s左右。问题是他自己生成的md文件格式有点奇怪，和hexo的相比有差别，且感觉hexo的md文件格式更好点。</p>
+
+<p>如果再考虑长远点，比如有海量的md文件要生成，那么就要求生成工具要么有极快的速度，要么有增量生成功能(已经生成的文件不用再生成)。这样hexo一者因为速度原因不能不放弃，二者可惜是node写的，我更偏好python一点。而pelican刚可能要修改一下格式问题，以及增加其他功能。</p>
+
+<p>本着轮子不怕多的精神，干脆再做个相关工具好了。</p>
+
+<p>初期目标</p>
+
+<p>博客类小型网站，静态页面生成</p>
+
+<p>生成方式</p>
+
+<ol>
+<li>全静态生成，所有文件需要更新。可用目录控制生成层次。</li>
+<li>shtml包含，只更新必要文件</li>
+<li>ajax包含，只更新必要文件</li>
+</ol>
+
+<p>工作方式</p>
+
+<ol>
+<li>cli</li>
+<li>web gui</li>
+</ol>
+
+<p>文章分类(初期只考虑tag)</p>
+
+<ol>
+<li>分类，一对一或一对多</li>
+<li>tag标记，一对多</li>
+</ol>
+
+<p>页面分类</p>
+
+<ol>
+<li>index.html</li>
+<li>tags.html</li>
+<li>tag.html</li>
+<li>comment.html</li>
+<li>side_right.html</li>
+<li>side_left.html</li>
+<li>head.html</li>
+<li>body.html -&gt;要生成的主体文件</li>
+<li>foot.html</li>
+</ol>
 </p>
       </div>
 
@@ -78,16 +131,16 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2012-05-03 16:41:25">
-            <a href="post/linux_youku_antiad.html" title="2012-05-03 16:41:25" rel="bookmark">
-              <span class="entry-date-day">03</span>
-              <span class="entry-date-month-year">2012-05</span>
+          <time class="entry-date entry-time updated" datetime="2014-01-20 11:39:30">
+            <a href="post/openerp-7-add-menu.html" title="2014-01-20 11:39:30" rel="bookmark">
+              <span class="entry-date-day">20</span>
+              <span class="entry-date-month-year">2014-01</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/linux_youku_antiad.html">linux下youku去广告+黑屏</a>
+            <a href="post/openerp-7-add-menu.html">OPENERP 7:菜单添加</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
@@ -95,45 +148,28 @@
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
               <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/openerp.html" rel="tag">openerp</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>去广告
-hosts加入</p>
+        <p><p>菜单大体上分三层:顶层，侧边，子菜单
+添加子菜单分为二种情况，一是添加全新的菜单，此时必须先添加顶层和侧边菜单，只用指定name及id，然后挂上子菜单.
+其中顶层菜单不用指定parent,子菜单是必须指定action.</p>
 
-<pre><code>127.0.0.1 atm.youku.com
-127.0.0.1 Fvid.atm.youku.com
-127.0.0.1 html.atm.youku.com
-127.0.0.1 valb.atm.youku.com
-127.0.0.1 valf.atm.youku.com
-127.0.0.1 valo.atm.youku.com
-127.0.0.1 valp.atm.youku.com
-127.0.0.1 lstat.youku.com
-127.0.0.1 speed.lstat.youku.com
-127.0.0.1 urchin.lstat.youku.com
-127.0.0.1 stat.youku.com
-127.0.0.1 static.lstat.youku.com
-127.0.0.1 valc.atm.youku.com
-127.0.0.1 vid.atm.youku.com
-127.0.0.1 walp.atm.youku.com
+<pre><code>&lt;menuitem id=&quot;top_menu&quot; name=&quot;Top&quot;/&gt;
+&lt;menuitem id=&quot;section_top_menu&quot; parent=&quot;top_menu&quot; /&gt;
+&lt;menuitem id=&quot;sub_menu&quot; parent=&quot;section_top_menu&quot; action=&quot;your_action&quot;/&gt;
 </code></pre>
 
-<p>去黑屏</p>
+<p>二是挂上已经存在的侧边菜单，此时parent的取值为:对象.菜单id</p>
 
-<pre><code>cd ~/.macromedia/Flash_Player/#SharedObjects/xxx/
+<pre><code>&lt;menuitem id=&quot;real_menu&quot; parent=&quot;name_of_module_of_parent.section_top_menu&quot; action=&quot;your_action&quot;&gt;;
 </code></pre>
 
-<p>xxx为随机串</p>
-
-<pre><code>rm -tf static.youku.com
-touch static.youku.com
-sudo chown root.root static.youku.com
-</code></pre>
-
-<p>重启浏览器。</p>
+<p>不指定对象则会重复建立同名菜单(三层均如此)，哪怕id值也相同。</p>
 </p>
       </div>
 
@@ -144,16 +180,16 @@ sudo chown root.root static.youku.com
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-10-24 16:24:01">
-            <a href="post/diy-nas-softeare.html" title="2011-10-24 16:24:01" rel="bookmark">
-              <span class="entry-date-day">24</span>
-              <span class="entry-date-month-year">2011-10</span>
+          <time class="entry-date entry-time updated" datetime="2014-01-12 11:37:07">
+            <a href="post/tips-upload-with-web-py.html" title="2014-01-12 11:37:07" rel="bookmark">
+              <span class="entry-date-day">12</span>
+              <span class="entry-date-month-year">2014-01</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/diy-nas-softeare.html">DIY家用NAS之软件篇</a>
+            <a href="post/tips-upload-with-web-py.html">Tips : upload with web.py</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
@@ -168,31 +204,17 @@ sudo chown root.root static.youku.com
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>NAS系统的选择,首先放弃了windows系统. 然后在DIY linux与现成开源的类linux nas系统中,确定用现成的freenas,基于freebsd的nas. </p>
+        <p><p>1.不同的jquery upload插件，发送的字段有很大差别，可以通过打印wsgi_input来查看。</p>
 
-<p>freenas现在主版本有7.x 与8.x二个系列. 7.x的风格更类linux一点,配置时要先加硬盘,格式化,再mount到对应目录,最后再共享目录.</p>
+<p>2.文件在比较小时，直接用web.input()取得上传的文件内容及其他相关值。官网例子在这种情况下能正常工作。</p>
 
-<p>不过对于我配置的特定硬件,7.x    无法自动认出板上的网卡以及sata接口. 网卡驱动倒是可以换一个,不过认不出sata接口却无法解决,这样系统启动后一个硬盘都找不到.</p>
+<p>3.文件在很大时，web.input无法一次读写，此时可以用rawinput，一次读入一部分数据再写入.  原理上rawinput的数据应该是已经放在磁盘上，这样会有二次写入操作。但能够写入超过内存容量的数据。
+此时有二种方法取得文件大小:一是客户端传入一个filesize字段，html5能取得上传文件的大小，IE不支持; 二是服务端用file.seek方法，取得rawinput.file的长度.</p>
 
-<p>8.x系列,封装得更好一点,配置也简单很多. 当然DIY的自由度也少了很多.  另外8.x对ZFS的支持要完善很多,用raid z相当方便.</p>
+<p>4.文件特别大且，不想二次写入时，可用wsgi_input,一边读取传入的数据，一边进行写入。但此时读到的是原始数据，会包含一些文件相关的信息，写入后要进行数据整形。可以客户端传入时，简化传入数据以方便整形。</p>
 
-<ol>
-<li>首先去http://www.freenas.org/下载FreeNAS-8.0.2-RELEASE-amd64-Full_Install.xz,因为用到了8G内存,必须用64位版本,而且zfs文件系统,要求内存越大越好,6G+是必要的.</li>
-<li>用7zip解开FreeNAS-8.0.2-RELEASE-amd64-Full<em>Install.xz,是个2G左右的FreeNAS-8.0.2-RELEASE-amd64-Full</em>Install文件</li>
-<li>用dd或physdiskwrite.exe写到一个2G以上的u盘上.用u盘做系统盘,一是能省下一个sata接口以后好扩充,二是8.x的freenas不能再使用系统盘上的空闲空间.</li>
-<li>启动nas并配置好ip地址后web登录,默认帐号为admin/freenas</li>
-<li>在Storage中,用Create Volume,选取三块硬盘,fs选择zfs,zaid z模式.命名为public. 这时就创建好了一个总容易为3.8T的raid z卷. 并且以后所有的目录分配或iscsi都基于public卷.</li>
-<li>Create ZFS Dataset用来创建不用的应用目录,用于分配给不同的用户或是用作不同的用途.</li>
-<li>Create ZFS Volume创建一个指定容量的大文件,用于iscsi的虚拟磁盘.</li>
-<li>配置好后,在System-&gt;Settings,-&gt;Save Config里,保存好当前配置.这样万一系统损坏或u盘物理损坏后,通过前四步,然后导入现有配置就能恢复.</li>
-<li>最后在Services中,启用CIFS,FTP以及iSCSI三个主要共享功能.</li>
-</ol>
-
-<p>这样能通过ftp,windows的网上邻居,linux的smb,以及iscsi访问nas上的空间. </p>
-
-<p>1000Mbps网络环境中,上下传速度其中以iscsi速度最快,约70MB/s左右,然后是ftp,60MB/s左右,网上邻居要慢点,40~50MB/s左右. 100Mbps网络环境三者都能比较稳定在10MB/s左右. 由此可见,使用nas,1000Mbps的网络环境是必要的.</p>
-
-<p>最后从总功耗以及传输速度来看,基本上满足了自己的要求.</p>
+<p>大多数情况下， 可以采用方式３。
+方式4最安全，服务端能根据情况随时中断传输。但没测试是否会阻塞后续页面请求。当然阻塞可以用其他方式解决(eg,协程等)。</p>
 </p>
       </div>
 
@@ -203,108 +225,21 @@ sudo chown root.root static.youku.com
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-10-08 14:40:46">
-            <a href="post/diy_nas_hw.html" title="2011-10-08 14:40:46" rel="bookmark">
-              <span class="entry-date-day">08</span>
-              <span class="entry-date-month-year">2011-10</span>
+          <time class="entry-date entry-time updated" datetime="2013-10-09 13:33:44">
+            <a href="post/netgear-r6300v2-ngrep.html" title="2013-10-09 13:33:44" rel="bookmark">
+              <span class="entry-date-day">09</span>
+              <span class="entry-date-month-year">2013-10</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/diy_nas_hw.html">DIY家用NAS之硬件篇</a>
+            <a href="post/netgear-r6300v2-ngrep.html">Netgear R6300v2上编译ngrep</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/sofeware.html" rel="tag">sofeware</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>一则硬盘空间一直比较紧张,二则现在硬盘质量不再象以前那么可靠,数据容易丢失,于是计划购置一个能做阵列的家用NAS机器. 仔细研究了一下国内外不少品牌或山寨的NAS,最后比较满意希捷BlackArmor NAS 400系列. 可惜的是国内一直没有售,而且价格好象也悄悄涨过一次,不带硬盘拿下来也得3K多了. </p>
-
-<p>既然现成的不满意,就自己配一个好了.</p>
-
-<p>想要达到的目的:</p>
-
-<ol>
-<li>整机加4块左右硬盘的功耗要控制在50W左右.</li>
-<li>至少要能上4块硬盘,最好能升级到8块左右硬盘.能做RAID 5.</li>
-<li>千兆网络环境下,要有60MB/s的上下传速率.</li>
-<li>除了能做NAS,还要能增加SVN server之类的应用.</li>
-<li>有可能做HTPC,这样得有一个过得去的显卡或者至少有hdmi输出.</li>
-<li>噪音尽量小.</li>
-<li>不带硬盘价格控制在2K以下</li>
-</ol>
-
-<p>本来先考虑的atom平台,cpu功耗相当小,可惜加上对应的主板后就难看了点. 然后只能转向amd apu系列.  RAID5要消耗比较多的CPU资源,因此E350的性能要好得多. 再查询E350整合主板,品牌牌子有GIGABYTE和ASUS二家.此外梅捷,七彩虹都有类似的主板. 另外这类主板主要分二类,一是只有USB2以及SATA3G的,二是带USB3以及SATA6G的.显然后者参数要美妙得多.</p>
-
-<ol>
-<li>技嘉（GIGABYTE）GA-E350N-USB3, 1.6G双核CPU,集成HD 6310显卡,2USB3,4 SATA 6G,CPU带风扇. 功耗约22w. 699大洋.</li>
-<li>Asus APU E35M1-M PRO FUSION,1.6G双核CPU,集成HD 6310显卡,2USB3,5 SATA 6G,1 ESATA 6G,静音设计,无风扇. 功耗约22w. 1299大洋.</li>
-</ol>
-
-<p>这二块入眼的主板其实本不用考虑选哪个,ASUS的5SATA,无风扇设计,简直就是为NAS设计的. 可我还是纠结了二天才确定下来,因为ASUS的要1299块,TB也得1100+,而GIGABYTE的只要699块啊~,于是我决定用699块的.除了我一向勤俭节约外,主要还是考虑万一配出来的NAS不满意,这不就能减少不少损失么......当然前期4块硬盘也足够使用了. 至于那个明显是噪音制造者的CPU风扇,我就当没看见好了.</p>
-
-<p>机箱有大小二种选择,小机箱省地,大机箱散热和扩展性要好不少. 我觉得4块硬盘挤一起,那热量也挺吓人的,还是用大点的机箱好了.
-电源得配个好点的.烧主板烧硬盘的电源,碰到过不少. 查了一下JD上的存货,配了TT的机箱+电源:</p>
-
-<ol>
-<li>TT 金刚500高效电源,5SATA电源头,带14cm风扇一个.299大洋.</li>
-<li>TT Commander MS-I指挥官居中塔机箱,7HD位. 带12cm风扇一个.279大洋.</li>
-</ol>
-
-<p>主板最高支持8G内存,考虑到要使用ZFS文件系统,要求最少6G内存,这样内存得上满,好在现在这东西非常便宜.</p>
-
-<ul>
-<li>Samsung 三星 金条 DDR3 1066 4G x2, 275大洋.</li>
-</ul>
-
-<p>原有一块2T WD绿盘,再购置二块同型号硬盘. 花费998大洋.</p>
-
-<p>这样总计花费,不算硬盘约1500块,DIY出一个8G内存,1.6G双核CPU,4个SATA 6G接口,2个USB3接口的家用NAS. 相当超值了.</p>
-
-<p>所有硬件分别采购于JD,新蛋,易讯三家. 早上9点前下的订单,当天下午JD送到一部分,易讯送到.第二天上午JD送完剩下的,新蛋送到.  大体可见三家物流的情况.</p>
-
-<p>到手后主板要处理一下. CPU的散热片要拆下来,是个二层结构. 在二层金属片接触的地方,只是象征性的涂了不到一平方厘米的硅胶. 买管硅胶,恶狠狠地把它涂满吧~ 不然开机时间一长,CPU/GPU的温度会很高. 而且主板四个SATA接口,只配了二根SATA硬盘线, 在此BS一下GIGABYTE的偷工减料.</p>
-
-<p>硬件安装好后一次点亮, 不接硬盘,按下电源开机时有个100W+的瞬时功耗, 然后稳定在33W左右. 进BIOS把内置显卡频率下调到300M.能减少2W功耗. 这样不带硬盘功耗在31W左右. 
-加上三块硬盘,待机时功耗增加9W左右,全机约38W~40W, RAID 5读写时功耗增加10~20W左右,全机功耗50W~59W,基本上没超过60W. 虽然还是嫌功耗稍高了点,总体来说还是能够接受, 毕竟大多数时间还是待机, 不到40W的功耗也算是看得过去了.</p>
-
-<p>下篇再说说NAS系统软件的选择与安装.</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-06-21 17:58:09">
-            <a href="post/tomato-toastman-ipv6-he-net.html" title="2011-06-21 17:58:09" rel="bookmark">
-              <span class="entry-date-day">21</span>
-              <span class="entry-date-month-year">2011-06</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/tomato-toastman-ipv6-he-net.html">Tomato Toastman完美支持he.net的IPV6</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/ipv6.html" rel="tag">ipv6</a>
               <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
             </span>
@@ -313,38 +248,52 @@ sudo chown root.root static.youku.com
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>he.net申请到的免费IPV6地址块只用到一台机器上太浪费了, 而Toastman的Tomato修改版, 对he.net的ipv6地址块支持得相当完美了. 这样可以把申请到的地址块放在路由器上, 并自动分配IPV6地址给所有接入路由器的机器.</p>
+        <p><p>R6300v2的dd-wrt已经<a href="http://www.myopenrouter.com/download/50404/DD-WRT-for-R6300v2">有一个版本可用</a>，但可惜wifi接入还是有问题，只好换回原厂固件。打算稍修改一下原厂固件，让它能自动运行usb设备上指定目录下的脚本，这样暂时没有好用的dd-wrt的时候，可以满足现有的大部分情况。</p>
 
-<p>首先去https://www.tunnelbroker.net/申请一个64位的IPV6地址块,并记下</p>
+<p>第一步，则是要先完成能用的编译环境，并能成功编译出能在R6300v2上运行的程序。因为常用ngrep，所以第一步则以编译能用的ngrep为目标.</p>
 
-<pre><code>Server IPv4 Address
-Server IPv6 Address
-Client IPv4 Address
-Client IPv6 Address
+<p><a href="http://wikidevi.com/wiki/Netgear_R6300_v2">R6300v2硬件参数</a></p>
+
+<p>工具链是hndtools-arm-linux-2.6.36-uclibc-4.5.3,和R6250的一样，可以下载<a href="ftp://downloads.netgear.com/files/GPL/R6250-V1.0.0.62_with_toolchain_source.zip">R6250的原代码</a>，取得工具链。并顺便下载<a href="ftp://downloads.netgear.com/files/GPL/R6300v2-V1.0.1.72_1.0.21-src.tar.zip">R6300的源代码</a>备用.</p>
+
+<p>主系统为ubuntu 12.04 32位，创建/projects/hnd/tools/linux目录，并解压R6250源码包中的hndtools-arm-linux-2.6.36-uclibc-4.5.3.tar到此目录。</p>
+
+<p>将新编译工具目录放到PATH环境的最前面:</p>
+
+<pre><code>export PATH=/projects/hnd/tools/linux/hndtools-arm-linux-2.6.36-uclibc-4.5.3/bin:$PATH
 </code></pre>
 
-<p>然后你要有一个能刷tomato的路由器,并刷上相应的Tomato Toastman版. 我用的中兴h618b对应的版本是Tomato Firmware v1.28.7820 MIPSR1-Toastman K26 USB VPN.</p>
+<p>下载libpcap-1.4.0.tar.gz及ngrep-1.45.tar并解压。</p>
 
-<p>login到router,进入basic-&gt;ipv6菜单.</p>
+<p>编译libpcap: </p>
 
-<p><a href="http://ahui.us/wp-content/uploads/2011/06/setipipv6.png"><img src="http://ahui.us/wp-content/uploads/2011/06/setipipv6.png" alt="" title="setipipv6"></a></p>
+<pre><code>./configure CC=arm-uclibc-linux-2.6.36-gcc --host=arm-linux --with-pcap=linux &amp;&amp; make
+</code></pre>
 
-<ul>
-<li>IPv6 Service Type 选择 6in4 Static Tunnel</li>
-<li>Assigned / Routed Prefix 填写要分配给接入机器的ipv6前缀,比如你申请到的是类x.x.x.x::1的地址,这儿填写x.x.x.x::</li>
-<li>Prefix Length填64</li>
-<li>Router IPv6 Address选择Default,会自动填写成he.net分配的Server IPv6 Address,不然选择Manual手工填写成Server IPv6 Address.</li>
-<li>Enable Router Advertisements勾上,</li>
-<li>Tunnel Remote Endpoint (IPv4 Address)填写he.net分配的Server IPv4 Address,</li>
-<li>Tunnel Client IPv6 Address填写he.net分配的Client IPv6 Address,64位长.</li>
-</ul>
+<p>编译ngrep: </p>
 
-<p>如果你好运气路由器是固定的IPV4地址,那么设置这些就ok了.保存后radvd会自动启动用于分配ipv6地址.</p>
+<pre><code>./configure CC=arm-uclibc-linux-2.6.36-gcc CXX=arm-uclibc-linux-2.6.36-g++ AR=arm-uclibc-linux-2.6.36-ar RANLIB=arm-uclibc-linux-2.6.36-ranlib LD=arm-uclibc-linux-2.6.36-ld  --prefix=/usr/local/arm/ngrep --host=arm-linux --build=arm --with-pcap-includes=../libpcap-1.4.0 &amp;&amp; make
+</code></pre>
 
-<p>如果是pppoe之类拿的动态IP地址,那么这时候he.net上显示的Client IPv4 Address则会和你现在路由器地址不符. 这个时候所说的&quot;完美&quot;支持就表示出来了.
-进入basic-&gt;ddns菜单,看,下拉列表里有个&quot;HE.net IPv6 Tunnel Broker&quot;,贴心吧.帐号填写完后保存,这样地址改动后,会自动update he.net上的Client IPv4 Address数据.</p>
+<p>检查编译出来的文件:</p>
 
-<p>之后路由器给接入的机器分配IPv4地址时,会自动也分配一个IPv6地址. 这样router后面带的所有机器,都能实现IPV6接入了.</p>
+<pre><code>file ngrep
+ngrep: ELF 32-bit LSB executable, ARM, version 1 (SYSV), dynamically linked (uses shared libs), stripped
+</code></pre>
+
+<p>开启R6300v2的telnet(R6300v2 ip为192.168.1.1)
+下载<a href="https://code.google.com/p/netgear-telnetenable/">telnetenable.py</a></p>
+
+<pre><code>python telnetenable.py 192.168.1.1 $(arp -n | awk &quot;/192.168.1.1/&quot;&#39;  { gsub(/:/, &quot;&quot;, $3); print toupper($3)}&#39;) Gearguy Geardog
+</code></pre>
+
+<p>出现&quot;Sent telnet enable payload to &#39;192.168.1.1:23&#39;&quot;则成功，否则多运行几次.</p>
+
+<p>将ngrep copy到u盘，并在R6300上挂载，然后telnet到R6300v2,到/tmp/mnt/usb0/part1下找到ngrep并运行之。</p>
+
+<pre><code>./ngrep -V
+ngrep: V1.45, $Revision: 1.93 $
+</code></pre>
 </p>
       </div>
 
@@ -355,223 +304,21 @@ Client IPv6 Address
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-06-21 16:23:36">
-            <a href="post/tomato-firmware-v1-28-7820-mipsr1-toastman-k26-usb-vpn.html" title="2011-06-21 16:23:36" rel="bookmark">
-              <span class="entry-date-day">21</span>
-              <span class="entry-date-month-year">2011-06</span>
+          <time class="entry-date entry-time updated" datetime="2013-08-31 16:18:30">
+            <a href="post/test-100m.html" title="2013-08-31 16:18:30" rel="bookmark">
+              <span class="entry-date-day">31</span>
+              <span class="entry-date-month-year">2013-08</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/tomato-firmware-v1-28-7820-mipsr1-toastman-k26-usb-vpn.html">Tomato Toastman 之 SIP Server : siproxd 安装与使用</a>
+            <a href="post/test-100m.html">联通100M体验</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/sip.html" rel="tag">sip</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>原本使用的SIP Server是sip ser,后来改用kamailio. 二者的配置和使用都基本一样. kamailio放在VPS上,程序本身相当稳定,但随着通话时间的增长,随机在5到10分钟后,会因为一些已知或未知的原因,通话质量迅速下降. 挂掉重拨后能且只正常一小会儿,然后又必须重拨, 很是烦人.</p>
-
-<p>后来把sip流量放在vpn里,情况好了很多. 至少不会因为莫名的干扰导致通话质量下降. 不过这样一来,sip流量必须通过vps进行中转, 而出国线路每天会不定期的抽风随机的一段时间......全国LAN网时代大概不远了吧?</p>
-
-<p>暂时方案,把sip server放在家里的router上,然后再挂上vpn,这样二方通话就能直接走国内线路vpn里. 虽然我也曾发现国内有时候也丢包15%~30%,但总比去VPS丢50%+要好. 而且国内线路抽风的时候要少些, 因为大多数G点都不在国内.</p>
-
-<p>翻出落了不少灰尘的中兴h618,吹吹. 其实我蛮看好开源的Netgear WNR 3500L,5个1000M端口有木有?480M的CPU有木有?64M内存有木有?到手的3500L被人抢走了有木有? 可惜只有8M FLASH,抢就抢吧, 我也主要用无线,1000M的有线端口暂时用处不大. 我还是再吹吹h618吧,干净了.</p>
-
-<p>firmware换成Tomato Firmware v1.28.7820 MIPSR1-Toastman K26 USB VPN了,为了它的IPV6功能.</p>
-
-<p>中兴h618有16M FLASH,安装完firmware后,还能空8M+,用来安装ipkg及sip server. 如果其他开源router没有足够的FLASH空间,则要有usb接口,mount一个小u盘到/opt,8M以上容量就可以了,实际安装完占用约3.5M的空间.</p>
-
-<p>ipkg包里,选择极其轻巧的siproxd做为sip server,功能自然没有ser及kamailio多,但足够满足简单的通话要求.</p>
-
-<p>ssh到路由器里,Enable jffs并且mount到/opt,然后安装ipkg基本包,也可参考<a href="http://ahui.us/index.php/2010/08/tomato-pandora-optware/"> Tomato Pandora之Optware软件安装</a>.</p>
-
-<p>cat opt.sh 或下载 http://www.3iii.dk/linux/optware/optware-install-ddwrt.sh.txt</p>
-
-<pre><code>#!/bin/sh
-# Optware pre-installation script, Leon Kos 2006, 2008
-# added -verbose_wget to some lines, MrAlvin 2009
-
-REPOSITORY=http://ipkg.nslu2-linux.org/feeds/optware/ddwrt/cross/stable
-TMP=/tmp
-
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
-unset LD_PRELOAD
-unset LD_LIBRARY_PATH
-
-_check_config()
-{
-    echo &quot;Checking system config ...&quot;
-    GATEWAY=$(netstat -rn |
-    sed -n &#39;s/^0.0.0.0[ \t]\{1,\}\([0-9.]\{8,\}\).*/\1/p&#39; )
-    if [ -n &quot;${GATEWAY}&quot; ]; then
-    echo &quot;Using ${GATEWAY} as default gateway.&quot;
-    else
-    echo &quot;Error: No default gateway set!&quot;
-    exit 2
-    fi
-    if [ -s /etc/resolv.conf ]; then
-    echo &quot;Using the following nameserver(s):&quot;
-    if grep nameserver /etc/resolv.conf ; then
-            GATEWAY_SUBNET=$(echo &quot;${GATEWAY}&quot; |
-        sed &#39;s/\.[0-9]\{1,3\}\.[0-9]\{1,3\}$//&#39;)
-        if [ &quot;${GATEWAY_SUBNET}&quot; = &quot;192.168&quot; ]; then
-        if grep -q ${GATEWAY} /etc/resolv.conf ; then
-            echo &quot;Gateway ${GATEWAY} is also nameserver.&quot;
-        else
-            echo &quot;Warning: local nameserver is different than gateway!&quot;
-            echo &quot;Check config or enter:&quot;
-            if test -L /etc/resolv.conf ; then 
-              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /tmp/resolv.conf&quot;
-            else
-              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /etc/resolv.conf&quot;
-            fi
-            echo &quot;and try again - or wait to see if your download continues anyway.&quot;
-        fi
-        fi
-    else
-        echo &quot;Error: No nameserver specified in /etc/resolv.conf&quot;
-        exit 5
-    fi
-    else
-    echo &quot;Error: Empty or nonexistent /etc/resolv.conf&quot;
-    exit 3
-    fi
-
-    if mount | grep -q /opt ; then
-    [ -d /opt/etc ] &amp;&amp; echo &quot;Warning: /opt partition not empty!&quot;
-    else
-    echo &quot;Error: /opt partition not mounted.&quot;
-    echo &quot;for running Optware on JFFS (not recommended), Enter&quot;
-    echo &quot;    mkdir /jffs/opt&quot;
-    echo &quot;    mount -o bind /jffs/opt /opt&quot;
-    echo &quot;to correct this.&quot;
-    exit 4
-    fi
-}
-
-_install_package()
-{
-    PACKAGE=$1
-    echo &quot;Installing package ${PACKAGE} ...&quot;
-    echo &quot;   Some newer versions of DD-WRT does not show download progress bar,&quot;
-    echo &quot;   so just be patient - or check STATUS -&gt; BANDWIDTH tab for download&quot;
-    echo &quot;   activity in your routers Web-GUI&quot;
-    wget -O ${TMP}/${PACKAGE} ${REPOSITORY}/${PACKAGE}
-    cd  ${TMP} 
-    tar xzf ${TMP}/${PACKAGE} 
-    tar xzf ${TMP}/control.tar.gz
-    cd /
-    if [ -f ${TMP}/preinst ] ; then
-    sh ${TMP}/preinst
-    rm -f ${TMP}/preints
-    fi
-    tar xzf ${TMP}/data.tar.gz
-    if [ -f ${TMP}/postinst ] ; then
-    sh ${TMP}/postinst
-    rm -f ${TMP}/postinst
-    fi
-    rm -f ${TMP}/data.tar.gz
-    rm -f ${TMP}/control.tar.gz
-    rm -f ${TMP}/control
-    rm -f ${TMP}/${PACKAGE}
-}
-
-_check_config
-_install_package uclibc-opt_0.9.28-13_mipsel.ipk
-_install_package ipkg-opt_0.99.163-10_mipsel.ipk
-/opt/sbin/ldconfig
-/opt/bin/ipkg -verbose_wget update 
-/opt/bin/ipkg -force-reinstall -verbose_wget install uclibc-opt
-/opt/bin/ipkg -force-reinstall -verbose_wget install ipkg-opt
-</code></pre>
-
-<p>安装</p>
-
-<pre><code>cd /opt
-sh ./opt.sh
-ipkg update
-</code></pre>
-
-<p>先安装libtool库,打包sipproxd时人没把这个依赖加进去</p>
-
-<pre><code>ipkg install libtool
-</code></pre>
-
-<p>安装好用的ngrep工具,这个没有依赖,不安装也可以省点空量.</p>
-
-<pre><code>ipkg install ngrep
-</code></pre>
-
-<p>安装sipproxd</p>
-
-<pre><code>ipkg install siproxd
-</code></pre>
-
-<p>此时会提示</p>
-
-<pre><code>To complete the installation, you must edit /opt/etc/siproxd.conf-example and rename it to /opt/etc/siproxd.conf,
-and then run /opt/etc/init.d/S90siproxd to start siproxd.
-</code></pre>
-
-<p>其实应该先改/opt/etc/siproxd_passwd.cfg文件,把sip帐号增加进去,格式很简单.
-然后 </p>
-
-<pre><code>cp /opt/etc/siproxd.conf-example /opt/etc/siproxd.conf
-</code></pre>
-
-<p>修改if<em>inbound及if</em>outbound为br0就可以了. 我这里因为用vpn连接了远程的路由器, 可视为全走内网,所以把rtp<em>proxy</em>enable也设为0了.
-最后启动</p>
-
-<pre><code>/opt/etc/init.d/S98siproxd
-</code></pre>
-
-<p>siproxd会在TCP以及UDP的 0.0.0.0:5060上监听.</p>
-
-<p>这样我把自己路由器里的sip电话以及远端vpn连接的路由器里的sip电话都设置为自己路由器内网ip就可以了. </p>
-
-<p>简单示意图:
-sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt;-----&gt;GW2,openvpn client &lt;-----sip phone2</p>
-
-<p>好了,你就真变成国内大LAN网,也影响不了我打电话了.</p>
-
-<p>siproxd比较可惜的是不支持ipv6,没有查看注册及通话情况等管理功能.如果有啥问题,直接动用ngrep监听数据吧.</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-05-24 20:16:43">
-            <a href="post/ipv6-enable-on-vps.html" title="2011-05-24 20:16:43" rel="bookmark">
-              <span class="entry-date-day">24</span>
-              <span class="entry-date-month-year">2011-05</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/ipv6-enable-on-vps.html">IPv6 Enabled on VPS</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
             </span>
           </div>
@@ -579,9 +326,22 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>vps一直有IPV6地址的.今天把家里路由的ipv6设置好之后,才正式启用vps上的ipv6.
-还得到了一个小奖牌:
-<a href="http://www.ipv6forum.com/ipv6_enabled/public.php?id=1945"><img src="http://ahui.us/wp-content/uploads/2011/05/ahui.us_.ipv6_.ok_.jpg" alt="" title="ahui.us.ipv6.ok"></a></p>
+        <p><p>北京联通的临时提速100M，每月20小时左右。&nbsp;</p>
+
+<p>提速前:</p>
+
+<p><img src="http://ahui.us/wp-content/uploads/2013/08/2907409316-0818.png" alt="2907409316-0818"></p>
+
+<p>提速后:</p>
+
+<p><img src="http://ahui.us/wp-content/uploads/2013/08/2935441928.png" alt="2935441928"> </p>
+
+<p>其实在提速前，已经比刚安装的速度稍好了一点，主要是上传多给了一点点。
+提速后，明显上传加了很多，不过下载速度没快多少，最主要原因是加在前面的路由器性能不行。</p>
+
+<p>换了个新路由测试提速后:</p>
+
+<p><img src="http://ahui.us/wp-content/uploads/2013/09/2950349391.png" alt="2950349391"></p>
 </p>
       </div>
 
@@ -592,22 +352,155 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-05-23 12:37:31">
-            <a href="post/baidu-or-google-ahui.html" title="2011-05-23 12:37:31" rel="bookmark">
+          <time class="entry-date entry-time updated" datetime="2013-08-04 14:24:47">
+            <a href="post/iphone-5-clean.html" title="2013-08-04 14:24:47" rel="bookmark">
+              <span class="entry-date-day">04</span>
+              <span class="entry-date-month-year">2013-08</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/iphone-5-clean.html">Iphone 5可用容量恢复</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/notag.html" rel="tag">notag</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>有台iphone 5莫名可用容量急剧减少，查看可用容易，估计有大约4~7G容量不见。
+ssh到iphone,du -k查看并查找最占容间的前50个目录,发现明显
+mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
+目录有问题，占用空量4G+,删除之，能释放近6G容量。
+另外照片流也会占用不少容量。</p>
+
+<p>附前50条记录:</p>
+
+<pre><code>&quot;bytes&quot;;&quot;dir&quot;;&quot;id&quot;
+10291118;&quot;mobile&quot;;1458101
+5041749;&quot;mobile/Library&quot;;1454199
+4542087;&quot;mobile/Library/Caches&quot;;1450783
+4447000;&quot;mobile/Library/Caches/com.apple.passd&quot;;1450713
+4442425;&quot;mobile/Library/Caches/com.apple.passd/com.apple.Shoebox&quot;;1450711
+3070707;&quot;mobile/Applications&quot;;664860
+2178545;&quot;mobile/Media&quot;;1458099
+971237;&quot;mobile/Media/DCIM&quot;;1454440
+970566;&quot;mobile/Media/DCIM/100APPLE&quot;;1454439
+660713;&quot;mobile/Media/PhotoStreamsData/1330973174&quot;;1458010
+660713;&quot;mobile/Media/PhotoStreamsData&quot;;1458011
+638525;&quot;mobile/Media/PhotoStreamsData/1330973174/100APPLE&quot;;1457952
+544488;&quot;mobile/Media/PhotoData&quot;;1455066
+403330;&quot;mobile/Media/PhotoData/Sync&quot;;1455058
+403251;&quot;mobile/Media/PhotoData/Sync/100SYNCD&quot;;1455056
+351152;&quot;stash&quot;;1468737
+313584;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC&quot;;589987
+254071;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library&quot;;589955
+254069;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup&quot;;589947
+254069;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support&quot;;589948
+204621;&quot;mobile/Media/DCIM/100APPLE/IMG_0199.mov&quot;;1454398
+181566;&quot;mobile/Library/VoiceServices/Assets/zh-CN&quot;;1453650
+181566;&quot;mobile/Library/VoiceServices/Assets&quot;;1453651
+181566;&quot;mobile/Library/VoiceServices&quot;;1453652
+143007;&quot;mobile/Library/Mail&quot;;1452332
+142401;&quot;stash/share.VNy9as&quot;;1468736
+140309;&quot;stash/Applications.50zavX&quot;;1466111
+139514;&quot;mobile/Library/VoiceServices/Assets/zh-CN/synth_ting-ting_full_155mrf22_270_06.dat&quot;;1453645
+134015;&quot;mobile/Media/PhotoData/Thumbnails&quot;;1455062
+131209;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/iphone&quot;;589920
+131208;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/iphone/1.0.226789.rsb&quot;;589919
+129490;&quot;mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3&quot;;556778
+129399;&quot;mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3/VoiceGuideAll.app&quot;;556774
+128167;&quot;mobile/Media/DCIM/100APPLE/IMG_0223.MOV&quot;;1454419
+122421;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/ipad2&quot;;589918
+122420;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/ipad2/1.0.226789.rsb&quot;;589917
+116232;&quot;mobile/Applications/F32D96FF-8020-4BFE-BF3A-C22B7F4E6EF6&quot;;660087
+116131;&quot;mobile/Applications/F32D96FF-8020-4BFE-BF3A-C22B7F4E6EF6/PvZ-iPhone_ZH.app&quot;;660084
+114695;&quot;mobile/Applications/9ADE3F3B-D880-4918-A565-09B879094997&quot;;617869
+110752;&quot;mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3/VoiceGuideAll.app/data&quot;;556488
+105033;&quot;mobile/Applications/F8F8FE94-CA5A-4272-92C4-276948EE1706&quot;;663324
+105029;&quot;mobile/Applications/F8F8FE94-CA5A-4272-92C4-276948EE1706/AR.Rescue.app&quot;;663310
+99381;&quot;mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2&quot;;558084
+99379;&quot;mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2/MerriamWebster.app&quot;;558081
+97250;&quot;root&quot;;1458263
+94877;&quot;root/Library&quot;;1458252
+94852;&quot;root/Library/Caches&quot;;1458221
+94550;&quot;mobile/Media/DCIM/100APPLE/IMG_0172.mov&quot;;1454373
+89964;&quot;mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2/MerriamWebster.app/definitions.db&quot;;557980
+89116;&quot;mobile/Library/Mail/ExchangeActiveSync979797EC-C70C-4940-9076-2BA004C4C5DD&quot;;1451893
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2013-07-23 13:07:02">
+            <a href="post/openerp-7-reortsxw格式.html" title="2013-07-23 13:07:02" rel="bookmark">
               <span class="entry-date-day">23</span>
-              <span class="entry-date-month-year">2011-05</span>
+              <span class="entry-date-month-year">2013-07</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/baidu-or-google-ahui.html">baidu和google的差别之查询本博客</a>
+            <a href="post/openerp-7-reortsxw格式.html">OPENERP 7 : 报表之sxw格式问题</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/openerp.html" rel="tag">openerp</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>openerp 7的报表生成方式之一是用openoffice的sxw格式，转换成rml后，再生成pdf.</p>
+
+<p>但直接用openoffice新建文件，并保存为sxw格式时，openerp无法识别。在输出rml时，openoffice的报表插件也经常会出现无法响应的问题。开始以为是openoffice版本过高，换libreoffice 3,4都试了一下，问题依旧。</p>
+
+<ul>
+<li>解决方法一：直接编辑openerp直带sxw文件，再另存。此格式可识别。</li>
+<li>解决方法二：查询sxw并没有找到版本相关的问题，直接用openerp模块内的sxw2rm转换，有报uncode类错误。于是在ubuntu 12,utf-8语言环境下，用libreoffice 3,4生成新文件，发现无论sxw或odt格式，均能正确识别。可见python开发，还是linux下问题少点。</li>
+</ul>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2013-05-11 11:46:47">
+            <a href="post/vdi-file-lost-network.html" title="2013-05-11 11:46:47" rel="bookmark">
+              <span class="entry-date-day">11</span>
+              <span class="entry-date-month-year">2013-05</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/vdi-file-lost-network.html">Ubuntu on Virtual Box VDI 复制后丢失网卡</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
             </span>
           </div>
@@ -615,13 +508,12 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>试着用baidu.com和google查询了一下自己的博客域名. 只上图,不解释.</p>
+        <p><p>A机，VB安装Ubuntu 12.10 Server,网卡模式为桥接。此时Ubuntu中网卡为eth0，DHCP, 连接正常。复制硬盘VDI文件至B机。</p>
 
-<p>这是baidu:
-<a href="http://ahui.us/wp-content/uploads/2011/05/baidusa002.png"><img src="http://ahui.us/wp-content/uploads/2011/05/baidusa002.png" alt="" title="baidusa002"></a></p>
+<p>B机，VB安装完成后，新建立linux类虚拟机，并使用复制过来的Ａ机VDI文件启动，此时DHP无法取得ＩＰ，并且不能手工ifconfig eth0 up，查看发现eth0不存在，网卡设备转为eth1.估计网卡mac有变动.</p>
 
-<p>这是google:
-<a href="http://ahui.us/wp-content/uploads/2011/05/google002.png"><img src="http://ahui.us/wp-content/uploads/2011/05/google002.png" alt="" title="google002"></a></p>
+<p>解决：
+- 修改/etc/network/interface,将其中二行eth0相关配置，修改成eth1</p>
 </p>
       </div>
 
@@ -640,6 +532,8 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
   <a class='page-numbers' href='index.6.html'>7</a>
   <a class='page-numbers' href='index.7.html'>8</a>
   <a class='page-numbers' href='index.8.html'>9</a>
+  <a class='page-numbers' href='index.9.html'>10</a>
+  <a class='page-numbers' href='index.10.html'>11</a>
   <a class="next page-numbers" href="index.4.html">Next &raquo;</a>  <div class="clear"></div>
 </div>
       </div> 
@@ -666,25 +560,26 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (110)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (8)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (8)</a></li>
-        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (48)</a></li>
-        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/game.html">game &sdot; (10)</a></li>
-        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (76)</a></li>
-        <li class="cat-item"><a href="tag/android.html">android &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (6)</a></li>
+        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (56)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (39)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
       </ul>
     </div>
   </div>
@@ -693,16 +588,16 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
-        <li><a href='post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html'>ABB加入在线编辑功能</a></li>
-        <li><a href='post/macgit_da_xiao_xie_wen_ti.html'>mac os 及 git 大小写问题</a></li>
-        <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
-        <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
-        <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
-        <li><a href='post/about.html'>about</a></li>
-        <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
-        <li><a href='post/hackpad_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
-        <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
-        <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
+        <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
+        <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
+        <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
+        <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
+        <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
+        <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
+        <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
+        <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
+        <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
+        <li><a href='post/2015turkey_you_ji_day3selcuk.html'>2015 turkey 游记 day 3 Selcuk</a></li>
       </ul>
     </div>
   </div>

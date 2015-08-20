@@ -45,297 +45,21 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-18 18:30:55">
-            <a href="post/scriptverycdmt.html" title="2010-07-18 18:30:55" rel="bookmark">
-              <span class="entry-date-day">18</span>
-              <span class="entry-date-month-year">2010-07</span>
+          <time class="entry-date entry-time updated" datetime="2010-08-10 21:44:05">
+            <a href="post/android-2-2-x86-vm-iso-cnc.html" title="2010-08-10 21:44:05" rel="bookmark">
+              <span class="entry-date-day">10</span>
+              <span class="entry-date-month-year">2010-08</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/scriptverycdmt.html">魔塔世界自动打挂按键精灵脚本verycd版本</a>
+            <a href="post/android-2-2-x86-vm-iso-cnc.html">Android 2.2 x86虚拟机版ISO联通网盘下载</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/game.html" rel="tag">game</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>很闲的时候，找东西找发时间，无聊就玩了会verycd上的魔塔世界．有时候杀１０来只怪更无聊，何况更要爬１００多层的塔，全是重复劳动．不由想起很久以前用过的按键精灵，做这事最合适了．于是顺手写了个简单的前台脚本，放虚拟机里用蛮方便．后台那块还没看，以后看看会不会加进去．</p>
-
-<p>记得最早用按键精灵好象还是2.x还是3.x来着，现在已经到了8.0，用起来是更方便了，广告也更多了......</p>
-
-<p>脚本不长，100多行，就直接贴在下面，懒人也可以下载能直接运行的小精灵版本．下载压缩文件，全部放在c:\mt下就好．放别的目录则在代码或小精灵里修改下picPath参数.</p>
-
-<p><a href="http://ahui.us/wp-content/uploads/2010/07/mt.zip">小精灵版本下载</a>
-<a href="http://ahui.us/wp-content/uploads/2010/07/mtpic.zip">只下载脚本用到的图片</a></p>
-
-<p>脚本:</p>
-
-<!--more-->
-
-<pre class="brush:vb">
-//todo
-//1.加入修理
-//2.加入统计显示
-//3.智能判断所处场景
-
-Dim findFlag    //是否找到的标志
-Dim stepX       //X偏移量
-Dim stepY       //Y偏移量
-Dim picPath     //图片所在目录
-Dim varGWWZ     //怪物位置
-Dim varScreen   //场景,取值为 副本,冲塔,野外杀怪
-Dim varLoopNum  //脚本运行次数
-Dim varPicsim   //图片相似度
-Dim adjX        //x adjust
-Dim adjY        //y adjust
-
-//初始设置
-UserVar varPicsim=0.8 "图片相似度，0,5~1"
-UserVar stepX=20 "查找图片时的偏移量x"
-UserVar stepY=20 "查找图片时的偏移量y"
-UserVar picPath="c:\mt\" "图片所在目录,以结束" 
-UserVar varGWWZ=1 "设置怪物位置,取值为1,2,3"
-UserVar varLoopNum=100 "脚本运行次数"
-UserVar varScreen=DropList{"副本":"副本"|"冲塔":"冲塔"|"野外杀怪":"野外杀怪"}=2 "场景,取值为 副本,冲塔,野外杀怪"
-UserVar adjX=208 "x adjust"
-UserVar adjY=84 "Y adjust"
-
-varGWWZ=varGWWZ*60-60
-
-findFlag=false
-
-Delay 500
-
-For varLoopNum
-    if varScreen="野外杀怪" then
-        Call 野外杀怪
-    ElseIf varScreen="冲塔" then
-        Call 冲塔
-    ElseIf varScreen="副本" then
-        Call 副本
-    End If
-Next
-
-//冲塔主程序
-Sub 冲塔
-    Call 继续探险()
-    Delay 1000
-    Call 确定打怪()
-    Delay 500
-    Call 关闭战斗()
-    Delay 1000  
-End Sub
-//野外杀怪主程序 
-Sub 野外杀怪
-    Call 找到怪物()
-    Delay 1000
-    Call 确定打怪()
-    Delay 500
-    Call 关闭战斗()
-    Delay 1000
-End Sub
-
-//副本主程序
-Sub 副本
-    Call 副本攻击()
-    Delay 1000
-    Call 确定打怪()
-    Delay 500
-    Call 关闭战斗()
-    Delay 1000
-End Sub
-
-Sub 副本攻击
-    If 试图查找点击图片(801,407,870,432,"攻击.bmp",35,14)=false then
-        //没有找到则退出
-        MessageBox "没有找到<攻击>哦,我先休息会儿~~"
-        EndScript
-    End If
-End Sub
-
-Sub 继续探险
-    If 试图查找点击图片(566,484,643,513,"继续探险.bmp",40,15)=false then
-        //没有找到则退出
-        MessageBox "没有找到<继续探险>哦,我先休息会儿~~"
-        EndScript
-    End If
-End Sub
-
-Sub 找到怪物
-    //光标移动到第一个怪位置
-    If 试图查找点击图片(1106,365+varGWWZ,1136,383+varGWWZ,"怪物.bmp",15,9)=false then
-        //没有找到则退出
-        MessageBox "没有找到怪物哦,我先休息会儿~~"
-        EndScript
-    End If
-End Sub
-
-//查找指定的图片并点击,返回true
-//如果没查找,返回false
-//参数分别为
-//左上x,左上y,右下x,右下y,图片名,点击时偏移x,偏移y
-//偏移用于尽量将鼠标移动到图片中间
-//查找图片的范围偏移由全局变量决定
-Function 试图查找点击图片(sX,sY,eX,eY,picName,mX,mY)
-    FindPic sX-stepX-adjX,sY-stepY-adjY,eX+stepX-adjX,eY+stepY-adjY,picPath+picName,varPicsim,intX,intY
-    If intX>0 and intY>0 then
-        MoveTo intX+mX,intY+mY        
-        LeftClick 1
-        Delay 500
-        //确认点击成功,检查三次
-        FindPic sX-stepX-adjX,sY-stepY-adjY,eX+stepX-adjX,eY+stepY-adjY,picPath+picName,varPicsim,intX,intY
-        For 3
-            if intX>0 and intY>0 then
-                //MoveTo intX+mX,intY+mY
-                LeftClick 1
-                Delay 500
-            Else
-                Exit For
-            End If
-        Next
-        试图查找点击图片=true
-    Else
-        试图查找点击图片=false    
-    End If
-End Function
-
-//查找指定的图片并点击
-//如果没查找,延迟一秒后继续查找,找到为止
-//参数分别为
-//左上x,左上y,右下x,右下y,图片名,点击时偏移x,偏移y
-//偏移用于尽量将鼠标移动到图片中间
-//查找图片的范围偏移由全局变量决定
-Sub 查找点击图片(sX,sY,eX,eY,picName,mX,mY)
-    findFlag=false
-    While findFlag=false
-        FindPic sX-stepX-adjX,sY-stepY-adjY,eX+stepX-adjX,eY+stepY-adjY,picPath+picName,varPicsim,intX,intY
-        If intX>0 and intY>0 then
-            MoveTo intX+mX,intY+mY
-            LeftClick 1
-            Delay 500
-            //确认点击成功,检查三次
-            FindPic sX-stepX-adjX,sY-stepY-adjY,eX+stepX-adjX,eY+stepY-adjY,picPath+picName,varPicsim,intX,intY
-            For 3
-                if intX>0 and intY>0 then
-                    //MoveTo intX+mX,intY+mY
-                    LeftClick 1
-                    Delay 500
-                Else
-                    Exit For
-                End If
-            Next
-            findFlag=true
-        End If
-    Wend
-End Sub
-
-Sub 确定打怪
-    Call 查找点击图片(626,558,713,596,"确定.bmp",41,17)
-End Sub
-Sub 关闭战斗
-    Call 查找点击图片(712,604,794,636,"关闭.bmp",41,15)
-End Sub
-Sub 关闭战场
-    Call 查找点击图片(720,560,804,593,"关闭战场.bmp",42,16)
-End Sub
-
-</pre>
-
-<p>备注一：不做任何改动，能在1024x768下运行，ie or ff最大化，只显示一行地址栏及一行标签栏．</p>
-
-<p>备注二：UserVar adjX=208 &quot;x adjust&quot;及UserVar adjY=84 &quot;Y adjust&quot;设置为0．能在1440x900的本本上运行．其他则要修改下这二个的值．原始图是在1440x900下取的，以攻击第一个野外怪位置为例，&quot;攻击&quot;二个字的图片位置是1104,363．其他分辨率下取这处图边左上角坐标与原始坐标的差值．1024x768下，这二字的左上角坐标为896,279,差值就是现在在用的208,84．以后有空再改为简单点的标识．</p>
-
-<p>可能存在的问题：</p>
-
-<p>我在按键精灵8时进行调试，发现有时候Uservar定义的变量取值会不正常，后来发现是保存代码后，脚本里所有定义的Uservar值都会被保存下来，放在按键精灵8的安装目录根下，名为uservar.txt文件中．这时候如果只改动脚本里的值，调试运行里仍会读取这个文件里保存的值．理论上按键精灵8在调试里，应该先读取脚本里的值，并更新到uservar.txt中，或者调试里不使用这个文件．
-临里办法是每次调试都删除这个文件，或者直接先在编辑器里的ＧＵＩ中选择确定新值，并先保存，再调试．</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-16 22:12:36">
-            <a href="post/m-shcp.html" title="2010-07-16 22:12:36" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2010-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/m-shcp.html">修正Syntax Highlighter ComPress的自动换行问题</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>Syntax Highlighter ComPress语法加亮插件在我用的模板中不能自动换行．改了下ＣＳＳ先用着．可惜这个插件在IE下有小部分不能正常显示，FF下大部分正常．</p>
-
-<p>查找syntax-highlighter-compress/styles/shCoreEclipse.css中的
-<pre class="brush:css">
-.syntaxhighlighter .line {
-  white-space: pre !important;
-}
-</pre>
-改为
-<pre class="brush:css">
-.syntaxhighlighter .line {
- white-space: pre-wrap;<br>
- white-space: -moz-pre-wrap; 
- white-space: -pre-wrap;<br>
- white-space: -o-pre-wrap; 
- word-wrap: break-word;
-}
-</pre>
-保存就ok了.</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-16 18:13:14">
-            <a href="post/m-wp-dbmanager-mail.html" title="2010-07-16 18:13:14" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2010-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/m-wp-dbmanager-mail.html">修正WP-DBManager不能发送邮件与标题乱码的问题</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
               <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
             </span>
@@ -344,59 +68,15 @@ End Sub
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>WP-DBManager是个不错的数据库管理插件，功能之一是把备份好的数据库打包发送到指定的邮箱．</p>
+        <p><p>发现115网盘下载,经常会出现&quot;网络繁忙时段，非登陆用户其它下载地址暂时关闭。推荐您使用优蛋下载&quot;之类的提示,无法正常下载.</p>
 
-<p>ＶＰＳ因为没有配置smtp服务，这样php的mail函数不能正常工作，更加考虑到用Gmail信箱用来备份是个很好的选择，于是下载了WP-Mail-SMTP插件，设置ＷＰ用SMTP发信．安装设置好后，测试邮件能发送成功，但WP-DBManager的邮件发送显示ＯＫ，Gmail里面却收不到东西．</p>
+<p>今天试用了一下北京联通的应用网盘,10G空间,500M单文件,看起来很美好.不过网页上传大文件时会超时,用了插件也是如此.然后只能用其客户端上传,倒是比较稳定.</p>
 
-<p>换了Configure SMTP再试，这个插件更智能点，配置Gmail的信箱很容易．一样安装设置好后，测试邮件能发送成功，但WP-DBManager的邮件发送显示ＯＫ，Gmail里面却收不到东西．</p>
+<p>所以提供了一个新地址下载</p>
 
-<p>于是估计大概可能也许是WP-DBManager的问题．查看了一下，与wp-dbmanager/wp-dbmanager.php及wp-dbmanager/database-manage.php二个文件有关．前者用于配置参数，其中有自动备份并发送邮件功能；后者用于管理备份文件，其中有将备份文件发送到指定信箱功能．果然这二个文件里都将邮件发送部分写成死死的php的mail函数，这样无论WP-Mail-SMTP还是Configure SMTP有多强大，它都不知道啊～～</p>
+<p><a href="http://ahui.us/?p=234">Android 2.2 x86虚拟机版ISO</a></p>
 
-<p>修改很简单，查找wp-dbmanager/wp-dbmanager.php中的
-&lt;!--more--&gt;
-<pre class="brush:php">
-mail($backup<em>email, $mail</em>subject, $mail<em>message, $mail</em>header);
-</pre>
-改为
-<pre class="brush:php">
-wp<em>mail($backup</em>email, $mail<em>subject, $mail</em>message, $mail<em>header);
-</pre>
-查找wp-dbmanager/database-manage.php中的
-<pre class="brush:php">
-mail($mail</em>to, $mail<em>subject, $mail</em>message, $mail<em>header）;
-</pre>
-改为
-<pre class="brush:php">
-wp</em>mail($mail<em>to, $mail</em>subject, $mail<em>message, $mail</em>header）;
-</pre></p>
-
-<p>啊，没错，前面加wp<em>就好，wp</em>mail的相关信息可以参考
-http://phpdoc.wordpress.org/trunk/WordPress/<em>wp-includes---pluggable.php.html#functionwp</em>mail
-这样修改后，wp_mail会使用WP-Mail-SMTP或Configure SMTP的配置SMTP发送邮件．这二个插件在wp3中都正常工作．</p>
-
-<p>WP-DBManage现在能成功发送打包后的数据库备份文件到指定的Gmail信箱了，8过标题是乱码，好在正文是全Ｅ文的，能看清．
-修正标题乱码，在前面所说的二个php文件中，查找
-<pre class="brush:php">
-$mail<em>subject = sprintf(</em><em>(&#39;%s Database Backup File For %s&#39;, &#39;wp-dbmanager&#39;), get</em>bloginfo(&#39;name&#39;), $file<em>date);
-</pre>
-均在后面加入下面这一行进行base64编码
-<pre class="brush:php">
-$mail</em>subject = &#39;=?UTF-8?B?&#39;.base64<em>encode($mail</em>subject).&#39;?=&#39;;
-</pre></p>
-
-<p>再试一次发送邮件，万事大吉了~</p>
-
-<p>可能的问题：
-WP-DBManager的设置页面，Path To mysqldump:以及Path To mysql:在自动检测失败时，要手动填入包含程序名的绝对路径，比如
-<pre class="brush:plain">
-Path To mysqldump:/usr/local/mysql/bin/mysqldump
-Path To mysql:/usr/local/mysql/bin/mysql
-</pre>
-或者在大多数机器上，是在/usr/bin下的．</p>
-
-<p>wp-content/backup-db放有备份文件，确保使用.htaccess进行保护，或者修改这个目录名.</p>
-
-<p>WP-Mail-SMTP或Configure SMTP配置时，都最好使用ssl加密连接，端口为465．使用Gmail时，也最好用https方式，这样你的网站数据，基本上都在加密通道跑来跑去，还算是比较安全的．</p>
+<p>---END---</p>
 </p>
       </div>
 
@@ -407,50 +87,141 @@ Path To mysql:/usr/local/mysql/bin/mysql
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-16 00:40:13">
-            <a href="post/mmore.html" title="2010-07-16 00:40:13" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2010-07</span>
+          <time class="entry-date entry-time updated" datetime="2010-08-07 13:52:21">
+            <a href="post/android-2-2-x86-vm-iso.html" title="2010-08-07 13:52:21" rel="bookmark">
+              <span class="entry-date-day">07</span>
+              <span class="entry-date-month-year">2010-08</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/mmore.html">修改more标签</a>
+            <a href="post/android-2-2-x86-vm-iso.html">Android 2.2 x86虚拟机版ISO网盘下载</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p><a href="http://codex.wordpress.org/Customizing_the_Read_More">参考地址</a></p>
+        <p><p>Android 2.2 x86虚拟机版iso文件已经打包上传到115网盘,压缩后大小约218M左右,可以用下面的地址下载</p>
 
-<p>修改loop.php
-查找第二处&quot;continue reading&quot;，该行改为</p>
+<p><a href="http://ahui.us/?p=234">Android2.2.x86.zip</a></p>
 
-<pre><code>&lt;?php the_content(&quot;......点此阅读&lt;span class=\&quot;widget-title\&quot;&gt;t &quot; . get_the_title(&#39;&#39;, &#39;&#39;, false) . &quot;&lt;/span&gt; 全文......&quot;); &gt;
+<p>有效期为31天,如果过期,可以留言或email到ahui at ahui.us,我再续期.</p>
+
+<p>使用tips
+1.可以不安装直接运行.
+2.如果安装,分一个swap,一个根目录,然后安装就好.
+3.运行后如果没有鼠标,在VB的控制菜单里,点击&quot;禁止自动独占鼠标&quot;.这里是指VB3.2.6中文版.
+4.启动后用鼠标拖动小锁向上,进行解锁.
+5.按键盘Home键,总是能直接返回Home页.
+6.鼠标左键是进入,这个说起来多余了,然后鼠标右键是返回上一级菜单.
+7.也可以用键盘操作,光标进行移动,Enter进入,Esc返回上一级菜单,Home参照第5条.
+8.因为没有SD卡设备,暂时还不能播放音乐和视频
+9.还在想.
+10.有时候,凑个整数真的不是那么容易.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-08-06 20:50:59">
+            <a href="post/android-2-2-x86-vm.html" title="2010-08-06 20:50:59" rel="bookmark">
+              <span class="entry-date-day">06</span>
+              <span class="entry-date-month-year">2010-08</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/android-2-2-x86-vm.html">Android 2.2 x86虚拟机版编译记录</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>Android x86项目提供的还是1.6版本的iso,<a href="http://cwhuang.info/">这里</a>做了很多的最新版本2.2的工作,可以由他上传的源码编译一个Virutal Box能使用的vm.iso文件.</p>
+
+<p>编译主机用的Ubuntu 10.04,其他OS可能要安装的相关依赖文件有所不同.
+10.04默认没有sun jdk,要加个新源 </p>
+
+<pre><code>http://archive.canonical.com/ lucid partner.
 </code></pre>
 
-<p>function.php底部加入脚本，用于跳转到文章开头.</p>
+<p>1.安装相关依赖文件</p>
 
-<pre><code>function remove_more_jump_link($link) { 
-    $offset = strpos($link, &#39;#more-&#39;);
-    if ($offset) {
-        $end = strpos($link, &#39;&quot;&#39;,$offset);
-    }
-    if ($end) {
-        $link = substr_replace($link, &#39;&#39;, $offset, $end-$offset);
-    }
-    return $link;
-}
-add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
+<pre><code>sudo add-apt-repository &quot;deb http://archive.canonical.com/ lucid partner&quot;
+sudo apt-get update
+sudo apt-get install git-core 
+sudo apt-get install sun-java6-jdk 
+sudo apt-get install flex 
+sudo apt-get install bison 
+sudo apt-get install gperf
+sudo apt-get install libsdl-dev
+sudo apt-get install libwxgtk2.6-dev 
+sudo apt-get install build-essential 
+sudo apt-get install curl 
+sudo apt-get install valgrind
 </code></pre>
+
+<p>2.安装repo</p>
+
+<pre><code>cd
+mkdir bin
+cd bin
+curl http://android.git.kernel.org/repo &gt; ~/bin/repo
+chmod a+x repo
+</code></pre>
+
+<p>3.下载同步源代码</p>
+
+<pre><code>cd
+mkdir android2.2
+cd android2.2
+ ../bin/repo init -u git://android-x86.git.sf.net/gitroot/android-x86/manifest.git -b froyo-x86
+ ../bin/repo sync
+</code></pre>
+
+<p>同步要花n久时间.取决于网速,我这200+KB/s跑了四个多小时.</p>
+
+<p>4.编译成vm.iso  其中编译参数-j4是我有四个cpu核心,所以设定同时运行4个进程.</p>
+
+<pre><code> . build/envsetup.sh
+lunch vm-eng 
+m -j4 iso_img  &#39; cpu x 4
+</code></pre>
+
+<p>编译也要花n久时间,取决于CPU性能,我的Xeon 4核心花了近三个小时.
+然后你就能在out下找到vm.iso了.文件大小约557,714KB.
+新开一个Virtual Box虚拟机,挂载vm.iso,直接光盘运行或安装到硬盘都可.鼠标独占要去掉,否则不会显示鼠标.而且鼠标的速度慢了点,得等作者在新版本里进行修正了.</p>
+
+<p>ISO文件已经上传到网盘,<a href="http://ahui.us/?p=234">点此查看</a>.</p>
+
+<p>无图无真相,给几张在我的VB中运行的靓照.多图杀猫啊~ 点击查看清晰无码大图.</p>
+
+<p>[gallery link=&quot;file&quot; columns=&quot;2&quot; orderby=&quot;title&quot;]</p>
+
+<p>-----END-----</p>
 </p>
       </div>
 
@@ -461,22 +232,21 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-15 20:53:47">
-            <a href="post/blogsetup.html" title="2010-07-15 20:53:47" rel="bookmark">
-              <span class="entry-date-day">15</span>
-              <span class="entry-date-month-year">2010-07</span>
+          <time class="entry-date entry-time updated" datetime="2010-08-04 22:21:35">
+            <a href="post/tomato-pandora-optware.html" title="2010-08-04 22:21:35" rel="bookmark">
+              <span class="entry-date-day">04</span>
+              <span class="entry-date-month-year">2010-08</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/blogsetup.html">我的博客架设笔记</a>
+            <a href="post/tomato-pandora-optware.html">Tomato Pandora之Optware软件安装</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
               <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
             </span>
@@ -485,229 +255,131 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>博客架设前，试用了很多相关程序，包括drupal,dedecms,wordpress等，甚至单文件的TiddlyWiki． 个人觉得TiddlyWiki在本地使用是很方便的，只是放在网上管理上会比较麻烦．drupal在定制一番后，也蛮好用，麻烦就麻烦在要定制不少东西．最后决定用wordpress，相对drupal来说，wordpress上手要容易得多，特别是新版本的wordpress 3的menu很好用.</p>
-
-<p>WP3计划放在安装了centos５的ＶＰＳ上，使用源代码编译安装apache,mod_php以及mysql三大件．Nginx要下次再换了，因为现在最新版本的php5.3.2编译成fpm方式比较麻烦．好在fpm已经进入ＰＨＰ的ＳＶＮ了，不久就应该有官方的fpm出来．</p>
-
-<p>安装过程写在下面，方便以后重个装，查个找什么的．</p>
+        <p><p>现在用的路由器安装的是Tomato Pandora Version 1.27.0475,有时候要在路由器上抓包,发现这个系统没有配置ngrep或者tcpdump,也没有ipkg,没法直接安装现成的opt包.
+不过发现作者有写接口程序,只是没直接公布.</p>
 
 <ol>
-<li><p>安装apache</p>
+<li><p>login到路由器,下载ipkg包的接口程序,用于安装ipkg</p>
 
-<p>从官方网站　http://httpd.apache.org/　下载　httpd-2.2.15.tar.gz
-把所有扩展功能都编译成模块，用--enable-modules=all与--enable-mods-shared=all二个参数．把all替换成most，则只编译大部分模块，或者指定模块名．懒人用all吧，编译完成后再去配置文件里，去掉不要的功能．</p>
-
-<pre><code>tar vzxf httpd-2.2.15.tar.gz
-cd httpd-2.2.15
-./configure --prefix=/usr/local/apache2 \
---enable-modules=all \
---enable-mods-shared=all
+<pre><code>wget http://pandoric.googlecode.com/svn/Pandora%20%e8%84%b1%e6%9c%ba%e8%bd%af%e4%bb%b6/optware-install.sh
 </code></pre>
 
-<p>apache的配置文件在ＰＨＰ安装完成后再修改．</p></li>
-<li><p>安装mysql</p>
+<p>不过发现直接下载的文件换行符有问题,要处理一下,或者copy下面的内容,存成optware-install.sh后再上传到路由器里面.</p>
 
-<p>从官方网站http://mysql.com下载mysql-5.1.35.tar.gz
-其实mysql的安装，用yum最方便，我自己编译安装，是yum update时省点流量．虽然这个ＶＰＳ流量挺多...</p>
+<pre><code>#!/bin/sh
+# Optware pre-installation script, Leon Kos 2006
 
-<pre><code>tar -vzxf mysql-5.1.35.tar.gz
-cd mysql-5.1.35
-./configure --prefix=/usr/local/mysql \
---enable-assembler \
---with-charset=utf8 \
---enable-thread-safe-client \
---with-extra-charsets=all \
---with-big-tables \
---with-readline \
---with-ssl \
---with-embedded-server \
---enable-local-infile
+REPOSITORY=http://pandoric.googlecode.com/svn/optware/stable
+TMP=/tmp
 
-make &amp;amp;&amp;amp; make install
-groupadd mysql
-useradd -g mysql mysql
-cp /usr/local/mysql/share/mysql/my-medium.cnf /etc/my.cnf /usr/local/mysql/bin/mysql_install_db --user=mysql
-chown -R mysql /usr/local/mysql/var
-chgrp -R mysql /usr/local/mysql/.
-cp /usr/local/mysql/share/mysql/mysql.server /etc/init.d/mysql
-chmod 755 /etc/init.d/mysql
-echo &quot;/usr/local/mysql/lib/mysql&quot; &amp;gt;&amp;gt; /etc/ld.so.conf
-echo &quot;/usr/local/lib&quot; &amp;gt;&amp;gt;/etc/ld.so.conf
-ln -s /usr/local/mysql/lib/mysql /usr/lib/mysql
-ln -s /usr/local/mysql/include/mysql /usr/include/mysql
-ldconfig
-</code></pre>
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
+unset LD_PRELOAD
+unset LD_LIBRARY_PATH
 
-<p>安装完成后，修改/etc/my.cnf文件．用#注释掉skip-networking，开启ＴＣＰ监听．</p>
+_check_config()
+{
+    echo &quot;Checking system config ...&quot;
+    GATEWAY=$(netstat -rn |
+    sed -n &#39;s/^0.0.0.0[ \t]\{1,\}\([0-9.]\{8,\}\).*/\1/p&#39; )
+    if [ -n &quot;${GATEWAY}&quot; ]; then
+    echo &quot;Using ${GATEWAY} as default gateway.&quot;
+    else
+    echo &quot;Error: No default gateway set!&quot;
+    exit 2
+    fi
+    if [ -s /etc/resolv.conf ]; then
+    echo &quot;Using the following nameserver(s):&quot;
+    if grep nameserver /etc/resolv.conf ; then
+            GATEWAY_SUBNET=$(echo &quot;${GATEWAY}&quot; |
+        sed &#39;s/\.[0-9]\{1,3\}\.[0-9]\{1,3\}$//&#39;)
+        if [ &quot;${GATEWAY_SUBNET}&quot; = &quot;192.168&quot; ]; then
+        if grep -q ${GATEWAY} /etc/resolv.conf ; then
+            echo &quot;Gateway ${GATEWAY} is also nameserver.&quot;
+        else
+            echo &quot;Warning: local nameserver is different than gateway!&quot;
+            echo &quot;Check config or enter:&quot;
+            if test -L /etc/resolv.conf ; then 
+              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /tmp/resolv.conf&quot;
+            else
+              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /etc/resolv.conf&quot;
+            fi
+            echo &quot;to correct this.&quot;
+        fi
+        fi
+    else
+        echo &quot;Error: No nameserver specified in /etc/resolv.conf&quot;
+        exit 5
+    fi
+    else
+    echo &quot;Error: Empty or nonexistent /etc/resolv.conf&quot;
+    exit 3
+    fi
 
-<pre><code>#skip-networking
-</code></pre>
+    if mount | grep -q /opt ; then
+    [ -d /opt/etc ] &amp;&amp; echo &quot;Warning: /opt partition not empty!&quot;
+    else
+    echo &quot;Error: /opt partition not mounted.&quot;
+    echo &quot;Enter&quot;
+    echo &quot;    mkdir /jffs/opt&quot;
+    echo &quot;    mount -o bind /jffs/opt /opt&quot;
+    echo &quot;to correct this.&quot;
+    exit 4
+    fi
+}
 
-<p>并在之后插入下面这行，只在本机监听：</p>
+_install_package()
+{
+    PACKAGE=$1
+    echo &quot;Installing package ${PACKAGE} ...&quot;
+    wget -O ${TMP}/${PACKAGE} ${REPOSITORY}/${PACKAGE}
+    cd  ${TMP} 
+    tar xzf ${TMP}/${PACKAGE} 
+    tar xzf ${TMP}/control.tar.gz
+    cd /
+    if [ -f ${TMP}/preinst ] ; then
+    sh ${TMP}/preinst
+    rm -f ${TMP}/preints
+    fi
+    tar xzf ${TMP}/data.tar.gz
+    if [ -f ${TMP}/postinst ] ; then
+    sh ${TMP}/postinst
+    rm -f ${TMP}/postinst
+    fi
+    rm -f ${TMP}/data.tar.gz
+    rm -f ${TMP}/control.tar.gz
+    rm -f ${TMP}/control
+    rm -f ${TMP}/${PACKAGE}
+}
 
-<pre><code>bind-address=127.0.0.1
+_check_config
+_install_package uclibc-opt_0.9.28-13_mipsel.ipk
+_install_package ipkg-opt_0.99.163-10_mipsel.ipk
+/opt/sbin/ldconfig
+/opt/bin/ipkg update
+/opt/bin/ipkg install -force-reinstall uclibc-opt
+/opt/bin/ipkg install -force-reinstall ipkg-opt
 </code></pre></li>
-<li><p>安装ＰＨＰ</p>
+<li><p>进入路由器web界面.启用JFFS
+如果启用后,空间不够3M,也就没戏了.我用的一共16M空间,系统占了8M,还空8M.但opt的初始安装,要近3M左右空间.</p></li>
+<li><p>运行下面的命令安装ipkg</p>
 
-<p>centos没有现成的libiconv包，所以在编译PHP之前要手动编译下libiconv.
-要用最新的1.13.1才行,1.13我这里编译后PHP死活找不到．</p>
-
-<pre><code>wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.13.1.tar.gz
-tar -zxvf libiconv-1.13.1.tar.gz
-cd libiconv-1.13.1
-./configure --prefix=/usr/local/libiconv
-make
-make install
-</code></pre>
-
-<p>从http://php.net上下载php-5.3.2.tar.gz
-现在可以编译PHP子，有一个老长老长的编译参数:</p>
-
-<pre><code>tar vzxf php-5.3.2.tar.gz
-cd php-5.3.2.tar.gz
-./configure \
---with-apxs2=/usr/local/apache2/bin/apxs \
---with-mysql \
---with-mysqli=/usr/local/mysql/bin/mysql_config \
---with-iconv=/usr/local/libiconv \
---with-freetype-dir \
---with-jpeg-dir \
---with-png-dir \
---with-zlib \
---with-libxml-dir=/usr \
---enable-xml \
---disable-rpath  \
---enable-magic-quotes \
---enable-safe-mode \
---enable-bcmath \
---enable-shmop \
---enable-sysvsem \
---enable-inline-optimization \
---with-curl \
---with-curlwrappers \
---enable-mbregex \
---enable-mbstring \
---with-mcrypt \
---enable-ftp \
---with-gd \
---enable-gd-native-ttf \
---with-openssl \
---with-mhash \
---enable-pcntl \
---enable-sockets \
---with-xmlrpc \
---enable-zip \
---enable-soap \
---without-pear \
---with-gettext
-make
-make install
-</code></pre>
-
-<p>安装后php说是会自动修改/usr/local/apache/conf/httpd.conf文件，检查了下，发现</p>
-
-<pre><code>LoadModule php5_module        modules/libphp5.so
-</code></pre>
-
-<p>会被自动加入，但还是要手工添加</p>
-
-<pre><code>AddType application/x-httpd-php .php
-</code></pre>
-
-<p>把这行放到任意一个AddType行之后就行.</p>
-
-<p>再次修改apache的配置文件/usr/local/apache/conf/httpd.conf，去掉所有不必要模块（用#注释掉相应的LoadModule行），只保留下面几个：</p>
-
-<pre><code>LoadModule log_config_module modules/mod_log_config.so
-LoadModule mime_module modules/mod_mime.so
-LoadModule dir_module modules/mod_dir.so
-LoadModule rewrite_module modules/mod_rewrite.so
-LoadModule php5_module        modules/libphp5.so
-</code></pre>
-
-<p>查找</p>
-
-<pre><code>&lt;IfModule dir_module&gt;
-    DirectoryIndex index.php index.html index.htm
-&lt;/IfModule&gt;
-</code></pre>
-
-<p>加入index.php作为默认页面．
-用#注释所有以Order用Deny开头的行：</p>
-
-<pre><code>#Order deny,allow
-#Deny from all
-</code></pre>
-
-<p>查找</p>
-
-<pre><code>#Include conf/extra/httpd-mpm.conf
-</code></pre>
-
-<p>去掉前面的#，并修改httpd-mpm.conf，考虑到现在来我这的客人会比较少，数字填写小点，省点内存．要想过好日子，能省点就省点吧...</p>
-
-<pre><code>&lt;IfModule mpm_prefork_module&gt;
-    StartServers          3
-    MinSpareServers       3
-    MaxSpareServers       5
-    MaxClients            50
-    MaxRequestsPerChild   500
-&lt;/IfModule&gt;
-</code></pre>
-
-<p>其中MaxRequestsPerChild默认值为0．最好改为非0值，500,1000都可．这样一个apache子进程在做完500个份内工作后，会光荣退休，换新鲜血液上来，防止他一直霸占工作岗位．</p></li>
-<li><p>启动mysql及apache</p>
-
-<p>麻烦的东西都安装好了，现在可以启动mysql和apache了．</p>
-
-<pre><code>/etc/init.d/mysql start
-/usr/local/apache2/bin/apachectl start
+<pre><code>mkdir /jffs/opt
+mount -o bind /jffs/opt /opt
+sh optware-install.sh
 </code></pre></li>
-<li><p>安装wordpress3
-从http://wordpress.org下载最新版本的wordpress，我下载的是3.0</p>
+<li><p>修改下/opt/etc/ipkg.conf,源设置为</p>
 
-<pre><code>wget http://wordpress.org/latest.tar.gz
-tar vzxf latest.tar.gz
-mv wordpress/* /usr/local/apache2/htdocs
+<pre><code>src/gz optware http://pandoric.googlecode.com/svn/optware/stable
 </code></pre>
 
-<p>这样就把wp3放到apache默认网站的根目录了</p>
+<p>如果能正常下载,这步不改,用默认源也可</p></li>
+<li><p>ok.能安装想要的软件了</p>
 
-<p>安装wp3前，要先安装phpmyadmin，用来操作mysql数据库．yum install phpmyadmin 或者直接官网下载解开就好．放在htdocs/db下.
-默认mysql root口令为空，如果是新版本的phpmyadmin，要修改一下其配置文件config.inc.php，才能正常login.</p>
-
-<pre><code>$cfg[&#39;Servers&#39;][$i][&#39;AllowNoPassword&#39;] = true;
-</code></pre>
-
-<p>默认为false,改为true就好．没有这行就不用管．</p>
-
-<p>先在firefox打开　http://站点ip或域名/db　，首先修改root口令，然后在mysql里单独建立一个新用户如wp及新库如wp，并将库wp的所有权限授予新用户wp．完成后刷新下权限表．</p>
-
-<p>再打开　http://站点ip或域名　就可以正常安装wordpress了，数据库地址填写localhost 或127.0.0.1，最好mysql新用户wp对应的host字段也是localhost.　</p></li>
-<li><p>可能存在的问题
-安装程序如果提示配置文件wp-config.php无法创建，大部分原因是因为htdocs目录的权限问题．
-先查找用户名</p>
-
-<pre><code>cat /usr/local/apache2/conf/httpd.conf | grep -1 Group
-#
-# User/Group: The name (or #number) of the user/group to run httpd as.
-# It is usually good practice to create a dedicated user and group for
---
-User daemon
-Group daemon
-</code></pre>
-
-<p>可见apache是以daemon的身份运行的，更改用户并查看结果</p>
-
-<pre><code>chown -R daemon.daemon /usr/local/apache2/htdocs
-ls -ld /usr/local/apache2/htdocs/
-drwxr-xr-x 6 daemon daemon 4096 Jul 15 22:33 /usr/local/apache2/htdocs/
+<pre><code>ipkg install ngerp
 </code></pre></li>
 </ol>
 
-<p>再运行wordpress安装程序就能自动建立配置文件了．以后也不会出现wordpress安装插件或升级时，要输入连接信息的错误．</p>
-
-<p>到这里安装就差不多完成了．接下来就是配置插件等内容了．有空再慢慢写.</p>
+<p>如果路由系统升级,这些要重做一次.</p>
 </p>
       </div>
 
@@ -718,29 +390,188 @@ drwxr-xr-x 6 daemon daemon 4096 Jul 15 22:33 /usr/local/apache2/htdocs/
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-15 07:18:36">
-            <a href="post/hello-world.html" title="2010-07-15 07:18:36" rel="bookmark">
-              <span class="entry-date-day">15</span>
-              <span class="entry-date-month-year">2010-07</span>
+          <time class="entry-date entry-time updated" datetime="2010-08-03 00:56:29">
+            <a href="post/firefoxlogin.html" title="2010-08-03 00:56:29" rel="bookmark">
+              <span class="entry-date-day">03</span>
+              <span class="entry-date-month-year">2010-08</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/hello-world.html">Hello world!</a>
+            <a href="post/firefoxlogin.html">Firefox有时候不能正常登录论坛</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/notag.html" rel="tag">notag</a>
+              <a href="tag/network.html" rel="tag">network</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!</p>
+        <p><p>新安装了个中文版的firefox,已经更新到3.6.8,发现有个常去的论坛死活登录不上去,IE没有问题,以前一直用的英文版ff也ok,于是怀疑是中文版的cookies的问题,找到</p>
+
+<pre><code>C:\Users\ahui\AppData\Roaming\Mozilla\Firefox\Profiles\XXXX.default\cookies.sqlite
+</code></pre>
+
+<p>用sqlite管理软件查看内容,发现没有保存刚登录的论坛的记录.
+尝试将cookies.sqlite改名,重新登录,问题解决.
+原因不明.特记之.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-07-30 12:07:07">
+            <a href="post/related-posts-by-category.html" title="2010-07-30 12:07:07" rel="bookmark">
+              <span class="entry-date-day">30</span>
+              <span class="entry-date-month-year">2010-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/related-posts-by-category.html">相关文章Related Posts by Category的配置</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>编辑single.php,放到comments_template之前.</p>
+
+<pre><code>&lt;div class=&quot;entry-title&quot;&quot;&gt;
+相关文章
+&lt;/div&gt;
+&lt;div id=&quot;related_posts&quot; class=&quot;box&quot;&gt;
+   &lt;?php do_action(
+    &#39;related_posts_by_category&#39;,
+    array(
+      &#39;orderby&#39; =&gt; &#39;post_date&#39;,
+      &#39;order&#39; =&gt; &#39;DESC&#39;,
+      &#39;limit&#39; =&gt; 5,
+      &#39;echo&#39; =&gt; true,
+      &#39;before&#39; =&gt; &#39;&amp;lt;li&gt;&#39;,
+      &#39;inside&#39; =&gt; &#39;&amp;raquo; &#39;,
+      &#39;outside&#39; =&gt; &#39;&#39;,
+      &#39;after&#39; =&gt; &#39;&amp;lt;/li&gt;&#39;,
+      &#39;rel&#39; =&gt; &#39;nofollow&#39;,
+      &#39;type&#39; =&gt; &#39;post&#39;,
+      &#39;image&#39; =&gt; array(50, 50),
+      &#39;hidden&#39; =&gt; &#39;image&#39;,
+      &#39;message&#39; =&gt; &#39;没有相关文章.&#39;
+    )
+  ) ?&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>其中&#39;hidden&#39; =&gt; &#39;image&#39;防止自动显示相关图片.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-07-29 13:39:08">
+            <a href="post/burstnet-ipv6.html" title="2010-07-29 13:39:08" rel="bookmark">
+              <span class="entry-date-day">29</span>
+              <span class="entry-date-month-year">2010-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/burstnet-ipv6.html">BURSTNET支持IPv6了</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/vps.html" rel="tag">vps</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>今天收到burstnet的邮件,有个好消息,说是支持ipv6了</p>
+
+<p>BURSTNET®: IPv6 IP Addressing Now Available!</p>
+
+<p>SCRANTON, PA - July 27, 2010 - BurstNET Technologies, Inc.™ (http://www.burst.net), a leading provider of budget hosting services, today announced IPv6 addressing service available end-to-end on its entire product line: including Dedicated Servers, Virtual Private Servers (VPS), &amp; Co-Location.</p>
+
+<p>原生支持ipv6真是个相当好的消息,于是赶紧发了个Ticket进行申请. 有消息再update.
+Ticket发送的当地时间为07-29-2010 - 01:34AM,应该睡得正香的时候,或者还没开始睡.....</p>
+
+<p>update:
+07-29-2010 - 02:04AM收到回复,已经给我添加了二个ipv6的地址,回应速度很快啊,足以说明晚上有人值班,而且没有睡着...</p>
+
+<p>接下来看能用v6的地址做点什么.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-07-26 23:45:53">
+            <a href="post/vps1.html" title="2010-07-26 23:45:53" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2010-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/vps1.html">PS1值保存待用</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>常用的bash PS1值
+<pre class="brush:plain">
+PS1=&quot;[\033[35m]\t[\033[m] [\033[36m]\u[\033[m]@[\033[32m]\h:[\033[33;1m]\w[\033[m] -&gt;&quot;
+</pre>
+效果如下
+<a href="http://ahui.us/wp-content/uploads/2010/07/ps1.bmp"><img src="http://ahui.us/wp-content/uploads/2010/07/ps1.bmp" alt="" title="ps1"></a></p>
+
+<p>or
+<pre class="brush:plain">
+PS1=&quot;[\033[37m]\t[\033[m] [\033[36m]\u[\033[m]@[\033[32m]\h:[\033[33;1m]\w[\033[m]&gt;&quot;
+</pre></p>
 </p>
       </div>
 
@@ -759,6 +590,9 @@ drwxr-xr-x 6 daemon daemon 4096 Jul 15 22:33 /usr/local/apache2/htdocs/
   <a class='page-numbers' href='index.6.html'>7</a>
   <a class='page-numbers' href='index.7.html'>8</a>
   <span class='page-numbers current'>9</span>
+  <a class='page-numbers' href='index.9.html'>10</a>
+  <a class='page-numbers' href='index.10.html'>11</a>
+  <a class="next page-numbers" href="index.9.html">Next &raquo;</a>  <div class="clear"></div>
 </div>
       </div> 
 
@@ -784,25 +618,26 @@ drwxr-xr-x 6 daemon daemon 4096 Jul 15 22:33 /usr/local/apache2/htdocs/
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (110)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (8)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (8)</a></li>
-        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (48)</a></li>
-        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/game.html">game &sdot; (10)</a></li>
-        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (76)</a></li>
-        <li class="cat-item"><a href="tag/android.html">android &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (6)</a></li>
+        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (56)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (39)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
       </ul>
     </div>
   </div>
@@ -811,16 +646,16 @@ drwxr-xr-x 6 daemon daemon 4096 Jul 15 22:33 /usr/local/apache2/htdocs/
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
-        <li><a href='post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html'>ABB加入在线编辑功能</a></li>
-        <li><a href='post/macgit_da_xiao_xie_wen_ti.html'>mac os 及 git 大小写问题</a></li>
-        <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
-        <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
-        <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
-        <li><a href='post/about.html'>about</a></li>
-        <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
-        <li><a href='post/hackpad_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
-        <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
-        <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
+        <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
+        <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
+        <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
+        <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
+        <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
+        <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
+        <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
+        <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
+        <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
+        <li><a href='post/2015turkey_you_ji_day3selcuk.html'>2015 turkey 游记 day 3 Selcuk</a></li>
       </ul>
     </div>
   </div>
