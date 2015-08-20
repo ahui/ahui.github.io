@@ -72,26 +72,29 @@
 
 <p>主要原因是/boot/grub/grub.cfg 把 timeout 设置成了&#39;-1&#39;.</p>
 
-<p>if [ &quot;${recordfail}&quot; = 1 ] ; then
-     set timeout=-1
-   else
-     if [ x$feature<em>timeout</em>style = xy ] ; then
-       set timeout<em>style=hidden
-       set timeout=0
-     # Fallback hidden-timeout code in case the timeout</em>style feature is
-     # unavailable.
-     elif sleep --interruptible 0 ; then
-       set timeout=0
-     fi
-   fi</p>
+<pre><code>  if [ &quot;${recordfail}&quot; = 1 ] ; then
+   set timeout=-1
+  else
+   if [ x$feature_timeout_style = xy ] ; then
+     set timeout_style=hidden
+     set timeout=0
+   # Fallback hidden-timeout code in case the timeout_style feature is
+   # unavailable.
+   elif sleep --interruptible 0 ; then
+     set timeout=0
+   fi
+  fi
+</code></pre>
 
 <p>grub.cfg 会被重写覆盖,得修改/etc/default/grub,加入一行</p>
 
-<p>GRUB<em>RECORDFAIL</em>TIMEOUT=5</p>
+<pre><code>  GRUB_RECORDFAIL_TIMEOUT=5
+</code></pre>
 
 <p>更新 grub.cfg</p>
 
-<p>update-grub</p>
+<pre><code>  update-grub
+</code></pre>
 
 <p>然后&#39;-1&#39;的设置会变更为&#39;5&#39;,这样不用手动操作,系统会在5秒超时会继续启动,不再挂住.</p>
 </p>
