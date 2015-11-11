@@ -45,6 +45,99 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-05-04 06:15:48">
+            <a href="post/ssh_wu_fa_lian_jie.html" title="2015-05-04 06:15:48" rel="bookmark">
+              <span class="entry-date-day">04</span>
+              <span class="entry-date-month-year">2015-05</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/ssh_wu_fa_lian_jie.html">ssh无法连接</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/vps.html" rel="tag">vps</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>ssh 登录阿里云远VPS,提示</p>
+
+<pre><code>ssh_exchange_identification: read: Connection reset by peer
+</code></pre>
+
+<p>几月前出过一次同样问题, 表现在开发机无法登录阿里云 VPS,但可以正常登录HK VPS,而且 HK VPS 也可以正常登录阿里云VPS. 检查下来是阿里云机房误判攻击并阻断了我当前在用的移动IP(移动出网 ip 会被 nat 到一组特定 ip 上),提交工单后才解决.</p>
+
+<p>这次再用 HK VPS 检查,发现也无法登录,应该不是原来的老问题.
+本机详细登录日志:</p>
+
+<pre><code>#ssh ahui$ ssh -vvv -l root serverip
+OpenSSH_6.2p2, OSSLShim 0.9.8r 8 Dec 2011
+debug1: Reading configuration data /etc/ssh_config
+debug1: /etc/ssh_config line 20: Applying options for *
+debug1: /etc/ssh_config line 102: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to serverip [serverip] port 22.
+debug1: Connection established.
+debug3: Incorrect RSA1 identifier
+debug3: Could not load &quot;/Users/ahui/.ssh/id_rsa&quot; as a RSA1 public key
+debug1: identity file /Users/ahui/.ssh/id_rsa type 1
+debug1: identity file /Users/ahui/.ssh/id_rsa-cert type -1
+debug1: identity file /Users/ahui/.ssh/id_dsa type -1
+debug1: identity file /Users/ahui/.ssh/id_dsa-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.2
+ssh_exchange_identification: read: Connection reset by peer
+</code></pre>
+
+<p>本机改过 hostname,rsa 没做更改, 同样的 rsa 能登录 HK VPS,应该和证书没关系.</p>
+
+<p>阿里终端连接进去,发现 ssh localhost 居然也无法正常登录,问题应该在 sshd 服务本身.</p>
+
+<p>想到服务器几周前做过一次 apt-get upgrade, 应该是更新导致 sshd 出了问题. 重启 sshd, 问题依旧.</p>
+
+<p>google 结果大部分说是 hosts.allow 的问题,加入 sshd:ALL 后,问题依旧.</p>
+
+<p>最后查看 sshd log:</p>
+
+<pre><code>May  4 17:05:15 AY1407211542405399a6Z sshd[17586]: fatal: Missing privilege separation directory: /var/run/sshd
+</code></pre>
+
+<p>发现/var 下 run 目录不存在. </p>
+
+<pre><code>cd /var
+mkdir run
+cd run
+mkdir sshd
+</code></pre>
+
+<p>重启 sshd,问题解决.</p>
+
+<p>问题可能出在 apt-get upgrade 后,服务器没重新启动导致问题出现. 或者本次 upgrade有 bug,重启也不能解决. 没证实. 记录下,系统为:</p>
+
+<pre><code>uname -a
+Linux AY1407211542405399a6Z 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+cat /etc/issue
+Ubuntu 14.04.2 LTS \n \l
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2015-01-20 04:59:05">
             <a href="post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html" title="2015-01-20 04:59:05" rel="bookmark">
               <span class="entry-date-day">20</span>
@@ -550,67 +643,6 @@ sys     0m0.120s
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-05 15:40:08">
-            <a href="post/pytenjincache_wen_ti.html" title="2014-02-05 15:40:08" rel="bookmark">
-              <span class="entry-date-day">05</span>
-              <span class="entry-date-month-year">2014-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/pytenjincache_wen_ti.html">PYTENJIN CACHE问题</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/python.html" rel="tag">python</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>Tenjin是个好模板. (签名)</p>
-
-<p>满足我喜欢的三个要求：</p>
-
-<ul>
-<li>快速</li>
-<li>HTML友好</li>
-<li>能直接用python代码。</li>
-</ul>
-
-<p>当然能直接用python代码是件好事也是件坏事。</p>
-
-<p>在做静态html生成程序时，因为动态生成了不同内容的同名模板，导致Tenjin解析时总是取缓存中的内容。
-Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法为：</p>
-
-<ol>
-<li>sleep 1s吧，喝个茶什么的等缓存失效…</li>
-<li>将Tenjin里的timestamp_interval参数由原1s,改为一个更小的值，0.001什么的。小手术。</li>
-<li>给Tenjin添加个属性，记住文件大小，在文件大小改变时，总是重新生成缓存。大手术啊~~~~</li>
-<li>动态生成的模板，别用同样的文件名.</li>
-</ol>
-
-<p>1会带来时间浪费，测试中生成50+ html文件才半秒不到，不能浪费2倍的生命。
-2，3都要改动Tenjin,通用性不好。
-4算比较满意的，会稍提高点代码的复杂度。</p>
-
-<p>BTW,如果要压榨性能，通过2中将值改大，或者3增加文件大小检查，模板文件不变时直接用.cache文件，应该有不少的性能提升。</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -655,9 +687,9 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (56)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (57)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
@@ -679,6 +711,7 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
         <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
@@ -688,7 +721,6 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
         <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
         <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
         <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
-        <li><a href='post/2015turkey_you_ji_day3selcuk.html'>2015 turkey 游记 day 3 Selcuk</a></li>
       </ul>
     </div>
   </div>

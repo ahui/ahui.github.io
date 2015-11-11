@@ -45,6 +45,50 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-07-26 23:45:53">
+            <a href="post/vps1.html" title="2010-07-26 23:45:53" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2010-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/vps1.html">PS1值保存待用</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>常用的bash PS1值
+<pre class="brush:plain">
+PS1=&quot;[\033[35m]\t[\033[m] [\033[36m]\u[\033[m]@[\033[32m]\h:[\033[33;1m]\w[\033[m] -&gt;&quot;
+</pre>
+效果如下
+<a href="http://ahui.us/wp-content/uploads/2010/07/ps1.bmp"><img src="http://ahui.us/wp-content/uploads/2010/07/ps1.bmp" alt="" title="ps1"></a></p>
+
+<p>or
+<pre class="brush:plain">
+PS1=&quot;[\033[37m]\t[\033[m] [\033[36m]\u[\033[m]@[\033[32m]\h:[\033[33;1m]\w[\033[m]&gt;&quot;
+</pre></p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-07-25 15:03:58">
             <a href="post/linuxversion.html" title="2010-07-25 15:03:58" rel="bookmark">
               <span class="entry-date-day">25</span>
@@ -1042,60 +1086,6 @@ Path To mysql:/usr/local/mysql/bin/mysql
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-16 00:40:13">
-            <a href="post/mmore.html" title="2010-07-16 00:40:13" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2010-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/mmore.html">修改more标签</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p><a href="http://codex.wordpress.org/Customizing_the_Read_More">参考地址</a></p>
-
-<p>修改loop.php
-查找第二处&quot;continue reading&quot;，该行改为</p>
-
-<pre><code>&lt;?php the_content(&quot;......点此阅读&lt;span class=\&quot;widget-title\&quot;&gt;t &quot; . get_the_title(&#39;&#39;, &#39;&#39;, false) . &quot;&lt;/span&gt; 全文......&quot;); &gt;
-</code></pre>
-
-<p>function.php底部加入脚本，用于跳转到文章开头.</p>
-
-<pre><code>function remove_more_jump_link($link) { 
-    $offset = strpos($link, &#39;#more-&#39;);
-    if ($offset) {
-        $end = strpos($link, &#39;&quot;&#39;,$offset);
-    }
-    if ($end) {
-        $link = substr_replace($link, &#39;&#39;, $offset, $end-$offset);
-    }
-    return $link;
-}
-add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
-</code></pre>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -1140,9 +1130,9 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (56)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (57)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
@@ -1164,6 +1154,7 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
         <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
@@ -1173,7 +1164,6 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
         <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
         <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
         <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
-        <li><a href='post/2015turkey_you_ji_day3selcuk.html'>2015 turkey 游记 day 3 Selcuk</a></li>
       </ul>
     </div>
   </div>

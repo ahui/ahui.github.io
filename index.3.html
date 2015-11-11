@@ -45,6 +45,67 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2014-02-05 15:40:08">
+            <a href="post/pytenjincache_wen_ti.html" title="2014-02-05 15:40:08" rel="bookmark">
+              <span class="entry-date-day">05</span>
+              <span class="entry-date-month-year">2014-02</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/pytenjincache_wen_ti.html">PYTENJIN CACHE问题</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/python.html" rel="tag">python</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>Tenjin是个好模板. (签名)</p>
+
+<p>满足我喜欢的三个要求：</p>
+
+<ul>
+<li>快速</li>
+<li>HTML友好</li>
+<li>能直接用python代码。</li>
+</ul>
+
+<p>当然能直接用python代码是件好事也是件坏事。</p>
+
+<p>在做静态html生成程序时，因为动态生成了不同内容的同名模板，导致Tenjin解析时总是取缓存中的内容。
+Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法为：</p>
+
+<ol>
+<li>sleep 1s吧，喝个茶什么的等缓存失效…</li>
+<li>将Tenjin里的timestamp_interval参数由原1s,改为一个更小的值，0.001什么的。小手术。</li>
+<li>给Tenjin添加个属性，记住文件大小，在文件大小改变时，总是重新生成缓存。大手术啊~~~~</li>
+<li>动态生成的模板，别用同样的文件名.</li>
+</ol>
+
+<p>1会带来时间浪费，测试中生成50+ html文件才半秒不到，不能浪费2倍的生命。
+2，3都要改动Tenjin,通用性不好。
+4算比较满意的，会稍提高点代码的复杂度。</p>
+
+<p>BTW,如果要压榨性能，通过2中将值改大，或者3增加文件大小检查，模板文件不变时直接用.cache文件，应该有不少的性能提升。</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2014-02-04 20:41:24">
             <a href="post/wang_zhan_jing_tai_hua.html" title="2014-02-04 20:41:24" rel="bookmark">
               <span class="entry-date-day">04</span>
@@ -481,45 +542,6 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2013-05-11 11:46:47">
-            <a href="post/vdi-file-lost-network.html" title="2013-05-11 11:46:47" rel="bookmark">
-              <span class="entry-date-day">11</span>
-              <span class="entry-date-month-year">2013-05</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/vdi-file-lost-network.html">Ubuntu on Virtual Box VDI 复制后丢失网卡</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>A机，VB安装Ubuntu 12.10 Server,网卡模式为桥接。此时Ubuntu中网卡为eth0，DHCP, 连接正常。复制硬盘VDI文件至B机。</p>
-
-<p>B机，VB安装完成后，新建立linux类虚拟机，并使用复制过来的Ａ机VDI文件启动，此时DHP无法取得ＩＰ，并且不能手工ifconfig eth0 up，查看发现eth0不存在，网卡设备转为eth1.估计网卡mac有变动.</p>
-
-<p>解决：
-- 修改/etc/network/interface,将其中二行eth0相关配置，修改成eth1</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -564,9 +586,9 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (56)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (57)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
@@ -588,6 +610,7 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
         <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
@@ -597,7 +620,6 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
         <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
         <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
         <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
-        <li><a href='post/2015turkey_you_ji_day3selcuk.html'>2015 turkey 游记 day 3 Selcuk</a></li>
       </ul>
     </div>
   </div>

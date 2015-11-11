@@ -45,6 +45,82 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-11-11 02:13:17">
+            <a href="post/shu_ju_ku_cun_qu_su_du_you_hua.html" title="2015-11-11 02:13:17" rel="bookmark">
+              <span class="entry-date-day">11</span>
+              <span class="entry-date-month-year">2015-11</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/shu_ju_ku_cun_qu_su_du_you_hua.html">数据库存取速度优化</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/python.html" rel="tag">python</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h2>sqlite3</h2>
+
+<p><strong>使用场景</strong></p>
+
+<p>使用 pony 作为 orm读取 20w 条左右数据</p>
+
+<p><strong>慢</strong></p>
+
+<p>取得所有字段,会自动封装成对象
+select(u for u in User)</p>
+
+<p><strong>优化</strong></p>
+
+<p>只取需要的字段
+select(u.id for u in User)</p>
+
+<h2>redis</h2>
+
+<p><strong>使用场景</strong></p>
+
+<pre><code>使用 redis.py 作为  写入 20w 条左右数据
+</code></pre>
+
+<p><strong>慢</strong></p>
+
+<pre><code>m.incr(&#39;u_&#39;+u[:7])
+</code></pre>
+
+<p><strong>优化</strong></p>
+
+<p><em>使用连接池</em></p>
+
+<pre><code>pool = redis.ConnectionPool(host=&#39;127.0.0.1&#39;, port=6379, db=15)
+m = redis.StrictRedis(connection_pool=pool)
+</code></pre>
+
+<p><em>使用批量提交</em></p>
+
+<pre><code>pipe = m.pipeline()
+pipe.incr(&#39;u_&#39;+u[:7])
+pipe.set()
+pipe.execute()
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2015-08-20 10:27:58">
             <a href="post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html" title="2015-08-20 10:27:58" rel="bookmark">
               <span class="entry-date-day">20</span>
@@ -496,63 +572,6 @@
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2015-08-15 02:11:37">
-            <a href="post/2015turkey_you_ji_day5marmaris.html" title="2015-08-15 02:11:37" rel="bookmark">
-              <span class="entry-date-day">15</span>
-              <span class="entry-date-month-year">2015-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/2015turkey_you_ji_day5marmaris.html">2015 turkey 游记 day 5 Marmaris</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/turkey.html" rel="tag">turkey</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><h1>day 5 Marmaris</h1>
-
-<ul>
-<li>7.25</li>
-</ul>
-
-<p>早早 check out,临时决定去 Marmaris, 车程150KM 左右. D 级路. 快到时加了200TL 油,里程表777公里.</p>
-
-<p>酒店没有预订,开进市区后沿海走了小半圈,订到一个刚开业的小酒店,除了没停车位,其他都还不错,特别是就在海滩边上.</p>
-
-<p>Marmaris 是整个行程给人感觉最干净漂亮的地方, 如果喜欢海边,一定要在这多呆几天. 可惜的是,因为昨天 HOTEL 条件太差,也没睡好, 一到 Marmaris 就感冒了, 眼看着诱人的海水,却没法下海玩. </p>
-
-<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_2215.JPG-small" onclick="popme(this.src)" /></p>
-
-<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_2224.JPG-small" onclick="popme(this.src)" /></p>
-
-<h2>tips</h2>
-
-<ul>
-<li>Marmaris 人明显少得多.消费稍低一点.</li>
-<li>路上一个连续下坡接上坡的地方有大 BUS 连环撞. 限速提示总是有它的理由的. </li>
-<li>冷热交替,小心感冒. 现在38.4了,小药箱没白带.</li>
-<li>所有的海边小镇,都可以自己去提交预订第二天的出海游. 费用和一船能容纳的人数有关系, 从10多块 TL 到100多 TL 都有.</li>
-<li>非特别热门的地方,都可以到了地方再找满意的宾馆. 网上图片不可全信.</li>
-</ul>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -597,9 +616,9 @@
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (56)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (57)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
@@ -621,6 +640,7 @@
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
         <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
@@ -630,7 +650,6 @@
         <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
         <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
         <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
-        <li><a href='post/2015turkey_you_ji_day3selcuk.html'>2015 turkey 游记 day 3 Selcuk</a></li>
       </ul>
     </div>
   </div>
