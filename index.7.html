@@ -45,6 +45,145 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-12-10 11:16:43">
+            <a href="post/linux-kernel-econet-root-shell.html" title="2010-12-10 11:16:43" rel="bookmark">
+              <span class="entry-date-day">10</span>
+              <span class="entry-date-month-year">2010-12</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/linux-kernel-econet-root-shell.html">[转贴]Linux Kernel Econet漏洞权限提升脚本</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/ssh.html" rel="tag">ssh</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>原贴出处
+http://www.vpsee.com/2010/12/linux-kernel-root-level-exploit-leveraging-multiple-previous-vulnerabilities/
+脚本出处
+http://marc.info/?l=full-disclosure&amp;m=129175358621826&amp;w=2</p>
+
+<p>受影响系统：
+Debian Linux 5.0 x
+Linux kernel 2.6.0 - 2.6.36
+Linux kernel 2.6.0 - 2.6.26
+Ubuntu Linux 9.10 - 10.04</p>
+
+<p>已测试系统
+Ubuntu 10.4 提升成功
+Centos 5.5 提升失败</p>
+
+<p>脚本下载
+http://ahui.us/get/public/ahui/root.c.txt
+已编译脚本
+http://ahui.us/get/public/ahui/root.txt</p>
+
+<p>Acorn Econet/AUN 协议
+Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑上，用于访问文件和打印机服务器。它使用本地的Econet 网络卡。AUN 是高层的 Econet 协议，运行于通常的以太网连接，它运行在 UDP 包协议之上，这两个协议轮流运行于IP协议上。
+参考:http://en.wikipedia.org/wiki/Econet</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-11-19 16:48:56">
+            <a href="post/pidgin-msn-cer.html" title="2010-11-19 16:48:56" rel="bookmark">
+              <span class="entry-date-day">19</span>
+              <span class="entry-date-month-year">2010-11</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/pidgin-msn-cer.html">Pidgin MSN证书链错误解决办法</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>win7下把C:\Users[用户名]\AppData\Roaming.purple\certificates\x509\tls_peers
+下的omega.contacts.msn.com文件内容替换成下面内容.并加上只读属性.
+或者在 工具-&gt;证书里,替换掉同名证书.</p>
+
+<pre><code>-----BEGIN CERTIFICATE-----
+MIIGeDCCBWCgAwIBAgIKfdrgSQAIAAHIuTANBgkqhkiG9w0BAQUFADCBizETMBEG
+CgmSJomT8ixkARkWA2NvbTEZMBcGCgmSJomT8ixkARkWCW1pY3Jvc29mdDEUMBIG
+CgmSJomT8ixkARkWBGNvcnAxFzAVBgoJkiaJk/IsZAEZFgdyZWRtb25kMSowKAYD
+VQQDEyFNaWNyb3NvZnQgU2VjdXJlIFNlcnZlciBBdXRob3JpdHkwHhcNMTAxMTE1
+MjEyODE5WhcNMTIxMTE0MjEyODE5WjB2MQswCQYDVQQGEwJVUzELMAkGA1UECBMC
+V0ExEDAOBgNVBAcTB1JlZG1vbmQxDDAKBgNVBAoTA01TTjEdMBsGA1UECxMUTVNO
+IENvbnRhY3QgU2VydmljZXMxGzAZBgNVBAMMEiouY29udGFjdHMubXNuLmNvbTCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJnXhdENETaZ8YFfenWCuky3
+Fke/oWgUOEbgvaRuZusd2LnvoSiqH++2lkV0JJlIQ+7jLLN8MY7VhlHQmkLC3x44
+KZn2IktMVgTBGMKnvbyYVAnRsjt/rVhQrQeHVEQzv5WXx//3FKmXWAuJiuRj9PZ2
+KsNqPJgaaa5cuOu4oynO9fH5/ZtJIeUf7bC4Wu++o7jTu5zOhIa7R1buE9FXFF33
+vQ1vHi4p9zR2Pi/i2nUpEnzeNCLl/8F/Tf+658SvIC4EzxrYcj+fit6sAnNUfsOE
+1SIk9YLD+tS0fln1afbcDvH0ib5Xm7u2/o6ZmxQU0mrAkfQectsKpZLJj03neBsC
+AwEAAaOCAvAwggLsMAsGA1UdDwQEAwIEsDBEBgkqhkiG9w0BCQ8ENzA1MA4GCCqG
+SIb3DQMCAgIAgDAOBggqhkiG9w0DBAICAIAwBwYFKw4DAgcwCgYIKoZIhvcNAwcw
+HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMB0GA1UdDgQWBBRciAVJ/Vsj
+sAlZoNG/Zs+rILsPNDAfBgNVHSMEGDAWgBQIQuPbThFm87UIxUDbVXwzRhGDODCC
+AQoGA1UdHwSCAQEwgf4wgfuggfiggfWGWGh0dHA6Ly9tc2NybC5taWNyb3NvZnQu
+Y29tL3BraS9tc2NvcnAvY3JsL01pY3Jvc29mdCUyMFNlY3VyZSUyMFNlcnZlciUy
+MEF1dGhvcml0eSg4KS5jcmyGVmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2kv
+bXNjb3JwL2NybC9NaWNyb3NvZnQlMjBTZWN1cmUlMjBTZXJ2ZXIlMjBBdXRob3Jp
+dHkoOCkuY3JshkFodHRwOi8vY29ycHBraS9jcmwvTWljcm9zb2Z0JTIwU2VjdXJl
+JTIwU2VydmVyJTIwQXV0aG9yaXR5KDgpLmNybDCBvwYIKwYBBQUHAQEEgbIwga8w
+XgYIKwYBBQUHMAKGUmh0dHA6Ly93d3cubWljcm9zb2Z0LmNvbS9wa2kvbXNjb3Jw
+L01pY3Jvc29mdCUyMFNlY3VyZSUyMFNlcnZlciUyMEF1dGhvcml0eSg4KS5jcnQw
+TQYIKwYBBQUHMAKGQWh0dHA6Ly9jb3JwcGtpL2FpYS9NaWNyb3NvZnQlMjBTZWN1
+cmUlMjBTZXJ2ZXIlMjBBdXRob3JpdHkoOCkuY3J0MD8GCSsGAQQBgjcVBwQyMDAG
+KCsGAQQBgjcVCIPPiU2t8gKFoZ8MgvrKfYHh+3SBT4PC7YUIjqnShWMCAWQCAQow
+JwYJKwYBBAGCNxUKBBowGDAKBggrBgEFBQcDAjAKBggrBgEFBQcDATANBgkqhkiG
+9w0BAQUFAAOCAQEAbbWUY/5r/Tv/kefqNUT5aGVejrkbG4229gnJLcv+uQTEg0Gg
+xfvLr77N1z2j57FameJwz6DeTRbK8MYVPoP+z5o4vM3F3GxLm7aBklYQ/7G0TIp/
+13z01a5aBGvZH8umzex3YrAnhJEcucSN5WaT6r9uwT7imdbsCgfFPdiIgS5iHdcl
+k/3QSpau+4/XZgh/8V/FMN9KEFYGvEhMb5EVzKJ8pqF9Jy9Mfzqev3BtSREiljCt
+lJuiRamxWgQoeNVTAI+J2YAsD8Qon1iZiHl08uHdgXWZiGDtLPcd9aIiL7/vi/+D
+7w3bhyHPFr+/13BCIWSfKnSRj/g6YoHnhF4gyQ==
+-----END CERTIFICATE-----
+</code></pre>
+
+<p>证书原地址:</p>
+
+<p>http://heiher.info/sftp/files/omega.contacts.msn.com</p>
+
+<p>or</p>
+
+<p>http://webupd8.googlecode.com/files/omega.contacts.msn.com</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-11-05 12:54:05">
             <a href="post/openvz-vps-ipv6-add.html" title="2010-11-05 12:54:05" rel="bookmark">
               <span class="entry-date-day">05</span>
@@ -357,93 +496,6 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-08-18 15:17:23">
-            <a href="post/freeisocreator.html" title="2010-08-18 15:17:23" rel="bookmark">
-              <span class="entry-date-day">18</span>
-              <span class="entry-date-month-year">2010-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/freeisocreator.html">小巧免费的ISO制做软件IsoCreator及imgburn</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/sofeware.html" rel="tag">sofeware</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>今天要在虚拟机里安装一套比较久远的系统，发现没有现成的ISO文件，以前刻录的一张光盘还在．</p>
-
-<p>于是想直接用光盘安装，结果不但读盘速度慢，读盘声音也很吓人，不得不想办法做成ISO再安装．</p>
-
-<p>平时用的ones做记录软件，可惜ones只能做成di格式，VB无法使用．</p>
-
-<p>winiso,ultraiso之类的都是收费软件，不考虑．sf上查找到IsoCreator,非常短小，400K多点，能把指定的文件目录或盘符做成iso文件．
-<a href="http://sourceforge.net/projects/iso-creator-cs/">下载点</a></p>
-
-<p><a href="http://ahui.us/wp-content/uploads/2010/08/isocreator.jpg"><img src="http://ahui.us/wp-content/uploads/2010/08/isocreator.jpg" alt="" title="isocreator"></a></p>
-
-<p>可惜的是IsoCreator不能读取boot记录，不能用于制做可引导的iso文件．</p>
-
-<p>个头大点的imgburn可以用来对付可引导的光盘，包括制做可引导的iso及其刻录．
-<a href="http://www.imgburn.com/">下载点</a></p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-08-17 14:50:01">
-            <a href="post/android-2-2-x86iso-google-code-sf-net.html" title="2010-08-17 14:50:01" rel="bookmark">
-              <span class="entry-date-day">17</span>
-              <span class="entry-date-month-year">2010-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/android-2-2-x86iso-google-code-sf-net.html">Android 2.2 x86虚拟机版ISO google code及sf.net下载点</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>原开发者已经上传Android 2.2 x86 vm的ISO到google code及sf.net上，请移步下载.</p>
-
-<p><a href="http://code.google.com/p/android-x86/downloads/list">Google Code</a>
-<a href="http://sourceforge.net/projects/android-x86/files/">SourceForge</a></p>
-
-<p><a href="http://www.android-x86.org/releases/build-20100812">查看releases notes</a></p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -488,7 +540,7 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (57)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (59)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
@@ -500,7 +552,7 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (39)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
@@ -512,6 +564,8 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>RapberryPi2在u盘上运行系统</a></li>
+        <li><a href='post/rapberrypi2_yun_xing_docker.html'>RapberryPi2运行Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
@@ -520,8 +574,6 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
         <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
         <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
         <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
-        <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
-        <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
       </ul>
     </div>
   </div>

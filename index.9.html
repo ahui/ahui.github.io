@@ -45,6 +45,114 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-07-30 12:07:07">
+            <a href="post/related-posts-by-category.html" title="2010-07-30 12:07:07" rel="bookmark">
+              <span class="entry-date-day">30</span>
+              <span class="entry-date-month-year">2010-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/related-posts-by-category.html">相关文章Related Posts by Category的配置</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>编辑single.php,放到comments_template之前.</p>
+
+<pre><code>&lt;div class=&quot;entry-title&quot;&quot;&gt;
+相关文章
+&lt;/div&gt;
+&lt;div id=&quot;related_posts&quot; class=&quot;box&quot;&gt;
+   &lt;?php do_action(
+    &#39;related_posts_by_category&#39;,
+    array(
+      &#39;orderby&#39; =&gt; &#39;post_date&#39;,
+      &#39;order&#39; =&gt; &#39;DESC&#39;,
+      &#39;limit&#39; =&gt; 5,
+      &#39;echo&#39; =&gt; true,
+      &#39;before&#39; =&gt; &#39;&amp;lt;li&gt;&#39;,
+      &#39;inside&#39; =&gt; &#39;&amp;raquo; &#39;,
+      &#39;outside&#39; =&gt; &#39;&#39;,
+      &#39;after&#39; =&gt; &#39;&amp;lt;/li&gt;&#39;,
+      &#39;rel&#39; =&gt; &#39;nofollow&#39;,
+      &#39;type&#39; =&gt; &#39;post&#39;,
+      &#39;image&#39; =&gt; array(50, 50),
+      &#39;hidden&#39; =&gt; &#39;image&#39;,
+      &#39;message&#39; =&gt; &#39;没有相关文章.&#39;
+    )
+  ) ?&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>其中&#39;hidden&#39; =&gt; &#39;image&#39;防止自动显示相关图片.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-07-29 13:39:08">
+            <a href="post/burstnet-ipv6.html" title="2010-07-29 13:39:08" rel="bookmark">
+              <span class="entry-date-day">29</span>
+              <span class="entry-date-month-year">2010-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/burstnet-ipv6.html">BURSTNET支持IPv6了</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/vps.html" rel="tag">vps</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>今天收到burstnet的邮件,有个好消息,说是支持ipv6了</p>
+
+<p>BURSTNET®: IPv6 IP Addressing Now Available!</p>
+
+<p>SCRANTON, PA - July 27, 2010 - BurstNET Technologies, Inc.™ (http://www.burst.net), a leading provider of budget hosting services, today announced IPv6 addressing service available end-to-end on its entire product line: including Dedicated Servers, Virtual Private Servers (VPS), &amp; Co-Location.</p>
+
+<p>原生支持ipv6真是个相当好的消息,于是赶紧发了个Ticket进行申请. 有消息再update.
+Ticket发送的当地时间为07-29-2010 - 01:34AM,应该睡得正香的时候,或者还没开始睡.....</p>
+
+<p>update:
+07-29-2010 - 02:04AM收到回复,已经给我添加了二个ipv6的地址,回应速度很快啊,足以说明晚上有人值班,而且没有睡着...</p>
+
+<p>接下来看能用v6的地址做点什么.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-07-26 23:45:53">
             <a href="post/vps1.html" title="2010-07-26 23:45:53" rel="bookmark">
               <span class="entry-date-day">26</span>
@@ -947,145 +1055,6 @@ End Sub
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-16 22:12:36">
-            <a href="post/m-shcp.html" title="2010-07-16 22:12:36" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2010-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/m-shcp.html">修正Syntax Highlighter ComPress的自动换行问题</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>Syntax Highlighter ComPress语法加亮插件在我用的模板中不能自动换行．改了下ＣＳＳ先用着．可惜这个插件在IE下有小部分不能正常显示，FF下大部分正常．</p>
-
-<p>查找syntax-highlighter-compress/styles/shCoreEclipse.css中的
-<pre class="brush:css">
-.syntaxhighlighter .line {
-  white-space: pre !important;
-}
-</pre>
-改为
-<pre class="brush:css">
-.syntaxhighlighter .line {
- white-space: pre-wrap;<br>
- white-space: -moz-pre-wrap; 
- white-space: -pre-wrap;<br>
- white-space: -o-pre-wrap; 
- word-wrap: break-word;
-}
-</pre>
-保存就ok了.</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-16 18:13:14">
-            <a href="post/m-wp-dbmanager-mail.html" title="2010-07-16 18:13:14" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2010-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/m-wp-dbmanager-mail.html">修正WP-DBManager不能发送邮件与标题乱码的问题</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>WP-DBManager是个不错的数据库管理插件，功能之一是把备份好的数据库打包发送到指定的邮箱．</p>
-
-<p>ＶＰＳ因为没有配置smtp服务，这样php的mail函数不能正常工作，更加考虑到用Gmail信箱用来备份是个很好的选择，于是下载了WP-Mail-SMTP插件，设置ＷＰ用SMTP发信．安装设置好后，测试邮件能发送成功，但WP-DBManager的邮件发送显示ＯＫ，Gmail里面却收不到东西．</p>
-
-<p>换了Configure SMTP再试，这个插件更智能点，配置Gmail的信箱很容易．一样安装设置好后，测试邮件能发送成功，但WP-DBManager的邮件发送显示ＯＫ，Gmail里面却收不到东西．</p>
-
-<p>于是估计大概可能也许是WP-DBManager的问题．查看了一下，与wp-dbmanager/wp-dbmanager.php及wp-dbmanager/database-manage.php二个文件有关．前者用于配置参数，其中有自动备份并发送邮件功能；后者用于管理备份文件，其中有将备份文件发送到指定信箱功能．果然这二个文件里都将邮件发送部分写成死死的php的mail函数，这样无论WP-Mail-SMTP还是Configure SMTP有多强大，它都不知道啊～～</p>
-
-<p>修改很简单，查找wp-dbmanager/wp-dbmanager.php中的
-&lt;!--more--&gt;
-<pre class="brush:php">
-mail($backup<em>email, $mail</em>subject, $mail<em>message, $mail</em>header);
-</pre>
-改为
-<pre class="brush:php">
-wp<em>mail($backup</em>email, $mail<em>subject, $mail</em>message, $mail<em>header);
-</pre>
-查找wp-dbmanager/database-manage.php中的
-<pre class="brush:php">
-mail($mail</em>to, $mail<em>subject, $mail</em>message, $mail<em>header）;
-</pre>
-改为
-<pre class="brush:php">
-wp</em>mail($mail<em>to, $mail</em>subject, $mail<em>message, $mail</em>header）;
-</pre></p>
-
-<p>啊，没错，前面加wp<em>就好，wp</em>mail的相关信息可以参考
-http://phpdoc.wordpress.org/trunk/WordPress/<em>wp-includes---pluggable.php.html#functionwp</em>mail
-这样修改后，wp_mail会使用WP-Mail-SMTP或Configure SMTP的配置SMTP发送邮件．这二个插件在wp3中都正常工作．</p>
-
-<p>WP-DBManage现在能成功发送打包后的数据库备份文件到指定的Gmail信箱了，8过标题是乱码，好在正文是全Ｅ文的，能看清．
-修正标题乱码，在前面所说的二个php文件中，查找
-<pre class="brush:php">
-$mail<em>subject = sprintf(</em><em>(&#39;%s Database Backup File For %s&#39;, &#39;wp-dbmanager&#39;), get</em>bloginfo(&#39;name&#39;), $file<em>date);
-</pre>
-均在后面加入下面这一行进行base64编码
-<pre class="brush:php">
-$mail</em>subject = &#39;=?UTF-8?B?&#39;.base64<em>encode($mail</em>subject).&#39;?=&#39;;
-</pre></p>
-
-<p>再试一次发送邮件，万事大吉了~</p>
-
-<p>可能的问题：
-WP-DBManager的设置页面，Path To mysqldump:以及Path To mysql:在自动检测失败时，要手动填入包含程序名的绝对路径，比如
-<pre class="brush:plain">
-Path To mysqldump:/usr/local/mysql/bin/mysqldump
-Path To mysql:/usr/local/mysql/bin/mysql
-</pre>
-或者在大多数机器上，是在/usr/bin下的．</p>
-
-<p>wp-content/backup-db放有备份文件，确保使用.htaccess进行保护，或者修改这个目录名.</p>
-
-<p>WP-Mail-SMTP或Configure SMTP配置时，都最好使用ssl加密连接，端口为465．使用Gmail时，也最好用https方式，这样你的网站数据，基本上都在加密通道跑来跑去，还算是比较安全的．</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -1130,7 +1099,7 @@ Path To mysql:/usr/local/mysql/bin/mysql
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (57)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (59)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
@@ -1142,7 +1111,7 @@ Path To mysql:/usr/local/mysql/bin/mysql
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (39)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
@@ -1154,6 +1123,8 @@ Path To mysql:/usr/local/mysql/bin/mysql
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>RapberryPi2在u盘上运行系统</a></li>
+        <li><a href='post/rapberrypi2_yun_xing_docker.html'>RapberryPi2运行Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
@@ -1162,8 +1133,6 @@ Path To mysql:/usr/local/mysql/bin/mysql
         <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
         <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
         <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
-        <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
-        <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
       </ul>
     </div>
   </div>

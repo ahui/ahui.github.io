@@ -45,6 +45,104 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-06-26 04:47:59">
+            <a href="post/macgit_da_xiao_xie_wen_ti.html" title="2015-06-26 04:47:59" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2015-06</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/macgit_da_xiao_xie_wen_ti.html">mac os 及 git 大小写问题</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/mac.html" rel="tag">mac</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>mac os 默认文件系统不区分大小写. 简单解决方法建立一个新的磁盘映像,并使用大小写相关的文件系统,装载后将需要大小写相关的文件放在映像盘上.</p>
+
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/macosfilesystem.png-small" alt="文件系统"></p>
+
+<p>另外 git 默认也不关心大小写问题,临时可用先删除文件，再添加进去的方式解决,或者加入配置选项:</p>
+
+<pre><code>git config core.ignorecase false
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-05-05 12:02:26">
+            <a href="post/abb_geng_xin_ji_bo_ke_diao_zheng.html" title="2015-05-05 12:02:26" rel="bookmark">
+              <span class="entry-date-day">05</span>
+              <span class="entry-date-month-year">2015-05</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/abb_geng_xin_ji_bo_ke_diao_zheng.html">ABB 更新及博客调整</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/python.html" rel="tag">python</a>
+              <a href="tag/blog.html" rel="tag">blog</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>ABB(Ahui Blog Build)断断续续自己一个人在用着, 基本上没太大问题. 为方便生成另外的站点,做了些调整.</p>
+
+<ul>
+<li>config.py 中设置新站点参数,模板调整为通用,从 config中取得站点信息.</li>
+<li>生成的 html 文件名,全部用小写.</li>
+<li>模板加入 goto.html 文件,用于跳转以前的老旧页面到首页.</li>
+<li>模板中加入网站统计变量,统计代码可在 config.py 中设置.</li>
+<li>生成整站时,输出相关信息.</li>
+<li>github 地址为 https://github.com/ahui/abb</li>
+</ul>
+
+<p>其中 goto.html 主要用于自己博客. 因为最早用 wordpress, 后来的 abb 又生成过大小写敏感的 html,导致搜索过来的页面地址有差异. 而生成整站静态 html 时,为了能本地查看,均使用了相对地址, 这样 nginx 的 try_file 重定向的首页,会导致 css,js 无法正常取得,最简便的方法是定向到 goto.html,然后用 JS 重定向到首页.</p>
+
+<p>另外 duosuo 评论,偶尔会导致加载时间达10秒,暂时在模板中去除. </p>
+
+<p>ABB 程序与 <a href="https://github.com/ahui/abb">GITHUB</a> 同步.</p>
+
+<p>最近一次生成信息:</p>
+
+<pre><code>./abb.py build
+总共生成 68 篇文章.
+总共花费时间: 0.098921 秒.
+</code></pre>
+
+<p>生成性能大约为每秒700篇文章,硬件为 RMBP 15, CPU i7.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2015-05-04 06:15:48">
             <a href="post/ssh_wu_fa_lian_jie.html" title="2015-05-04 06:15:48" rel="bookmark">
               <span class="entry-date-day">04</span>
@@ -443,206 +541,6 @@ make
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-06 07:30:17">
-            <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html" title="2014-02-06 07:30:17" rel="bookmark">
-              <span class="entry-date-day">06</span>
-              <span class="entry-date-month-year">2014-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html">用git同步静态网站</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>ABB(Ahui Blog Build)生成的静态html文件，可以用git比较方便的同步到VPS Server上。</p>
-
-<p>首先Server和Client二边都安装好git.</p>
-
-<p>VPS Server上做如下设定后，就不用管了：</p>
-
-<p>创建git仓库目录为www.git，要安全起见，可以换用个普通用户帐号，并修改相应目录及权限。</p>
-
-<pre><code>cd /root/tmp
-mkdir www.git
-cd www.git
-git --bare init
-</code></pre>
-
-<p>建立www根目录，并配置nginx指向。</p>
-
-<pre><code>mkdir /home/wwwstatic/public
-</code></pre>
-
-<p>建立git hook,在Client push文件后，自动checkout到指定的www根目录</p>
-
-<pre><code>cat &gt; hooks/post-receive
-#!/bin/bash
-GIT_WORK_TREE=/home/wwwstatic/public git checkout -f
-</code></pre>
-
-<p>加上可执行属性</p>
-
-<pre><code>chmod +x post-receive
-</code></pre>
-
-<p>Server端设置完毕。</p>
-
-<p>Client端如果还没有ssh key,则用</p>
-
-<pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
-</code></pre>
-
-<p>生成key,然后将~/.ssh/id<em>rsa.pub中的内容复制到Server端的 /root/.ssh/authorized</em>keys中。</p>
-
-<p>然后进入静态html生成目录，做一次初始化。</p>
-
-<pre><code>cd public
-git init
-git remote add ahuius root@ahui.us:/root/tmp/www.git
-</code></pre>
-
-<p>设定完毕。</p>
-
-<p>这样每次用abb bulid整个站点后，执行下sync.sh就可以将新生成的html文件同步到vps的www根目录了。</p>
-
-<pre><code>cat sync.sh
-
-#!/bin/bash
-cd public
-git add .
-git commit -m &quot;ok&quot;
-git push -f ahuius master
-</code></pre>
-
-<p>这篇Blog是完成设定后第一篇被同步的文章.</p>
-
-<pre><code>./sync.sh
-[master 97bc2d2] ok
- 84 files changed, 1000 insertions(+), 671 deletions(-)
- create mode 100644 post/yong_git_tong_bu_jing_tai_wang_zhan.html
-Counting objects: 174, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (88/88), done.
-Writing objects: 100% (88/88), 21.61 KiB, done.
-Total 88 (delta 84), reused 0 (delta 0)
-To root@ahui.us:/root/tmp/www.git
-   7167c21..97bc2d2  master -&gt; master
-</code></pre>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-06 03:58:17">
-            <a href="post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_blog.html" title="2014-02-06 03:58:17" rel="bookmark">
-              <span class="entry-date-day">06</span>
-              <span class="entry-date-month-year">2014-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_blog.html">用addpost生成的第一篇静态Blog</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/python.html" rel="tag">python</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>静态网站生成程序上站测试。
-ohoh,还没取名字...</p>
-
-<p>已完成功能:</p>
-
-<ul>
-<li> cli生成post模板</li>
-<li>根据md文件生成对应的html文件</li>
-<li>根据目录生成整站html文件</li>
-<li>生成首页面index.html</li>
-<li>首页下部生成页码导航</li>
-<li>生成tag目录</li>
-<li>生成最新文章列表</li>
-<li>包含多说的ajax评论</li>
-<li>除多说的ajax评论不支持file://,其他页面均能用file://方式浏览.</li>
-<li>用Contango Theme做了一个默认模板。</li>
-</ul>
-
-<p>wordpress转移方式</p>
-
-<ol>
-<li> 在wordpress中导入所有post到xml文件中</li>
-<li>hexo Pelican 二者都有对应工具，从xml中提取所有post为对应的.md格式文件。建议用hexo的工具，转换得更好一点。本程序支持这二者转换后的格式。</li>
-<li>md格式修正。主要是换行，代码块等，多加点空行。</li>
-<li>生成全站静态html。</li>
-</ol>
-
-<p>运行环境(Ubuntu on Virtualbox)</p>
-
-<p>uname -a</p>
-
-<pre><code>Linux openerp7 3.5.0-17-generic #28-Ubuntu SMP Tue Oct 9 19:32:08 UTC 2012 i686 i686 i686 GNU/Linux
-</code></pre>
-
-<p>cat /proc/cpuinfo</p>
-
-<pre><code>...
-processor       : 3
-vendor_id       : GenuineIntel
-cpu family      : 6
-model           : 58
-model name      : Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
-stepping        : 9
-cpu MHz         : 2394.400
-bogomips        : 4788.80
-</code></pre>
-
-<p>生成速度</p>
-
-<pre><code> ls ./sources | wc
-     59      59    1206
-
- time ./main.py build
-
-real    0m0.390s
-user    0m0.092s
-sys     0m0.120s
-</code></pre>
-
-<p>如果按照这个速度不变，生成一万篇文章需时一分钟多点。</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -687,7 +585,7 @@ sys     0m0.120s
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (57)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (59)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
@@ -699,7 +597,7 @@ sys     0m0.120s
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (39)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
@@ -711,6 +609,8 @@ sys     0m0.120s
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>RapberryPi2在u盘上运行系统</a></li>
+        <li><a href='post/rapberrypi2_yun_xing_docker.html'>RapberryPi2运行Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
@@ -719,8 +619,6 @@ sys     0m0.120s
         <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
         <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
         <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
-        <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
-        <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
       </ul>
     </div>
   </div>

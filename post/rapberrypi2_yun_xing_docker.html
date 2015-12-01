@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Blog转移到新的VPS</title>
+  <title>RapberryPi2运行Docker</title>
   <link href="../css/main.css" rel="stylesheet" type="text/css" />
   <link href="../css/960.css" rel="stylesheet" type="text/css" />
   <style type="text/css" id="custom-background-css">
@@ -44,16 +44,16 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-11-05 12:26:37">
-            <a href="../post/blog-to-new-vps.html" title="2010-11-05 12:26:37" rel="bookmark">
-              <span class="entry-date-day">05</span>
-              <span class="entry-date-month-year">2010-11</span>
+          <time class="entry-date entry-time updated" datetime="2015-12-01 05:46:34">
+            <a href="../post/rapberrypi2_yun_xing_docker.html" title="2015-12-01 05:46:34" rel="bookmark">
+              <span class="entry-date-day">01</span>
+              <span class="entry-date-month-year">2015-12</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="../post/blog-to-new-vps.html">Blog转移到新的VPS</a>
+            <a href="../post/rapberrypi2_yun_xing_docker.html">RapberryPi2运行Docker</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
@@ -67,8 +67,74 @@
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>因为burstnet的线路一直抽风严重,总的来说,不抽的时候少,不得已换了家VPS.
-转移过程相当顺利,直接把网站打包,导出数据库,并复制下apache以及php的配置就ok了.</p>
+        <p><h2>情景</h2>
+
+<ul>
+<li>Rapberry Pi 2 一个</li>
+<li>Mac OS X 系统</li>
+</ul>
+
+<h2>安装步骤</h2>
+
+<p>下载Rapberry Pi 2系统并解压</p>
+
+<pre><code>wget http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip
+unzip hypriot-rpi-20151115-132854.img.zip
+</code></pre>
+
+<p>系统简介</p>
+
+<pre><code>Detailed Features of HypriotOS “Hector”
+a modern operating system based on Raspbian Jessie
+a recent Raspberry Pi firmware and Device Tree to support a huge range of hardware add-ons
+a kernel optimized for Docker-awesomeness: Kernel 4.1.12 with support for OverlayFS
+support for Raspberry Pi 1 &amp; 2 with the same SD card image
+Docker Engine 1.9.0
+Docker Compose 1.5.1
+Docker Machine 0.4.1
+Docker Swarm 1.0.0
+support for network hotplugging
+out-of-the-box support for WiFi
+support for Avahi (aka mDNS aka Apple Bonjour)
+support for Open vSwitch
+our own package repository to easily update individual components
+</code></pre>
+
+<p>检查下载是否正确</p>
+
+<pre><code>shasum -a 256 hypriot-rpi-20151115-132854.img.zip
+089bc64fc5f050f263aa65a67fac5fe48f8721c51f8a31f3d96fa426bc04674d  hypriot-rpi-20151115-132854.img.zip
+</code></pre>
+
+<p>准备好一张容量最少4G 的microSD卡. 查找其系统编号</p>
+
+<pre><code>diskutil list
+</code></pre>
+
+<p><code>
+    ...
+    /dev/disk2
+    #:                       TYPE NAME                    SIZE          IDENTIFIER
+    0:     FDisk_partition_scheme                        *4.0 GB     disk2
+    1:                 DOS_FAT_32 NO NAME                 4.0 GB   
+    ...
+</code><br>
+这里为/dev/disk2,别看错.</p>
+
+<p>取消挂载</p>
+
+<pre><code>diskutil unmountdisk /dev/disk2
+</code></pre>
+
+<p>写入系统到 SD 卡,设备名 disk2前有个字母 &#39;r&#39;, 这样能加速写入</p>
+
+<pre><code>sudo dd if=hypriot-rpi-20151115-132854.img of=/dev/rdisk2 bs=1m
+1430+1 records in
+1430+0 records out
+1499463680 bytes transferred in 112.464700 secs (13332750 bytes/sec)
+</code></pre>
+
+<p>sd 卡放在 pi 2上,启动吧.</p>
 </p>
       </div>
 
@@ -76,7 +142,7 @@
 
  
 <!-- Duoshuo Comment BEGIN -->
-  <!-- <div class="ds-thread" data-title="Blog转移到新的VPS" data-thread-key="blog-to-new-vps.html" ></div> -->
+  <!-- <div class="ds-thread" data-title="RapberryPi2运行Docker" data-thread-key="rapberrypi2_yun_xing_docker.html" ></div> -->
 
   </div>
       </div> 

@@ -45,6 +45,207 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-12-01 05:48:48">
+            <a href="post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html" title="2015-12-01 05:48:48" rel="bookmark">
+              <span class="entry-date-day">01</span>
+              <span class="entry-date-month-year">2015-12</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html">RapberryPi2在u盘上运行系统</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h2>场景</h2>
+
+<p>注:系统可以全部安装在 U 盘上,但引导必须有一个 SD 卡.</p>
+
+<ul>
+<li>小容量 microSD卡, 64M+即可,此处为8G</li>
+<li>大容量 U 盘,此处为16G,或 USB 外置硬盘,功耗要低点</li>
+</ul>
+
+<h2>安装步骤</h2>
+
+<p>按 [Rapberry Pi 2 运行 Docker]操作, 将 SD 卡部分换成大容量 U 盘.</p>
+
+<p>SD 卡格式化为 FAT或 FAT32, 放入电脑.</p>
+
+<p>将 U 盘上 FAT 分区中的所有文件 COPY 到 SD 卡根目录.</p>
+
+<p>更改SD 卡 cmdline.txt 文件中的 root=/dev/mmcblk0p2为 root=/dev/sda2</p>
+
+<pre><code>+dwc_otg.lpm_enable=0 console=tty1 root=/dev/sda2 rootfstype=ext4 cgroup-enable=memory swapaccount=1 elevator=deadline rootwait console=ttyAMA0,115200 kgdboc=ttyAMA0,115200
+</code></pre>
+
+<p>sd卡,u 盘均插在 pi 2上并启动.</p>
+
+<p>启动后 u 盘容量没有完全使用,手工修正</p>
+
+<pre><code>fidks /dev/sda
+p
+</code></pre>
+
+<p>记下 sda2的起始点</p>
+
+<pre><code>/dev/sda2       133120 2429686 2296567  1.1G 83 Linux
+</code></pre>
+
+<p>重做 sda2分区</p>
+
+<pre><code>d
+2
+n
+p
+2
+133120 或 回车
+回车
+w
+</code></pre>
+
+<p>重启一下.</p>
+
+<pre><code>partprobe
+/sbin/resize2fs /dev/disk/by-label/root
+reboot
+</code></pre>
+
+<p>df 一下.</p>
+
+<p><code>
+df
+Filesystem     1K-blocks   Used Available Use% Mounted on
+/dev/root       14583904 800080  13134556   6% /
+devtmpfs          469540      0    469540   0% /dev
+tmpfs             473852      0    473852   0% /dev/shm
+tmpfs             473852   6272    467580   2% /run
+tmpfs               5120      0      5120   0% /run/lock
+tmpfs             473852      0    473852   0% /sys/fs/cgroup
+/dev/mmcblk0p1   7776384  45312   7731072   1% /boot
+</code></p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-12-01 05:46:34">
+            <a href="post/rapberrypi2_yun_xing_docker.html" title="2015-12-01 05:46:34" rel="bookmark">
+              <span class="entry-date-day">01</span>
+              <span class="entry-date-month-year">2015-12</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/rapberrypi2_yun_xing_docker.html">RapberryPi2运行Docker</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h2>情景</h2>
+
+<ul>
+<li>Rapberry Pi 2 一个</li>
+<li>Mac OS X 系统</li>
+</ul>
+
+<h2>安装步骤</h2>
+
+<p>下载Rapberry Pi 2系统并解压</p>
+
+<pre><code>wget http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip
+unzip hypriot-rpi-20151115-132854.img.zip
+</code></pre>
+
+<p>系统简介</p>
+
+<pre><code>Detailed Features of HypriotOS “Hector”
+a modern operating system based on Raspbian Jessie
+a recent Raspberry Pi firmware and Device Tree to support a huge range of hardware add-ons
+a kernel optimized for Docker-awesomeness: Kernel 4.1.12 with support for OverlayFS
+support for Raspberry Pi 1 &amp; 2 with the same SD card image
+Docker Engine 1.9.0
+Docker Compose 1.5.1
+Docker Machine 0.4.1
+Docker Swarm 1.0.0
+support for network hotplugging
+out-of-the-box support for WiFi
+support for Avahi (aka mDNS aka Apple Bonjour)
+support for Open vSwitch
+our own package repository to easily update individual components
+</code></pre>
+
+<p>检查下载是否正确</p>
+
+<pre><code>shasum -a 256 hypriot-rpi-20151115-132854.img.zip
+089bc64fc5f050f263aa65a67fac5fe48f8721c51f8a31f3d96fa426bc04674d  hypriot-rpi-20151115-132854.img.zip
+</code></pre>
+
+<p>准备好一张容量最少4G 的microSD卡. 查找其系统编号</p>
+
+<pre><code>diskutil list
+</code></pre>
+
+<p><code>
+    ...
+    /dev/disk2
+    #:                       TYPE NAME                    SIZE          IDENTIFIER
+    0:     FDisk_partition_scheme                        *4.0 GB     disk2
+    1:                 DOS_FAT_32 NO NAME                 4.0 GB   
+    ...
+</code><br>
+这里为/dev/disk2,别看错.</p>
+
+<p>取消挂载</p>
+
+<pre><code>diskutil unmountdisk /dev/disk2
+</code></pre>
+
+<p>写入系统到 SD 卡,设备名 disk2前有个字母 &#39;r&#39;, 这样能加速写入</p>
+
+<pre><code>sudo dd if=hypriot-rpi-20151115-132854.img of=/dev/rdisk2 bs=1m
+1430+1 records in
+1430+0 records out
+1499463680 bytes transferred in 112.464700 secs (13332750 bytes/sec)
+</code></pre>
+
+<p>sd 卡放在 pi 2上,启动吧.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2015-11-11 02:13:17">
             <a href="post/shu_ju_ku_cun_qu_su_du_you_hua.html" title="2015-11-11 02:13:17" rel="bookmark">
               <span class="entry-date-day">11</span>
@@ -436,142 +637,6 @@ pipe.execute()
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2015-08-15 02:15:35">
-            <a href="post/2015turkey_you_ji_day8antalya.html" title="2015-08-15 02:15:35" rel="bookmark">
-              <span class="entry-date-day">15</span>
-              <span class="entry-date-month-year">2015-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/2015turkey_you_ji_day8antalya.html">2015 turkey 游记 day 8 Antalya</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/turkey.html" rel="tag">turkey</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><h1>day 8 Antalya</h1>
-
-<ul>
-<li>7.28</li>
-</ul>
-
-<p>一路 D350到 Antalya,大部分路段都在维修的样子,相当长一部分双向只有二车道. 是一路过来状况最差的一段路. 因为要经过长长的山区,估计比较长时间难有改善.</p>
-
-<p>路过测速警察之前,碰到了对方车道闪大灯提醒. 考虑到路况,无法/也千万不要超速行使.</p>
-
-<p>Antalya 有大城市的样子,比如有轨电车,shopping mall,塞车以及乱窜马路.</p>
-
-<p>行程1140KM,中间加了100TL 油.</p>
-
-<p>晚餐去了天书记载的饭店,人气很旺,菜单很 Q.</p>
-
-<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_2434.JPG-small" onclick="popme(this.src)" /></p>
-
-<h2>tips</h2>
-
-<ul>
-<li>考虑到时间,没有走 kas 风景路.但因为 D350糟糕的路况,200KM 走了三个半小时.</li>
-<li>对面来车大灯闪烁或滴滴,很可能是在提醒你前面有超速警察.</li>
-<li>有几个危险路口会显示你的当前速度以及限制速度,一般为50以下,请按指示限速,否则容易飞出去.如果真飞出去,估计也不用抢救了.</li>
-<li>午餐的烧烤拼盘是按人头算的,不是按份数. 语言沟通的确是是个大问题.</li>
-</ul>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2015-08-15 02:14:39">
-            <a href="post/2015turkey_you_ji_day6fethiye.html" title="2015-08-15 02:14:39" rel="bookmark">
-              <span class="entry-date-day">15</span>
-              <span class="entry-date-month-year">2015-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/2015turkey_you_ji_day6fethiye.html">2015 turkey 游记 day 6/7 Fethiye</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/turkey.html" rel="tag">turkey</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><h1>day 6 Fethiye</h1>
-
-<ul>
-<li>7.26</li>
-</ul>
-
-<p>吃完午饭去130KM 外的下一站,Fethiye. 仍然只有 D 级路,但有一大半刚翻修完,路况很好.</p>
-
-<p>市内车位比较难找,转了好几圈,连收费停车场也是满的.</p>
-
-<p>几个古迹在山腰,太阳还没落上时上去,快要晒成人干.</p>
-
-<p>街边买到好吃又便宜的樱桃. 5TL/KG.</p>
-
-<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_2230.JPG-small" onclick="popme(this.src)" /></p>
-
-<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_2231.JPG-small" onclick="popme(this.src)" /></p>
-
-<h2>tips</h2>
-
-<ul>
-<li>比较好的游玩时间是上午11点前,以及晚上8点后.其他时间太热.</li>
-</ul>
-
-<h1>day 7 Fethiye</h1>
-
-<ul>
-<li>7.27</li>
-</ul>
-
-<p>早餐后去死海公园. </p>
-
-<p>滑翔伞没敢试,直接进公园. 一人6TL,进车则不算人头,一车22TL. 进去后走到头,北边是细沙滩,无风浪,是 VIP 位置,要进得早才有位置. 海水很清,最边上都有一群群小鱼游来游去.</p>
-
-<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/turkeyIMG_2240.JPG-small" onclick="popme(this.src)" /></p>
-
-<p>著名的鱼市只是路过了一下,味道太重,没敢在里面吃东西.</p>
-
-<h2>tips</h2>
-
-<ul>
-<li>进公园前准备好下海玩水的所有用具,里面刀比较快.</li>
-<li>里面摆好的伞和躺椅是要收费的,没摆的地方可随意.</li>
-<li>博物馆通票很好用,没有自动检票机只用出示一下.</li>
-<li>出海费用和 Marmaris 差不多.一般出海时间都是10.30am-5:30pm.</li>
-</ul>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -616,7 +681,7 @@ pipe.execute()
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (57)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (59)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
@@ -628,7 +693,7 @@ pipe.execute()
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (39)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
@@ -640,6 +705,8 @@ pipe.execute()
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>RapberryPi2在u盘上运行系统</a></li>
+        <li><a href='post/rapberrypi2_yun_xing_docker.html'>RapberryPi2运行Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
@@ -648,8 +715,6 @@ pipe.execute()
         <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
         <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
         <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
-        <li><a href='post/2015turkey_you_ji_day5marmaris.html'>2015 turkey 游记 day 5 Marmaris</a></li>
-        <li><a href='post/2015turkey_you_ji_day4bodrum.html'>2015 turkey 游记 day 4 Bodrum</a></li>
       </ul>
     </div>
   </div>
