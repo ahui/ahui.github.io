@@ -45,6 +45,77 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-06-26 05:03:28">
+            <a href="post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html" title="2015-06-26 05:03:28" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2015-06</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/abb_jia_ru_zai_xian_bian_ji_gong_neng.html">ABB加入在线编辑功能</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/abb.html" rel="tag">abb</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>ABB 加入在线编辑功能,可以在线新建,编辑 md 文件,并发布静态网站.</p>
+
+<p><img src="http://7xjy4n.com1.z0.glb.clouddn.com/abbonlineeditor.png-small" onclick="popme(this.src)" /></p>
+
+<p>为简化代码</p>
+
+<ul>
+<li>图片功能用 七牛存储 解决.(所以上传功能没有开发.)</li>
+<li>访问控制用 nginx 解决.</li>
+<li>文件同步用 git 解决.</li>
+</ul>
+
+<p>使用方法:</p>
+
+<h2>写新文章</h2>
+
+<ul>
+<li>点击 新建,会生成 md 模板,在模板中修改 tags 并加入正文. 插入图片用 七牛存储 的外链.</li>
+<li>点击 保存,会在服务端保存 md 文件. 未保存的文件不会被发布, 但会自动保存在客户端.</li>
+<li>点击 发布,会生成整个网站的静态页面,并发布到指定的目录.</li>
+</ul>
+
+<h2>编辑文章</h2>
+
+<ul>
+<li>点击 打开,选择要编辑的文章名</li>
+<li>编辑 tags 或正文</li>
+<li>点击 保存</li>
+<li>点击 发布</li>
+</ul>
+
+<h2>删除文章</h2>
+
+<ul>
+<li>点击 打开,打开要删除的文章.</li>
+<li>点击 删除</li>
+<li>确认后,会删除当前打开(编辑)的文章.</li>
+</ul>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2015-06-26 04:47:59">
             <a href="post/macgit_da_xiao_xie_wen_ti.html" title="2015-06-26 04:47:59" rel="bookmark">
               <span class="entry-date-day">26</span>
@@ -501,46 +572,6 @@ make
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-04-16 05:07:04">
-            <a href="post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html" title="2014-04-16 05:07:04" rel="bookmark">
-              <span class="entry-date-day">16</span>
-              <span class="entry-date-month-year">2014-04</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html">R6300V2上能用的SHADOWSOCKS-LIBEV</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>R6300v2上安装opkg，opkg再安装python，然后运行python版本的shadowsocks成功．不过加密方式只能用table，无法正常访问google的相关服务．</p>
-
-<p>一时没搞定python的m2crypto，无法启用其他加密方式，于是直接编译shadowsocks-libev，　ss-local采用命令行方式指定参数运行成功，采用aes-256-cfb加密方式，google相关网站访问正常．</p>
-
-<p>移步下载 <a href="http://pan.baidu.com/s/1bncR2CB">shadowsocks-libev on R6300v2</a></p>
-
-<p>Arm7系cpu应该通用，但未测试．</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -585,7 +616,7 @@ make
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (59)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
@@ -609,6 +640,7 @@ make
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
         <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
         <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
@@ -618,7 +650,6 @@ make
         <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
         <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
         <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
-        <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
       </ul>
     </div>
   </div>

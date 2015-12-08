@@ -45,6 +45,46 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2014-04-16 05:07:04">
+            <a href="post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html" title="2014-04-16 05:07:04" rel="bookmark">
+              <span class="entry-date-day">16</span>
+              <span class="entry-date-month-year">2014-04</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html">R6300V2上能用的SHADOWSOCKS-LIBEV</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>R6300v2上安装opkg，opkg再安装python，然后运行python版本的shadowsocks成功．不过加密方式只能用table，无法正常访问google的相关服务．</p>
+
+<p>一时没搞定python的m2crypto，无法启用其他加密方式，于是直接编译shadowsocks-libev，　ss-local采用命令行方式指定参数运行成功，采用aes-256-cfb加密方式，google相关网站访问正常．</p>
+
+<p>移步下载 <a href="http://pan.baidu.com/s/1bncR2CB">shadowsocks-libev on R6300v2</a></p>
+
+<p>Arm7系cpu应该通用，但未测试．</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2014-02-06 07:30:17">
             <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html" title="2014-02-06 07:30:17" rel="bookmark">
               <span class="entry-date-day">06</span>
@@ -561,54 +601,6 @@ ngrep: V1.45, $Revision: 1.93 $
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2013-08-31 16:18:30">
-            <a href="post/test-100m.html" title="2013-08-31 16:18:30" rel="bookmark">
-              <span class="entry-date-day">31</span>
-              <span class="entry-date-month-year">2013-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/test-100m.html">联通100M体验</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>北京联通的临时提速100M，每月20小时左右。&nbsp;</p>
-
-<p>提速前:</p>
-
-<p><img src="http://ahui.us/wp-content/uploads/2013/08/2907409316-0818.png" alt="2907409316-0818"></p>
-
-<p>提速后:</p>
-
-<p><img src="http://ahui.us/wp-content/uploads/2013/08/2935441928.png" alt="2935441928"> </p>
-
-<p>其实在提速前，已经比刚安装的速度稍好了一点，主要是上传多给了一点点。
-提速后，明显上传加了很多，不过下载速度没快多少，最主要原因是加在前面的路由器性能不行。</p>
-
-<p>换了个新路由测试提速后:</p>
-
-<p><img src="http://ahui.us/wp-content/uploads/2013/09/2950349391.png" alt="2950349391"></p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -653,7 +645,7 @@ ngrep: V1.45, $Revision: 1.93 $
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (59)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
@@ -677,6 +669,7 @@ ngrep: V1.45, $Revision: 1.93 $
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
         <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
         <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
@@ -686,7 +679,6 @@ ngrep: V1.45, $Revision: 1.93 $
         <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
         <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
         <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
-        <li><a href='post/2015turkey_you_ji_day6fethiye.html'>2015 turkey 游记 day 6/7 Fethiye</a></li>
       </ul>
     </div>
   </div>
