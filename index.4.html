@@ -45,6 +45,85 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2013-10-09 13:33:44">
+            <a href="post/netgear-r6300v2-ngrep.html" title="2013-10-09 13:33:44" rel="bookmark">
+              <span class="entry-date-day">09</span>
+              <span class="entry-date-month-year">2013-10</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/netgear-r6300v2-ngrep.html">Netgear R6300v2上编译ngrep</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>R6300v2的dd-wrt已经<a href="http://www.myopenrouter.com/download/50404/DD-WRT-for-R6300v2">有一个版本可用</a>，但可惜wifi接入还是有问题，只好换回原厂固件。打算稍修改一下原厂固件，让它能自动运行usb设备上指定目录下的脚本，这样暂时没有好用的dd-wrt的时候，可以满足现有的大部分情况。</p>
+
+<p>第一步，则是要先完成能用的编译环境，并能成功编译出能在R6300v2上运行的程序。因为常用ngrep，所以第一步则以编译能用的ngrep为目标.</p>
+
+<p><a href="http://wikidevi.com/wiki/Netgear_R6300_v2">R6300v2硬件参数</a></p>
+
+<p>工具链是hndtools-arm-linux-2.6.36-uclibc-4.5.3,和R6250的一样，可以下载<a href="ftp://downloads.netgear.com/files/GPL/R6250-V1.0.0.62_with_toolchain_source.zip">R6250的原代码</a>，取得工具链。并顺便下载<a href="ftp://downloads.netgear.com/files/GPL/R6300v2-V1.0.1.72_1.0.21-src.tar.zip">R6300的源代码</a>备用.</p>
+
+<p>主系统为ubuntu 12.04 32位，创建/projects/hnd/tools/linux目录，并解压R6250源码包中的hndtools-arm-linux-2.6.36-uclibc-4.5.3.tar到此目录。</p>
+
+<p>将新编译工具目录放到PATH环境的最前面:</p>
+
+<pre><code>export PATH=/projects/hnd/tools/linux/hndtools-arm-linux-2.6.36-uclibc-4.5.3/bin:$PATH
+</code></pre>
+
+<p>下载libpcap-1.4.0.tar.gz及ngrep-1.45.tar并解压。</p>
+
+<p>编译libpcap: </p>
+
+<pre><code>./configure CC=arm-uclibc-linux-2.6.36-gcc --host=arm-linux --with-pcap=linux &amp;&amp; make
+</code></pre>
+
+<p>编译ngrep: </p>
+
+<pre><code>./configure CC=arm-uclibc-linux-2.6.36-gcc CXX=arm-uclibc-linux-2.6.36-g++ AR=arm-uclibc-linux-2.6.36-ar RANLIB=arm-uclibc-linux-2.6.36-ranlib LD=arm-uclibc-linux-2.6.36-ld  --prefix=/usr/local/arm/ngrep --host=arm-linux --build=arm --with-pcap-includes=../libpcap-1.4.0 &amp;&amp; make
+</code></pre>
+
+<p>检查编译出来的文件:</p>
+
+<pre><code>file ngrep
+ngrep: ELF 32-bit LSB executable, ARM, version 1 (SYSV), dynamically linked (uses shared libs), stripped
+</code></pre>
+
+<p>开启R6300v2的telnet(R6300v2 ip为192.168.1.1)
+下载<a href="https://code.google.com/p/netgear-telnetenable/">telnetenable.py</a></p>
+
+<pre><code>python telnetenable.py 192.168.1.1 $(arp -n | awk &quot;/192.168.1.1/&quot;&#39;  { gsub(/:/, &quot;&quot;, $3); print toupper($3)}&#39;) Gearguy Geardog
+</code></pre>
+
+<p>出现&quot;Sent telnet enable payload to &#39;192.168.1.1:23&#39;&quot;则成功，否则多运行几次.</p>
+
+<p>将ngrep copy到u盘，并在R6300上挂载，然后telnet到R6300v2,到/tmp/mnt/usb0/part1下找到ngrep并运行之。</p>
+
+<pre><code>./ngrep -V
+ngrep: V1.45, $Revision: 1.93 $
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2013-08-31 16:18:30">
             <a href="post/test-100m.html" title="2013-08-31 16:18:30" rel="bookmark">
               <span class="entry-date-day">31</span>
@@ -376,59 +455,6 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2012-08-21 10:35:38">
-            <a href="post/chrome-cache-dir.html" title="2012-08-21 10:35:38" rel="bookmark">
-              <span class="entry-date-day">21</span>
-              <span class="entry-date-month-year">2012-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/chrome-cache-dir.html">Chrome字体及缓存目录修改</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>字体+阴影，打开</p>
-
-<pre><code>C:\Users\[用户名]\AppData\Local\Google\Chrome\User Data\Default\User StyleSheets\Custome.css
-</code></pre>
-
-<p>添加</p>
-
-<pre><code>*{font-family:Arial,&quot;Microsoft Yahei&quot; !important;}
-*{text-shadow: silver 0px 0px 1px !important;}
-</code></pre>
-
-<p>其中第一行将所有字体改为雅黑，第二行设置1px的字体阴影。1440以上高分屏，设置第二行效果很好。1366的只添加第一行。</p>
-
-<p>缓存目录
-shift+右 点击Chrome图标，属性，目标后添加</p>
-
-<pre><code>--disk-cache-dir=“Z:\Users\&quot;
-</code></pre>
-
-<p>其中Z:为RAM盘，设置RAM盘并修改系统TEMP目录后，会自动建立类Users[用户名]的目录。否则如果指定的Users目录不存在，Chrome启动会报错。</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -480,8 +506,9 @@ shift+右 点击Chrome图标，属性，目标后添加</p>
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
@@ -497,6 +524,7 @@ shift+右 点击Chrome图标，属性，目标后添加</p>
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
         <li><a href='post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
         <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
         <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
@@ -506,7 +534,6 @@ shift+右 点击Chrome图标，属性，目标后添加</p>
         <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
         <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
         <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
-        <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
       </ul>
     </div>
   </div>

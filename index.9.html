@@ -45,6 +45,164 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-08-04 22:21:35">
+            <a href="post/tomato-pandora-optware.html" title="2010-08-04 22:21:35" rel="bookmark">
+              <span class="entry-date-day">04</span>
+              <span class="entry-date-month-year">2010-08</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/tomato-pandora-optware.html">Tomato Pandora之Optware软件安装</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>现在用的路由器安装的是Tomato Pandora Version 1.27.0475,有时候要在路由器上抓包,发现这个系统没有配置ngrep或者tcpdump,也没有ipkg,没法直接安装现成的opt包.
+不过发现作者有写接口程序,只是没直接公布.</p>
+
+<ol>
+<li><p>login到路由器,下载ipkg包的接口程序,用于安装ipkg</p>
+
+<pre><code>wget http://pandoric.googlecode.com/svn/Pandora%20%e8%84%b1%e6%9c%ba%e8%bd%af%e4%bb%b6/optware-install.sh
+</code></pre>
+
+<p>不过发现直接下载的文件换行符有问题,要处理一下,或者copy下面的内容,存成optware-install.sh后再上传到路由器里面.</p>
+
+<pre><code>#!/bin/sh
+# Optware pre-installation script, Leon Kos 2006
+
+REPOSITORY=http://pandoric.googlecode.com/svn/optware/stable
+TMP=/tmp
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
+unset LD_PRELOAD
+unset LD_LIBRARY_PATH
+
+_check_config()
+{
+    echo &quot;Checking system config ...&quot;
+    GATEWAY=$(netstat -rn |
+    sed -n &#39;s/^0.0.0.0[ \t]\{1,\}\([0-9.]\{8,\}\).*/\1/p&#39; )
+    if [ -n &quot;${GATEWAY}&quot; ]; then
+    echo &quot;Using ${GATEWAY} as default gateway.&quot;
+    else
+    echo &quot;Error: No default gateway set!&quot;
+    exit 2
+    fi
+    if [ -s /etc/resolv.conf ]; then
+    echo &quot;Using the following nameserver(s):&quot;
+    if grep nameserver /etc/resolv.conf ; then
+            GATEWAY_SUBNET=$(echo &quot;${GATEWAY}&quot; |
+        sed &#39;s/\.[0-9]\{1,3\}\.[0-9]\{1,3\}$//&#39;)
+        if [ &quot;${GATEWAY_SUBNET}&quot; = &quot;192.168&quot; ]; then
+        if grep -q ${GATEWAY} /etc/resolv.conf ; then
+            echo &quot;Gateway ${GATEWAY} is also nameserver.&quot;
+        else
+            echo &quot;Warning: local nameserver is different than gateway!&quot;
+            echo &quot;Check config or enter:&quot;
+            if test -L /etc/resolv.conf ; then 
+              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /tmp/resolv.conf&quot;
+            else
+              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /etc/resolv.conf&quot;
+            fi
+            echo &quot;to correct this.&quot;
+        fi
+        fi
+    else
+        echo &quot;Error: No nameserver specified in /etc/resolv.conf&quot;
+        exit 5
+    fi
+    else
+    echo &quot;Error: Empty or nonexistent /etc/resolv.conf&quot;
+    exit 3
+    fi
+
+    if mount | grep -q /opt ; then
+    [ -d /opt/etc ] &amp;&amp; echo &quot;Warning: /opt partition not empty!&quot;
+    else
+    echo &quot;Error: /opt partition not mounted.&quot;
+    echo &quot;Enter&quot;
+    echo &quot;    mkdir /jffs/opt&quot;
+    echo &quot;    mount -o bind /jffs/opt /opt&quot;
+    echo &quot;to correct this.&quot;
+    exit 4
+    fi
+}
+
+_install_package()
+{
+    PACKAGE=$1
+    echo &quot;Installing package ${PACKAGE} ...&quot;
+    wget -O ${TMP}/${PACKAGE} ${REPOSITORY}/${PACKAGE}
+    cd  ${TMP} 
+    tar xzf ${TMP}/${PACKAGE} 
+    tar xzf ${TMP}/control.tar.gz
+    cd /
+    if [ -f ${TMP}/preinst ] ; then
+    sh ${TMP}/preinst
+    rm -f ${TMP}/preints
+    fi
+    tar xzf ${TMP}/data.tar.gz
+    if [ -f ${TMP}/postinst ] ; then
+    sh ${TMP}/postinst
+    rm -f ${TMP}/postinst
+    fi
+    rm -f ${TMP}/data.tar.gz
+    rm -f ${TMP}/control.tar.gz
+    rm -f ${TMP}/control
+    rm -f ${TMP}/${PACKAGE}
+}
+
+_check_config
+_install_package uclibc-opt_0.9.28-13_mipsel.ipk
+_install_package ipkg-opt_0.99.163-10_mipsel.ipk
+/opt/sbin/ldconfig
+/opt/bin/ipkg update
+/opt/bin/ipkg install -force-reinstall uclibc-opt
+/opt/bin/ipkg install -force-reinstall ipkg-opt
+</code></pre></li>
+<li><p>进入路由器web界面.启用JFFS
+如果启用后,空间不够3M,也就没戏了.我用的一共16M空间,系统占了8M,还空8M.但opt的初始安装,要近3M左右空间.</p></li>
+<li><p>运行下面的命令安装ipkg</p>
+
+<pre><code>mkdir /jffs/opt
+mount -o bind /jffs/opt /opt
+sh optware-install.sh
+</code></pre></li>
+<li><p>修改下/opt/etc/ipkg.conf,源设置为</p>
+
+<pre><code>src/gz optware http://pandoric.googlecode.com/svn/optware/stable
+</code></pre>
+
+<p>如果能正常下载,这步不改,用默认源也可</p></li>
+<li><p>ok.能安装想要的软件了</p>
+
+<pre><code>ipkg install ngerp
+</code></pre></li>
+</ol>
+
+<p>如果路由系统升级,这些要重做一次.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-08-03 00:56:29">
             <a href="post/firefoxlogin.html" title="2010-08-03 00:56:29" rel="bookmark">
               <span class="entry-date-day">03</span>
@@ -754,124 +912,6 @@ tracert www.wowtaiwan.com.tw
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-07-19 15:34:31">
-            <a href="post/asongt.html" title="2010-07-19 15:34:31" rel="bookmark">
-              <span class="entry-date-day">19</span>
-              <span class="entry-date-month-year">2010-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/asongt.html">一首不错的歌以及你不得不掌握的一些的技术</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/ssh.html" rel="tag">ssh</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>以前曾偶然听到李家怡的原创歌曲：365，觉得很普通的同时又很动听．在网上查了下，youtube上保存的版本不错，有繁体中文字幕，包括歌词，特地记录在这里．</p>
-
-<p>如果你也来到里，看到的却是一个大白框的话，那也是很正常的现象，因为youtube有时候是个不存在的网站，或者说是个看不见的网站．如果你有兴趣听这歌，或者是有兴趣围观下传说中的网站，那么，滚动鼠标到白框后面，做点技术层面上的事后，再刷新本页面吧．</p>
-
-<!--more-->
-
-<p><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/Ncu43zOHT0o&amp;hl=zh_CN&amp;fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/Ncu43zOHT0o&amp;hl=zh_CN&amp;fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object> </p>
-
-<p>歌词如下:
-<pre class="brush:plain">
-李家怡 - &quot;365&quot;<br>
-词/曲/演唱 李家怡</p>
-
-<p>闷热的夏天 平淡的秋天
-突然间在我的眼里都变特别
-烦躁的春天 懒惰的冬天
-都没关系 只要有你在我的身边
-我开始发现 所谓的永远
-原来远在天近在眼前</p>
-
-<p>No matter day or night
-You are still my light
-You make me feel that all the things will be alright
-No matter how time flies
-You are still by my side
-I&#39;ll see the peace
-You know I need you be my guy</p>
-
-<p>难过的阴天 无聊的雨天
-幸福的感觉满溢心里 没改变
-失去的昨天 未知的明天
-都没关系 因为我们有的是今天
-你终於出现 我的生命线
-从此甜蜜的继续蔓延</p>
-
-<p>No matter day or night
-You are still my light
-You make me feel that all the things will be alright
-No matter how time find
-You are still by my side
-I&#39;ll see the peace
-You know I need you be my guy</p>
-
-<p>Oh~
-Da da, da da, da da, da da
-Oh da da da da da</p>
-
-<p>不管白天黑夜 离不开的视线
-答应我一直到白头都不改变
-</pre></p>
-
-<p>仍然强烈建议你用firefox访问本站，一是因为本站访问效果没有在IE下进行调整测试，二是有些活在firefox下方便得多．当然还有更多的理由，就不多说了．
-首先你可以在这里获取一个免费的国外ssh帐号:</p>
-
-<p><a href="http://www.freessh.us/">美国免费SSH账户|美国免费SSH账号</a></p>
-
-<p>或者你在twitter follow@freesshus也许能要到一个, BTW，那个twitter也是个看不到的网站，如果你能正常访问，下面的内容就可以跳过了．</p>
-
-<p>然后从这里下载个小工具(windows类操作系统，如果你用linux,直接使用ssh命令，打开监听并指定端口即可)</p>
-
-<p><a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">plink.exe</a></p>
-
-<p>放桌面上，做一个快捷方式，将属性中的目标改为
-<pre class="brush:plain">
-～\plink.exe -pw 密码　用户名@主机名 -N -C -D 127.0.0.1:7070
-</pre>
-其中~为plink.exe所在目录，保持原样，假如从freessh.us取得的密码为 JuR3K2,主机为一号主机，那么plink.exe的参数如下面的样子
-<pre class="brush:plain">
-～\plink.exe -pw JuR3K2　freessh@a.freessh.us-N -C -D 127.0.0.1:7070
-</pre>
-第一次运行会提示保存证书，确认就行．连接成功会显示形如
-<pre class="brush:plain">
-Using username &quot;freessh&quot;.
-</pre>
-这样就ok了．</p>
-
-<p>Firefox推荐安装AotoProxy插件，代理服务器选择默认的SSH -D就行，然后刷新本页．
-IE要在Internet选项里，把套接字代理服务器设置为127.0.0.1，端口7070，然后刷新本页．</p>
-
-<p>可能有的问题：
-最近freessh相当火爆，如果服务器状态显示繁忙，密码就拿不到了．如果你有耐心，评论里留下email，我会发送一个最长一个月有效的香港ssh帐号给你试用，限额前五名．
-现在还能用的ssh国外帐号申请网站
-<a href="http://www.cjb.net/">http://www.cjb.net/</a>
-add一个新的free ssh提供网站
-<a href="http://ssh.daili.vc/">http://ssh.daili.vc/</a></p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -923,8 +963,9 @@ add一个新的free ssh提供网站
         <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
@@ -940,6 +981,7 @@ add一个新的free ssh提供网站
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
         <li><a href='post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
         <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
         <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
@@ -949,7 +991,6 @@ add一个新的free ssh提供网站
         <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
         <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
         <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
-        <li><a href='post/2015turkey_you_ji_day8antalya.html'>2015 turkey 游记 day 8 Antalya</a></li>
       </ul>
     </div>
   </div>
