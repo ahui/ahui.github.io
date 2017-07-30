@@ -45,6 +45,95 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-09-09 14:54:14">
+            <a href="post/archlinux-eeepc-701.html" title="2010-09-09 14:54:14" rel="bookmark">
+              <span class="entry-date-day">09</span>
+              <span class="entry-date-month-year">2010-09</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/archlinux-eeepc-701.html">ArchLinux在Eeepc 701上的安装</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><ol>
+<li>下载archlinux-2010.05-core-i686.iso</li>
+<li>安装grub4dos到u盘</li>
+<li><p>copy archlinux-2010.05-core-i686.iso到u盘.编辑menu.lst,加入</p>
+
+<pre><code>title Arch CD ISO
+map --heads=0 --sectors-per-track=0 (hd0,0)/archlinux-2010.05-core-i686.iso (hd32)
+map --hook
+chainloader (hd32)
+boot
+</code></pre></li>
+<li><p>epc设置u盘启动</p></li>
+<li><p>没有找到安装源,自动跳出shell时运行</p>
+
+<pre><code>mkdir /iso
+mount –r –t vfat /dev/sdb1 /iso
+modprobe loop
+losetup /dev/loop6 /iso/archlinux-2010.05-core-i686.iso
+ln –s /dev/loop6 /dev/disk/by-label/ARCH_201005
+exit
+</code></pre></li>
+<li><p>继续安装,分区时,ssd 4g为ext2格式,全部mount到/,无swap</p></li>
+<li><p>编辑配置文件,fstab中,mount /时加入noatiome参数</p></li>
+<li><p>编辑配置文件,hosts.deny修改为ALL: ALL EXCEPT 192.168.2.*: DENY</p></li>
+<li><p>编辑配置文件,rc.local,禁用syslog-ng及netfs</p></li>
+<li><p>编辑配置文件,pacman.conf加入</p>
+
+<pre><code>[eee]
+Server = http://code.toofishes.net/packages/eee
+</code></pre></li>
+<li><p>安装完成后.重启</p></li>
+<li><p>编辑配置文件/etc/pacman.d/mirrorlist,加入</p>
+
+<pre><code>Server = http://mirrors.163.com/archlinux/$repo/os/i686
+</code></pre></li>
+<li><p>pacman 安装openssh</p></li>
+<li><p>编辑rc.local,启动sshd,编辑hosts.allow,加入</p>
+
+<pre><code>sshd:192.168.2.*:ALLOW
+</code></pre></li>
+<li><p>安装电源管理</p>
+
+<pre><code>wget http://www.ihku.biz/eee/acpi-eee/acpi-eee-10.0-1-i686.pkg.tar.gz
+pacman -U acpi-eee-10.0-1-i686.pkg.tar.gz
+</code></pre>
+
+<p>根据提示修改二处配置</p></li>
+<li><p>pacman -S kernel-eee</p></li>
+<li><p>编辑/boot/grub/menu.lst,加入后重启动</p>
+
+<pre><code># (2) Arch Linux
+title  Arch Linux Eee kernel
+root   (hd0,0)
+kernel /boot/vmlinuzeee root=/dev/sda1 ro
+</code></pre></li>
+</ol>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-09-02 22:02:00">
             <a href="post/burstnet-cras.html" title="2010-09-02 22:02:00" rel="bookmark">
               <span class="entry-date-day">02</span>
@@ -328,101 +417,6 @@
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-08-06 20:50:59">
-            <a href="post/android-2-2-x86-vm.html" title="2010-08-06 20:50:59" rel="bookmark">
-              <span class="entry-date-day">06</span>
-              <span class="entry-date-month-year">2010-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/android-2-2-x86-vm.html">Android 2.2 x86虚拟机版编译记录</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>Android x86项目提供的还是1.6版本的iso,<a href="http://cwhuang.info/">这里</a>做了很多的最新版本2.2的工作,可以由他上传的源码编译一个Virutal Box能使用的vm.iso文件.</p>
-
-<p>编译主机用的Ubuntu 10.04,其他OS可能要安装的相关依赖文件有所不同.
-10.04默认没有sun jdk,要加个新源 </p>
-
-<pre><code>http://archive.canonical.com/ lucid partner.
-</code></pre>
-
-<p>1.安装相关依赖文件</p>
-
-<pre><code>sudo add-apt-repository &quot;deb http://archive.canonical.com/ lucid partner&quot;
-sudo apt-get update
-sudo apt-get install git-core 
-sudo apt-get install sun-java6-jdk 
-sudo apt-get install flex 
-sudo apt-get install bison 
-sudo apt-get install gperf
-sudo apt-get install libsdl-dev
-sudo apt-get install libwxgtk2.6-dev 
-sudo apt-get install build-essential 
-sudo apt-get install curl 
-sudo apt-get install valgrind
-</code></pre>
-
-<p>2.安装repo</p>
-
-<pre><code>cd
-mkdir bin
-cd bin
-curl http://android.git.kernel.org/repo &gt; ~/bin/repo
-chmod a+x repo
-</code></pre>
-
-<p>3.下载同步源代码</p>
-
-<pre><code>cd
-mkdir android2.2
-cd android2.2
- ../bin/repo init -u git://android-x86.git.sf.net/gitroot/android-x86/manifest.git -b froyo-x86
- ../bin/repo sync
-</code></pre>
-
-<p>同步要花n久时间.取决于网速,我这200+KB/s跑了四个多小时.</p>
-
-<p>4.编译成vm.iso  其中编译参数-j4是我有四个cpu核心,所以设定同时运行4个进程.</p>
-
-<pre><code> . build/envsetup.sh
-lunch vm-eng 
-m -j4 iso_img  &#39; cpu x 4
-</code></pre>
-
-<p>编译也要花n久时间,取决于CPU性能,我的Xeon 4核心花了近三个小时.
-然后你就能在out下找到vm.iso了.文件大小约557,714KB.
-新开一个Virtual Box虚拟机,挂载vm.iso,直接光盘运行或安装到硬盘都可.鼠标独占要去掉,否则不会显示鼠标.而且鼠标的速度慢了点,得等作者在新版本里进行修正了.</p>
-
-<p>ISO文件已经上传到网盘,<a href="http://ahui.us/?p=234">点此查看</a>.</p>
-
-<p>无图无真相,给几张在我的VB中运行的靓照.多图杀猫啊~ 点击查看清晰无码大图.</p>
-
-<p>[gallery link=&quot;file&quot; columns=&quot;2&quot; orderby=&quot;title&quot;]</p>
-
-<p>-----END-----</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -476,7 +470,7 @@ m -j4 iso_img  &#39; cpu x 4
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
-        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
@@ -492,6 +486,7 @@ m -j4 iso_img  &#39; cpu x 4
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/canadianreferralcodeformodelxnew.html'>Canadian referral code for tesla Model X and S = save  CAD 1400,  153 days left</a></li>
         <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
         <li><a href='post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
         <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
@@ -501,7 +496,6 @@ m -j4 iso_img  &#39; cpu x 4
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
         <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
         <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
-        <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
       </ul>
     </div>
   </div>

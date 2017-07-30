@@ -45,6 +45,52 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-12-20 15:56:36">
+            <a href="post/backup-vps-move.html" title="2010-12-20 15:56:36" rel="bookmark">
+              <span class="entry-date-day">20</span>
+              <span class="entry-date-month-year">2010-12</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/backup-vps-move.html">整站备份&amp;VPS转移</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>刚搬的VPS因为硬件故障,不得已又新换了一家.
+再一次重做好整个站点后,索性全部打个包,下次只要解压下就能快速恢复.</p>
+
+<pre><code>tar vzcf vps.all.20101220.tar.gz /* --exclude /dev --exclude /home --exclude /lost+found --exclude /mnt --exclude /proc --exclude /tmp --exclude /var --exclude /boot --exclude /root --exclude /sys
+</code></pre>
+
+<p>如果网站数据没放在/usr/local/apache2/htdoc下,比如nginx常放在/home/www,则去掉--exclude /home或者单独再打个包</p>
+
+<pre><code>tar vzcf ahuiblog.20101220.tar.gz /home/www/
+</code></pre>
+
+<p>恢复系统时,先备份下/etc/sysconfig/network文件,再解开包. 然后还原network文件后重启动.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2010-12-20 12:55:44">
             <a href="post/m-ls-color.html" title="2010-12-20 12:55:44" rel="bookmark">
               <span class="entry-date-day">20</span>
@@ -441,95 +487,6 @@ http://feelssh.tk/
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-09-09 14:54:14">
-            <a href="post/archlinux-eeepc-701.html" title="2010-09-09 14:54:14" rel="bookmark">
-              <span class="entry-date-day">09</span>
-              <span class="entry-date-month-year">2010-09</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/archlinux-eeepc-701.html">ArchLinux在Eeepc 701上的安装</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><ol>
-<li>下载archlinux-2010.05-core-i686.iso</li>
-<li>安装grub4dos到u盘</li>
-<li><p>copy archlinux-2010.05-core-i686.iso到u盘.编辑menu.lst,加入</p>
-
-<pre><code>title Arch CD ISO
-map --heads=0 --sectors-per-track=0 (hd0,0)/archlinux-2010.05-core-i686.iso (hd32)
-map --hook
-chainloader (hd32)
-boot
-</code></pre></li>
-<li><p>epc设置u盘启动</p></li>
-<li><p>没有找到安装源,自动跳出shell时运行</p>
-
-<pre><code>mkdir /iso
-mount –r –t vfat /dev/sdb1 /iso
-modprobe loop
-losetup /dev/loop6 /iso/archlinux-2010.05-core-i686.iso
-ln –s /dev/loop6 /dev/disk/by-label/ARCH_201005
-exit
-</code></pre></li>
-<li><p>继续安装,分区时,ssd 4g为ext2格式,全部mount到/,无swap</p></li>
-<li><p>编辑配置文件,fstab中,mount /时加入noatiome参数</p></li>
-<li><p>编辑配置文件,hosts.deny修改为ALL: ALL EXCEPT 192.168.2.*: DENY</p></li>
-<li><p>编辑配置文件,rc.local,禁用syslog-ng及netfs</p></li>
-<li><p>编辑配置文件,pacman.conf加入</p>
-
-<pre><code>[eee]
-Server = http://code.toofishes.net/packages/eee
-</code></pre></li>
-<li><p>安装完成后.重启</p></li>
-<li><p>编辑配置文件/etc/pacman.d/mirrorlist,加入</p>
-
-<pre><code>Server = http://mirrors.163.com/archlinux/$repo/os/i686
-</code></pre></li>
-<li><p>pacman 安装openssh</p></li>
-<li><p>编辑rc.local,启动sshd,编辑hosts.allow,加入</p>
-
-<pre><code>sshd:192.168.2.*:ALLOW
-</code></pre></li>
-<li><p>安装电源管理</p>
-
-<pre><code>wget http://www.ihku.biz/eee/acpi-eee/acpi-eee-10.0-1-i686.pkg.tar.gz
-pacman -U acpi-eee-10.0-1-i686.pkg.tar.gz
-</code></pre>
-
-<p>根据提示修改二处配置</p></li>
-<li><p>pacman -S kernel-eee</p></li>
-<li><p>编辑/boot/grub/menu.lst,加入后重启动</p>
-
-<pre><code># (2) Arch Linux
-title  Arch Linux Eee kernel
-root   (hd0,0)
-kernel /boot/vmlinuzeee root=/dev/sda1 ro
-</code></pre></li>
-</ol>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -583,7 +540,7 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
-        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
@@ -599,6 +556,7 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/canadianreferralcodeformodelxnew.html'>Canadian referral code for tesla Model X and S = save  CAD 1400,  153 days left</a></li>
         <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
         <li><a href='post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
         <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
@@ -608,7 +566,6 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
         <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
         <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
         <li><a href='post/2015turkey_you_ji_day10goreme.html'>2015 turkey 游记 day 10/11 Goreme</a></li>
-        <li><a href='post/2015turkey_you_ji_day9konya.html'>2015 turkey 游记 day 9 Konya</a></li>
       </ul>
     </div>
   </div>
