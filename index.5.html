@@ -45,53 +45,32 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-12-10 11:16:43">
-            <a href="post/linux-kernel-econet-root-shell.html" title="2010-12-10 11:16:43" rel="bookmark">
-              <span class="entry-date-day">10</span>
-              <span class="entry-date-month-year">2010-12</span>
+          <time class="entry-date entry-time updated" datetime="2013-01-31 22:02:02">
+            <a href="post/adsl20.html" title="2013-01-31 22:02:02" rel="bookmark">
+              <span class="entry-date-day">31</span>
+              <span class="entry-date-month-year">2013-01</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/linux-kernel-econet-root-shell.html">[转贴]Linux Kernel Econet漏洞权限提升脚本</a>
+            <a href="post/adsl20.html">总算用上光纤了</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/blog.html" rel="tag">blog</a>
               <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/ssh.html" rel="tag">ssh</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>原贴出处
-http://www.vpsee.com/2010/12/linux-kernel-root-level-exploit-leveraging-multiple-previous-vulnerabilities/
-脚本出处
-http://marc.info/?l=full-disclosure&amp;m=129175358621826&amp;w=2</p>
+        <p><p>从12年12月起跑联通营业厅折腾五六趟才算光改完成,然后又经过一个月的2M包月,才用上20M的光纤,不过上传依然限速1M.</p>
 
-<p>受影响系统：
-Debian Linux 5.0 x
-Linux kernel 2.6.0 - 2.6.36
-Linux kernel 2.6.0 - 2.6.26
-Ubuntu Linux 9.10 - 10.04</p>
-
-<p>已测试系统
-Ubuntu 10.4 提升成功
-Centos 5.5 提升失败</p>
-
-<p>脚本下载
-http://ahui.us/get/public/ahui/root.c.txt
-已编译脚本
-http://ahui.us/get/public/ahui/root.txt</p>
-
-<p>Acorn Econet/AUN 协议
-Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑上，用于访问文件和打印机服务器。它使用本地的Econet 网络卡。AUN 是高层的 Econet 协议，运行于通常的以太网连接，它运行在 UDP 包协议之上，这两个协议轮流运行于IP协议上。
-参考:http://en.wikipedia.org/wiki/Econet</p>
+<p><a href="http://ahui.us/wp-content/uploads/2013/01/2475759828.png"><img src="http://ahui.us/wp-content/uploads/2013/01/2475759828.png" alt="" title="2475759828"></a></p>
 </p>
       </div>
 
@@ -102,255 +81,16 @@ Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑�
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-11-19 16:48:56">
-            <a href="post/pidgin-msn-cer.html" title="2010-11-19 16:48:56" rel="bookmark">
-              <span class="entry-date-day">19</span>
-              <span class="entry-date-month-year">2010-11</span>
+          <time class="entry-date entry-time updated" datetime="2012-09-22 16:14:32">
+            <a href="post/freenas-8-0-1-on-iscsi.html" title="2012-09-22 16:14:32" rel="bookmark">
+              <span class="entry-date-day">22</span>
+              <span class="entry-date-month-year">2012-09</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/pidgin-msn-cer.html">Pidgin MSN证书链错误解决办法</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>win7下把C:\Users[用户名]\AppData\Roaming.purple\certificates\x509\tls_peers
-下的omega.contacts.msn.com文件内容替换成下面内容.并加上只读属性.
-或者在 工具-&gt;证书里,替换掉同名证书.</p>
-
-<pre><code>-----BEGIN CERTIFICATE-----
-MIIGeDCCBWCgAwIBAgIKfdrgSQAIAAHIuTANBgkqhkiG9w0BAQUFADCBizETMBEG
-CgmSJomT8ixkARkWA2NvbTEZMBcGCgmSJomT8ixkARkWCW1pY3Jvc29mdDEUMBIG
-CgmSJomT8ixkARkWBGNvcnAxFzAVBgoJkiaJk/IsZAEZFgdyZWRtb25kMSowKAYD
-VQQDEyFNaWNyb3NvZnQgU2VjdXJlIFNlcnZlciBBdXRob3JpdHkwHhcNMTAxMTE1
-MjEyODE5WhcNMTIxMTE0MjEyODE5WjB2MQswCQYDVQQGEwJVUzELMAkGA1UECBMC
-V0ExEDAOBgNVBAcTB1JlZG1vbmQxDDAKBgNVBAoTA01TTjEdMBsGA1UECxMUTVNO
-IENvbnRhY3QgU2VydmljZXMxGzAZBgNVBAMMEiouY29udGFjdHMubXNuLmNvbTCC
-ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJnXhdENETaZ8YFfenWCuky3
-Fke/oWgUOEbgvaRuZusd2LnvoSiqH++2lkV0JJlIQ+7jLLN8MY7VhlHQmkLC3x44
-KZn2IktMVgTBGMKnvbyYVAnRsjt/rVhQrQeHVEQzv5WXx//3FKmXWAuJiuRj9PZ2
-KsNqPJgaaa5cuOu4oynO9fH5/ZtJIeUf7bC4Wu++o7jTu5zOhIa7R1buE9FXFF33
-vQ1vHi4p9zR2Pi/i2nUpEnzeNCLl/8F/Tf+658SvIC4EzxrYcj+fit6sAnNUfsOE
-1SIk9YLD+tS0fln1afbcDvH0ib5Xm7u2/o6ZmxQU0mrAkfQectsKpZLJj03neBsC
-AwEAAaOCAvAwggLsMAsGA1UdDwQEAwIEsDBEBgkqhkiG9w0BCQ8ENzA1MA4GCCqG
-SIb3DQMCAgIAgDAOBggqhkiG9w0DBAICAIAwBwYFKw4DAgcwCgYIKoZIhvcNAwcw
-HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMB0GA1UdDgQWBBRciAVJ/Vsj
-sAlZoNG/Zs+rILsPNDAfBgNVHSMEGDAWgBQIQuPbThFm87UIxUDbVXwzRhGDODCC
-AQoGA1UdHwSCAQEwgf4wgfuggfiggfWGWGh0dHA6Ly9tc2NybC5taWNyb3NvZnQu
-Y29tL3BraS9tc2NvcnAvY3JsL01pY3Jvc29mdCUyMFNlY3VyZSUyMFNlcnZlciUy
-MEF1dGhvcml0eSg4KS5jcmyGVmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2kv
-bXNjb3JwL2NybC9NaWNyb3NvZnQlMjBTZWN1cmUlMjBTZXJ2ZXIlMjBBdXRob3Jp
-dHkoOCkuY3JshkFodHRwOi8vY29ycHBraS9jcmwvTWljcm9zb2Z0JTIwU2VjdXJl
-JTIwU2VydmVyJTIwQXV0aG9yaXR5KDgpLmNybDCBvwYIKwYBBQUHAQEEgbIwga8w
-XgYIKwYBBQUHMAKGUmh0dHA6Ly93d3cubWljcm9zb2Z0LmNvbS9wa2kvbXNjb3Jw
-L01pY3Jvc29mdCUyMFNlY3VyZSUyMFNlcnZlciUyMEF1dGhvcml0eSg4KS5jcnQw
-TQYIKwYBBQUHMAKGQWh0dHA6Ly9jb3JwcGtpL2FpYS9NaWNyb3NvZnQlMjBTZWN1
-cmUlMjBTZXJ2ZXIlMjBBdXRob3JpdHkoOCkuY3J0MD8GCSsGAQQBgjcVBwQyMDAG
-KCsGAQQBgjcVCIPPiU2t8gKFoZ8MgvrKfYHh+3SBT4PC7YUIjqnShWMCAWQCAQow
-JwYJKwYBBAGCNxUKBBowGDAKBggrBgEFBQcDAjAKBggrBgEFBQcDATANBgkqhkiG
-9w0BAQUFAAOCAQEAbbWUY/5r/Tv/kefqNUT5aGVejrkbG4229gnJLcv+uQTEg0Gg
-xfvLr77N1z2j57FameJwz6DeTRbK8MYVPoP+z5o4vM3F3GxLm7aBklYQ/7G0TIp/
-13z01a5aBGvZH8umzex3YrAnhJEcucSN5WaT6r9uwT7imdbsCgfFPdiIgS5iHdcl
-k/3QSpau+4/XZgh/8V/FMN9KEFYGvEhMb5EVzKJ8pqF9Jy9Mfzqev3BtSREiljCt
-lJuiRamxWgQoeNVTAI+J2YAsD8Qon1iZiHl08uHdgXWZiGDtLPcd9aIiL7/vi/+D
-7w3bhyHPFr+/13BCIWSfKnSRj/g6YoHnhF4gyQ==
------END CERTIFICATE-----
-</code></pre>
-
-<p>证书原地址:</p>
-
-<p>http://heiher.info/sftp/files/omega.contacts.msn.com</p>
-
-<p>or</p>
-
-<p>http://webupd8.googlecode.com/files/omega.contacts.msn.com</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-11-05 12:54:05">
-            <a href="post/openvz-vps-ipv6-add.html" title="2010-11-05 12:54:05" rel="bookmark">
-              <span class="entry-date-day">05</span>
-              <span class="entry-date-month-year">2010-11</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/openvz-vps-ipv6-add.html">Openvz VPS的IPV6地址添加</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/ipv6.html" rel="tag">ipv6</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/vps.html" rel="tag">vps</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>burstnet的openvz vps提供了二个源生的ipv6地址,MASK是128位的.<br>
-新的vps也是openvz,不过没有源生ipv6.但可以申请he.net的ipv6块,然后添加到vps上.<br>
-首先要开通openvz的tun支持,确认</p>
-
-<pre><code>cat /dev/net/tun
-</code></pre>
-
-<p>返回值为:</p>
-
-<pre><code>cat: /dev/net/tun: File descriptor in bad state
-</code></pre>
-
-<p>访问https://www.tunnelbroker.net,申请地址块,会拿到一个MASK为64位的地址.  还真是浪费啊,要都这么分下去,ipv6的理论地址一下就少了一半.<br>
-记下Server IPv4 address,Client IPv4 address以及Client IPv6 address.前面的地址可选择离vps近的机房,中间地址是vps ip.最后一个是分配给你的2的64次方的地址中的第一个地址.按he的分配规则,是类似x:x:x:x::1/64的地址块.前64位已经固定,后64位全部给你自己分配,但x:x:x:x::1/128分配给了服务器做中转,你能用到的第一个ipv6地址,应该是x:x:x:x::2/128.当然用64的mask也可以.</p>
-
-<p>openvz没有sit设备,用软件模拟</p>
-
-<pre><code>mkdir tb
-cd tb
-wget http://tb-tun.googlecode.com/files/tb-tun_r18.tar.gz
-tar zxf tb-tun_r18.tar.gz
-gcc tb_userspace.c -l pthread -o tb_userspace
-setsid ./tb_userspace tb [Server IPv4 address] [Client IPv4 address] sit &gt; /dev/null
-</code></pre>
-
-<p>成功创建tb设备后,启用ipv6</p>
-
-<pre><code>ifconfig tb up
-ifconfig tb inet6 add x:x:x:x::2/64
-ifconfig tb mtu 1480
-ip -6 route add default dev tb
-</code></pre>
-
-<p>看看设置:</p>
-
-<pre><code> ifconfig tb
-tb        Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
-          inet6 addr: x:x:x:x::2/64 Scope:Global
-          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1480  Metric:1
-          RX packets:200 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:181 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:500
-          RX bytes:28387 (27.7 KiB)  TX bytes:21990 (21.4 KiB)
-</code></pre>
-
-<p>总的来说,这ipv6地址用得真的很浪费,虽然我已经申请了三块64位的地址....</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-11-05 12:26:37">
-            <a href="post/blog-to-new-vps.html" title="2010-11-05 12:26:37" rel="bookmark">
-              <span class="entry-date-day">05</span>
-              <span class="entry-date-month-year">2010-11</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/blog-to-new-vps.html">Blog转移到新的VPS</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>因为burstnet的线路一直抽风严重,总的来说,不抽的时候少,不得已换了家VPS.
-转移过程相当顺利,直接把网站打包,导出数据库,并复制下apache以及php的配置就ok了.</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-10-26 15:55:13">
-            <a href="post/free-ssh.html" title="2010-10-26 15:55:13" rel="bookmark">
-              <span class="entry-date-day">26</span>
-              <span class="entry-date-month-year">2010-10</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/free-ssh.html">收集的几个free的ssh帐号提供网站</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>有效期不一定.
-ssh789.tk
-ssh.emdao.com
-fuckvpn.tk
-1984bbs.org
-blog.paying.org.ru
-http://feelssh.tk/
-没有全部测试,全看RP</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-09-09 14:54:14">
-            <a href="post/archlinux-eeepc-701.html" title="2010-09-09 14:54:14" rel="bookmark">
-              <span class="entry-date-day">09</span>
-              <span class="entry-date-month-year">2010-09</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/archlinux-eeepc-701.html">ArchLinux在Eeepc 701上的安装</a>
+            <a href="post/freenas-8-0-1-on-iscsi.html">freeNAS 8.0.1 上 iSCSI存在的几个问题</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
@@ -365,61 +105,13 @@ http://feelssh.tk/
 
       <div class="entry-content clearfix">
         <p><ol>
-<li>下载archlinux-2010.05-core-i686.iso</li>
-<li>安装grub4dos到u盘</li>
-<li><p>copy archlinux-2010.05-core-i686.iso到u盘.编辑menu.lst,加入</p>
-
-<pre><code>title Arch CD ISO
-map --heads=0 --sectors-per-track=0 (hd0,0)/archlinux-2010.05-core-i686.iso (hd32)
-map --hook
-chainloader (hd32)
-boot
-</code></pre></li>
-<li><p>epc设置u盘启动</p></li>
-<li><p>没有找到安装源,自动跳出shell时运行</p>
-
-<pre><code>mkdir /iso
-mount –r –t vfat /dev/sdb1 /iso
-modprobe loop
-losetup /dev/loop6 /iso/archlinux-2010.05-core-i686.iso
-ln –s /dev/loop6 /dev/disk/by-label/ARCH_201005
-exit
-</code></pre></li>
-<li><p>继续安装,分区时,ssd 4g为ext2格式,全部mount到/,无swap</p></li>
-<li><p>编辑配置文件,fstab中,mount /时加入noatiome参数</p></li>
-<li><p>编辑配置文件,hosts.deny修改为ALL: ALL EXCEPT 192.168.2.*: DENY</p></li>
-<li><p>编辑配置文件,rc.local,禁用syslog-ng及netfs</p></li>
-<li><p>编辑配置文件,pacman.conf加入</p>
-
-<pre><code>[eee]
-Server = http://code.toofishes.net/packages/eee
-</code></pre></li>
-<li><p>安装完成后.重启</p></li>
-<li><p>编辑配置文件/etc/pacman.d/mirrorlist,加入</p>
-
-<pre><code>Server = http://mirrors.163.com/archlinux/$repo/os/i686
-</code></pre></li>
-<li><p>pacman 安装openssh</p></li>
-<li><p>编辑rc.local,启动sshd,编辑hosts.allow,加入</p>
-
-<pre><code>sshd:192.168.2.*:ALLOW
-</code></pre></li>
-<li><p>安装电源管理</p>
-
-<pre><code>wget http://www.ihku.biz/eee/acpi-eee/acpi-eee-10.0-1-i686.pkg.tar.gz
-pacman -U acpi-eee-10.0-1-i686.pkg.tar.gz
-</code></pre>
-
-<p>根据提示修改二处配置</p></li>
-<li><p>pacman -S kernel-eee</p></li>
-<li><p>编辑/boot/grub/menu.lst,加入后重启动</p>
-
-<pre><code># (2) Arch Linux
-title  Arch Linux Eee kernel
-root   (hd0,0)
-kernel /boot/vmlinuzeee root=/dev/sda1 ro
-</code></pre></li>
+<li>二台win 7机器A,B同时连接上iSCSI,分别在iSCSI盘上新建立的文件，互相不可见，需要删除当前的iSCSI连接，再重设。</li>
+<li>同上A，B二机短时间内写同一目录，大部分情况下会导致些目录损坏，不能再访问。</li>
+<li>在iSCSI上COPY大文件后，马上重启NAS,文件大部分情况下会丢失。</li>
+<li>iSCSI盘采用NTFS时，COPY文件速度会降低一些。</li>
 </ol>
+
+<p>可见freeNAS 8.0.1版本上的iSCSI存在比较大的问题，只有在长期开着NAS并且长期只有一个写入用户的情况下，才能放心使用。其他大多数情况，应该采用其他文件共享协议。</p>
 </p>
       </div>
 
@@ -430,16 +122,102 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-09-02 22:02:00">
-            <a href="post/burstnet-cras.html" title="2010-09-02 22:02:00" rel="bookmark">
-              <span class="entry-date-day">02</span>
-              <span class="entry-date-month-year">2010-09</span>
+          <time class="entry-date entry-time updated" datetime="2012-08-21 10:35:38">
+            <a href="post/chrome-cache-dir.html" title="2012-08-21 10:35:38" rel="bookmark">
+              <span class="entry-date-day">21</span>
+              <span class="entry-date-month-year">2012-08</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/burstnet-cras.html">burstnet vps这周多次抽风</a>
+            <a href="post/chrome-cache-dir.html">Chrome字体及缓存目录修改</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>字体+阴影，打开</p>
+
+<pre><code>C:\Users\[用户名]\AppData\Local\Google\Chrome\User Data\Default\User StyleSheets\Custome.css
+</code></pre>
+
+<p>添加</p>
+
+<pre><code>*{font-family:Arial,&quot;Microsoft Yahei&quot; !important;}
+*{text-shadow: silver 0px 0px 1px !important;}
+</code></pre>
+
+<p>其中第一行将所有字体改为雅黑，第二行设置1px的字体阴影。1440以上高分屏，设置第二行效果很好。1366的只添加第一行。</p>
+
+<p>缓存目录
+shift+右 点击Chrome图标，属性，目标后添加</p>
+
+<pre><code>--disk-cache-dir=“Z:\Users\&quot;
+</code></pre>
+
+<p>其中Z:为RAM盘，设置RAM盘并修改系统TEMP目录后，会自动建立类Users[用户名]的目录。否则如果指定的Users目录不存在，Chrome启动会报错。</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2012-07-10 19:21:11">
+            <a href="post/skype-en.html" title="2012-07-10 19:21:11" rel="bookmark">
+              <span class="entry-date-day">10</span>
+              <span class="entry-date-month-year">2012-07</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/skype-en.html">skype 国际版下载地址</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>http://download.skype.com/SkypeSetupFull.exe </p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2012-05-03 16:41:25">
+            <a href="post/linux_youku_antiad.html" title="2012-05-03 16:41:25" rel="bookmark">
+              <span class="entry-date-day">03</span>
+              <span class="entry-date-month-year">2012-05</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/linux_youku_antiad.html">linux下youku去广告+黑屏</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
@@ -453,7 +231,39 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>在burstnet的VPS这周多次抽风，轻点的ping time out,严重的有二次，main node重启动之后，我的VPS没有启动，N个小时后才发现．给我解释说是别的客户占用太多资源，看来是要考虑换地了.</p>
+        <p><p>去广告
+hosts加入</p>
+
+<pre><code>127.0.0.1 atm.youku.com
+127.0.0.1 Fvid.atm.youku.com
+127.0.0.1 html.atm.youku.com
+127.0.0.1 valb.atm.youku.com
+127.0.0.1 valf.atm.youku.com
+127.0.0.1 valo.atm.youku.com
+127.0.0.1 valp.atm.youku.com
+127.0.0.1 lstat.youku.com
+127.0.0.1 speed.lstat.youku.com
+127.0.0.1 urchin.lstat.youku.com
+127.0.0.1 stat.youku.com
+127.0.0.1 static.lstat.youku.com
+127.0.0.1 valc.atm.youku.com
+127.0.0.1 vid.atm.youku.com
+127.0.0.1 walp.atm.youku.com
+</code></pre>
+
+<p>去黑屏</p>
+
+<pre><code>cd ~/.macromedia/Flash_Player/#SharedObjects/xxx/
+</code></pre>
+
+<p>xxx为随机串</p>
+
+<pre><code>rm -tf static.youku.com
+touch static.youku.com
+sudo chown root.root static.youku.com
+</code></pre>
+
+<p>重启浏览器。</p>
 </p>
       </div>
 
@@ -464,32 +274,207 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2010-08-27 22:49:44">
-            <a href="post/wii-227.html" title="2010-08-27 22:49:44" rel="bookmark">
-              <span class="entry-date-day">27</span>
-              <span class="entry-date-month-year">2010-08</span>
+          <time class="entry-date entry-time updated" datetime="2011-10-24 16:24:01">
+            <a href="post/diy-nas-softeare.html" title="2011-10-24 16:24:01" rel="bookmark">
+              <span class="entry-date-day">24</span>
+              <span class="entry-date-month-year">2011-10</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/wii-227.html">Wii保龄球记录227</a>
+            <a href="post/diy-nas-softeare.html">DIY家用NAS之软件篇</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/game.html" rel="tag">game</a>
-              <a href="tag/wii.html" rel="tag">wii</a>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>记录再次更新,227喽~</p>
+        <p><p>NAS系统的选择,首先放弃了windows系统. 然后在DIY linux与现成开源的类linux nas系统中,确定用现成的freenas,基于freebsd的nas. </p>
 
-<p><a href="http://ahui.us/wp-content/uploads/2010/08/wii227.jpg"><img src="http://ahui.us/wp-content/uploads/2010/08/wii227-300x200.jpg" alt="" title="wii227"></a></p>
+<p>freenas现在主版本有7.x 与8.x二个系列. 7.x的风格更类linux一点,配置时要先加硬盘,格式化,再mount到对应目录,最后再共享目录.</p>
+
+<p>不过对于我配置的特定硬件,7.x    无法自动认出板上的网卡以及sata接口. 网卡驱动倒是可以换一个,不过认不出sata接口却无法解决,这样系统启动后一个硬盘都找不到.</p>
+
+<p>8.x系列,封装得更好一点,配置也简单很多. 当然DIY的自由度也少了很多.  另外8.x对ZFS的支持要完善很多,用raid z相当方便.</p>
+
+<ol>
+<li>首先去http://www.freenas.org/下载FreeNAS-8.0.2-RELEASE-amd64-Full_Install.xz,因为用到了8G内存,必须用64位版本,而且zfs文件系统,要求内存越大越好,6G+是必要的.</li>
+<li>用7zip解开FreeNAS-8.0.2-RELEASE-amd64-Full<em>Install.xz,是个2G左右的FreeNAS-8.0.2-RELEASE-amd64-Full</em>Install文件</li>
+<li>用dd或physdiskwrite.exe写到一个2G以上的u盘上.用u盘做系统盘,一是能省下一个sata接口以后好扩充,二是8.x的freenas不能再使用系统盘上的空闲空间.</li>
+<li>启动nas并配置好ip地址后web登录,默认帐号为admin/freenas</li>
+<li>在Storage中,用Create Volume,选取三块硬盘,fs选择zfs,zaid z模式.命名为public. 这时就创建好了一个总容易为3.8T的raid z卷. 并且以后所有的目录分配或iscsi都基于public卷.</li>
+<li>Create ZFS Dataset用来创建不用的应用目录,用于分配给不同的用户或是用作不同的用途.</li>
+<li>Create ZFS Volume创建一个指定容量的大文件,用于iscsi的虚拟磁盘.</li>
+<li>配置好后,在System-&gt;Settings,-&gt;Save Config里,保存好当前配置.这样万一系统损坏或u盘物理损坏后,通过前四步,然后导入现有配置就能恢复.</li>
+<li>最后在Services中,启用CIFS,FTP以及iSCSI三个主要共享功能.</li>
+</ol>
+
+<p>这样能通过ftp,windows的网上邻居,linux的smb,以及iscsi访问nas上的空间. </p>
+
+<p>1000Mbps网络环境中,上下传速度其中以iscsi速度最快,约70MB/s左右,然后是ftp,60MB/s左右,网上邻居要慢点,40~50MB/s左右. 100Mbps网络环境三者都能比较稳定在10MB/s左右. 由此可见,使用nas,1000Mbps的网络环境是必要的.</p>
+
+<p>最后从总功耗以及传输速度来看,基本上满足了自己的要求.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2011-10-08 14:40:46">
+            <a href="post/diy_nas_hw.html" title="2011-10-08 14:40:46" rel="bookmark">
+              <span class="entry-date-day">08</span>
+              <span class="entry-date-month-year">2011-10</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/diy_nas_hw.html">DIY家用NAS之硬件篇</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/sofeware.html" rel="tag">sofeware</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>一则硬盘空间一直比较紧张,二则现在硬盘质量不再象以前那么可靠,数据容易丢失,于是计划购置一个能做阵列的家用NAS机器. 仔细研究了一下国内外不少品牌或山寨的NAS,最后比较满意希捷BlackArmor NAS 400系列. 可惜的是国内一直没有售,而且价格好象也悄悄涨过一次,不带硬盘拿下来也得3K多了. </p>
+
+<p>既然现成的不满意,就自己配一个好了.</p>
+
+<p>想要达到的目的:</p>
+
+<ol>
+<li>整机加4块左右硬盘的功耗要控制在50W左右.</li>
+<li>至少要能上4块硬盘,最好能升级到8块左右硬盘.能做RAID 5.</li>
+<li>千兆网络环境下,要有60MB/s的上下传速率.</li>
+<li>除了能做NAS,还要能增加SVN server之类的应用.</li>
+<li>有可能做HTPC,这样得有一个过得去的显卡或者至少有hdmi输出.</li>
+<li>噪音尽量小.</li>
+<li>不带硬盘价格控制在2K以下</li>
+</ol>
+
+<p>本来先考虑的atom平台,cpu功耗相当小,可惜加上对应的主板后就难看了点. 然后只能转向amd apu系列.  RAID5要消耗比较多的CPU资源,因此E350的性能要好得多. 再查询E350整合主板,品牌牌子有GIGABYTE和ASUS二家.此外梅捷,七彩虹都有类似的主板. 另外这类主板主要分二类,一是只有USB2以及SATA3G的,二是带USB3以及SATA6G的.显然后者参数要美妙得多.</p>
+
+<ol>
+<li>技嘉（GIGABYTE）GA-E350N-USB3, 1.6G双核CPU,集成HD 6310显卡,2USB3,4 SATA 6G,CPU带风扇. 功耗约22w. 699大洋.</li>
+<li>Asus APU E35M1-M PRO FUSION,1.6G双核CPU,集成HD 6310显卡,2USB3,5 SATA 6G,1 ESATA 6G,静音设计,无风扇. 功耗约22w. 1299大洋.</li>
+</ol>
+
+<p>这二块入眼的主板其实本不用考虑选哪个,ASUS的5SATA,无风扇设计,简直就是为NAS设计的. 可我还是纠结了二天才确定下来,因为ASUS的要1299块,TB也得1100+,而GIGABYTE的只要699块啊~,于是我决定用699块的.除了我一向勤俭节约外,主要还是考虑万一配出来的NAS不满意,这不就能减少不少损失么......当然前期4块硬盘也足够使用了. 至于那个明显是噪音制造者的CPU风扇,我就当没看见好了.</p>
+
+<p>机箱有大小二种选择,小机箱省地,大机箱散热和扩展性要好不少. 我觉得4块硬盘挤一起,那热量也挺吓人的,还是用大点的机箱好了.
+电源得配个好点的.烧主板烧硬盘的电源,碰到过不少. 查了一下JD上的存货,配了TT的机箱+电源:</p>
+
+<ol>
+<li>TT 金刚500高效电源,5SATA电源头,带14cm风扇一个.299大洋.</li>
+<li>TT Commander MS-I指挥官居中塔机箱,7HD位. 带12cm风扇一个.279大洋.</li>
+</ol>
+
+<p>主板最高支持8G内存,考虑到要使用ZFS文件系统,要求最少6G内存,这样内存得上满,好在现在这东西非常便宜.</p>
+
+<ul>
+<li>Samsung 三星 金条 DDR3 1066 4G x2, 275大洋.</li>
+</ul>
+
+<p>原有一块2T WD绿盘,再购置二块同型号硬盘. 花费998大洋.</p>
+
+<p>这样总计花费,不算硬盘约1500块,DIY出一个8G内存,1.6G双核CPU,4个SATA 6G接口,2个USB3接口的家用NAS. 相当超值了.</p>
+
+<p>所有硬件分别采购于JD,新蛋,易讯三家. 早上9点前下的订单,当天下午JD送到一部分,易讯送到.第二天上午JD送完剩下的,新蛋送到.  大体可见三家物流的情况.</p>
+
+<p>到手后主板要处理一下. CPU的散热片要拆下来,是个二层结构. 在二层金属片接触的地方,只是象征性的涂了不到一平方厘米的硅胶. 买管硅胶,恶狠狠地把它涂满吧~ 不然开机时间一长,CPU/GPU的温度会很高. 而且主板四个SATA接口,只配了二根SATA硬盘线, 在此BS一下GIGABYTE的偷工减料.</p>
+
+<p>硬件安装好后一次点亮, 不接硬盘,按下电源开机时有个100W+的瞬时功耗, 然后稳定在33W左右. 进BIOS把内置显卡频率下调到300M.能减少2W功耗. 这样不带硬盘功耗在31W左右. 
+加上三块硬盘,待机时功耗增加9W左右,全机约38W~40W, RAID 5读写时功耗增加10~20W左右,全机功耗50W~59W,基本上没超过60W. 虽然还是嫌功耗稍高了点,总体来说还是能够接受, 毕竟大多数时间还是待机, 不到40W的功耗也算是看得过去了.</p>
+
+<p>下篇再说说NAS系统软件的选择与安装.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2011-06-21 17:58:09">
+            <a href="post/tomato-toastman-ipv6-he-net.html" title="2011-06-21 17:58:09" rel="bookmark">
+              <span class="entry-date-day">21</span>
+              <span class="entry-date-month-year">2011-06</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/tomato-toastman-ipv6-he-net.html">Tomato Toastman完美支持he.net的IPV6</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/ipv6.html" rel="tag">ipv6</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>he.net申请到的免费IPV6地址块只用到一台机器上太浪费了, 而Toastman的Tomato修改版, 对he.net的ipv6地址块支持得相当完美了. 这样可以把申请到的地址块放在路由器上, 并自动分配IPV6地址给所有接入路由器的机器.</p>
+
+<p>首先去https://www.tunnelbroker.net/申请一个64位的IPV6地址块,并记下</p>
+
+<pre><code>Server IPv4 Address
+Server IPv6 Address
+Client IPv4 Address
+Client IPv6 Address
+</code></pre>
+
+<p>然后你要有一个能刷tomato的路由器,并刷上相应的Tomato Toastman版. 我用的中兴h618b对应的版本是Tomato Firmware v1.28.7820 MIPSR1-Toastman K26 USB VPN.</p>
+
+<p>login到router,进入basic-&gt;ipv6菜单.</p>
+
+<p><a href="http://ahui.us/wp-content/uploads/2011/06/setipipv6.png"><img src="http://ahui.us/wp-content/uploads/2011/06/setipipv6.png" alt="" title="setipipv6"></a></p>
+
+<ul>
+<li>IPv6 Service Type 选择 6in4 Static Tunnel</li>
+<li>Assigned / Routed Prefix 填写要分配给接入机器的ipv6前缀,比如你申请到的是类x.x.x.x::1的地址,这儿填写x.x.x.x::</li>
+<li>Prefix Length填64</li>
+<li>Router IPv6 Address选择Default,会自动填写成he.net分配的Server IPv6 Address,不然选择Manual手工填写成Server IPv6 Address.</li>
+<li>Enable Router Advertisements勾上,</li>
+<li>Tunnel Remote Endpoint (IPv4 Address)填写he.net分配的Server IPv4 Address,</li>
+<li>Tunnel Client IPv6 Address填写he.net分配的Client IPv6 Address,64位长.</li>
+</ul>
+
+<p>如果你好运气路由器是固定的IPV4地址,那么设置这些就ok了.保存后radvd会自动启动用于分配ipv6地址.</p>
+
+<p>如果是pppoe之类拿的动态IP地址,那么这时候he.net上显示的Client IPv4 Address则会和你现在路由器地址不符. 这个时候所说的&quot;完美&quot;支持就表示出来了.
+进入basic-&gt;ddns菜单,看,下拉列表里有个&quot;HE.net IPv6 Tunnel Broker&quot;,贴心吧.帐号填写完后保存,这样地址改动后,会自动update he.net上的Client IPv4 Address数据.</p>
+
+<p>之后路由器给接入的机器分配IPv4地址时,会自动也分配一个IPv6地址. 这样router后面带的所有机器,都能实现IPV6接入了.</p>
 </p>
       </div>
 
@@ -508,6 +493,9 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
   <a class='page-numbers' href='index.6.html'>7</a>
   <a class='page-numbers' href='index.7.html'>8</a>
   <a class='page-numbers' href='index.8.html'>9</a>
+  <a class='page-numbers' href='index.9.html'>10</a>
+  <a class='page-numbers' href='index.10.html'>11</a>
+  <a class='page-numbers' href='index.11.html'>12</a>
   <a class="next page-numbers" href="index.6.html">Next &raquo;</a>  <div class="clear"></div>
 </div>
       </div> 
@@ -534,25 +522,27 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (38)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (55)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
-        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (79)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (115)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (49)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (8)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (6)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (10)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (6)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (9)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (2)</a></li>
       </ul>
     </div>
   </div>
@@ -562,15 +552,15 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
       <h3 class="widget-title">最新文章</h3>
       <ul> 
         <li><a href='post/abb_geng_xin_0.3.html'>A B B   更 新   0 . 3</a></li>
-        <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
-        <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
-        <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
-        <li><a href='post/about.html'>about</a></li>
-        <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
-        <li><a href='post/hackpad_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
-        <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
-        <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
-        <li><a href='post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_Blog.html'>用addpost生成的第一篇静态Blog</a></li>
+        <li><a href='post/canadianreferralcodeformodelxnew.html'>Canadian referral code for tesla Model X and S = save  CAD 1400,  153 days left</a></li>
+        <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
+        <li><a href='post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
+        <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
+        <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
+        <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
+        <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
+        <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
+        <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
       </ul>
     </div>
   </div>

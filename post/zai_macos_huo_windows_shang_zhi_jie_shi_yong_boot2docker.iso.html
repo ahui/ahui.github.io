@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>在 MacOS 或 Windows 上直接使用 boot2docker.iso</title>
+  <link href="../css/main.css" rel="stylesheet" type="text/css" />
+  <link href="../css/960.css" rel="stylesheet" type="text/css" />
+  <style type="text/css" id="custom-background-css">
+  body.custom-background { background-color: #e9e9e9; background-image: url('../image/bg-pattern.png'); background-repeat: repeat; background-position: top left; background-attachment: fixed; }
+  </style>
+</head>
+<body class="single single-post postid-1342 single-format-standard custom-background">
+  <div class="wrapper">  
+
+    <div id="header">      
+      <div class="container_16 clearfix">
+        <div class="grid_16">
+          <div id="headimg">
+            <div id="logo-text">
+              <span class="site-name"><a href="../index.html" title="Ahui的个人博客" rel="home">Ahui的个人博客</a></span>
+              <span class="site-description">&#8211;Since 2010 by Ahui.</span>
+            </div>
+          </div>     
+        </div>
+      </div>     
+    </div>
+
+    <div class="container_16 clearfix">
+      <div id="nav" class="grid_16">
+        <div class="menu clearfix">
+          <ul>
+            <li class="page_item page-item-2"><a href="../post/about.html">About</a></li>
+            <li class="page_item page-item-7"><a href="../post/about.html">关于ahui</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container_16 clearfix">
+
+      <div class="grid_11">
+          <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-12-08 08:12:40">
+            <a href="../post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html" title="2015-12-08 08:12:40" rel="bookmark">
+              <span class="entry-date-day">08</span>
+              <span class="entry-date-month-year">2015-12</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="../post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html">在 MacOS 或 Windows 上直接使用 boot2docker.iso</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="../tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h2>场景</h2>
+
+<p>在 Virtualbox 上直接启动 boot2docker.iso , 并加载虚拟硬盘存放 images 以及个人数据.  远程 ssh 进入系统后进行 docker 操作.
+如果能够本机操作,直接安装整合包.</p>
+
+<h2>下载</h2>
+
+<p>https://github.com/boot2docker/boot2docker/releases/download/v1.9.1/boot2docker.iso</p>
+
+<pre><code>Docker v1.9.1
+Linux v4.1.13 (AUFS v4.1-20151116)
+Parallels Tools v11.1.0-32202
+VMware Tools (open-vm-tools) v10.0.0-3000743
+VirtualBox Guest Additions v5.0.10
+XenServer Tools (xe-guest-utilities) v6.6.80
+</code></pre>
+
+<h2>Virtualbox</h2>
+
+<p>设置一个新的虚拟硬盘, 启动后设置硬盘 Lable 为 boot2docker-data, 重启后系统会自动挂载在 /var/lib/boot2docker 以及 /var/lib/docker 下, 前者放启动脚本, 后者放docker 数据.</p>
+
+<pre><code>fdisk /dev/sda
+mkfs.ext4 -L boot2docker-data /dev/sda1
+reboot
+</code></pre>
+
+<h2>修改默认密码</h2>
+
+<p>默认帐号为 docker/tcuser,修改为自定义密码</p>
+
+<pre><code>openssl passwd -1 &gt; mypasswd.txt
+vi mypasswd.txt 在密码前面加上&quot;docker:&quot;
+cd /var/lib/boo2docker
+vi bootlocal.sh
+chmod +x bootlocal.sh
+</code></pre>
+
+<p>bootlocal.sh 内容为:</p>
+
+<pre><code>#!/bin/sh
+chpasswd -e &lt; /var/lib/boot2docker/mypasswd.txt
+</code></pre>
+
+<p>重启 ok.</p>
+
+<h2>tips</h2>
+
+<p>目录 /var/lib/boot2docker 下可以存放一些启动脚本或定制数据.</p>
+
+<pre><code>- bootsync.sh       docker 服务启动前运行此脚本
+- bootlocal.sh      系统启动完成后运行些脚本
+- profile           自动装载硬盘后读取
+- certs/            目录下可以放 Registry server&#39;s public certificate (in .pem format)
+</code></pre>
+
+<p>共享目录会按共享名自动装载, 如共享名为home/jsmith会 mount 到 /home/jsmith, 也可以手动 mount 到指定目录.</p>
+
+<pre><code>mount -t vboxsf -o uid=1000,gid=50 your-other-share-name /some/mount/location
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+<!-- Duoshuo Comment BEGIN -->
+  <!-- <div class="ds-thread" data-title="在 MacOS 或 Windows 上直接使用 boot2docker.iso" data-thread-key="zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html" ></div> -->
+
+  </div>
+      </div> 
+
+      <div class="grid_5">
+
+<div id="sidebar">
+  <div class="widget widget_search widget-widget_search">
+    <div class="widget-wrap widget-inside">
+      <div class="search">
+        <form method="get" class="searchform" action="http://www.google.com/search">
+          <input name="sitesearch" value="http://ahui.us" type="hidden"> 
+          <input name="hl" value="zh-CN" type="hidden">
+          <input name="ie" value="GB2312" type="hidden"> 
+          <input type="text" class="field" name="q" id="query" value="Search" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" />
+          <input type="submit" class="submit" name="Search" id="searchsubmit" value="Search" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="widget widget_categories widget-widget_categories">
+    <div class="widget-wrap widget-inside">
+      <h3 class="widget-title">标签</h3>
+      <ul>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (79)</a></li>
+        <li class="cat-item"><a href="../tag/network.html">network &sdot; (115)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (49)</a></li>
+        <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (8)</a></li>
+        <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (6)</a></li>
+        <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/game.html">game &sdot; (10)</a></li>
+        <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (6)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (4)</a></li>
+        <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/android.html">android &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/python.html">python &sdot; (9)</a></li>
+        <li class="cat-item"><a href="../tag/openerp.html">openerp &sdot; (4)</a></li>
+        <li class="cat-item"><a href="../tag/sip.html">sip &sdot; (4)</a></li>
+        <li class="cat-item"><a href="../tag/vpn.html">vpn &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/ssh.html">ssh &sdot; (4)</a></li>
+        <li class="cat-item"><a href="../tag/ipv6.html">ipv6 &sdot; (4)</a></li>
+        <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/aboutme.html">aboutme &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="../tag/tesla.html">tesla &sdot; (2)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="widget widget_recent_entries widget-widget_recent_entries">
+    <div class="widget-wrap widget-inside">
+      <h3 class="widget-title">最新文章</h3>
+      <ul> 
+        <li><a href='../post/abb_geng_xin_0.3.html'>A B B   更 新   0 . 3</a></li>
+        <li><a href='../post/canadianreferralcodeformodelxnew.html'>Canadian referral code for tesla Model X and S = save  CAD 1400,  153 days left</a></li>
+        <li><a href='../post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
+        <li><a href='../post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
+        <li><a href='../post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
+        <li><a href='../post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
+        <li><a href='../post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
+        <li><a href='../post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
+        <li><a href='../post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
+        <li><a href='../post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+<!-- <div class="widget widget_comments">
+  <h3 class="widget-title">最新评论</h3>
+  <ul class="entry ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-title="0" data-show-time="1"></ul>
+</div>
+<! 多说公共JS代码 start (一个网页只需插入一次) -->
+
+<!-- 多说公共JS代码 end -->
+
+</div>      </div>
+
+    </div>
+
+    <div class="container_16 containter_footer">
+      <div id="footer" class="grid_16">
+        <div class="grid_8 alpha">
+          <div class="copyright_inside">
+            &copy; Copyright 2014 - <a href="http://ahui.us">Ahui的个人博客</a>  </div>
+          </div>
+          <div class="grid_8 omega">
+            <div class="credit_inside">
+              <a href="http://designorbital.com/contango/" title="Contango Theme">Contango Theme</a> &sdot; Modifiy by <a href="http://ahui.us">ahui</a> &nbsp;&nbsp;&nbsp;&nbsp; <script language="javascript" type="text/javascript" src="http://js.users.51.la/17777019.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+  </html>

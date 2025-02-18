@@ -45,62 +45,31 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2012-05-03 16:41:25">
-            <a href="post/linux_youku_antiad.html" title="2012-05-03 16:41:25" rel="bookmark">
-              <span class="entry-date-day">03</span>
-              <span class="entry-date-month-year">2012-05</span>
+          <time class="entry-date entry-time updated" datetime="2015-01-17 05:27:06">
+            <a href="post/about.html" title="2015-01-17 05:27:06" rel="bookmark">
+              <span class="entry-date-day">17</span>
+              <span class="entry-date-month-year">2015-01</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/linux_youku_antiad.html">linux下youku去广告+黑屏</a>
+            <a href="post/about.html">about</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/aboutme.html" rel="tag">aboutme</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>去广告
-hosts加入</p>
+        <p><p>可以用下列方式联系我, 但不保证有回复...</p>
 
-<pre><code>127.0.0.1 atm.youku.com
-127.0.0.1 Fvid.atm.youku.com
-127.0.0.1 html.atm.youku.com
-127.0.0.1 valb.atm.youku.com
-127.0.0.1 valf.atm.youku.com
-127.0.0.1 valo.atm.youku.com
-127.0.0.1 valp.atm.youku.com
-127.0.0.1 lstat.youku.com
-127.0.0.1 speed.lstat.youku.com
-127.0.0.1 urchin.lstat.youku.com
-127.0.0.1 stat.youku.com
-127.0.0.1 static.lstat.youku.com
-127.0.0.1 valc.atm.youku.com
-127.0.0.1 vid.atm.youku.com
-127.0.0.1 walp.atm.youku.com
-</code></pre>
-
-<p>去黑屏</p>
-
-<pre><code>cd ~/.macromedia/Flash_Player/#SharedObjects/xxx/
-</code></pre>
-
-<p>xxx为随机串</p>
-
-<pre><code>rm -tf static.youku.com
-touch static.youku.com
-sudo chown root.root static.youku.com
-</code></pre>
-
-<p>重启浏览器。</p>
+<p>Email: ahui at ahui.us</p>
 </p>
       </div>
 
@@ -111,23 +80,22 @@ sudo chown root.root static.youku.com
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-10-24 16:24:01">
-            <a href="post/diy-nas-softeare.html" title="2011-10-24 16:24:01" rel="bookmark">
-              <span class="entry-date-day">24</span>
-              <span class="entry-date-month-year">2011-10</span>
+          <time class="entry-date entry-time updated" datetime="2015-01-17 05:17:59">
+            <a href="post/owncloudmacos_ke_hu_duan_luan_ma.html" title="2015-01-17 05:17:59" rel="bookmark">
+              <span class="entry-date-day">17</span>
+              <span class="entry-date-month-year">2015-01</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/diy-nas-softeare.html">DIY家用NAS之软件篇</a>
+            <a href="post/owncloudmacos_ke_hu_duan_luan_ma.html">owncloud mac os 客户端乱码</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/mac.html" rel="tag">mac</a>
               <a href="tag/network.html" rel="tag">network</a>
             </span>
           </div>
@@ -135,117 +103,22 @@ sudo chown root.root static.youku.com
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>NAS系统的选择,首先放弃了windows系统. 然后在DIY linux与现成开源的类linux nas系统中,确定用现成的freenas,基于freebsd的nas. </p>
+        <p><p>owncloud mac ox client 安装后,首次设置以及运行后的设置界面, 中文显示为方框. 最简单的解决方法删除自带的翻译文件,强制使用英文显示.</p>
 
-<p>freenas现在主版本有7.x 与8.x二个系列. 7.x的风格更类linux一点,配置时要先加硬盘,格式化,再mount到对应目录,最后再共享目录.</p>
+<p>进入</p>
 
-<p>不过对于我配置的特定硬件,7.x    无法自动认出板上的网卡以及sata接口. 网卡驱动倒是可以换一个,不过认不出sata接口却无法解决,这样系统启动后一个硬盘都找不到.</p>
+<p>/Volumes/Macintosh HD/Applications/owncloud.app/Contents/Resources/Translations</p>
 
-<p>8.x系列,封装得更好一点,配置也简单很多. 当然DIY的自由度也少了很多.  另外8.x对ZFS的支持要完善很多,用raid z相当方便.</p>
-
-<ol>
-<li>首先去http://www.freenas.org/下载FreeNAS-8.0.2-RELEASE-amd64-Full_Install.xz,因为用到了8G内存,必须用64位版本,而且zfs文件系统,要求内存越大越好,6G+是必要的.</li>
-<li>用7zip解开FreeNAS-8.0.2-RELEASE-amd64-Full<em>Install.xz,是个2G左右的FreeNAS-8.0.2-RELEASE-amd64-Full</em>Install文件</li>
-<li>用dd或physdiskwrite.exe写到一个2G以上的u盘上.用u盘做系统盘,一是能省下一个sata接口以后好扩充,二是8.x的freenas不能再使用系统盘上的空闲空间.</li>
-<li>启动nas并配置好ip地址后web登录,默认帐号为admin/freenas</li>
-<li>在Storage中,用Create Volume,选取三块硬盘,fs选择zfs,zaid z模式.命名为public. 这时就创建好了一个总容易为3.8T的raid z卷. 并且以后所有的目录分配或iscsi都基于public卷.</li>
-<li>Create ZFS Dataset用来创建不用的应用目录,用于分配给不同的用户或是用作不同的用途.</li>
-<li>Create ZFS Volume创建一个指定容量的大文件,用于iscsi的虚拟磁盘.</li>
-<li>配置好后,在System-&gt;Settings,-&gt;Save Config里,保存好当前配置.这样万一系统损坏或u盘物理损坏后,通过前四步,然后导入现有配置就能恢复.</li>
-<li>最后在Services中,启用CIFS,FTP以及iSCSI三个主要共享功能.</li>
-</ol>
-
-<p>这样能通过ftp,windows的网上邻居,linux的smb,以及iscsi访问nas上的空间. </p>
-
-<p>1000Mbps网络环境中,上下传速度其中以iscsi速度最快,约70MB/s左右,然后是ftp,60MB/s左右,网上邻居要慢点,40~50MB/s左右. 100Mbps网络环境三者都能比较稳定在10MB/s左右. 由此可见,使用nas,1000Mbps的网络环境是必要的.</p>
-
-<p>最后从总功耗以及传输速度来看,基本上满足了自己的要求.</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-10-08 14:40:46">
-            <a href="post/diy_nas_hw.html" title="2011-10-08 14:40:46" rel="bookmark">
-              <span class="entry-date-day">08</span>
-              <span class="entry-date-month-year">2011-10</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/diy_nas_hw.html">DIY家用NAS之硬件篇</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/sofeware.html" rel="tag">sofeware</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>一则硬盘空间一直比较紧张,二则现在硬盘质量不再象以前那么可靠,数据容易丢失,于是计划购置一个能做阵列的家用NAS机器. 仔细研究了一下国内外不少品牌或山寨的NAS,最后比较满意希捷BlackArmor NAS 400系列. 可惜的是国内一直没有售,而且价格好象也悄悄涨过一次,不带硬盘拿下来也得3K多了. </p>
-
-<p>既然现成的不满意,就自己配一个好了.</p>
-
-<p>想要达到的目的:</p>
-
-<ol>
-<li>整机加4块左右硬盘的功耗要控制在50W左右.</li>
-<li>至少要能上4块硬盘,最好能升级到8块左右硬盘.能做RAID 5.</li>
-<li>千兆网络环境下,要有60MB/s的上下传速率.</li>
-<li>除了能做NAS,还要能增加SVN server之类的应用.</li>
-<li>有可能做HTPC,这样得有一个过得去的显卡或者至少有hdmi输出.</li>
-<li>噪音尽量小.</li>
-<li>不带硬盘价格控制在2K以下</li>
-</ol>
-
-<p>本来先考虑的atom平台,cpu功耗相当小,可惜加上对应的主板后就难看了点. 然后只能转向amd apu系列.  RAID5要消耗比较多的CPU资源,因此E350的性能要好得多. 再查询E350整合主板,品牌牌子有GIGABYTE和ASUS二家.此外梅捷,七彩虹都有类似的主板. 另外这类主板主要分二类,一是只有USB2以及SATA3G的,二是带USB3以及SATA6G的.显然后者参数要美妙得多.</p>
-
-<ol>
-<li>技嘉（GIGABYTE）GA-E350N-USB3, 1.6G双核CPU,集成HD 6310显卡,2USB3,4 SATA 6G,CPU带风扇. 功耗约22w. 699大洋.</li>
-<li>Asus APU E35M1-M PRO FUSION,1.6G双核CPU,集成HD 6310显卡,2USB3,5 SATA 6G,1 ESATA 6G,静音设计,无风扇. 功耗约22w. 1299大洋.</li>
-</ol>
-
-<p>这二块入眼的主板其实本不用考虑选哪个,ASUS的5SATA,无风扇设计,简直就是为NAS设计的. 可我还是纠结了二天才确定下来,因为ASUS的要1299块,TB也得1100+,而GIGABYTE的只要699块啊~,于是我决定用699块的.除了我一向勤俭节约外,主要还是考虑万一配出来的NAS不满意,这不就能减少不少损失么......当然前期4块硬盘也足够使用了. 至于那个明显是噪音制造者的CPU风扇,我就当没看见好了.</p>
-
-<p>机箱有大小二种选择,小机箱省地,大机箱散热和扩展性要好不少. 我觉得4块硬盘挤一起,那热量也挺吓人的,还是用大点的机箱好了.
-电源得配个好点的.烧主板烧硬盘的电源,碰到过不少. 查了一下JD上的存货,配了TT的机箱+电源:</p>
-
-<ol>
-<li>TT 金刚500高效电源,5SATA电源头,带14cm风扇一个.299大洋.</li>
-<li>TT Commander MS-I指挥官居中塔机箱,7HD位. 带12cm风扇一个.279大洋.</li>
-</ol>
-
-<p>主板最高支持8G内存,考虑到要使用ZFS文件系统,要求最少6G内存,这样内存得上满,好在现在这东西非常便宜.</p>
+<p>删除或改名这二个文件:</p>
 
 <ul>
-<li>Samsung 三星 金条 DDR3 1066 4G x2, 275大洋.</li>
+<li>mirall<em>zh</em>CN.qm</li>
+<li>qt<em>zh</em>CN.qm</li>
 </ul>
 
-<p>原有一块2T WD绿盘,再购置二块同型号硬盘. 花费998大洋.</p>
+<p>然后退出owncloud,再运行就是英文界面了.</p>
 
-<p>这样总计花费,不算硬盘约1500块,DIY出一个8G内存,1.6G双核CPU,4个SATA 6G接口,2个USB3接口的家用NAS. 相当超值了.</p>
-
-<p>所有硬件分别采购于JD,新蛋,易讯三家. 早上9点前下的订单,当天下午JD送到一部分,易讯送到.第二天上午JD送完剩下的,新蛋送到.  大体可见三家物流的情况.</p>
-
-<p>到手后主板要处理一下. CPU的散热片要拆下来,是个二层结构. 在二层金属片接触的地方,只是象征性的涂了不到一平方厘米的硅胶. 买管硅胶,恶狠狠地把它涂满吧~ 不然开机时间一长,CPU/GPU的温度会很高. 而且主板四个SATA接口,只配了二根SATA硬盘线, 在此BS一下GIGABYTE的偷工减料.</p>
-
-<p>硬件安装好后一次点亮, 不接硬盘,按下电源开机时有个100W+的瞬时功耗, 然后稳定在33W左右. 进BIOS把内置显卡频率下调到300M.能减少2W功耗. 这样不带硬盘功耗在31W左右. 
-加上三块硬盘,待机时功耗增加9W左右,全机约38W~40W, RAID 5读写时功耗增加10~20W左右,全机功耗50W~59W,基本上没超过60W. 虽然还是嫌功耗稍高了点,总体来说还是能够接受, 毕竟大多数时间还是待机, 不到40W的功耗也算是看得过去了.</p>
-
-<p>下篇再说说NAS系统软件的选择与安装.</p>
+<p>windows 下应该类似, 但没验证.</p>
 </p>
       </div>
 
@@ -256,22 +129,59 @@ sudo chown root.root static.youku.com
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-06-21 17:58:09">
-            <a href="post/tomato-toastman-ipv6-he-net.html" title="2011-06-21 17:58:09" rel="bookmark">
-              <span class="entry-date-day">21</span>
-              <span class="entry-date-month-year">2011-06</span>
+          <time class="entry-date entry-time updated" datetime="2014-09-23 05:07:35">
+            <a href="post/hackpad_dao_chu_zhi_xiao_keng.html" title="2014-09-23 05:07:35" rel="bookmark">
+              <span class="entry-date-day">23</span>
+              <span class="entry-date-month-year">2014-09</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/tomato-toastman-ipv6-he-net.html">Tomato Toastman完美支持he.net的IPV6</a>
+            <a href="post/hackpad_dao_chu_zhi_xiao_keng.html">HACKPAD导出之小坑</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/ipv6.html" rel="tag">ipv6</a>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>hackpad.com编辑时，基本可以看做是在写md,而且是即时生成html效果(非分屏)，手感相当好，特别是表格和代码块。</p>
+
+<p>不过在导出md格式时，文章标题不能有中文，否则这篇文章无法导出。</p>
+
+<p>根据导出的md文件来着，文章标题实际上是第一级标题#，这也是一个小坑，这样hackpad里只能有一个#并且被文章标题占用，文章内容最高级标题只能是第二级标题##.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2014-04-16 05:07:04">
+            <a href="post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html" title="2014-04-16 05:07:04" rel="bookmark">
+              <span class="entry-date-day">16</span>
+              <span class="entry-date-month-year">2014-04</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html">R6300V2上能用的SHADOWSOCKS-LIBEV</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
               <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
             </span>
@@ -280,38 +190,213 @@ sudo chown root.root static.youku.com
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>he.net申请到的免费IPV6地址块只用到一台机器上太浪费了, 而Toastman的Tomato修改版, 对he.net的ipv6地址块支持得相当完美了. 这样可以把申请到的地址块放在路由器上, 并自动分配IPV6地址给所有接入路由器的机器.</p>
+        <p><p>R6300v2上安装opkg，opkg再安装python，然后运行python版本的shadowsocks成功．不过加密方式只能用table，无法正常访问google的相关服务．</p>
 
-<p>首先去https://www.tunnelbroker.net/申请一个64位的IPV6地址块,并记下</p>
+<p>一时没搞定python的m2crypto，无法启用其他加密方式，于是直接编译shadowsocks-libev，　ss-local采用命令行方式指定参数运行成功，采用aes-256-cfb加密方式，google相关网站访问正常．</p>
 
-<pre><code>Server IPv4 Address
-Server IPv6 Address
-Client IPv4 Address
-Client IPv6 Address
+<p>移步下载 <a href="http://pan.baidu.com/s/1bncR2CB">shadowsocks-libev on R6300v2</a></p>
+
+<p>Arm7系cpu应该通用，但未测试．</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2014-02-06 07:30:17">
+            <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html" title="2014-02-06 07:30:17" rel="bookmark">
+              <span class="entry-date-day">06</span>
+              <span class="entry-date-month-year">2014-02</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/yong_git_tong_bu_jing_tai_wang_zhan.html">用git同步静态网站</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>ABB(Ahui Blog Build)生成的静态html文件，可以用git比较方便的同步到VPS Server上。</p>
+
+<p>首先Server和Client二边都安装好git.</p>
+
+<p>VPS Server上做如下设定后，就不用管了：</p>
+
+<p>创建git仓库目录为www.git，要安全起见，可以换用个普通用户帐号，并修改相应目录及权限。</p>
+
+<pre><code>cd /root/tmp
+mkdir www.git
+cd www.git
+git --bare init
 </code></pre>
 
-<p>然后你要有一个能刷tomato的路由器,并刷上相应的Tomato Toastman版. 我用的中兴h618b对应的版本是Tomato Firmware v1.28.7820 MIPSR1-Toastman K26 USB VPN.</p>
+<p>建立www根目录，并配置nginx指向。</p>
 
-<p>login到router,进入basic-&gt;ipv6菜单.</p>
+<pre><code>mkdir /home/wwwstatic/public
+</code></pre>
 
-<p><a href="http://ahui.us/wp-content/uploads/2011/06/setipipv6.png"><img src="http://ahui.us/wp-content/uploads/2011/06/setipipv6.png" alt="" title="setipipv6"></a></p>
+<p>建立git hook,在Client push文件后，自动checkout到指定的www根目录</p>
+
+<pre><code>cat &gt; hooks/post-receive
+#!/bin/bash
+GIT_WORK_TREE=/home/wwwstatic/public git checkout -f
+</code></pre>
+
+<p>加上可执行属性</p>
+
+<pre><code>chmod +x post-receive
+</code></pre>
+
+<p>Server端设置完毕。</p>
+
+<p>Client端如果还没有ssh key,则用</p>
+
+<pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
+</code></pre>
+
+<p>生成key,然后将~/.ssh/id<em>rsa.pub中的内容复制到Server端的 /root/.ssh/authorized</em>keys中。</p>
+
+<p>然后进入静态html生成目录，做一次初始化。</p>
+
+<pre><code>cd public
+git init
+git remote add ahuius root@ahui.us:/root/tmp/www.git
+</code></pre>
+
+<p>设定完毕。</p>
+
+<p>这样每次用abb bulid整个站点后，执行下sync.sh就可以将新生成的html文件同步到vps的www根目录了。</p>
+
+<pre><code>cat sync.sh
+
+#!/bin/bash
+cd public
+git add .
+git commit -m &quot;ok&quot;
+git push -f ahuius master
+</code></pre>
+
+<p>这篇Blog是完成设定后第一篇被同步的文章.</p>
+
+<pre><code>./sync.sh
+[master 97bc2d2] ok
+ 84 files changed, 1000 insertions(+), 671 deletions(-)
+ create mode 100644 post/yong_git_tong_bu_jing_tai_wang_zhan.html
+Counting objects: 174, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (88/88), done.
+Writing objects: 100% (88/88), 21.61 KiB, done.
+Total 88 (delta 84), reused 0 (delta 0)
+To root@ahui.us:/root/tmp/www.git
+   7167c21..97bc2d2  master -&gt; master
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2014-02-06 03:58:17">
+            <a href="post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_Blog.html" title="2014-02-06 03:58:17" rel="bookmark">
+              <span class="entry-date-day">06</span>
+              <span class="entry-date-month-year">2014-02</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_Blog.html">用addpost生成的第一篇静态Blog</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/python.html" rel="tag">python</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>静态网站生成程序上站测试。
+ohoh,还没取名字...</p>
+
+<p>已完成功能:</p>
 
 <ul>
-<li>IPv6 Service Type 选择 6in4 Static Tunnel</li>
-<li>Assigned / Routed Prefix 填写要分配给接入机器的ipv6前缀,比如你申请到的是类x.x.x.x::1的地址,这儿填写x.x.x.x::</li>
-<li>Prefix Length填64</li>
-<li>Router IPv6 Address选择Default,会自动填写成he.net分配的Server IPv6 Address,不然选择Manual手工填写成Server IPv6 Address.</li>
-<li>Enable Router Advertisements勾上,</li>
-<li>Tunnel Remote Endpoint (IPv4 Address)填写he.net分配的Server IPv4 Address,</li>
-<li>Tunnel Client IPv6 Address填写he.net分配的Client IPv6 Address,64位长.</li>
+<li> cli生成post模板</li>
+<li>根据md文件生成对应的html文件</li>
+<li>根据目录生成整站html文件</li>
+<li>生成首页面index.html</li>
+<li>首页下部生成页码导航</li>
+<li>生成tag目录</li>
+<li>生成最新文章列表</li>
+<li>包含多说的ajax评论</li>
+<li>除多说的ajax评论不支持file://,其他页面均能用file://方式浏览.</li>
+<li>用Contango Theme做了一个默认模板。</li>
 </ul>
 
-<p>如果你好运气路由器是固定的IPV4地址,那么设置这些就ok了.保存后radvd会自动启动用于分配ipv6地址.</p>
+<p>wordpress转移方式</p>
 
-<p>如果是pppoe之类拿的动态IP地址,那么这时候he.net上显示的Client IPv4 Address则会和你现在路由器地址不符. 这个时候所说的&quot;完美&quot;支持就表示出来了.
-进入basic-&gt;ddns菜单,看,下拉列表里有个&quot;HE.net IPv6 Tunnel Broker&quot;,贴心吧.帐号填写完后保存,这样地址改动后,会自动update he.net上的Client IPv4 Address数据.</p>
+<ol>
+<li> 在wordpress中导入所有post到xml文件中</li>
+<li>hexo Pelican 二者都有对应工具，从xml中提取所有post为对应的.md格式文件。建议用hexo的工具，转换得更好一点。本程序支持这二者转换后的格式。</li>
+<li>md格式修正。主要是换行，代码块等，多加点空行。</li>
+<li>生成全站静态html。</li>
+</ol>
 
-<p>之后路由器给接入的机器分配IPv4地址时,会自动也分配一个IPv6地址. 这样router后面带的所有机器,都能实现IPV6接入了.</p>
+<p>运行环境(Ubuntu on Virtualbox)</p>
+
+<p>uname -a</p>
+
+<pre><code>Linux openerp7 3.5.0-17-generic #28-Ubuntu SMP Tue Oct 9 19:32:08 UTC 2012 i686 i686 i686 GNU/Linux
+</code></pre>
+
+<p>cat /proc/cpuinfo</p>
+
+<pre><code>...
+processor       : 3
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 58
+model name      : Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
+stepping        : 9
+cpu MHz         : 2394.400
+bogomips        : 4788.80
+</code></pre>
+
+<p>生成速度</p>
+
+<pre><code> ls ./sources | wc
+     59      59    1206
+
+ time ./main.py build
+
+real    0m0.390s
+user    0m0.092s
+sys     0m0.120s
+</code></pre>
+
+<p>如果按照这个速度不变，生成一万篇文章需时一分钟多点。</p>
 </p>
       </div>
 
@@ -322,253 +407,16 @@ Client IPv6 Address
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-06-21 16:23:36">
-            <a href="post/tomato-firmware-v1-28-7820-mipsr1-toastman-k26-usb-vpn.html" title="2011-06-21 16:23:36" rel="bookmark">
-              <span class="entry-date-day">21</span>
-              <span class="entry-date-month-year">2011-06</span>
+          <time class="entry-date entry-time updated" datetime="2014-02-05 15:40:08">
+            <a href="post/PYTENJINCACHE_wen_ti.html" title="2014-02-05 15:40:08" rel="bookmark">
+              <span class="entry-date-day">05</span>
+              <span class="entry-date-month-year">2014-02</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/tomato-firmware-v1-28-7820-mipsr1-toastman-k26-usb-vpn.html">Tomato Toastman 之 SIP Server : siproxd 安装与使用</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/sip.html" rel="tag">sip</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>原本使用的SIP Server是sip ser,后来改用kamailio. 二者的配置和使用都基本一样. kamailio放在VPS上,程序本身相当稳定,但随着通话时间的增长,随机在5到10分钟后,会因为一些已知或未知的原因,通话质量迅速下降. 挂掉重拨后能且只正常一小会儿,然后又必须重拨, 很是烦人.</p>
-
-<p>后来把sip流量放在vpn里,情况好了很多. 至少不会因为莫名的干扰导致通话质量下降. 不过这样一来,sip流量必须通过vps进行中转, 而出国线路每天会不定期的抽风随机的一段时间......全国LAN网时代大概不远了吧?</p>
-
-<p>暂时方案,把sip server放在家里的router上,然后再挂上vpn,这样二方通话就能直接走国内线路vpn里. 虽然我也曾发现国内有时候也丢包15%~30%,但总比去VPS丢50%+要好. 而且国内线路抽风的时候要少些, 因为大多数G点都不在国内.</p>
-
-<p>翻出落了不少灰尘的中兴h618,吹吹. 其实我蛮看好开源的Netgear WNR 3500L,5个1000M端口有木有?480M的CPU有木有?64M内存有木有?到手的3500L被人抢走了有木有? 可惜只有8M FLASH,抢就抢吧, 我也主要用无线,1000M的有线端口暂时用处不大. 我还是再吹吹h618吧,干净了.</p>
-
-<p>firmware换成Tomato Firmware v1.28.7820 MIPSR1-Toastman K26 USB VPN了,为了它的IPV6功能.</p>
-
-<p>中兴h618有16M FLASH,安装完firmware后,还能空8M+,用来安装ipkg及sip server. 如果其他开源router没有足够的FLASH空间,则要有usb接口,mount一个小u盘到/opt,8M以上容量就可以了,实际安装完占用约3.5M的空间.</p>
-
-<p>ipkg包里,选择极其轻巧的siproxd做为sip server,功能自然没有ser及kamailio多,但足够满足简单的通话要求.</p>
-
-<p>ssh到路由器里,Enable jffs并且mount到/opt,然后安装ipkg基本包,也可参考<a href="http://ahui.us/index.php/2010/08/tomato-pandora-optware/"> Tomato Pandora之Optware软件安装</a>.</p>
-
-<p>cat opt.sh 或下载 http://www.3iii.dk/linux/optware/optware-install-ddwrt.sh.txt</p>
-
-<pre><code>#!/bin/sh
-# Optware pre-installation script, Leon Kos 2006, 2008
-# added -verbose_wget to some lines, MrAlvin 2009
-
-REPOSITORY=http://ipkg.nslu2-linux.org/feeds/optware/ddwrt/cross/stable
-TMP=/tmp
-
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
-unset LD_PRELOAD
-unset LD_LIBRARY_PATH
-
-_check_config()
-{
-    echo &quot;Checking system config ...&quot;
-    GATEWAY=$(netstat -rn |
-    sed -n &#39;s/^0.0.0.0[ \t]\{1,\}\([0-9.]\{8,\}\).*/\1/p&#39; )
-    if [ -n &quot;${GATEWAY}&quot; ]; then
-    echo &quot;Using ${GATEWAY} as default gateway.&quot;
-    else
-    echo &quot;Error: No default gateway set!&quot;
-    exit 2
-    fi
-    if [ -s /etc/resolv.conf ]; then
-    echo &quot;Using the following nameserver(s):&quot;
-    if grep nameserver /etc/resolv.conf ; then
-            GATEWAY_SUBNET=$(echo &quot;${GATEWAY}&quot; |
-        sed &#39;s/\.[0-9]\{1,3\}\.[0-9]\{1,3\}$//&#39;)
-        if [ &quot;${GATEWAY_SUBNET}&quot; = &quot;192.168&quot; ]; then
-        if grep -q ${GATEWAY} /etc/resolv.conf ; then
-            echo &quot;Gateway ${GATEWAY} is also nameserver.&quot;
-        else
-            echo &quot;Warning: local nameserver is different than gateway!&quot;
-            echo &quot;Check config or enter:&quot;
-            if test -L /etc/resolv.conf ; then 
-              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /tmp/resolv.conf&quot;
-            else
-              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /etc/resolv.conf&quot;
-            fi
-            echo &quot;and try again - or wait to see if your download continues anyway.&quot;
-        fi
-        fi
-    else
-        echo &quot;Error: No nameserver specified in /etc/resolv.conf&quot;
-        exit 5
-    fi
-    else
-    echo &quot;Error: Empty or nonexistent /etc/resolv.conf&quot;
-    exit 3
-    fi
-
-    if mount | grep -q /opt ; then
-    [ -d /opt/etc ] &amp;&amp; echo &quot;Warning: /opt partition not empty!&quot;
-    else
-    echo &quot;Error: /opt partition not mounted.&quot;
-    echo &quot;for running Optware on JFFS (not recommended), Enter&quot;
-    echo &quot;    mkdir /jffs/opt&quot;
-    echo &quot;    mount -o bind /jffs/opt /opt&quot;
-    echo &quot;to correct this.&quot;
-    exit 4
-    fi
-}
-
-_install_package()
-{
-    PACKAGE=$1
-    echo &quot;Installing package ${PACKAGE} ...&quot;
-    echo &quot;   Some newer versions of DD-WRT does not show download progress bar,&quot;
-    echo &quot;   so just be patient - or check STATUS -&gt; BANDWIDTH tab for download&quot;
-    echo &quot;   activity in your routers Web-GUI&quot;
-    wget -O ${TMP}/${PACKAGE} ${REPOSITORY}/${PACKAGE}
-    cd  ${TMP} 
-    tar xzf ${TMP}/${PACKAGE} 
-    tar xzf ${TMP}/control.tar.gz
-    cd /
-    if [ -f ${TMP}/preinst ] ; then
-    sh ${TMP}/preinst
-    rm -f ${TMP}/preints
-    fi
-    tar xzf ${TMP}/data.tar.gz
-    if [ -f ${TMP}/postinst ] ; then
-    sh ${TMP}/postinst
-    rm -f ${TMP}/postinst
-    fi
-    rm -f ${TMP}/data.tar.gz
-    rm -f ${TMP}/control.tar.gz
-    rm -f ${TMP}/control
-    rm -f ${TMP}/${PACKAGE}
-}
-
-_check_config
-_install_package uclibc-opt_0.9.28-13_mipsel.ipk
-_install_package ipkg-opt_0.99.163-10_mipsel.ipk
-/opt/sbin/ldconfig
-/opt/bin/ipkg -verbose_wget update 
-/opt/bin/ipkg -force-reinstall -verbose_wget install uclibc-opt
-/opt/bin/ipkg -force-reinstall -verbose_wget install ipkg-opt
-</code></pre>
-
-<p>安装</p>
-
-<pre><code>cd /opt
-sh ./opt.sh
-ipkg update
-</code></pre>
-
-<p>先安装libtool库,打包sipproxd时人没把这个依赖加进去</p>
-
-<pre><code>ipkg install libtool
-</code></pre>
-
-<p>安装好用的ngrep工具,这个没有依赖,不安装也可以省点空量.</p>
-
-<pre><code>ipkg install ngrep
-</code></pre>
-
-<p>安装sipproxd</p>
-
-<pre><code>ipkg install siproxd
-</code></pre>
-
-<p>此时会提示</p>
-
-<pre><code>To complete the installation, you must edit /opt/etc/siproxd.conf-example and rename it to /opt/etc/siproxd.conf,
-and then run /opt/etc/init.d/S90siproxd to start siproxd.
-</code></pre>
-
-<p>其实应该先改/opt/etc/siproxd_passwd.cfg文件,把sip帐号增加进去,格式很简单.
-然后 </p>
-
-<pre><code>cp /opt/etc/siproxd.conf-example /opt/etc/siproxd.conf
-</code></pre>
-
-<p>修改if<em>inbound及if</em>outbound为br0就可以了. 我这里因为用vpn连接了远程的路由器, 可视为全走内网,所以把rtp<em>proxy</em>enable也设为0了.
-最后启动</p>
-
-<pre><code>/opt/etc/init.d/S98siproxd
-</code></pre>
-
-<p>siproxd会在TCP以及UDP的 0.0.0.0:5060上监听.</p>
-
-<p>这样我把自己路由器里的sip电话以及远端vpn连接的路由器里的sip电话都设置为自己路由器内网ip就可以了. </p>
-
-<p>简单示意图:
-sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt;-----&gt;GW2,openvpn client &lt;-----sip phone2</p>
-
-<p>好了,你就真变成国内大LAN网,也影响不了我打电话了.</p>
-
-<p>siproxd比较可惜的是不支持ipv6,没有查看注册及通话情况等管理功能.如果有啥问题,直接动用ngrep监听数据吧.</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-05-24 20:16:43">
-            <a href="post/ipv6-enable-on-vps.html" title="2011-05-24 20:16:43" rel="bookmark">
-              <span class="entry-date-day">24</span>
-              <span class="entry-date-month-year">2011-05</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/ipv6-enable-on-vps.html">IPv6 Enabled on VPS</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>vps一直有IPV6地址的.今天把家里路由的ipv6设置好之后,才正式启用vps上的ipv6.
-还得到了一个小奖牌:
-<a href="http://www.ipv6forum.com/ipv6_enabled/public.php?id=1945"><img src="http://ahui.us/wp-content/uploads/2011/05/ahui.us_.ipv6_.ok_.jpg" alt="" title="ahui.us.ipv6.ok"></a></p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-05-23 12:37:31">
-            <a href="post/baidu-or-google-ahui.html" title="2011-05-23 12:37:31" rel="bookmark">
-              <span class="entry-date-day">23</span>
-              <span class="entry-date-month-year">2011-05</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/baidu-or-google-ahui.html">baidu和google的差别之查询本博客</a>
+            <a href="post/PYTENJINCACHE_wen_ti.html">PYTENJIN CACHE问题</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
@@ -576,19 +424,40 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
               <a href="tag/blog.html" rel="tag">blog</a>
               <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/python.html" rel="tag">python</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>试着用baidu.com和google查询了一下自己的博客域名. 只上图,不解释.</p>
+        <p><p>Tenjin是个好模板. (签名)</p>
 
-<p>这是baidu:
-<a href="http://ahui.us/wp-content/uploads/2011/05/baidusa002.png"><img src="http://ahui.us/wp-content/uploads/2011/05/baidusa002.png" alt="" title="baidusa002"></a></p>
+<p>满足我喜欢的三个要求：</p>
 
-<p>这是google:
-<a href="http://ahui.us/wp-content/uploads/2011/05/google002.png"><img src="http://ahui.us/wp-content/uploads/2011/05/google002.png" alt="" title="google002"></a></p>
+<ul>
+<li>快速</li>
+<li>HTML友好</li>
+<li>能直接用python代码。</li>
+</ul>
+
+<p>当然能直接用python代码是件好事也是件坏事。</p>
+
+<p>在做静态html生成程序时，因为动态生成了不同内容的同名模板，导致Tenjin解析时总是取缓存中的内容。
+Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法为：</p>
+
+<ol>
+<li>sleep 1s吧，喝个茶什么的等缓存失效…</li>
+<li>将Tenjin里的timestamp_interval参数由原1s,改为一个更小的值，0.001什么的。小手术。</li>
+<li>给Tenjin添加个属性，记住文件大小，在文件大小改变时，总是重新生成缓存。大手术啊~~~~</li>
+<li>动态生成的模板，别用同样的文件名.</li>
+</ol>
+
+<p>1会带来时间浪费，测试中生成50+ html文件才半秒不到，不能浪费2倍的生命。
+2，3都要改动Tenjin,通用性不好。
+4算比较满意的，会稍提高点代码的复杂度。</p>
+
+<p>BTW,如果要压榨性能，通过2中将值改大，或者3增加文件大小检查，模板文件不变时直接用.cache文件，应该有不少的性能提升。</p>
 </p>
       </div>
 
@@ -599,51 +468,82 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2011-05-23 11:55:02">
-            <a href="post/my-ahui-us.html" title="2011-05-23 11:55:02" rel="bookmark">
-              <span class="entry-date-day">23</span>
-              <span class="entry-date-month-year">2011-05</span>
+          <time class="entry-date entry-time updated" datetime="2014-02-04 20:41:24">
+            <a href="post/wang_zhan_jing_tai_hua.html" title="2014-02-04 20:41:24" rel="bookmark">
+              <span class="entry-date-day">04</span>
+              <span class="entry-date-month-year">2014-02</span>
             </a>
           </time>
         </div>
         <div class="grid_8 omega">
           <h1 class="entry-title entry-title-single">
-            <a href="post/my-ahui-us.html">域名续费记</a>
+            <a href="post/wang_zhan_jing_tai_hua.html">网站静态化</a>
           </h1>
           <div class="entry-meta">    
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/linux.html" rel="tag">linux</a>
               <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/vps.html" rel="tag">vps</a>
+              <a href="tag/python.html" rel="tag">python</a>
             </span>
           </div>
         </div>
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>收到name.com的通知邮件,ahui.us一个月后要到期了.为免麻烦,于是想去再续费三到五年的样子.
-结果在name.com中,总是无法点击&quot;+&quot;号增加续费年限,报了一个500的奇怪错误.
-然后想着没办法,就一年一年的续吧,只是要多支付几次. 选中一年,$8.99的费用,直接用paypal支付,绑定的招行信用卡. 扣款短信倒来得挺及时,就是paypal和name都显示支付没有成功.重试了一下paypal支付以及直接招行信用卡支付,都是有扣款短信,但显示支付没有成功.</p>
+        <p><p>连续碰到几次BLOG打开卡住的情形，在VPS上重启一下nginx及php就好了。原因不详，但有可能是因为wordpress连续升级导致？</p>
 
-<p>Yesterday   PayPal  $0.00   Failed  Renewal ahui.us
-5/20/2011 Credit Card   $0.00   Failed  Renewal ahui.us
-5/20/2011 PayPal    $0.00   Failed  Renewal ahui.us
-5/20/2011 PayPal    $0.00   Failed  Renewal ahui.us </p>
+<p>最好的解决方案就是将博客网站静态化。</p>
 
-<p>很无语的看着一连串的Failed状态的支付信息. 域名刚注册的时候,就是支付paypal支付成功的. 信用卡也做了认证. 电招行客服, 客服mm也只是甜甜的告诉我系统显示支付已经成功了,其他都不知道. 成功了我还电你么?</p>
+<p>试用了一下现成的解决方案，比较好用的有<a href="http://zespia.tw/hexo/">hexo</a>以及<a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a>。
+这二个都有工具能将wordpress导出的xml转化为md格式的文件。</p>
 
-<p>不得已考虑到域名转移到godaddy,那边支付方式要多一点,包括支付宝. 转移还能便宜$1呢. 找到一个很久没用了的godaddy帐号, 尝试着在这边绑定一下招行的作用卡, 结果绑定到帐号是OK的,正式支付时一样交易无法完成. 这样只能切换到win下用支付宝进行支付了. 于是又进name.com准备去解锁域名并记下auth code, 然后很惊异的发现,ahui.us域名下的Domain Lock以及Auth Code的值为Null,那是真正的空值,什么都没有啊~ 这是一个什么样的世界~ 这样无法解锁域名,也拿不到auth code,想转移也只能做梦了.</p>
+<p>其中hexo转化并生成静态网站后，效果相当不错。但问题是在使用时发现50+ md文件，生成时间在20s左右，这个速度太慢了一点。比较奇怪的是其他使用者都反应hexo是相当快的，所以也有可能是我这有个什么地方设置有问题。
+同样的环境下Pelican的速度相当理想，同样多的md文件，生成时间3s左右。问题是他自己生成的md文件格式有点奇怪，和hexo的相比有差别，且感觉hexo的md文件格式更好点。</p>
 
-<p>严重怀疑name.com系统升级啥的,丢掉了我的域名下的二个关键属性值. 老外做事也是严重的不靠谱啊! 喔,那个&quot;也&quot;字我想不用去掉. 给support去信告之情况,让他们给我修复一下域名状态. 再等了一天多, 没收到回信. 上线查看了一下,Domain Lock显示为Lock状态了,Auth Code也有一串值了. 这是哪位天使GGDDJJMM做了好事也不回信通知我一下我再去信表扬顺便寄个锦旗什么的呢? 再一个可能就是我renewal的时候刚好碰到name正在升级系统且刚好我的域名状态只转换了一部分? 还是那一句: 严重不靠谱啊.</p>
+<p>如果再考虑长远点，比如有海量的md文件要生成，那么就要求生成工具要么有极快的速度，要么有增量生成功能(已经生成的文件不用再生成)。这样hexo一者因为速度原因不能不放弃，二者可惜是node写的，我更偏好python一点。而pelican刚可能要修改一下格式问题，以及增加其他功能。</p>
 
-<p>接下发现&quot;+&quot;号能点了,想renewal几年就几年了. paypal没敢再试, 尝试再绑定了一次招行卡,验证失败, 换了一张兴业的信用卡, 验证成功. 哎,居然成功了? 正在意外中,手机叫了起来, 兴业的业务员向我证实是不是有个叫啥name的网站要验证我的信用卡. 这里要大大的赞一下兴业的服务, 我还没反应过来呢, 他们的业务员就来电话了. 招行啊,你堕落了! 堕落的还有你那万年不改的win+IE专用控件!!! 差不多到了该考虑休掉你的时候了.</p>
+<p>本着轮子不怕多的精神，干脆再做个相关工具好了。</p>
 
-<p>用直接绑定的兴业卡renewal了一年,支付成功. 再renewal四年,支付成功. 好了.下次再有麻烦就等五年以后再麻烦吧. 万一那个2012成了现实, 这域名有效期能坚持到下一个纪元了吧?</p>
+<p>初期目标</p>
 
-<p>总结这问题的根本还是在name.com的系统出错,这的确也是出乎意料之外的事情. 恶意的猜测name自己也没想到系统会出错, 所以悄悄的修正后,也不肯回信留下证据什么的. 如果其他人的域名没有同样的问题,那还算后果不大,只是让我没头脑的忙活了半天, 在几张信用卡上都留下了不知真假的$8.99的扣款记录. 另外一问题就是招行的服务越来越差了,包括人工服务以及他们的系统服务. 特别是在Linux下,基本上没法使用他们的网上支付功能.</p>
+<p>博客类小型网站，静态页面生成</p>
+
+<p>生成方式</p>
+
+<ol>
+<li>全静态生成，所有文件需要更新。可用目录控制生成层次。</li>
+<li>shtml包含，只更新必要文件</li>
+<li>ajax包含，只更新必要文件</li>
+</ol>
+
+<p>工作方式</p>
+
+<ol>
+<li>cli</li>
+<li>web gui</li>
+</ol>
+
+<p>文章分类(初期只考虑tag)</p>
+
+<ol>
+<li>分类，一对一或一对多</li>
+<li>tag标记，一对多</li>
+</ol>
+
+<p>页面分类</p>
+
+<ol>
+<li>index.html</li>
+<li>tags.html</li>
+<li>tag.html</li>
+<li>comment.html</li>
+<li>side_right.html</li>
+<li>side_left.html</li>
+<li>head.html</li>
+<li>body.html -&gt;要生成的主体文件</li>
+<li>foot.html</li>
+</ol>
 </p>
       </div>
 
@@ -662,6 +562,9 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
   <a class='page-numbers' href='index.6.html'>7</a>
   <a class='page-numbers' href='index.7.html'>8</a>
   <a class='page-numbers' href='index.8.html'>9</a>
+  <a class='page-numbers' href='index.9.html'>10</a>
+  <a class='page-numbers' href='index.10.html'>11</a>
+  <a class='page-numbers' href='index.11.html'>12</a>
   <a class="next page-numbers" href="index.4.html">Next &raquo;</a>  <div class="clear"></div>
 </div>
       </div> 
@@ -688,25 +591,27 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (38)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (55)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
-        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
-        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
-        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (1)</a></li>
-        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (79)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (115)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (49)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (8)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (6)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (10)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (6)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (9)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (2)</a></li>
       </ul>
     </div>
   </div>
@@ -716,15 +621,15 @@ sip phone1 ----&gt; GW1,siproxd server &amp; openvpn server----&gt; internet &lt
       <h3 class="widget-title">最新文章</h3>
       <ul> 
         <li><a href='post/abb_geng_xin_0.3.html'>A B B   更 新   0 . 3</a></li>
-        <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
-        <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
-        <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
-        <li><a href='post/about.html'>about</a></li>
-        <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
-        <li><a href='post/hackpad_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
-        <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
-        <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
-        <li><a href='post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_Blog.html'>用addpost生成的第一篇静态Blog</a></li>
+        <li><a href='post/canadianreferralcodeformodelxnew.html'>Canadian referral code for tesla Model X and S = save  CAD 1400,  153 days left</a></li>
+        <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
+        <li><a href='post/zai_macos_huo_windows_shang_zhi_jie_shi_yong_boot2docker.iso.html'>在 MacOS 或 Windows 上直接使用 boot2docker.iso</a></li>
+        <li><a href='post/rapberrypi2_zai_u_pan_shang_yun_xing_xi_tong.html'>Rapberry Pi 2 在u盘上运行系统</a></li>
+        <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
+        <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
+        <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
+        <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
+        <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
       </ul>
     </div>
   </div>
