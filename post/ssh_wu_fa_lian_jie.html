@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ssh无法连接</title>
+  <link href="../css/main.css" rel="stylesheet" type="text/css" />
+  <link href="../css/960.css" rel="stylesheet" type="text/css" />
+  <style type="text/css" id="custom-background-css">
+  body.custom-background { background-color: #e9e9e9; background-image: url('../image/bg-pattern.png'); background-repeat: repeat; background-position: top left; background-attachment: fixed; }
+  </style>
+</head>
+<body class="single single-post postid-1342 single-format-standard custom-background">
+  <div class="wrapper">  
+
+    <div id="header">      
+      <div class="container_16 clearfix">
+        <div class="grid_16">
+          <div id="headimg">
+            <div id="logo-text">
+              <span class="site-name"><a href="../index.html" title="Ahui的个人博客" rel="home">Ahui的个人博客</a></span>
+              <span class="site-description">&#8211;Since 2010 by Ahui.</span>
+            </div>
+          </div>     
+        </div>
+      </div>     
+    </div>
+
+    <div class="container_16 clearfix">
+      <div id="nav" class="grid_16">
+        <div class="menu clearfix">
+          <ul>
+            <li class="page_item page-item-2"><a href="../post/about.html">About</a></li>
+            <li class="page_item page-item-7"><a href="../post/about.html">关于ahui</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container_16 clearfix">
+
+      <div class="grid_11">
+          <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-05-04 06:15:48">
+            <a href="../post/ssh_wu_fa_lian_jie.html" title="2015-05-04 06:15:48" rel="bookmark">
+              <span class="entry-date-day">04</span>
+              <span class="entry-date-month-year">2015-05</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="../post/ssh_wu_fa_lian_jie.html">ssh无法连接</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="../tag/linux.html" rel="tag">linux</a>
+              <a href="../tag/network.html" rel="tag">network</a>
+              <a href="../tag/vps.html" rel="tag">vps</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>ssh 登录阿里云远VPS,提示</p>
+
+<pre><code>ssh_exchange_identification: read: Connection reset by peer
+</code></pre>
+
+<p>几月前出过一次同样问题, 表现在开发机无法登录阿里云 VPS,但可以正常登录HK VPS,而且 HK VPS 也可以正常登录阿里云VPS. 检查下来是阿里云机房误判攻击并阻断了我当前在用的移动IP(移动出网 ip 会被 nat 到一组特定 ip 上),提交工单后才解决.</p>
+
+<p>这次再用 HK VPS 检查,发现也无法登录,应该不是原来的老问题.
+本机详细登录日志:</p>
+
+<pre><code>#ssh ahui$ ssh -vvv -l root serverip
+OpenSSH_6.2p2, OSSLShim 0.9.8r 8 Dec 2011
+debug1: Reading configuration data /etc/ssh_config
+debug1: /etc/ssh_config line 20: Applying options for *
+debug1: /etc/ssh_config line 102: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to serverip [serverip] port 22.
+debug1: Connection established.
+debug3: Incorrect RSA1 identifier
+debug3: Could not load &quot;/Users/ahui/.ssh/id_rsa&quot; as a RSA1 public key
+debug1: identity file /Users/ahui/.ssh/id_rsa type 1
+debug1: identity file /Users/ahui/.ssh/id_rsa-cert type -1
+debug1: identity file /Users/ahui/.ssh/id_dsa type -1
+debug1: identity file /Users/ahui/.ssh/id_dsa-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.2
+ssh_exchange_identification: read: Connection reset by peer
+</code></pre>
+
+<p>本机改过 hostname,rsa 没做更改, 同样的 rsa 能登录 HK VPS,应该和证书没关系.</p>
+
+<p>阿里终端连接进去,发现 ssh localhost 居然也无法正常登录,问题应该在 sshd 服务本身.</p>
+
+<p>想到服务器几周前做过一次 apt-get upgrade, 应该是更新导致 sshd 出了问题. 重启 sshd, 问题依旧.</p>
+
+<p>google 结果大部分说是 hosts.allow 的问题,加入 sshd:ALL 后,问题依旧.</p>
+
+<p>最后查看 sshd log:</p>
+
+<pre><code>May  4 17:05:15 AY1407211542405399a6Z sshd[17586]: fatal: Missing privilege separation directory: /var/run/sshd
+</code></pre>
+
+<p>发现/var 下 run 目录不存在. </p>
+
+<pre><code>cd /var
+mkdir run
+cd run
+mkdir sshd
+</code></pre>
+
+<p>重启 sshd,问题解决.</p>
+
+<p>问题可能出在 apt-get upgrade 后,服务器没重新启动导致问题出现. 或者本次 upgrade有 bug,重启也不能解决. 没证实. 记录下,系统为:</p>
+
+<pre><code>uname -a
+Linux AY1407211542405399a6Z 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+cat /etc/issue
+Ubuntu 14.04.2 LTS \n \l
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+<!-- Duoshuo Comment BEGIN -->
+  <!-- <div class="ds-thread" data-title="ssh无法连接" data-thread-key="ssh_wu_fa_lian_jie.html" ></div> -->
+
+  </div>
+      </div> 
+
+      <div class="grid_5">
+
+<div id="sidebar">
+  <div class="widget widget_search widget-widget_search">
+    <div class="widget-wrap widget-inside">
+      <div class="search">
+        <form method="get" class="searchform" action="http://www.google.com/search">
+          <input name="sitesearch" value="http://ahui.us" type="hidden"> 
+          <input name="hl" value="zh-CN" type="hidden">
+          <input name="ie" value="GB2312" type="hidden"> 
+          <input type="text" class="field" name="q" id="query" value="Search" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" />
+          <input type="submit" class="submit" name="Search" id="searchsubmit" value="Search" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="widget widget_categories widget-widget_categories">
+    <div class="widget-wrap widget-inside">
+      <h3 class="widget-title">标签</h3>
+      <ul>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (38)</a></li>
+        <li class="cat-item"><a href="../tag/network.html">network &sdot; (55)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (24)</a></li>
+        <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
+        <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (1)</a></li>
+        <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
+        <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="../tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="../tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/sip.html">sip &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/vpn.html">vpn &sdot; (1)</a></li>
+        <li class="cat-item"><a href="../tag/ssh.html">ssh &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/ipv6.html">ipv6 &sdot; (2)</a></li>
+        <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (1)</a></li>
+        <li class="cat-item"><a href="../tag/aboutme.html">aboutme &sdot; (1)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="widget widget_recent_entries widget-widget_recent_entries">
+    <div class="widget-wrap widget-inside">
+      <h3 class="widget-title">最新文章</h3>
+      <ul> 
+        <li><a href='../post/abb_geng_xin_0.3.html'>A B B   更 新   0 . 3</a></li>
+        <li><a href='../post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
+        <li><a href='../post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
+        <li><a href='../post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
+        <li><a href='../post/about.html'>about</a></li>
+        <li><a href='../post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
+        <li><a href='../post/hackpad_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
+        <li><a href='../post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
+        <li><a href='../post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
+        <li><a href='../post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_Blog.html'>用addpost生成的第一篇静态Blog</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+<!-- <div class="widget widget_comments">
+  <h3 class="widget-title">最新评论</h3>
+  <ul class="entry ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-title="0" data-show-time="1"></ul>
+</div>
+<! 多说公共JS代码 start (一个网页只需插入一次) -->
+
+<!-- 多说公共JS代码 end -->
+
+</div>      </div>
+
+    </div>
+
+    <div class="container_16 containter_footer">
+      <div id="footer" class="grid_16">
+        <div class="grid_8 alpha">
+          <div class="copyright_inside">
+            &copy; Copyright 2014 - <a href="http://ahui.us">Ahui的个人博客</a>  </div>
+          </div>
+          <div class="grid_8 omega">
+            <div class="credit_inside">
+              <a href="http://designorbital.com/contango/" title="Contango Theme">Contango Theme</a> &sdot; Modifiy by <a href="http://ahui.us">ahui</a> &nbsp;&nbsp;&nbsp;&nbsp; <script language="javascript" type="text/javascript" src="http://js.users.51.la/17777019.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+  </html>

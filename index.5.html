@@ -1,0 +1,608 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ahui的个人博客</title>
+  <link href="css/main.css" rel="stylesheet" type="text/css" />
+  <link href="css/960.css" rel="stylesheet" type="text/css" />
+  <style type="text/css" id="custom-background-css">
+  body.custom-background { background-color: #e9e9e9; background-image: url('image/bg-pattern.png'); background-repeat: repeat; background-position: top left; background-attachment: fixed; }
+  </style>
+</head>
+<body class="single single-post postid-1342 single-format-standard custom-background">
+  <div class="wrapper">  
+
+    <div id="header">      
+      <div class="container_16 clearfix">
+        <div class="grid_16">
+          <div id="headimg">
+            <div id="logo-text">
+              <span class="site-name"><a href="index.html" title="Ahui的个人博客" rel="home">Ahui的个人博客</a></span>
+              <span class="site-description">&#8211;Since 2010 by Ahui.</span>
+            </div>
+          </div>     
+        </div>
+      </div>     
+    </div>
+
+    <div class="container_16 clearfix">
+      <div id="nav" class="grid_16">
+        <div class="menu clearfix">
+          <ul>
+            <li class="page_item page-item-2"><a href="post/about.html">About</a></li>
+            <li class="page_item page-item-7"><a href="post/about.html">关于ahui</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container_16 clearfix">
+
+      <div class="grid_11">
+        
+  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-12-10 11:16:43">
+            <a href="post/linux-kernel-econet-root-shell.html" title="2010-12-10 11:16:43" rel="bookmark">
+              <span class="entry-date-day">10</span>
+              <span class="entry-date-month-year">2010-12</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/linux-kernel-econet-root-shell.html">[转贴]Linux Kernel Econet漏洞权限提升脚本</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/ssh.html" rel="tag">ssh</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>原贴出处
+http://www.vpsee.com/2010/12/linux-kernel-root-level-exploit-leveraging-multiple-previous-vulnerabilities/
+脚本出处
+http://marc.info/?l=full-disclosure&amp;m=129175358621826&amp;w=2</p>
+
+<p>受影响系统：
+Debian Linux 5.0 x
+Linux kernel 2.6.0 - 2.6.36
+Linux kernel 2.6.0 - 2.6.26
+Ubuntu Linux 9.10 - 10.04</p>
+
+<p>已测试系统
+Ubuntu 10.4 提升成功
+Centos 5.5 提升失败</p>
+
+<p>脚本下载
+http://ahui.us/get/public/ahui/root.c.txt
+已编译脚本
+http://ahui.us/get/public/ahui/root.txt</p>
+
+<p>Acorn Econet/AUN 协议
+Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑上，用于访问文件和打印机服务器。它使用本地的Econet 网络卡。AUN 是高层的 Econet 协议，运行于通常的以太网连接，它运行在 UDP 包协议之上，这两个协议轮流运行于IP协议上。
+参考:http://en.wikipedia.org/wiki/Econet</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-11-19 16:48:56">
+            <a href="post/pidgin-msn-cer.html" title="2010-11-19 16:48:56" rel="bookmark">
+              <span class="entry-date-day">19</span>
+              <span class="entry-date-month-year">2010-11</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/pidgin-msn-cer.html">Pidgin MSN证书链错误解决办法</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>win7下把C:\Users[用户名]\AppData\Roaming.purple\certificates\x509\tls_peers
+下的omega.contacts.msn.com文件内容替换成下面内容.并加上只读属性.
+或者在 工具-&gt;证书里,替换掉同名证书.</p>
+
+<pre><code>-----BEGIN CERTIFICATE-----
+MIIGeDCCBWCgAwIBAgIKfdrgSQAIAAHIuTANBgkqhkiG9w0BAQUFADCBizETMBEG
+CgmSJomT8ixkARkWA2NvbTEZMBcGCgmSJomT8ixkARkWCW1pY3Jvc29mdDEUMBIG
+CgmSJomT8ixkARkWBGNvcnAxFzAVBgoJkiaJk/IsZAEZFgdyZWRtb25kMSowKAYD
+VQQDEyFNaWNyb3NvZnQgU2VjdXJlIFNlcnZlciBBdXRob3JpdHkwHhcNMTAxMTE1
+MjEyODE5WhcNMTIxMTE0MjEyODE5WjB2MQswCQYDVQQGEwJVUzELMAkGA1UECBMC
+V0ExEDAOBgNVBAcTB1JlZG1vbmQxDDAKBgNVBAoTA01TTjEdMBsGA1UECxMUTVNO
+IENvbnRhY3QgU2VydmljZXMxGzAZBgNVBAMMEiouY29udGFjdHMubXNuLmNvbTCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJnXhdENETaZ8YFfenWCuky3
+Fke/oWgUOEbgvaRuZusd2LnvoSiqH++2lkV0JJlIQ+7jLLN8MY7VhlHQmkLC3x44
+KZn2IktMVgTBGMKnvbyYVAnRsjt/rVhQrQeHVEQzv5WXx//3FKmXWAuJiuRj9PZ2
+KsNqPJgaaa5cuOu4oynO9fH5/ZtJIeUf7bC4Wu++o7jTu5zOhIa7R1buE9FXFF33
+vQ1vHi4p9zR2Pi/i2nUpEnzeNCLl/8F/Tf+658SvIC4EzxrYcj+fit6sAnNUfsOE
+1SIk9YLD+tS0fln1afbcDvH0ib5Xm7u2/o6ZmxQU0mrAkfQectsKpZLJj03neBsC
+AwEAAaOCAvAwggLsMAsGA1UdDwQEAwIEsDBEBgkqhkiG9w0BCQ8ENzA1MA4GCCqG
+SIb3DQMCAgIAgDAOBggqhkiG9w0DBAICAIAwBwYFKw4DAgcwCgYIKoZIhvcNAwcw
+HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMB0GA1UdDgQWBBRciAVJ/Vsj
+sAlZoNG/Zs+rILsPNDAfBgNVHSMEGDAWgBQIQuPbThFm87UIxUDbVXwzRhGDODCC
+AQoGA1UdHwSCAQEwgf4wgfuggfiggfWGWGh0dHA6Ly9tc2NybC5taWNyb3NvZnQu
+Y29tL3BraS9tc2NvcnAvY3JsL01pY3Jvc29mdCUyMFNlY3VyZSUyMFNlcnZlciUy
+MEF1dGhvcml0eSg4KS5jcmyGVmh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2kv
+bXNjb3JwL2NybC9NaWNyb3NvZnQlMjBTZWN1cmUlMjBTZXJ2ZXIlMjBBdXRob3Jp
+dHkoOCkuY3JshkFodHRwOi8vY29ycHBraS9jcmwvTWljcm9zb2Z0JTIwU2VjdXJl
+JTIwU2VydmVyJTIwQXV0aG9yaXR5KDgpLmNybDCBvwYIKwYBBQUHAQEEgbIwga8w
+XgYIKwYBBQUHMAKGUmh0dHA6Ly93d3cubWljcm9zb2Z0LmNvbS9wa2kvbXNjb3Jw
+L01pY3Jvc29mdCUyMFNlY3VyZSUyMFNlcnZlciUyMEF1dGhvcml0eSg4KS5jcnQw
+TQYIKwYBBQUHMAKGQWh0dHA6Ly9jb3JwcGtpL2FpYS9NaWNyb3NvZnQlMjBTZWN1
+cmUlMjBTZXJ2ZXIlMjBBdXRob3JpdHkoOCkuY3J0MD8GCSsGAQQBgjcVBwQyMDAG
+KCsGAQQBgjcVCIPPiU2t8gKFoZ8MgvrKfYHh+3SBT4PC7YUIjqnShWMCAWQCAQow
+JwYJKwYBBAGCNxUKBBowGDAKBggrBgEFBQcDAjAKBggrBgEFBQcDATANBgkqhkiG
+9w0BAQUFAAOCAQEAbbWUY/5r/Tv/kefqNUT5aGVejrkbG4229gnJLcv+uQTEg0Gg
+xfvLr77N1z2j57FameJwz6DeTRbK8MYVPoP+z5o4vM3F3GxLm7aBklYQ/7G0TIp/
+13z01a5aBGvZH8umzex3YrAnhJEcucSN5WaT6r9uwT7imdbsCgfFPdiIgS5iHdcl
+k/3QSpau+4/XZgh/8V/FMN9KEFYGvEhMb5EVzKJ8pqF9Jy9Mfzqev3BtSREiljCt
+lJuiRamxWgQoeNVTAI+J2YAsD8Qon1iZiHl08uHdgXWZiGDtLPcd9aIiL7/vi/+D
+7w3bhyHPFr+/13BCIWSfKnSRj/g6YoHnhF4gyQ==
+-----END CERTIFICATE-----
+</code></pre>
+
+<p>证书原地址:</p>
+
+<p>http://heiher.info/sftp/files/omega.contacts.msn.com</p>
+
+<p>or</p>
+
+<p>http://webupd8.googlecode.com/files/omega.contacts.msn.com</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-11-05 12:54:05">
+            <a href="post/openvz-vps-ipv6-add.html" title="2010-11-05 12:54:05" rel="bookmark">
+              <span class="entry-date-day">05</span>
+              <span class="entry-date-month-year">2010-11</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/openvz-vps-ipv6-add.html">Openvz VPS的IPV6地址添加</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/ipv6.html" rel="tag">ipv6</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/vps.html" rel="tag">vps</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>burstnet的openvz vps提供了二个源生的ipv6地址,MASK是128位的.<br>
+新的vps也是openvz,不过没有源生ipv6.但可以申请he.net的ipv6块,然后添加到vps上.<br>
+首先要开通openvz的tun支持,确认</p>
+
+<pre><code>cat /dev/net/tun
+</code></pre>
+
+<p>返回值为:</p>
+
+<pre><code>cat: /dev/net/tun: File descriptor in bad state
+</code></pre>
+
+<p>访问https://www.tunnelbroker.net,申请地址块,会拿到一个MASK为64位的地址.  还真是浪费啊,要都这么分下去,ipv6的理论地址一下就少了一半.<br>
+记下Server IPv4 address,Client IPv4 address以及Client IPv6 address.前面的地址可选择离vps近的机房,中间地址是vps ip.最后一个是分配给你的2的64次方的地址中的第一个地址.按he的分配规则,是类似x:x:x:x::1/64的地址块.前64位已经固定,后64位全部给你自己分配,但x:x:x:x::1/128分配给了服务器做中转,你能用到的第一个ipv6地址,应该是x:x:x:x::2/128.当然用64的mask也可以.</p>
+
+<p>openvz没有sit设备,用软件模拟</p>
+
+<pre><code>mkdir tb
+cd tb
+wget http://tb-tun.googlecode.com/files/tb-tun_r18.tar.gz
+tar zxf tb-tun_r18.tar.gz
+gcc tb_userspace.c -l pthread -o tb_userspace
+setsid ./tb_userspace tb [Server IPv4 address] [Client IPv4 address] sit &gt; /dev/null
+</code></pre>
+
+<p>成功创建tb设备后,启用ipv6</p>
+
+<pre><code>ifconfig tb up
+ifconfig tb inet6 add x:x:x:x::2/64
+ifconfig tb mtu 1480
+ip -6 route add default dev tb
+</code></pre>
+
+<p>看看设置:</p>
+
+<pre><code> ifconfig tb
+tb        Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
+          inet6 addr: x:x:x:x::2/64 Scope:Global
+          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1480  Metric:1
+          RX packets:200 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:181 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500
+          RX bytes:28387 (27.7 KiB)  TX bytes:21990 (21.4 KiB)
+</code></pre>
+
+<p>总的来说,这ipv6地址用得真的很浪费,虽然我已经申请了三块64位的地址....</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-11-05 12:26:37">
+            <a href="post/blog-to-new-vps.html" title="2010-11-05 12:26:37" rel="bookmark">
+              <span class="entry-date-day">05</span>
+              <span class="entry-date-month-year">2010-11</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/blog-to-new-vps.html">Blog转移到新的VPS</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>因为burstnet的线路一直抽风严重,总的来说,不抽的时候少,不得已换了家VPS.
+转移过程相当顺利,直接把网站打包,导出数据库,并复制下apache以及php的配置就ok了.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-10-26 15:55:13">
+            <a href="post/free-ssh.html" title="2010-10-26 15:55:13" rel="bookmark">
+              <span class="entry-date-day">26</span>
+              <span class="entry-date-month-year">2010-10</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/free-ssh.html">收集的几个free的ssh帐号提供网站</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>有效期不一定.
+ssh789.tk
+ssh.emdao.com
+fuckvpn.tk
+1984bbs.org
+blog.paying.org.ru
+http://feelssh.tk/
+没有全部测试,全看RP</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-09-09 14:54:14">
+            <a href="post/archlinux-eeepc-701.html" title="2010-09-09 14:54:14" rel="bookmark">
+              <span class="entry-date-day">09</span>
+              <span class="entry-date-month-year">2010-09</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/archlinux-eeepc-701.html">ArchLinux在Eeepc 701上的安装</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><ol>
+<li>下载archlinux-2010.05-core-i686.iso</li>
+<li>安装grub4dos到u盘</li>
+<li><p>copy archlinux-2010.05-core-i686.iso到u盘.编辑menu.lst,加入</p>
+
+<pre><code>title Arch CD ISO
+map --heads=0 --sectors-per-track=0 (hd0,0)/archlinux-2010.05-core-i686.iso (hd32)
+map --hook
+chainloader (hd32)
+boot
+</code></pre></li>
+<li><p>epc设置u盘启动</p></li>
+<li><p>没有找到安装源,自动跳出shell时运行</p>
+
+<pre><code>mkdir /iso
+mount –r –t vfat /dev/sdb1 /iso
+modprobe loop
+losetup /dev/loop6 /iso/archlinux-2010.05-core-i686.iso
+ln –s /dev/loop6 /dev/disk/by-label/ARCH_201005
+exit
+</code></pre></li>
+<li><p>继续安装,分区时,ssd 4g为ext2格式,全部mount到/,无swap</p></li>
+<li><p>编辑配置文件,fstab中,mount /时加入noatiome参数</p></li>
+<li><p>编辑配置文件,hosts.deny修改为ALL: ALL EXCEPT 192.168.2.*: DENY</p></li>
+<li><p>编辑配置文件,rc.local,禁用syslog-ng及netfs</p></li>
+<li><p>编辑配置文件,pacman.conf加入</p>
+
+<pre><code>[eee]
+Server = http://code.toofishes.net/packages/eee
+</code></pre></li>
+<li><p>安装完成后.重启</p></li>
+<li><p>编辑配置文件/etc/pacman.d/mirrorlist,加入</p>
+
+<pre><code>Server = http://mirrors.163.com/archlinux/$repo/os/i686
+</code></pre></li>
+<li><p>pacman 安装openssh</p></li>
+<li><p>编辑rc.local,启动sshd,编辑hosts.allow,加入</p>
+
+<pre><code>sshd:192.168.2.*:ALLOW
+</code></pre></li>
+<li><p>安装电源管理</p>
+
+<pre><code>wget http://www.ihku.biz/eee/acpi-eee/acpi-eee-10.0-1-i686.pkg.tar.gz
+pacman -U acpi-eee-10.0-1-i686.pkg.tar.gz
+</code></pre>
+
+<p>根据提示修改二处配置</p></li>
+<li><p>pacman -S kernel-eee</p></li>
+<li><p>编辑/boot/grub/menu.lst,加入后重启动</p>
+
+<pre><code># (2) Arch Linux
+title  Arch Linux Eee kernel
+root   (hd0,0)
+kernel /boot/vmlinuzeee root=/dev/sda1 ro
+</code></pre></li>
+</ol>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-09-02 22:02:00">
+            <a href="post/burstnet-cras.html" title="2010-09-02 22:02:00" rel="bookmark">
+              <span class="entry-date-day">02</span>
+              <span class="entry-date-month-year">2010-09</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/burstnet-cras.html">burstnet vps这周多次抽风</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>在burstnet的VPS这周多次抽风，轻点的ping time out,严重的有二次，main node重启动之后，我的VPS没有启动，N个小时后才发现．给我解释说是别的客户占用太多资源，看来是要考虑换地了.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2010-08-27 22:49:44">
+            <a href="post/wii-227.html" title="2010-08-27 22:49:44" rel="bookmark">
+              <span class="entry-date-day">27</span>
+              <span class="entry-date-month-year">2010-08</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/wii-227.html">Wii保龄球记录227</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/game.html" rel="tag">game</a>
+              <a href="tag/wii.html" rel="tag">wii</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>记录再次更新,227喽~</p>
+
+<p><a href="http://ahui.us/wp-content/uploads/2010/08/wii227.jpg"><img src="http://ahui.us/wp-content/uploads/2010/08/wii227-300x200.jpg" alt="" title="wii227"></a></p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>
+ 
+<div id="loop-nav-numeric" class="nav-numeric">
+  <a class='page-numbers' href='index.html'>1</a>
+  <a class='page-numbers' href='index.1.html'>2</a>
+  <a class='page-numbers' href='index.2.html'>3</a>
+  <a class='page-numbers' href='index.3.html'>4</a>
+  <a class='page-numbers' href='index.4.html'>5</a>
+  <span class='page-numbers current'>6</span>
+  <a class='page-numbers' href='index.6.html'>7</a>
+  <a class='page-numbers' href='index.7.html'>8</a>
+  <a class='page-numbers' href='index.8.html'>9</a>
+  <a class="next page-numbers" href="index.6.html">Next &raquo;</a>  <div class="clear"></div>
+</div>
+      </div> 
+
+      <div class="grid_5">
+
+<div id="sidebar">
+  <div class="widget widget_search widget-widget_search">
+    <div class="widget-wrap widget-inside">
+      <div class="search">
+        <form method="get" class="searchform" action="http://www.google.com/search">
+          <input name="sitesearch" value="http://ahui.us" type="hidden"> 
+          <input name="hl" value="zh-CN" type="hidden">
+          <input name="ie" value="GB2312" type="hidden"> 
+          <input type="text" class="field" name="q" id="query" value="Search" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" />
+          <input type="submit" class="submit" name="Search" id="searchsubmit" value="Search" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="widget widget_categories widget-widget_categories">
+    <div class="widget-wrap widget-inside">
+      <h3 class="widget-title">标签</h3>
+      <ul>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (38)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (55)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (24)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="widget widget_recent_entries widget-widget_recent_entries">
+    <div class="widget-wrap widget-inside">
+      <h3 class="widget-title">最新文章</h3>
+      <ul> 
+        <li><a href='post/abb_geng_xin_0.3.html'>A B B   更 新   0 . 3</a></li>
+        <li><a href='post/abb_geng_xin_ji_bo_ke_diao_zheng.html'>ABB 更新及博客调整</a></li>
+        <li><a href='post/ssh_wu_fa_lian_jie.html'>ssh无法连接</a></li>
+        <li><a href='post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html'>p2p vpn 之 n2n 安装使用</a></li>
+        <li><a href='post/about.html'>about</a></li>
+        <li><a href='post/owncloudmacos_ke_hu_duan_luan_ma.html'>owncloud mac os 客户端乱码</a></li>
+        <li><a href='post/hackpad_dao_chu_zhi_xiao_keng.html'>HACKPAD导出之小坑</a></li>
+        <li><a href='post/r6300v2_shang_neng_yong_de_shadowsocks-libev.html'>R6300V2上能用的SHADOWSOCKS-LIBEV</a></li>
+        <li><a href='post/yong_git_tong_bu_jing_tai_wang_zhan.html'>用git同步静态网站</a></li>
+        <li><a href='post/yong_addpost_sheng_cheng_de_di_yi_pian_jing_tai_Blog.html'>用addpost生成的第一篇静态Blog</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+<!-- <div class="widget widget_comments">
+  <h3 class="widget-title">最新评论</h3>
+  <ul class="entry ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-title="0" data-show-time="1"></ul>
+</div>
+<! 多说公共JS代码 start (一个网页只需插入一次) -->
+
+<!-- 多说公共JS代码 end -->
+
+</div>      </div>
+
+    </div>
+
+    <div class="container_16 containter_footer">
+      <div id="footer" class="grid_16">
+        <div class="grid_8 alpha">
+          <div class="copyright_inside">
+            &copy; Copyright 2014 - <a href="http://ahui.us">Ahui的个人博客</a>  </div>
+          </div>
+          <div class="grid_8 omega">
+            <div class="credit_inside">
+              <a href="http://designorbital.com/contango/" title="Contango Theme">Contango Theme</a> &sdot; Modifiy by <a href="http://ahui.us">ahui</a> &nbsp;&nbsp;&nbsp;&nbsp; <script language="javascript" type="text/javascript" src="http://js.users.51.la/17777019.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+  </html>
