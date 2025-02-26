@@ -68,18 +68,18 @@
 
       <div class="entry-content clearfix">
         <p><h3>说明</h3>
-<p>测试工具 sysbench
-主机环境 Macmini m4
-虚拟环境 OrbStack Alpine 3.21 and Ubuntu 24 arm
-测试参数</p>
+<p>测试工具 sysbench</p>
+<p>主机环境 Macmini m4</p>
+<p>虚拟环境 OrbStack Alpine 3.21 and Ubuntu 24 arm</p>
+<p>测试参数</p>
 <ul>
 <li>CPU 1 : sysbench cpu run</li>
 <li>CPU 2 : sysbench --threads=2 cpu run</li>
 <li>Memory: sysbench memory run</li>
 </ul>
 <h3>测试数据</h3>
-<p>CPU: events per second
-Memory: MiB/sec</p>
+<p>CPU: events per second</p>
+<p>Memory: MiB/sec</p>
 <table>
 <thead>
 <tr>
@@ -111,9 +111,9 @@ Memory: MiB/sec</p>
 </tbody>
 </table>
 <h3>测试结论</h3>
-<p>Alpine Linux 由于使用 musllibc ，使得其体积远小于 Ubuntu，但其运行速度可能稍差于使用用 glibc 的 Ubuntu。
-虚拟机内的磁盘速度会降低更多，所以硬盘 IO 多的应用，至少应该用内存做缓存。
-sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信。</p>
+<p>Alpine Linux 由于使用 musllibc ，使得其体积远小于 Ubuntu，但其运行速度可能稍差于使用用 glibc 的 Ubuntu。</p>
+<p>虚拟机内的磁盘速度会降低更多，所以硬盘 IO 多的应用，至少应该用内存做缓存。</p>
+<p>sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信。</p>
 </p>
       </div>
 
