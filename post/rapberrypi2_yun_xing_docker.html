@@ -68,22 +68,16 @@
 
       <div class="entry-content clearfix">
         <p><h2>情景</h2>
-
 <ul>
 <li>Rapberry Pi 2 一个</li>
 <li>Mac OS X 系统</li>
 </ul>
-
 <h2>安装步骤</h2>
-
 <p>下载Rapberry Pi 2系统并解压</p>
-
 <pre><code>wget http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip
 unzip hypriot-rpi-20151115-132854.img.zip
 </code></pre>
-
 <p>系统简介</p>
-
 <pre><code>Detailed Features of HypriotOS “Hector”
 a modern operating system based on Raspbian Jessie
 a recent Raspberry Pi firmware and Device Tree to support a huge range of hardware add-ons
@@ -98,42 +92,33 @@ out-of-the-box support for WiFi
 support for Avahi (aka mDNS aka Apple Bonjour)
 support for Open vSwitch
 our own package repository to easily update individual components
+	
 </code></pre>
-
 <p>检查下载是否正确</p>
-
 <pre><code>shasum -a 256 hypriot-rpi-20151115-132854.img.zip
 089bc64fc5f050f263aa65a67fac5fe48f8721c51f8a31f3d96fa426bc04674d  hypriot-rpi-20151115-132854.img.zip
 </code></pre>
-
 <p>准备好一张容量最少4G 的microSD卡. 查找其系统编号</p>
-
 <pre><code>diskutil list
 </code></pre>
-
-<p><code>
-    ...
-    /dev/disk2
-    #:                       TYPE NAME                    SIZE          IDENTIFIER
-    0:     FDisk_partition_scheme                        *4.0 GB     disk2
-    1:                 DOS_FAT_32 NO NAME                 4.0 GB   
-    ...
-</code><br>
-这里为/dev/disk2,别看错.</p>
-
+<pre><code>	...
+	/dev/disk2
+   	#:                       TYPE NAME                    SIZE       	IDENTIFIER
+   	0:     FDisk_partition_scheme                        *4.0 GB     disk2
+   	1:                 DOS_FAT_32 NO NAME                 4.0 GB   
+   	...
+</code></pre>
+<p>这里为/dev/disk2,别看错.</p>
 <p>取消挂载</p>
-
 <pre><code>diskutil unmountdisk /dev/disk2
 </code></pre>
-
-<p>写入系统到 SD 卡,设备名 disk2前有个字母 &#39;r&#39;, 这样能加速写入</p>
-
+<p>写入系统到 SD 卡,设备名 disk2前有个字母 'r', 这样能加速写入</p>
 <pre><code>sudo dd if=hypriot-rpi-20151115-132854.img of=/dev/rdisk2 bs=1m
 1430+1 records in
 1430+0 records out
 1499463680 bytes transferred in 112.464700 secs (13332750 bytes/sec)
+	
 </code></pre>
-
 <p>sd 卡放在 pi 2上,启动吧.</p>
 </p>
       </div>
@@ -169,16 +154,16 @@ our own package repository to easily update individual components
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

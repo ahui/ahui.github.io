@@ -69,23 +69,17 @@
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>burstnet的openvz vps提供了二个源生的ipv6地址,MASK是128位的.<br>
-新的vps也是openvz,不过没有源生ipv6.但可以申请he.net的ipv6块,然后添加到vps上.<br>
+        <p><p>burstnet的openvz vps提供了二个源生的ipv6地址,MASK是128位的.<br />
+新的vps也是openvz,不过没有源生ipv6.但可以申请he.net的ipv6块,然后添加到vps上.<br />
 首先要开通openvz的tun支持,确认</p>
-
 <pre><code>cat /dev/net/tun
 </code></pre>
-
 <p>返回值为:</p>
-
 <pre><code>cat: /dev/net/tun: File descriptor in bad state
 </code></pre>
-
-<p>访问https://www.tunnelbroker.net,申请地址块,会拿到一个MASK为64位的地址.  还真是浪费啊,要都这么分下去,ipv6的理论地址一下就少了一半.<br>
+<p>访问https://www.tunnelbroker.net,申请地址块,会拿到一个MASK为64位的地址.  还真是浪费啊,要都这么分下去,ipv6的理论地址一下就少了一半.<br />
 记下Server IPv4 address,Client IPv4 address以及Client IPv6 address.前面的地址可选择离vps近的机房,中间地址是vps ip.最后一个是分配给你的2的64次方的地址中的第一个地址.按he的分配规则,是类似x:x:x:x::1/64的地址块.前64位已经固定,后64位全部给你自己分配,但x:x:x:x::1/128分配给了服务器做中转,你能用到的第一个ipv6地址,应该是x:x:x:x::2/128.当然用64的mask也可以.</p>
-
 <p>openvz没有sit设备,用软件模拟</p>
-
 <pre><code>mkdir tb
 cd tb
 wget http://tb-tun.googlecode.com/files/tb-tun_r18.tar.gz
@@ -93,17 +87,13 @@ tar zxf tb-tun_r18.tar.gz
 gcc tb_userspace.c -l pthread -o tb_userspace
 setsid ./tb_userspace tb [Server IPv4 address] [Client IPv4 address] sit &gt; /dev/null
 </code></pre>
-
 <p>成功创建tb设备后,启用ipv6</p>
-
 <pre><code>ifconfig tb up
 ifconfig tb inet6 add x:x:x:x::2/64
 ifconfig tb mtu 1480
 ip -6 route add default dev tb
 </code></pre>
-
 <p>看看设置:</p>
-
 <pre><code> ifconfig tb
 tb        Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
           inet6 addr: x:x:x:x::2/64 Scope:Global
@@ -112,8 +102,8 @@ tb        Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
           TX packets:181 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:500
           RX bytes:28387 (27.7 KiB)  TX bytes:21990 (21.4 KiB)
+          
 </code></pre>
-
 <p>总的来说,这ipv6地址用得真的很浪费,虽然我已经申请了三块64位的地址....</p>
 </p>
       </div>
@@ -149,16 +139,16 @@ tb        Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

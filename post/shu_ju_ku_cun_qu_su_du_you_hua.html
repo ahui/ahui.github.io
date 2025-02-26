@@ -68,45 +68,31 @@
 
       <div class="entry-content clearfix">
         <p><h2>sqlite3</h2>
-
 <p><strong>使用场景</strong></p>
-
 <p>使用 pony 作为 orm读取 20w 条左右数据</p>
-
 <p><strong>慢</strong></p>
-
 <p>取得所有字段,会自动封装成对象
 select(u for u in User)</p>
-
 <p><strong>优化</strong></p>
-
 <p>只取需要的字段
 select(u.id for u in User)</p>
-
 <h2>redis</h2>
-
 <p><strong>使用场景</strong></p>
-
 <pre><code>使用 redis.py 作为  写入 20w 条左右数据
 </code></pre>
-
 <p><strong>慢</strong></p>
-
-<pre><code>m.incr(&#39;u_&#39;+u[:7])
+<pre><code>m.incr('u_'+u[:7])
+	
 </code></pre>
-
 <p><strong>优化</strong></p>
-
 <p><em>使用连接池</em></p>
-
-<pre><code>pool = redis.ConnectionPool(host=&#39;127.0.0.1&#39;, port=6379, db=15)
+<pre><code>pool = redis.ConnectionPool(host='127.0.0.1', port=6379, db=15)
 m = redis.StrictRedis(connection_pool=pool)
 </code></pre>
-
 <p><em>使用批量提交</em></p>
-
-<pre><code>pipe = m.pipeline()
-pipe.incr(&#39;u_&#39;+u[:7])
+<pre><code>	
+pipe = m.pipeline()
+pipe.incr('u_'+u[:7])
 pipe.set()
 pipe.execute()
 </code></pre>
@@ -144,16 +130,16 @@ pipe.execute()
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

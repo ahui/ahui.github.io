@@ -68,34 +68,28 @@
 
       <div class="entry-content clearfix">
         <p><p>很闲的时候，找东西找发时间，无聊就玩了会verycd上的魔塔世界．有时候杀１０来只怪更无聊，何况更要爬１００多层的塔，全是重复劳动．不由想起很久以前用过的按键精灵，做这事最合适了．于是顺手写了个简单的前台脚本，放虚拟机里用蛮方便．后台那块还没看，以后看看会不会加进去．</p>
-
 <p>记得最早用按键精灵好象还是2.x还是3.x来着，现在已经到了8.0，用起来是更方便了，广告也更多了......</p>
-
 <p>脚本不长，100多行，就直接贴在下面，懒人也可以下载能直接运行的小精灵版本．下载压缩文件，全部放在c:\mt下就好．放别的目录则在代码或小精灵里修改下picPath参数.</p>
-
 <p><a href="http://ahui.us/wp-content/uploads/2010/07/mt.zip">小精灵版本下载</a>
 <a href="http://ahui.us/wp-content/uploads/2010/07/mtpic.zip">只下载脚本用到的图片</a></p>
-
 <p>脚本:</p>
-
 <!--more-->
-
 <pre class="brush:vb">
 //todo
 //1.加入修理
 //2.加入统计显示
 //3.智能判断所处场景
 
-Dim findFlag    //是否找到的标志
-Dim stepX       //X偏移量
-Dim stepY       //Y偏移量
-Dim picPath     //图片所在目录
-Dim varGWWZ     //怪物位置
+Dim findFlag 	//是否找到的标志
+Dim stepX		//X偏移量
+Dim stepY		//Y偏移量
+Dim picPath 	//图片所在目录
+Dim varGWWZ		//怪物位置
 Dim varScreen   //场景,取值为 副本,冲塔,野外杀怪
 Dim varLoopNum  //脚本运行次数
 Dim varPicsim   //图片相似度
-Dim adjX        //x adjust
-Dim adjY        //y adjust
+Dim adjX		//x adjust
+Dim adjY		//y adjust
 
 //初始设置
 UserVar varPicsim=0.8 "图片相似度，0,5~1"
@@ -131,7 +125,7 @@ Sub 冲塔
     Call 确定打怪()
     Delay 500
     Call 关闭战斗()
-    Delay 1000  
+    Delay 1000	
 End Sub
 //野外杀怪主程序 
 Sub 野外杀怪
@@ -248,13 +242,9 @@ Sub 关闭战场
 End Sub
 
 </pre>
-
 <p>备注一：不做任何改动，能在1024x768下运行，ie or ff最大化，只显示一行地址栏及一行标签栏．</p>
-
-<p>备注二：UserVar adjX=208 &quot;x adjust&quot;及UserVar adjY=84 &quot;Y adjust&quot;设置为0．能在1440x900的本本上运行．其他则要修改下这二个的值．原始图是在1440x900下取的，以攻击第一个野外怪位置为例，&quot;攻击&quot;二个字的图片位置是1104,363．其他分辨率下取这处图边左上角坐标与原始坐标的差值．1024x768下，这二字的左上角坐标为896,279,差值就是现在在用的208,84．以后有空再改为简单点的标识．</p>
-
+<p>备注二：UserVar adjX=208 "x adjust"及UserVar adjY=84 "Y adjust"设置为0．能在1440x900的本本上运行．其他则要修改下这二个的值．原始图是在1440x900下取的，以攻击第一个野外怪位置为例，"攻击"二个字的图片位置是1104,363．其他分辨率下取这处图边左上角坐标与原始坐标的差值．1024x768下，这二字的左上角坐标为896,279,差值就是现在在用的208,84．以后有空再改为简单点的标识．</p>
 <p>可能存在的问题：</p>
-
 <p>我在按键精灵8时进行调试，发现有时候Uservar定义的变量取值会不正常，后来发现是保存代码后，脚本里所有定义的Uservar值都会被保存下来，放在按键精灵8的安装目录根下，名为uservar.txt文件中．这时候如果只改动脚本里的值，调试运行里仍会读取这个文件里保存的值．理论上按键精灵8在调试里，应该先读取脚本里的值，并更新到uservar.txt中，或者调试里不使用这个文件．
 临里办法是每次调试都删除这个文件，或者直接先在编辑器里的ＧＵＩ中选择确定新值，并先保存，再调试．</p>
 </p>
@@ -291,16 +281,16 @@ End Sub
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

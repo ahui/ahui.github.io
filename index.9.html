@@ -69,10 +69,8 @@
 
       <div class="entry-content clearfix">
         <p><p>今天把自己wii的保龄球记录从188提升到了214，提高了不少．不过离300的满分还是有很远...</p>
-
 <p>有图有真相~</p>
-
-<p><a href="http://ahui.us/wp-content/uploads/2010/08/wii.jpg"><img src="http://ahui.us/wp-content/uploads/2010/08/wii-300x200.jpg" alt="" title="wii"></a></p>
+<p><a href="http://ahui.us/wp-content/uploads/2010/08/wii.jpg"><img src="http://ahui.us/wp-content/uploads/2010/08/wii-300x200.jpg" alt="" title="wii" /></a></p>
 </p>
       </div>
 
@@ -106,14 +104,10 @@
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>发现115网盘下载,经常会出现&quot;网络繁忙时段，非登陆用户其它下载地址暂时关闭。推荐您使用优蛋下载&quot;之类的提示,无法正常下载.</p>
-
+        <p><p>发现115网盘下载,经常会出现"网络繁忙时段，非登陆用户其它下载地址暂时关闭。推荐您使用优蛋下载"之类的提示,无法正常下载.</p>
 <p>今天试用了一下北京联通的应用网盘,10G空间,500M单文件,看起来很美好.不过网页上传大文件时会超时,用了插件也是如此.然后只能用其客户端上传,倒是比较稳定.</p>
-
 <p>所以提供了一个新地址下载</p>
-
 <p><a href="http://ahui.us/?p=234">Android 2.2 x86虚拟机版ISO</a></p>
-
 <p>---END---</p>
 </p>
       </div>
@@ -149,15 +143,12 @@
 
       <div class="entry-content clearfix">
         <p><p>Android 2.2 x86虚拟机版iso文件已经打包上传到115网盘,压缩后大小约218M左右,可以用下面的地址下载</p>
-
 <p><a href="http://ahui.us/?p=234">Android2.2.x86.zip</a></p>
-
 <p>有效期为31天,如果过期,可以留言或email到ahui at ahui.us,我再续期.</p>
-
 <p>使用tips
 1.可以不安装直接运行.
 2.如果安装,分一个swap,一个根目录,然后安装就好.
-3.运行后如果没有鼠标,在VB的控制菜单里,点击&quot;禁止自动独占鼠标&quot;.这里是指VB3.2.6中文版.
+3.运行后如果没有鼠标,在VB的控制菜单里,点击"禁止自动独占鼠标".这里是指VB3.2.6中文版.
 4.启动后用鼠标拖动小锁向上,进行解锁.
 5.按键盘Home键,总是能直接返回Home页.
 6.鼠标左键是进入,这个说起来多余了,然后鼠标右键是返回上一级菜单.
@@ -199,16 +190,12 @@
 
       <div class="entry-content clearfix">
         <p><p>Android x86项目提供的还是1.6版本的iso,<a href="http://cwhuang.info/">这里</a>做了很多的最新版本2.2的工作,可以由他上传的源码编译一个Virutal Box能使用的vm.iso文件.</p>
-
 <p>编译主机用的Ubuntu 10.04,其他OS可能要安装的相关依赖文件有所不同.
-10.04默认没有sun jdk,要加个新源 </p>
-
+10.04默认没有sun jdk,要加个新源</p>
 <pre><code>http://archive.canonical.com/ lucid partner.
 </code></pre>
-
 <p>1.安装相关依赖文件</p>
-
-<pre><code>sudo add-apt-repository &quot;deb http://archive.canonical.com/ lucid partner&quot;
+<pre><code>sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
 sudo apt-get update
 sudo apt-get install git-core 
 sudo apt-get install sun-java6-jdk 
@@ -221,44 +208,32 @@ sudo apt-get install build-essential
 sudo apt-get install curl 
 sudo apt-get install valgrind
 </code></pre>
-
 <p>2.安装repo</p>
-
 <pre><code>cd
 mkdir bin
 cd bin
 curl http://android.git.kernel.org/repo &gt; ~/bin/repo
 chmod a+x repo
 </code></pre>
-
 <p>3.下载同步源代码</p>
-
 <pre><code>cd
 mkdir android2.2
 cd android2.2
  ../bin/repo init -u git://android-x86.git.sf.net/gitroot/android-x86/manifest.git -b froyo-x86
  ../bin/repo sync
 </code></pre>
-
 <p>同步要花n久时间.取决于网速,我这200+KB/s跑了四个多小时.</p>
-
 <p>4.编译成vm.iso  其中编译参数-j4是我有四个cpu核心,所以设定同时运行4个进程.</p>
-
 <pre><code> . build/envsetup.sh
 lunch vm-eng 
-m -j4 iso_img  &#39; cpu x 4
+m -j4 iso_img  ' cpu x 4
 </code></pre>
-
 <p>编译也要花n久时间,取决于CPU性能,我的Xeon 4核心花了近三个小时.
 然后你就能在out下找到vm.iso了.文件大小约557,714KB.
 新开一个Virtual Box虚拟机,挂载vm.iso,直接光盘运行或安装到硬盘都可.鼠标独占要去掉,否则不会显示鼠标.而且鼠标的速度慢了点,得等作者在新版本里进行修正了.</p>
-
 <p>ISO文件已经上传到网盘,<a href="http://ahui.us/?p=234">点此查看</a>.</p>
-
 <p>无图无真相,给几张在我的VB中运行的靓照.多图杀猫啊~ 点击查看清晰无码大图.</p>
-
-<p>[gallery link=&quot;file&quot; columns=&quot;2&quot; orderby=&quot;title&quot;]</p>
-
+<p>[gallery link="file" columns="2" orderby="title"]</p>
 <p>-----END-----</p>
 </p>
       </div>
@@ -295,128 +270,129 @@ m -j4 iso_img  &#39; cpu x 4
       <div class="entry-content clearfix">
         <p><p>现在用的路由器安装的是Tomato Pandora Version 1.27.0475,有时候要在路由器上抓包,发现这个系统没有配置ngrep或者tcpdump,也没有ipkg,没法直接安装现成的opt包.
 不过发现作者有写接口程序,只是没直接公布.</p>
-
 <ol>
-<li><p>login到路由器,下载ipkg包的接口程序,用于安装ipkg</p>
-
-<pre><code>wget http://pandoric.googlecode.com/svn/Pandora%20%e8%84%b1%e6%9c%ba%e8%bd%af%e4%bb%b6/optware-install.sh
+<li>
+<p>login到路由器,下载ipkg包的接口程序,用于安装ipkg</p>
+<pre><code> wget http://pandoric.googlecode.com/svn/Pandora%20%e8%84%b1%e6%9c%ba%e8%bd%af%e4%bb%b6/optware-install.sh
 </code></pre>
-
 <p>不过发现直接下载的文件换行符有问题,要处理一下,或者copy下面的内容,存成optware-install.sh后再上传到路由器里面.</p>
+<pre><code> #!/bin/sh
+ # Optware pre-installation script, Leon Kos 2006
 
-<pre><code>#!/bin/sh
-# Optware pre-installation script, Leon Kos 2006
+ REPOSITORY=http://pandoric.googlecode.com/svn/optware/stable
+ TMP=/tmp
 
-REPOSITORY=http://pandoric.googlecode.com/svn/optware/stable
-TMP=/tmp
+ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
+ unset LD_PRELOAD
+ unset LD_LIBRARY_PATH
 
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
-unset LD_PRELOAD
-unset LD_LIBRARY_PATH
+ _check_config()
+ {
+     echo "Checking system config ..."
+     GATEWAY=$(netstat -rn |
+     sed -n 's/^0.0.0.0[ \t]\{1,\}\([0-9.]\{8,\}\).*/\1/p' )
+     if [ -n "${GATEWAY}" ]; then
+     echo "Using ${GATEWAY} as default gateway."
+     else
+     echo "Error: No default gateway set!"
+     exit 2
+     fi
+     if [ -s /etc/resolv.conf ]; then
+     echo "Using the following nameserver(s):"
+     if grep nameserver /etc/resolv.conf ; then
+             GATEWAY_SUBNET=$(echo "${GATEWAY}" |
+         sed 's/\.[0-9]\{1,3\}\.[0-9]\{1,3\}$//')
+         if [ "${GATEWAY_SUBNET}" = "192.168" ]; then
+         if grep -q ${GATEWAY} /etc/resolv.conf ; then
+             echo "Gateway ${GATEWAY} is also nameserver."
+         else
+             echo "Warning: local nameserver is different than gateway!"
+             echo "Check config or enter:"
+             if test -L /etc/resolv.conf ; then 
+               echo "  sed -i s/192.168.*/${GATEWAY}/ /tmp/resolv.conf"
+             else
+               echo "  sed -i s/192.168.*/${GATEWAY}/ /etc/resolv.conf"
+             fi
+             echo "to correct this."
+         fi
+         fi
+     else
+         echo "Error: No nameserver specified in /etc/resolv.conf"
+         exit 5
+     fi
+     else
+     echo "Error: Empty or nonexistent /etc/resolv.conf"
+     exit 3
+     fi
 
-_check_config()
-{
-    echo &quot;Checking system config ...&quot;
-    GATEWAY=$(netstat -rn |
-    sed -n &#39;s/^0.0.0.0[ \t]\{1,\}\([0-9.]\{8,\}\).*/\1/p&#39; )
-    if [ -n &quot;${GATEWAY}&quot; ]; then
-    echo &quot;Using ${GATEWAY} as default gateway.&quot;
-    else
-    echo &quot;Error: No default gateway set!&quot;
-    exit 2
-    fi
-    if [ -s /etc/resolv.conf ]; then
-    echo &quot;Using the following nameserver(s):&quot;
-    if grep nameserver /etc/resolv.conf ; then
-            GATEWAY_SUBNET=$(echo &quot;${GATEWAY}&quot; |
-        sed &#39;s/\.[0-9]\{1,3\}\.[0-9]\{1,3\}$//&#39;)
-        if [ &quot;${GATEWAY_SUBNET}&quot; = &quot;192.168&quot; ]; then
-        if grep -q ${GATEWAY} /etc/resolv.conf ; then
-            echo &quot;Gateway ${GATEWAY} is also nameserver.&quot;
-        else
-            echo &quot;Warning: local nameserver is different than gateway!&quot;
-            echo &quot;Check config or enter:&quot;
-            if test -L /etc/resolv.conf ; then 
-              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /tmp/resolv.conf&quot;
-            else
-              echo &quot;  sed -i s/192.168.*/${GATEWAY}/ /etc/resolv.conf&quot;
-            fi
-            echo &quot;to correct this.&quot;
-        fi
-        fi
-    else
-        echo &quot;Error: No nameserver specified in /etc/resolv.conf&quot;
-        exit 5
-    fi
-    else
-    echo &quot;Error: Empty or nonexistent /etc/resolv.conf&quot;
-    exit 3
-    fi
+     if mount | grep -q /opt ; then
+     [ -d /opt/etc ] &amp;&amp; echo "Warning: /opt partition not empty!"
+     else
+     echo "Error: /opt partition not mounted."
+     echo "Enter"
+     echo "    mkdir /jffs/opt"
+     echo "    mount -o bind /jffs/opt /opt"
+     echo "to correct this."
+     exit 4
+     fi
+ }
 
-    if mount | grep -q /opt ; then
-    [ -d /opt/etc ] &amp;&amp; echo &quot;Warning: /opt partition not empty!&quot;
-    else
-    echo &quot;Error: /opt partition not mounted.&quot;
-    echo &quot;Enter&quot;
-    echo &quot;    mkdir /jffs/opt&quot;
-    echo &quot;    mount -o bind /jffs/opt /opt&quot;
-    echo &quot;to correct this.&quot;
-    exit 4
-    fi
-}
+ _install_package()
+ {
+     PACKAGE=$1
+     echo "Installing package ${PACKAGE} ..."
+     wget -O ${TMP}/${PACKAGE} ${REPOSITORY}/${PACKAGE}
+     cd  ${TMP} 
+     tar xzf ${TMP}/${PACKAGE} 
+     tar xzf ${TMP}/control.tar.gz
+     cd /
+     if [ -f ${TMP}/preinst ] ; then
+     sh ${TMP}/preinst
+     rm -f ${TMP}/preints
+     fi
+     tar xzf ${TMP}/data.tar.gz
+     if [ -f ${TMP}/postinst ] ; then
+     sh ${TMP}/postinst
+     rm -f ${TMP}/postinst
+     fi
+     rm -f ${TMP}/data.tar.gz
+     rm -f ${TMP}/control.tar.gz
+     rm -f ${TMP}/control
+     rm -f ${TMP}/${PACKAGE}
+ }
 
-_install_package()
-{
-    PACKAGE=$1
-    echo &quot;Installing package ${PACKAGE} ...&quot;
-    wget -O ${TMP}/${PACKAGE} ${REPOSITORY}/${PACKAGE}
-    cd  ${TMP} 
-    tar xzf ${TMP}/${PACKAGE} 
-    tar xzf ${TMP}/control.tar.gz
-    cd /
-    if [ -f ${TMP}/preinst ] ; then
-    sh ${TMP}/preinst
-    rm -f ${TMP}/preints
-    fi
-    tar xzf ${TMP}/data.tar.gz
-    if [ -f ${TMP}/postinst ] ; then
-    sh ${TMP}/postinst
-    rm -f ${TMP}/postinst
-    fi
-    rm -f ${TMP}/data.tar.gz
-    rm -f ${TMP}/control.tar.gz
-    rm -f ${TMP}/control
-    rm -f ${TMP}/${PACKAGE}
-}
-
-_check_config
-_install_package uclibc-opt_0.9.28-13_mipsel.ipk
-_install_package ipkg-opt_0.99.163-10_mipsel.ipk
-/opt/sbin/ldconfig
-/opt/bin/ipkg update
-/opt/bin/ipkg install -force-reinstall uclibc-opt
-/opt/bin/ipkg install -force-reinstall ipkg-opt
-</code></pre></li>
-<li><p>进入路由器web界面.启用JFFS
-如果启用后,空间不够3M,也就没戏了.我用的一共16M空间,系统占了8M,还空8M.但opt的初始安装,要近3M左右空间.</p></li>
-<li><p>运行下面的命令安装ipkg</p>
-
-<pre><code>mkdir /jffs/opt
-mount -o bind /jffs/opt /opt
-sh optware-install.sh
-</code></pre></li>
-<li><p>修改下/opt/etc/ipkg.conf,源设置为</p>
-
-<pre><code>src/gz optware http://pandoric.googlecode.com/svn/optware/stable
+ _check_config
+ _install_package uclibc-opt_0.9.28-13_mipsel.ipk
+ _install_package ipkg-opt_0.99.163-10_mipsel.ipk
+ /opt/sbin/ldconfig
+ /opt/bin/ipkg update
+ /opt/bin/ipkg install -force-reinstall uclibc-opt
+ /opt/bin/ipkg install -force-reinstall ipkg-opt
 </code></pre>
-
-<p>如果能正常下载,这步不改,用默认源也可</p></li>
-<li><p>ok.能安装想要的软件了</p>
-
-<pre><code>ipkg install ngerp
-</code></pre></li>
+</li>
+<li>
+<p>进入路由器web界面.启用JFFS
+如果启用后,空间不够3M,也就没戏了.我用的一共16M空间,系统占了8M,还空8M.但opt的初始安装,要近3M左右空间.</p>
+</li>
+<li>
+<p>运行下面的命令安装ipkg</p>
+<pre><code> mkdir /jffs/opt
+ mount -o bind /jffs/opt /opt
+ sh optware-install.sh
+</code></pre>
+</li>
+<li>
+<p>修改下/opt/etc/ipkg.conf,源设置为</p>
+<pre><code> src/gz optware http://pandoric.googlecode.com/svn/optware/stable
+</code></pre>
+<p>如果能正常下载,这步不改,用默认源也可</p>
+</li>
+<li>
+<p>ok.能安装想要的软件了</p>
+<pre><code> ipkg install ngerp
+</code></pre>
+</li>
 </ol>
-
 <p>如果路由系统升级,这些要重做一次.</p>
 </p>
       </div>
@@ -451,10 +427,8 @@ sh optware-install.sh
 
       <div class="entry-content clearfix">
         <p><p>新安装了个中文版的firefox,已经更新到3.6.8,发现有个常去的论坛死活登录不上去,IE没有问题,以前一直用的英文版ff也ok,于是怀疑是中文版的cookies的问题,找到</p>
-
 <pre><code>C:\Users\ahui\AppData\Roaming\Mozilla\Firefox\Profiles\XXXX.default\cookies.sqlite
 </code></pre>
-
 <p>用sqlite管理软件查看内容,发现没有保存刚登录的论坛的记录.
 尝试将cookies.sqlite改名,重新登录,问题解决.
 原因不明.特记之.</p>
@@ -492,33 +466,31 @@ sh optware-install.sh
 
       <div class="entry-content clearfix">
         <p><p>编辑single.php,放到comments_template之前.</p>
-
-<pre><code>&lt;div class=&quot;entry-title&quot;&quot;&gt;
+<pre><code>&lt;div class="entry-title""&gt;
 相关文章
 &lt;/div&gt;
-&lt;div id=&quot;related_posts&quot; class=&quot;box&quot;&gt;
+&lt;div id="related_posts" class="box"&gt;
    &lt;?php do_action(
-    &#39;related_posts_by_category&#39;,
+    'related_posts_by_category',
     array(
-      &#39;orderby&#39; =&gt; &#39;post_date&#39;,
-      &#39;order&#39; =&gt; &#39;DESC&#39;,
-      &#39;limit&#39; =&gt; 5,
-      &#39;echo&#39; =&gt; true,
-      &#39;before&#39; =&gt; &#39;&amp;lt;li&gt;&#39;,
-      &#39;inside&#39; =&gt; &#39;&amp;raquo; &#39;,
-      &#39;outside&#39; =&gt; &#39;&#39;,
-      &#39;after&#39; =&gt; &#39;&amp;lt;/li&gt;&#39;,
-      &#39;rel&#39; =&gt; &#39;nofollow&#39;,
-      &#39;type&#39; =&gt; &#39;post&#39;,
-      &#39;image&#39; =&gt; array(50, 50),
-      &#39;hidden&#39; =&gt; &#39;image&#39;,
-      &#39;message&#39; =&gt; &#39;没有相关文章.&#39;
+      'orderby' =&gt; 'post_date',
+      'order' =&gt; 'DESC',
+      'limit' =&gt; 5,
+      'echo' =&gt; true,
+      'before' =&gt; '&amp;lt;li&gt;',
+      'inside' =&gt; '&amp;raquo; ',
+      'outside' =&gt; '',
+      'after' =&gt; '&amp;lt;/li&gt;',
+      'rel' =&gt; 'nofollow',
+      'type' =&gt; 'post',
+      'image' =&gt; array(50, 50),
+      'hidden' =&gt; 'image',
+      'message' =&gt; '没有相关文章.'
     )
   ) ?&gt;
 &lt;/div&gt;
 </code></pre>
-
-<p>其中&#39;hidden&#39; =&gt; &#39;image&#39;防止自动显示相关图片.</p>
+<p>其中'hidden' =&gt; 'image'防止自动显示相关图片.</p>
 </p>
       </div>
 
@@ -554,17 +526,12 @@ sh optware-install.sh
 
       <div class="entry-content clearfix">
         <p><p>今天收到burstnet的邮件,有个好消息,说是支持ipv6了</p>
-
 <p>BURSTNET®: IPv6 IP Addressing Now Available!</p>
-
 <p>SCRANTON, PA - July 27, 2010 - BurstNET Technologies, Inc.™ (http://www.burst.net), a leading provider of budget hosting services, today announced IPv6 addressing service available end-to-end on its entire product line: including Dedicated Servers, Virtual Private Servers (VPS), &amp; Co-Location.</p>
-
 <p>原生支持ipv6真是个相当好的消息,于是赶紧发了个Ticket进行申请. 有消息再update.
 Ticket发送的当地时间为07-29-2010 - 01:34AM,应该睡得正香的时候,或者还没开始睡.....</p>
-
 <p>update:
 07-29-2010 - 02:04AM收到回复,已经给我添加了二个ipv6的地址,回应速度很快啊,足以说明晚上有人值班,而且没有睡着...</p>
-
 <p>接下来看能用v6的地址做点什么.</p>
 </p>
       </div>
@@ -613,16 +580,16 @@ Ticket发送的当地时间为07-29-2010 - 01:34AM,应该睡得正香的时候,�
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>

@@ -68,32 +68,35 @@
 
       <div class="entry-content clearfix">
         <p><p>这是用 ABB 0.3 写的第一篇文章。</p>
-
 <p>原站图片虽然不能正常显示，但还好原文件还在。</p>
-
 <p>图片等比较大的静态文件，有三种处理方案。</p>
-
 <h3>第一种：直接与 css,js 一样，与生成的 html 文件放在一起。</h3>
-
 <ul>
-<li><p>优点：最方便的处理方式，统一放在 img 目录就可以了。</p></li>
-<li><p>缺点：图片体积相对来说比较大，对单独服务器来说，带宽和流量都会有压力。</p></li>
+<li>
+<p>优点：最方便的处理方式，统一放在 img 目录就可以了。</p>
+</li>
+<li>
+<p>缺点：图片体积相对来说比较大，对单独服务器来说，带宽和流量都会有压力。</p>
+</li>
 </ul>
-
 <h3>第二种：使用 cloudflare 的 R2。</h3>
-
 <ul>
-<li><p>优点：速度上没问题，cf 也会自动分发。</p></li>
-<li><p>缺点：图片上传到 R2 比较不方便， 只能手工处理上传或者用 S3 API 上传。</p></li>
+<li>
+<p>优点：速度上没问题，cf 也会自动分发。</p>
+</li>
+<li>
+<p>缺点：图片上传到 R2 比较不方便， 只能手工处理上传或者用 S3 API 上传。</p>
+</li>
 </ul>
-
 <h3>第三种: 使用 github 仓库保存图片，然后用 jsdelivr 进行加速。</h3>
-
 <ul>
-<li><p>优点：图片可以用 git 进行管理。</p></li>
-<li><p>缺点：非要找个问题，github 仓库会有容量限制。</p></li>
+<li>
+<p>优点：图片可以用 git 进行管理。</p>
+</li>
+<li>
+<p>缺点：非要找个问题，github 仓库会有容量限制。</p>
+</li>
 </ul>
-
 <p>ABB 采用第三种方案，这样可以统一用 git 进行管理。如果碰到容量限制，可以再开新仓库存放。</p>
 </p>
       </div>
@@ -129,16 +132,16 @@
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

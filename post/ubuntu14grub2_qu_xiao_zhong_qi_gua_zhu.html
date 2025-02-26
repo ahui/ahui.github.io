@@ -68,10 +68,8 @@
 
       <div class="entry-content clearfix">
         <p><p>Ubuntu 14.04 在升级内核或是不安全断电情况下,重启后GRUB 会停留在系统选择界面,并不会自动超时,需要手动选择并按回车才能继续启动. 在不方便接触物理机或 VPS 远程开机时,是个很麻烦的事.</p>
-
-<p>主要原因是/boot/grub/grub.cfg 把 timeout 设置成了&#39;-1&#39;.</p>
-
-<pre><code>  if [ &quot;${recordfail}&quot; = 1 ] ; then
+<p>主要原因是/boot/grub/grub.cfg 把 timeout 设置成了'-1'.</p>
+<pre><code>  if [ "${recordfail}" = 1 ] ; then
    set timeout=-1
   else
    if [ x$feature_timeout_style = xy ] ; then
@@ -84,18 +82,15 @@
    fi
   fi
 </code></pre>
-
 <p>grub.cfg 会被重写覆盖,得修改/etc/default/grub,加入一行</p>
-
 <pre><code>  GRUB_RECORDFAIL_TIMEOUT=5
 </code></pre>
-
 <p>更新 grub.cfg</p>
-
 <pre><code>  update-grub
-</code></pre>
 
-<p>然后&#39;-1&#39;的设置会变更为&#39;5&#39;,这样不用手动操作,系统会在5秒超时会继续启动,不再挂住.</p>
+	
+</code></pre>
+<p>然后'-1'的设置会变更为'5',这样不用手动操作,系统会在5秒超时会继续启动,不再挂住.</p>
 </p>
       </div>
 
@@ -130,16 +125,16 @@
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

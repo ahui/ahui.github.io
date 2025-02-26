@@ -67,62 +67,48 @@
 
       <div class="entry-content clearfix">
         <p><h2>场景</h2>
-
 <p>在 Virtualbox 上直接启动 boot2docker.iso , 并加载虚拟硬盘存放 images 以及个人数据.  远程 ssh 进入系统后进行 docker 操作.
 如果能够本机操作,直接安装整合包.</p>
-
 <h2>下载</h2>
-
 <p>https://github.com/boot2docker/boot2docker/releases/download/v1.9.1/boot2docker.iso</p>
-
 <pre><code>Docker v1.9.1
 Linux v4.1.13 (AUFS v4.1-20151116)
 Parallels Tools v11.1.0-32202
 VMware Tools (open-vm-tools) v10.0.0-3000743
 VirtualBox Guest Additions v5.0.10
 XenServer Tools (xe-guest-utilities) v6.6.80
+	
 </code></pre>
-
 <h2>Virtualbox</h2>
-
 <p>设置一个新的虚拟硬盘, 启动后设置硬盘 Lable 为 boot2docker-data, 重启后系统会自动挂载在 /var/lib/boot2docker 以及 /var/lib/docker 下, 前者放启动脚本, 后者放docker 数据.</p>
-
 <pre><code>fdisk /dev/sda
 mkfs.ext4 -L boot2docker-data /dev/sda1
 reboot
+	
 </code></pre>
-
 <h2>修改默认密码</h2>
-
 <p>默认帐号为 docker/tcuser,修改为自定义密码</p>
-
 <pre><code>openssl passwd -1 &gt; mypasswd.txt
-vi mypasswd.txt 在密码前面加上&quot;docker:&quot;
+vi mypasswd.txt 在密码前面加上"docker:"
 cd /var/lib/boo2docker
 vi bootlocal.sh
 chmod +x bootlocal.sh
+	
 </code></pre>
-
 <p>bootlocal.sh 内容为:</p>
-
 <pre><code>#!/bin/sh
 chpasswd -e &lt; /var/lib/boot2docker/mypasswd.txt
+	
 </code></pre>
-
 <p>重启 ok.</p>
-
 <h2>tips</h2>
-
 <p>目录 /var/lib/boot2docker 下可以存放一些启动脚本或定制数据.</p>
-
-<pre><code>- bootsync.sh       docker 服务启动前运行此脚本
-- bootlocal.sh      系统启动完成后运行些脚本
-- profile           自动装载硬盘后读取
-- certs/            目录下可以放 Registry server&#39;s public certificate (in .pem format)
+<pre><code>- bootsync.sh		docker 服务启动前运行此脚本
+- bootlocal.sh		系统启动完成后运行些脚本
+- profile			自动装载硬盘后读取
+- certs/			目录下可以放 Registry server's public certificate (in .pem format)
 </code></pre>
-
 <p>共享目录会按共享名自动装载, 如共享名为home/jsmith会 mount 到 /home/jsmith, 也可以手动 mount 到指定目录.</p>
-
 <pre><code>mount -t vboxsf -o uid=1000,gid=50 your-other-share-name /some/mount/location
 </code></pre>
 </p>
@@ -159,16 +145,16 @@ chpasswd -e &lt; /var/lib/boot2docker/mypasswd.txt
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

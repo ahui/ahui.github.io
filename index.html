@@ -60,7 +60,8 @@
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/notag.html" rel="tag">notag</a>
+              <a href="tag/blog.html" rel="tag">blog</a>
+              <a href="tag/linux.html" rel="tag">linux</a>
             </span>
           </div>
         </div>
@@ -68,26 +69,18 @@
 
       <div class="entry-content clearfix">
         <p><h3>说明</h3>
-
 <p>测试工具 sysbench
 主机环境 Macmini m4
 虚拟环境 OrbStack Alpine 3.21 and Ubuntu 24 arm
-测试参数
-- CPU 1 : sysbench cpu run
-- CPU 2 : sysbench --threads=2 cpu run
-- Memory: sysbench memory run</p>
-
+测试参数</p>
+<ul>
+<li>CPU 1 : sysbench cpu run</li>
+<li>CPU 2 : sysbench --threads=2 cpu run</li>
+<li>Memory: sysbench memory run</li>
+</ul>
 <h3>测试数据</h3>
-
 <p>CPU: events per second
 Memory: MiB/sec</p>
-
-<p>测试参数 | Alpine   | Ubuntu    |%
----     | ---   | --- | ---
-CPU 1   |10955.54          |12684.96    | 15.7
-CPU 2   |22058.52           |25551.73   | 15.8
-Memory  |9283.85           |13949.42    | 50.2</p>
-
 <table>
 <thead>
 <tr>
@@ -118,9 +111,37 @@ Memory  |9283.85           |13949.42    | 50.2</p>
 </tr>
 </tbody>
 </table>
-
+<table>
+<thead>
+<tr>
+<th align="left">测试参数</th>
+<th align="left">Alpine</th>
+<th align="left">Ubuntu</th>
+<th align="left">%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CPU 1</td>
+<td align="left">10955.54</td>
+<td align="left">12684.96</td>
+<td align="left">15.7</td>
+</tr>
+<tr>
+<td align="left">CPU 2</td>
+<td align="left">22058.52</td>
+<td align="left">25551.73</td>
+<td align="left">15.8</td>
+</tr>
+<tr>
+<td align="left">Memory</td>
+<td align="left">9283.85</td>
+<td align="left">13949.42</td>
+<td align="left">50.2</td>
+</tr>
+</tbody>
+</table>
 <h3>测试结论</h3>
-
 <p>Alpine Linux 由于使用 musllibc ，使得其体积远小于 Ubuntu，但其运行速度可能稍差于使用用 glibc 的 Ubuntu。
 虚拟机内的磁盘速度会降低更多，所以硬盘 IO 多的应用，至少应该用内存做缓存。
 sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信。</p>
@@ -158,32 +179,35 @@ sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信�
 
       <div class="entry-content clearfix">
         <p><p>这是用 ABB 0.3 写的第一篇文章。</p>
-
 <p>原站图片虽然不能正常显示，但还好原文件还在。</p>
-
 <p>图片等比较大的静态文件，有三种处理方案。</p>
-
 <h3>第一种：直接与 css,js 一样，与生成的 html 文件放在一起。</h3>
-
 <ul>
-<li><p>优点：最方便的处理方式，统一放在 img 目录就可以了。</p></li>
-<li><p>缺点：图片体积相对来说比较大，对单独服务器来说，带宽和流量都会有压力。</p></li>
+<li>
+<p>优点：最方便的处理方式，统一放在 img 目录就可以了。</p>
+</li>
+<li>
+<p>缺点：图片体积相对来说比较大，对单独服务器来说，带宽和流量都会有压力。</p>
+</li>
 </ul>
-
 <h3>第二种：使用 cloudflare 的 R2。</h3>
-
 <ul>
-<li><p>优点：速度上没问题，cf 也会自动分发。</p></li>
-<li><p>缺点：图片上传到 R2 比较不方便， 只能手工处理上传或者用 S3 API 上传。</p></li>
+<li>
+<p>优点：速度上没问题，cf 也会自动分发。</p>
+</li>
+<li>
+<p>缺点：图片上传到 R2 比较不方便， 只能手工处理上传或者用 S3 API 上传。</p>
+</li>
 </ul>
-
 <h3>第三种: 使用 github 仓库保存图片，然后用 jsdelivr 进行加速。</h3>
-
 <ul>
-<li><p>优点：图片可以用 git 进行管理。</p></li>
-<li><p>缺点：非要找个问题，github 仓库会有容量限制。</p></li>
+<li>
+<p>优点：图片可以用 git 进行管理。</p>
+</li>
+<li>
+<p>缺点：非要找个问题，github 仓库会有容量限制。</p>
+</li>
 </ul>
-
 <p>ABB 采用第三种方案，这样可以统一用 git 进行管理。如果碰到容量限制，可以再开新仓库存放。</p>
 </p>
       </div>
@@ -219,9 +243,7 @@ sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信�
 
       <div class="entry-content clearfix">
         <p><p>博客停更 N 年，ABB 也有十来年没动过了。</p>
-
 <p>原程序是 python 2.x，在 VS Code 的帮助下，修改了几处小地方，适配了 python 3.12。基本功能都挺正常，值得发贴纪念。</p>
-
 <p>图床也挂掉了，老文章也得找时间修正一下。</p>
 </p>
       </div>
@@ -256,26 +278,16 @@ sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信�
 
       <div class="entry-content clearfix">
         <p><p>update 2017.07.30</p>
-
 <p>Tesla Referral Program</p>
-
-<p>You can give up to 5 friends unlimited Supercharging and 
-a $1,400 credit toward their new Tesla. </p>
-
+<p>You can give up to 5 friends unlimited Supercharging and
+a $1,400 credit toward their new Tesla.</p>
 <p>Full details here.</p>
-
 <p>153 days remaining</p>
-
 <p>UNIQUE REFERRAL LINK</p>
-
 <p>http://ts.la/wei6831</p>
-
 <p>If you want a CAD$1400 credit and unlimited Supercharging on your purchasing a Model S or X in next 153 days, feel free to  use my referral code.</p>
-
 <p><a href="http://ts.la/wei6831">Click me for referral code</a></p>
-
 <p>or copy this link:</p>
-
 <p>http://ts.la/wei6831</p>
 </p>
       </div>
@@ -310,7 +322,6 @@ a $1,400 credit toward their new Tesla. </p>
 
       <div class="entry-content clearfix">
         <p><p>update at 2017.6.1</p>
-
 <pre><code>Tesla Referral Program
 You can give up to 5 friends unlimited Supercharging and 
 a $1,400 credit toward their new Tesla. 
@@ -320,17 +331,11 @@ Full details here.
 UNIQUE REFERRAL LINK
 http://ts.la/wei6831
 </code></pre>
-
 <p>If you want a CA$1200 credit on your purchasing a Model S or X in next 80 days, feel free to  use my referral code.</p>
-
-<p>Here is the link to a free $1200 $CDN when buying your new Tesla. </p>
-
+<p>Here is the link to a free $1200 $CDN when buying your new Tesla.</p>
 <p><a href="http://ts.la/wei6831">Click me for referral code</a></p>
-
 <p>or copy this link:</p>
-
 <p>http://ts.la/wei6831</p>
-
 <p>Note: Valid until June 15. 2017</p>
 </p>
       </div>
@@ -365,62 +370,48 @@ http://ts.la/wei6831
 
       <div class="entry-content clearfix">
         <p><h2>场景</h2>
-
 <p>在 Virtualbox 上直接启动 boot2docker.iso , 并加载虚拟硬盘存放 images 以及个人数据.  远程 ssh 进入系统后进行 docker 操作.
 如果能够本机操作,直接安装整合包.</p>
-
 <h2>下载</h2>
-
 <p>https://github.com/boot2docker/boot2docker/releases/download/v1.9.1/boot2docker.iso</p>
-
 <pre><code>Docker v1.9.1
 Linux v4.1.13 (AUFS v4.1-20151116)
 Parallels Tools v11.1.0-32202
 VMware Tools (open-vm-tools) v10.0.0-3000743
 VirtualBox Guest Additions v5.0.10
 XenServer Tools (xe-guest-utilities) v6.6.80
+	
 </code></pre>
-
 <h2>Virtualbox</h2>
-
 <p>设置一个新的虚拟硬盘, 启动后设置硬盘 Lable 为 boot2docker-data, 重启后系统会自动挂载在 /var/lib/boot2docker 以及 /var/lib/docker 下, 前者放启动脚本, 后者放docker 数据.</p>
-
 <pre><code>fdisk /dev/sda
 mkfs.ext4 -L boot2docker-data /dev/sda1
 reboot
+	
 </code></pre>
-
 <h2>修改默认密码</h2>
-
 <p>默认帐号为 docker/tcuser,修改为自定义密码</p>
-
 <pre><code>openssl passwd -1 &gt; mypasswd.txt
-vi mypasswd.txt 在密码前面加上&quot;docker:&quot;
+vi mypasswd.txt 在密码前面加上"docker:"
 cd /var/lib/boo2docker
 vi bootlocal.sh
 chmod +x bootlocal.sh
+	
 </code></pre>
-
 <p>bootlocal.sh 内容为:</p>
-
 <pre><code>#!/bin/sh
 chpasswd -e &lt; /var/lib/boot2docker/mypasswd.txt
+	
 </code></pre>
-
 <p>重启 ok.</p>
-
 <h2>tips</h2>
-
 <p>目录 /var/lib/boot2docker 下可以存放一些启动脚本或定制数据.</p>
-
-<pre><code>- bootsync.sh       docker 服务启动前运行此脚本
-- bootlocal.sh      系统启动完成后运行些脚本
-- profile           自动装载硬盘后读取
-- certs/            目录下可以放 Registry server&#39;s public certificate (in .pem format)
+<pre><code>- bootsync.sh		docker 服务启动前运行此脚本
+- bootlocal.sh		系统启动完成后运行些脚本
+- profile			自动装载硬盘后读取
+- certs/			目录下可以放 Registry server's public certificate (in .pem format)
 </code></pre>
-
 <p>共享目录会按共享名自动装载, 如共享名为home/jsmith会 mount 到 /home/jsmith, 也可以手动 mount 到指定目录.</p>
-
 <pre><code>mount -t vboxsf -o uid=1000,gid=50 your-other-share-name /some/mount/location
 </code></pre>
 </p>
@@ -457,42 +448,30 @@ chpasswd -e &lt; /var/lib/boot2docker/mypasswd.txt
 
       <div class="entry-content clearfix">
         <p><h2>场景</h2>
-
 <p>注:系统可以全部安装在 U 盘上,但引导必须有一个 SD 卡.</p>
-
 <ul>
 <li>小容量 microSD卡, 64M+即可,此处为8G</li>
 <li>大容量 U 盘,此处为16G,或 USB 外置硬盘,功耗要低点</li>
 </ul>
-
 <h2>安装步骤</h2>
-
 <p>按 [Rapberry Pi 2 运行 Docker]操作, 将 SD 卡部分换成大容量 U 盘.</p>
-
 <p>SD 卡格式化为 FAT或 FAT32, 放入电脑.</p>
-
 <p>将 U 盘上 FAT 分区中的所有文件 COPY 到 SD 卡根目录.</p>
-
+<pre><code>	
+</code></pre>
 <p>更改SD 卡 cmdline.txt 文件中的 root=/dev/mmcblk0p2为 root=/dev/sda2</p>
-
 <pre><code>+dwc_otg.lpm_enable=0 console=tty1 root=/dev/sda2 rootfstype=ext4 cgroup-enable=memory swapaccount=1 elevator=deadline rootwait console=ttyAMA0,115200 kgdboc=ttyAMA0,115200
 </code></pre>
-
 <p>sd卡,u 盘均插在 pi 2上并启动.</p>
-
 <p>启动后 u 盘容量没有完全使用,手工修正</p>
-
 <pre><code>fidks /dev/sda
 p
 </code></pre>
-
 <p>记下 sda2的起始点</p>
-
 <pre><code>/dev/sda2       133120 2429686 2296567  1.1G 83 Linux
+	
 </code></pre>
-
 <p>重做 sda2分区</p>
-
 <pre><code>d
 2
 n
@@ -501,17 +480,15 @@ p
 133120 或 回车
 回车
 w
+	
 </code></pre>
-
 <p>重启一下.</p>
-
 <pre><code>partprobe
 /sbin/resize2fs /dev/disk/by-label/root
 reboot
+	
 </code></pre>
-
 <p>df 一下.</p>
-
 <pre><code>df
 Filesystem     1K-blocks   Used Available Use% Mounted on
 /dev/root       14583904 800080  13134556   6% /
@@ -556,22 +533,16 @@ tmpfs             473852      0    473852   0% /sys/fs/cgroup
 
       <div class="entry-content clearfix">
         <p><h2>情景</h2>
-
 <ul>
 <li>Rapberry Pi 2 一个</li>
 <li>Mac OS X 系统</li>
 </ul>
-
 <h2>安装步骤</h2>
-
 <p>下载Rapberry Pi 2系统并解压</p>
-
 <pre><code>wget http://downloads.hypriot.com/hypriot-rpi-20151115-132854.img.zip
 unzip hypriot-rpi-20151115-132854.img.zip
 </code></pre>
-
 <p>系统简介</p>
-
 <pre><code>Detailed Features of HypriotOS “Hector”
 a modern operating system based on Raspbian Jessie
 a recent Raspberry Pi firmware and Device Tree to support a huge range of hardware add-ons
@@ -586,42 +557,33 @@ out-of-the-box support for WiFi
 support for Avahi (aka mDNS aka Apple Bonjour)
 support for Open vSwitch
 our own package repository to easily update individual components
+	
 </code></pre>
-
 <p>检查下载是否正确</p>
-
 <pre><code>shasum -a 256 hypriot-rpi-20151115-132854.img.zip
 089bc64fc5f050f263aa65a67fac5fe48f8721c51f8a31f3d96fa426bc04674d  hypriot-rpi-20151115-132854.img.zip
 </code></pre>
-
 <p>准备好一张容量最少4G 的microSD卡. 查找其系统编号</p>
-
 <pre><code>diskutil list
 </code></pre>
-
-<p><code>
-    ...
-    /dev/disk2
-    #:                       TYPE NAME                    SIZE          IDENTIFIER
-    0:     FDisk_partition_scheme                        *4.0 GB     disk2
-    1:                 DOS_FAT_32 NO NAME                 4.0 GB   
-    ...
-</code><br>
-这里为/dev/disk2,别看错.</p>
-
+<pre><code>	...
+	/dev/disk2
+   	#:                       TYPE NAME                    SIZE       	IDENTIFIER
+   	0:     FDisk_partition_scheme                        *4.0 GB     disk2
+   	1:                 DOS_FAT_32 NO NAME                 4.0 GB   
+   	...
+</code></pre>
+<p>这里为/dev/disk2,别看错.</p>
 <p>取消挂载</p>
-
 <pre><code>diskutil unmountdisk /dev/disk2
 </code></pre>
-
-<p>写入系统到 SD 卡,设备名 disk2前有个字母 &#39;r&#39;, 这样能加速写入</p>
-
+<p>写入系统到 SD 卡,设备名 disk2前有个字母 'r', 这样能加速写入</p>
 <pre><code>sudo dd if=hypriot-rpi-20151115-132854.img of=/dev/rdisk2 bs=1m
 1430+1 records in
 1430+0 records out
 1499463680 bytes transferred in 112.464700 secs (13332750 bytes/sec)
+	
 </code></pre>
-
 <p>sd 卡放在 pi 2上,启动吧.</p>
 </p>
       </div>
@@ -670,16 +632,16 @@ our own package repository to easily update individual components
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>

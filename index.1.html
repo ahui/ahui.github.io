@@ -69,45 +69,31 @@
 
       <div class="entry-content clearfix">
         <p><h2>sqlite3</h2>
-
 <p><strong>使用场景</strong></p>
-
 <p>使用 pony 作为 orm读取 20w 条左右数据</p>
-
 <p><strong>慢</strong></p>
-
 <p>取得所有字段,会自动封装成对象
 select(u for u in User)</p>
-
 <p><strong>优化</strong></p>
-
 <p>只取需要的字段
 select(u.id for u in User)</p>
-
 <h2>redis</h2>
-
 <p><strong>使用场景</strong></p>
-
 <pre><code>使用 redis.py 作为  写入 20w 条左右数据
 </code></pre>
-
 <p><strong>慢</strong></p>
-
-<pre><code>m.incr(&#39;u_&#39;+u[:7])
+<pre><code>m.incr('u_'+u[:7])
+	
 </code></pre>
-
 <p><strong>优化</strong></p>
-
 <p><em>使用连接池</em></p>
-
-<pre><code>pool = redis.ConnectionPool(host=&#39;127.0.0.1&#39;, port=6379, db=15)
+<pre><code>pool = redis.ConnectionPool(host='127.0.0.1', port=6379, db=15)
 m = redis.StrictRedis(connection_pool=pool)
 </code></pre>
-
 <p><em>使用批量提交</em></p>
-
-<pre><code>pipe = m.pipeline()
-pipe.incr(&#39;u_&#39;+u[:7])
+<pre><code>	
+pipe = m.pipeline()
+pipe.incr('u_'+u[:7])
 pipe.set()
 pipe.execute()
 </code></pre>
@@ -145,10 +131,8 @@ pipe.execute()
 
       <div class="entry-content clearfix">
         <p><p>Ubuntu 14.04 在升级内核或是不安全断电情况下,重启后GRUB 会停留在系统选择界面,并不会自动超时,需要手动选择并按回车才能继续启动. 在不方便接触物理机或 VPS 远程开机时,是个很麻烦的事.</p>
-
-<p>主要原因是/boot/grub/grub.cfg 把 timeout 设置成了&#39;-1&#39;.</p>
-
-<pre><code>  if [ &quot;${recordfail}&quot; = 1 ] ; then
+<p>主要原因是/boot/grub/grub.cfg 把 timeout 设置成了'-1'.</p>
+<pre><code>  if [ "${recordfail}" = 1 ] ; then
    set timeout=-1
   else
    if [ x$feature_timeout_style = xy ] ; then
@@ -161,18 +145,15 @@ pipe.execute()
    fi
   fi
 </code></pre>
-
 <p>grub.cfg 会被重写覆盖,得修改/etc/default/grub,加入一行</p>
-
 <pre><code>  GRUB_RECORDFAIL_TIMEOUT=5
 </code></pre>
-
 <p>更新 grub.cfg</p>
-
 <pre><code>  update-grub
-</code></pre>
 
-<p>然后&#39;-1&#39;的设置会变更为&#39;5&#39;,这样不用手动操作,系统会在5秒超时会继续启动,不再挂住.</p>
+	
+</code></pre>
+<p>然后'-1'的设置会变更为'5',这样不用手动操作,系统会在5秒超时会继续启动,不再挂住.</p>
 </p>
       </div>
 
@@ -205,36 +186,24 @@ pipe.execute()
       </div>
 
       <div class="entry-content clearfix">
-        <p><h1>day 13-16 Istanbul</h1>
-
+        <p><p>#day 13-16 Istanbul</p>
 <ul>
 <li>8.2 - 8.6</li>
 </ul>
-
 <p>Ankara 到 istanbul 是全程双向6车道标准高速O-4,平均时速110,除了快到时因几起别人的小车祸导致堵了一小会. 而且 HGS 好象没扣费的样子.</p>
-
 <p>休息站特意去看了一下,价格还过得去,没国内那么狠.</p>
-
 <p>AVIS 还车也很顺利. 这次自驾总里程约2700KM,租车费2400TL,油费1200TL. 不得不说这油价真的是太高了. 可能新车也费油点,加上全程空调不能停,平均油耗11左右了.</p>
-
-<p>感觉上大部分游客都在这里了,热闹是真很热闹. </p>
-
+<p>感觉上大部分游客都在这里了,热闹是真很热闹.</p>
 <p>酒店带厨房,总算能做点对胃口的东西吃了. SOK 超市在附近就有三个,买的蔬菜味道相当不错. 肉主要是鸡肉,少量牛肉. 当然少不了便宜又好吃的樱桃等水果.</p>
-
 <p>地下水宫没在通票内,不过值得下去看看.
 <img src="https://pic.ahuihome.eu.org/turkeyIMG_3015.JPG" onclick="popme(this.src)" /></p>
-
 <p>大皇宫观景台看海峡. 坐船巡游会经过.
 <img src="https://pic.ahuihome.eu.org/turkeyIMG_3089.JPG" onclick="popme(this.src)" /></p>
-
 <p>蓝色清真寺外的方尖碑.
 <img src="https://pic.ahuihome.eu.org/turkeyIMG_3179.JPG" onclick="popme(this.src)" /></p>
-
 <p>只有一站的小火车.类似的还有二处,用于爬山并接驳地铁线路.单独收费.
-<img src="https://pic.ahuihome.eu.org/turkeyIMG_3197.JPG" onclick="popme(this.src)" /></p>
-
-<h1>tips</h1>
-
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_3197.JPG" onclick="popme(this.src)" />
+#tips</p>
 <ul>
 <li>找个人少的地方或自动售票机,先买好通票,不然排队时间很长.</li>
 <li>几个主要景点都在一起,市内交通一人一张交通卡,就能很方便的跑来跑去.</li>
@@ -274,22 +243,15 @@ pipe.execute()
       </div>
 
       <div class="entry-content clearfix">
-        <p><h1>day 12 Ankara</h1>
-
+        <p><p>#day 12 Ankara</p>
 <ul>
 <li>8.1</li>
 </ul>
-
 <p>回走70KM 左右的 D300,再走 E90. 可惜 E90估计是将来的名字,现在仍然是 D750编号,路况和 D300一样,除极少数几个点还在收尾, 路面都非常好,基本上能上100KM/H, 可惜现在还不是封闭高速路,当然也不收高速费.</p>
-
 <p>出发稍晚了点,路上休息了小会,在盐湖又玩了一会,到达 Ankara 时近三点,饿得厉害,便在城堡里的小店吃了点东西. 虽然语言不通,但店家老奶奶和孙儿女们非常的热情,做出来的类似香河肉饼的东西,又便宜又好吃.</p>
-
 <p>自驾建议经过盐湖时去玩一下,走 E90会经过,有指示牌.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2872.JPG" onclick="popme(this.src)" /></p>
-
-<h1>tips</h1>
-
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2872.JPG" onclick="popme(this.src)" />
+<p>#tips</p>
 <ul>
 <li>同时标注D 级及 E 级的道路,估计是在升级中,路况都还不错,暂时也不收费.</li>
 </ul>
@@ -325,50 +287,32 @@ pipe.execute()
       </div>
 
       <div class="entry-content clearfix">
-        <p><h1>day 10 Goreme</h1>
-
+        <p><p>#day 10 Goreme</p>
 <ul>
 <li>7.30</li>
 </ul>
-
 <p>D300一路过来,路况相当好,平均时速能上90. 一路主要是平坦的高原,路直得很,是最近开过最好的路.</p>
-
-<p>Goreme 是个让人看一眼就感觉特别的地方. 洞窟酒店也相当有特色. </p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2577.JPG" onclick="popme(this.src)" /></p>
-
+<p>Goreme 是个让人看一眼就感觉特别的地方. 洞窟酒店也相当有特色.</p>
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2577.JPG" onclick="popme(this.src)" />
 <p>中午也总算吃到了瓦罐牛肉, 不然烤肉真要吃到吐了.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2553.JPG" onclick="popme(this.src)" /></p>
-
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2553.JPG" onclick="popme(this.src)" />
 <p>买了新的博物馆通票.</p>
-
-<h2>tips</h2>
-
+<p>##tips</p>
 <ul>
 <li>D300除了极少几个红灯以及维修收尾的地方,大部分都和高速路况差不多. 特别是放眼望去,是广阔的平坦高原,视野及风景都相当不错.</li>
 <li>石窟房间有点湿冷,另外要当心擦伤</li>
 <li>玩 ATV 要注意防灰,戴好墨镜.</li>
 </ul>
-
-<h1>day 11 Goreme</h1>
-
+<p>#day 11 Goreme</p>
 <ul>
 <li>7.31</li>
 </ul>
-
-<p>早上热气球是第二波. 比能看到日出的第一波晚了约半小时. 最大的三家没有订到. </p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2839.JPG" onclick="popme(this.src)" /></p>
-
-<p>上午去了另一个露天博物馆,下午绿线二个地下城. 通票果然好用. </p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2774.JPG" onclick="popme(this.src)" /></p>
-
+<p>早上热气球是第二波. 比能看到日出的第一波晚了约半小时. 最大的三家没有订到.</p>
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2839.JPG" onclick="popme(this.src)" />
+<p>上午去了另一个露天博物馆,下午绿线二个地下城. 通票果然好用.</p>
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2774.JPG" onclick="popme(this.src)" />
 <p>晚上就在镇子里瞎逛.</p>
-
-<h2>tips</h2>
-
+<p>##tips</p>
 <ul>
 <li>天空没什么云,太阳晒得很厉害,要防止晒伤</li>
 <li>加油感觉还是道达尔好点,一是价格稍便宜,二是会仔细帮你擦洗边上所有的玻璃,三是感觉上加的油经用一点</li>
@@ -406,24 +350,16 @@ pipe.execute()
       </div>
 
       <div class="entry-content clearfix">
-        <p><h1>day 9 Konya</h1>
-
+        <p><p>#day 9 Konya</p>
 <ul>
 <li>7.29</li>
 </ul>
-
 <p>到 konya 约300KM,只有最后100KM 不到的路比较好,大部分都在维修中.总路况比 D350强点,花了四个半小时.</p>
-
 <p>宾馆就近找了一家. 消费水平也显明降低了不少.</p>
-
-<p>按天书找饭店,串还不错,本地披萨也还成,象是肉饼. </p>
-
+<p>按天书找饭店,串还不错,本地披萨也还成,象是肉饼.</p>
 <p>晚餐则找了一家连锁的餐饮店,份量很足.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2516.JPG" onclick="popme(this.src)" /></p>
-
-<h2>tips</h2>
-
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2516.JPG" onclick="popme(this.src)" />
+<p>##tips</p>
 <ul>
 <li>烤的东西吃多了会比较腻,可以要个汤,沾面包吃</li>
 <li>水果便宜有好吃,早餐时可以多吃点,或者超市买</li>
@@ -462,26 +398,17 @@ pipe.execute()
       </div>
 
       <div class="entry-content clearfix">
-        <p><h1>day 8 Antalya</h1>
-
+        <p><p>#day 8 Antalya</p>
 <ul>
 <li>7.28</li>
 </ul>
-
 <p>一路 D350到 Antalya,大部分路段都在维修的样子,相当长一部分双向只有二车道. 是一路过来状况最差的一段路. 因为要经过长长的山区,估计比较长时间难有改善.</p>
-
 <p>路过测速警察之前,碰到了对方车道闪大灯提醒. 考虑到路况,无法/也千万不要超速行使.</p>
-
 <p>Antalya 有大城市的样子,比如有轨电车,shopping mall,塞车以及乱窜马路.</p>
-
 <p>行程1140KM,中间加了100TL 油.</p>
-
 <p>晚餐去了天书记载的饭店,人气很旺,菜单很 Q.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2434.JPG" onclick="popme(this.src)" /></p>
-
-<h2>tips</h2>
-
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2434.JPG" onclick="popme(this.src)" />
+<p>##tips</p>
 <ul>
 <li>考虑到时间,没有走 kas 风景路.但因为 D350糟糕的路况,200KM 走了三个半小时.</li>
 <li>对面来车大灯闪烁或滴滴,很可能是在提醒你前面有超速警察.</li>
@@ -520,46 +447,29 @@ pipe.execute()
       </div>
 
       <div class="entry-content clearfix">
-        <p><h1>day 6 Fethiye</h1>
-
+        <p><p>#day 6 Fethiye</p>
 <ul>
 <li>7.26</li>
 </ul>
-
 <p>吃完午饭去130KM 外的下一站,Fethiye. 仍然只有 D 级路,但有一大半刚翻修完,路况很好.</p>
-
 <p>市内车位比较难找,转了好几圈,连收费停车场也是满的.</p>
-
 <p>几个古迹在山腰,太阳还没落上时上去,快要晒成人干.</p>
-
 <p>街边买到好吃又便宜的樱桃. 5TL/KG.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2230.JPG" onclick="popme(this.src)" /></p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2231.JPG" onclick="popme(this.src)" /></p>
-
-<h2>tips</h2>
-
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2230.JPG" onclick="popme(this.src)" />
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2231.JPG" onclick="popme(this.src)" />
+<p>##tips</p>
 <ul>
 <li>比较好的游玩时间是上午11点前,以及晚上8点后.其他时间太热.</li>
 </ul>
-
-<h1>day 7 Fethiye</h1>
-
+<p>#day 7 Fethiye</p>
 <ul>
 <li>7.27</li>
 </ul>
-
-<p>早餐后去死海公园. </p>
-
+<p>早餐后去死海公园.</p>
 <p>滑翔伞没敢试,直接进公园. 一人6TL,进车则不算人头,一车22TL. 进去后走到头,北边是细沙滩,无风浪,是 VIP 位置,要进得早才有位置. 海水很清,最边上都有一群群小鱼游来游去.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2240.JPG" onclick="popme(this.src)" /></p>
-
+<img src="https://pic.ahuihome.eu.org/turkeyIMG_2240.JPG" onclick="popme(this.src)" />
 <p>著名的鱼市只是路过了一下,味道太重,没敢在里面吃东西.</p>
-
-<h2>tips</h2>
-
+<p>##tips</p>
 <ul>
 <li>进公园前准备好下海玩水的所有用具,里面刀比较快.</li>
 <li>里面摆好的伞和躺椅是要收费的,没摆的地方可随意.</li>
@@ -613,16 +523,16 @@ pipe.execute()
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>

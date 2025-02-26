@@ -70,31 +70,24 @@
 
       <div class="entry-content clearfix">
         <p><p>Tenjin是个好模板. (签名)</p>
-
 <p>满足我喜欢的三个要求：</p>
-
 <ul>
 <li>快速</li>
 <li>HTML友好</li>
 <li>能直接用python代码。</li>
 </ul>
-
 <p>当然能直接用python代码是件好事也是件坏事。</p>
-
 <p>在做静态html生成程序时，因为动态生成了不同内容的同名模板，导致Tenjin解析时总是取缓存中的内容。
 Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法为：</p>
-
 <ol>
 <li>sleep 1s吧，喝个茶什么的等缓存失效…</li>
 <li>将Tenjin里的timestamp_interval参数由原1s,改为一个更小的值，0.001什么的。小手术。</li>
 <li>给Tenjin添加个属性，记住文件大小，在文件大小改变时，总是重新生成缓存。大手术啊~~~~</li>
 <li>动态生成的模板，别用同样的文件名.</li>
 </ol>
-
 <p>1会带来时间浪费，测试中生成50+ html文件才半秒不到，不能浪费2倍的生命。
 2，3都要改动Tenjin,通用性不好。
 4算比较满意的，会稍提高点代码的复杂度。</p>
-
 <p>BTW,如果要压榨性能，通过2中将值改大，或者3增加文件大小检查，模板文件不变时直接用.cache文件，应该有不少的性能提升。</p>
 </p>
       </div>
@@ -130,47 +123,32 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
 
       <div class="entry-content clearfix">
         <p><p>连续碰到几次BLOG打开卡住的情形，在VPS上重启一下nginx及php就好了。原因不详，但有可能是因为wordpress连续升级导致？</p>
-
 <p>最好的解决方案就是将博客网站静态化。</p>
-
 <p>试用了一下现成的解决方案，比较好用的有<a href="http://zespia.tw/hexo/">hexo</a>以及<a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a>。
 这二个都有工具能将wordpress导出的xml转化为md格式的文件。</p>
-
 <p>其中hexo转化并生成静态网站后，效果相当不错。但问题是在使用时发现50+ md文件，生成时间在20s左右，这个速度太慢了一点。比较奇怪的是其他使用者都反应hexo是相当快的，所以也有可能是我这有个什么地方设置有问题。
 同样的环境下Pelican的速度相当理想，同样多的md文件，生成时间3s左右。问题是他自己生成的md文件格式有点奇怪，和hexo的相比有差别，且感觉hexo的md文件格式更好点。</p>
-
 <p>如果再考虑长远点，比如有海量的md文件要生成，那么就要求生成工具要么有极快的速度，要么有增量生成功能(已经生成的文件不用再生成)。这样hexo一者因为速度原因不能不放弃，二者可惜是node写的，我更偏好python一点。而pelican刚可能要修改一下格式问题，以及增加其他功能。</p>
-
 <p>本着轮子不怕多的精神，干脆再做个相关工具好了。</p>
-
 <p>初期目标</p>
-
 <p>博客类小型网站，静态页面生成</p>
-
 <p>生成方式</p>
-
 <ol>
 <li>全静态生成，所有文件需要更新。可用目录控制生成层次。</li>
 <li>shtml包含，只更新必要文件</li>
 <li>ajax包含，只更新必要文件</li>
 </ol>
-
 <p>工作方式</p>
-
 <ol>
 <li>cli</li>
 <li>web gui</li>
 </ol>
-
 <p>文章分类(初期只考虑tag)</p>
-
 <ol>
 <li>分类，一对一或一对多</li>
 <li>tag标记，一对多</li>
 </ol>
-
 <p>页面分类</p>
-
 <ol>
 <li>index.html</li>
 <li>tags.html</li>
@@ -219,17 +197,13 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
         <p><p>菜单大体上分三层:顶层，侧边，子菜单
 添加子菜单分为二种情况，一是添加全新的菜单，此时必须先添加顶层和侧边菜单，只用指定name及id，然后挂上子菜单.
 其中顶层菜单不用指定parent,子菜单是必须指定action.</p>
-
-<pre><code>&lt;menuitem id=&quot;top_menu&quot; name=&quot;Top&quot;/&gt;
-&lt;menuitem id=&quot;section_top_menu&quot; parent=&quot;top_menu&quot; /&gt;
-&lt;menuitem id=&quot;sub_menu&quot; parent=&quot;section_top_menu&quot; action=&quot;your_action&quot;/&gt;
+<pre><code>&lt;menuitem id="top_menu" name="Top"/&gt;
+&lt;menuitem id="section_top_menu" parent="top_menu" /&gt;
+&lt;menuitem id="sub_menu" parent="section_top_menu" action="your_action"/&gt;
 </code></pre>
-
 <p>二是挂上已经存在的侧边菜单，此时parent的取值为:对象.菜单id</p>
-
-<pre><code>&lt;menuitem id=&quot;real_menu&quot; parent=&quot;name_of_module_of_parent.section_top_menu&quot; action=&quot;your_action&quot;&gt;;
+<pre><code>&lt;menuitem id="real_menu" parent="name_of_module_of_parent.section_top_menu" action="your_action"&gt;;
 </code></pre>
-
 <p>不指定对象则会重复建立同名菜单(三层均如此)，哪怕id值也相同。</p>
 </p>
       </div>
@@ -266,14 +240,10 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
 
       <div class="entry-content clearfix">
         <p><p>1.不同的jquery upload插件，发送的字段有很大差别，可以通过打印wsgi_input来查看。</p>
-
 <p>2.文件在比较小时，直接用web.input()取得上传的文件内容及其他相关值。官网例子在这种情况下能正常工作。</p>
-
 <p>3.文件在很大时，web.input无法一次读写，此时可以用rawinput，一次读入一部分数据再写入.  原理上rawinput的数据应该是已经放在磁盘上，这样会有二次写入操作。但能够写入超过内存容量的数据。
 此时有二种方法取得文件大小:一是客户端传入一个filesize字段，html5能取得上传文件的大小，IE不支持; 二是服务端用file.seek方法，取得rawinput.file的长度.</p>
-
 <p>4.文件特别大且，不想二次写入时，可用wsgi_input,一边读取传入的数据，一边进行写入。但此时读到的是原始数据，会包含一些文件相关的信息，写入后要进行数据整形。可以客户端传入时，简化传入数据以方便整形。</p>
-
 <p>大多数情况下， 可以采用方式３。
 方式4最安全，服务端能根据情况随时中断传输。但没测试是否会阻塞后续页面请求。当然阻塞可以用其他方式解决(eg,协程等)。</p>
 </p>
@@ -310,48 +280,30 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
 
       <div class="entry-content clearfix">
         <p><p>R6300v2的dd-wrt已经<a href="http://www.myopenrouter.com/download/50404/DD-WRT-for-R6300v2">有一个版本可用</a>，但可惜wifi接入还是有问题，只好换回原厂固件。打算稍修改一下原厂固件，让它能自动运行usb设备上指定目录下的脚本，这样暂时没有好用的dd-wrt的时候，可以满足现有的大部分情况。</p>
-
 <p>第一步，则是要先完成能用的编译环境，并能成功编译出能在R6300v2上运行的程序。因为常用ngrep，所以第一步则以编译能用的ngrep为目标.</p>
-
 <p><a href="http://wikidevi.com/wiki/Netgear_R6300_v2">R6300v2硬件参数</a></p>
-
 <p>工具链是hndtools-arm-linux-2.6.36-uclibc-4.5.3,和R6250的一样，可以下载<a href="ftp://downloads.netgear.com/files/GPL/R6250-V1.0.0.62_with_toolchain_source.zip">R6250的原代码</a>，取得工具链。并顺便下载<a href="ftp://downloads.netgear.com/files/GPL/R6300v2-V1.0.1.72_1.0.21-src.tar.zip">R6300的源代码</a>备用.</p>
-
 <p>主系统为ubuntu 12.04 32位，创建/projects/hnd/tools/linux目录，并解压R6250源码包中的hndtools-arm-linux-2.6.36-uclibc-4.5.3.tar到此目录。</p>
-
 <p>将新编译工具目录放到PATH环境的最前面:</p>
-
 <pre><code>export PATH=/projects/hnd/tools/linux/hndtools-arm-linux-2.6.36-uclibc-4.5.3/bin:$PATH
 </code></pre>
-
 <p>下载libpcap-1.4.0.tar.gz及ngrep-1.45.tar并解压。</p>
-
-<p>编译libpcap: </p>
-
+<p>编译libpcap:</p>
 <pre><code>./configure CC=arm-uclibc-linux-2.6.36-gcc --host=arm-linux --with-pcap=linux &amp;&amp; make
 </code></pre>
-
-<p>编译ngrep: </p>
-
+<p>编译ngrep:</p>
 <pre><code>./configure CC=arm-uclibc-linux-2.6.36-gcc CXX=arm-uclibc-linux-2.6.36-g++ AR=arm-uclibc-linux-2.6.36-ar RANLIB=arm-uclibc-linux-2.6.36-ranlib LD=arm-uclibc-linux-2.6.36-ld  --prefix=/usr/local/arm/ngrep --host=arm-linux --build=arm --with-pcap-includes=../libpcap-1.4.0 &amp;&amp; make
 </code></pre>
-
 <p>检查编译出来的文件:</p>
-
 <pre><code>file ngrep
 ngrep: ELF 32-bit LSB executable, ARM, version 1 (SYSV), dynamically linked (uses shared libs), stripped
 </code></pre>
-
 <p>开启R6300v2的telnet(R6300v2 ip为192.168.1.1)
 下载<a href="https://code.google.com/p/netgear-telnetenable/">telnetenable.py</a></p>
-
-<pre><code>python telnetenable.py 192.168.1.1 $(arp -n | awk &quot;/192.168.1.1/&quot;&#39;  { gsub(/:/, &quot;&quot;, $3); print toupper($3)}&#39;) Gearguy Geardog
+<pre><code>python telnetenable.py 192.168.1.1 $(arp -n | awk "/192.168.1.1/"'  { gsub(/:/, "", $3); print toupper($3)}') Gearguy Geardog
 </code></pre>
-
-<p>出现&quot;Sent telnet enable payload to &#39;192.168.1.1:23&#39;&quot;则成功，否则多运行几次.</p>
-
+<p>出现"Sent telnet enable payload to '192.168.1.1:23'"则成功，否则多运行几次.</p>
 <p>将ngrep copy到u盘，并在R6300上挂载，然后telnet到R6300v2,到/tmp/mnt/usb0/part1下找到ngrep并运行之。</p>
-
 <pre><code>./ngrep -V
 ngrep: V1.45, $Revision: 1.93 $
 </code></pre>
@@ -387,22 +339,15 @@ ngrep: V1.45, $Revision: 1.93 $
       </div>
 
       <div class="entry-content clearfix">
-        <p><p>北京联通的临时提速100M，每月20小时左右。&nbsp;</p>
-
+        <p><p>北京联通的临时提速100M，每月20小时左右。 </p>
 <p>提速前:</p>
-
-<p><img src="http://ahui.us/wp-content/uploads/2013/08/2907409316-0818.png" alt="2907409316-0818"></p>
-
+<p><img src="http://ahui.us/wp-content/uploads/2013/08/2907409316-0818.png" alt="2907409316-0818" /></p>
 <p>提速后:</p>
-
-<p><img src="http://ahui.us/wp-content/uploads/2013/08/2935441928.png" alt="2935441928"> </p>
-
+<p><img src="http://ahui.us/wp-content/uploads/2013/08/2935441928.png" alt="2935441928" /></p>
 <p>其实在提速前，已经比刚安装的速度稍好了一点，主要是上传多给了一点点。
 提速后，明显上传加了很多，不过下载速度没快多少，最主要原因是加在前面的路由器性能不行。</p>
-
 <p>换了个新路由测试提速后:</p>
-
-<p><img src="http://ahui.us/wp-content/uploads/2013/09/2950349391.png" alt="2950349391"></p>
+<p><img src="http://ahui.us/wp-content/uploads/2013/09/2950349391.png" alt="2950349391" /></p>
 </p>
       </div>
 
@@ -440,60 +385,58 @@ ssh到iphone,du -k查看并查找最占容间的前50个目录,发现明显
 mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
 目录有问题，占用空量4G+,删除之，能释放近6G容量。
 另外照片流也会占用不少容量。</p>
-
 <p>附前50条记录:</p>
-
-<pre><code>&quot;bytes&quot;;&quot;dir&quot;;&quot;id&quot;
-10291118;&quot;mobile&quot;;1458101
-5041749;&quot;mobile/Library&quot;;1454199
-4542087;&quot;mobile/Library/Caches&quot;;1450783
-4447000;&quot;mobile/Library/Caches/com.apple.passd&quot;;1450713
-4442425;&quot;mobile/Library/Caches/com.apple.passd/com.apple.Shoebox&quot;;1450711
-3070707;&quot;mobile/Applications&quot;;664860
-2178545;&quot;mobile/Media&quot;;1458099
-971237;&quot;mobile/Media/DCIM&quot;;1454440
-970566;&quot;mobile/Media/DCIM/100APPLE&quot;;1454439
-660713;&quot;mobile/Media/PhotoStreamsData/1330973174&quot;;1458010
-660713;&quot;mobile/Media/PhotoStreamsData&quot;;1458011
-638525;&quot;mobile/Media/PhotoStreamsData/1330973174/100APPLE&quot;;1457952
-544488;&quot;mobile/Media/PhotoData&quot;;1455066
-403330;&quot;mobile/Media/PhotoData/Sync&quot;;1455058
-403251;&quot;mobile/Media/PhotoData/Sync/100SYNCD&quot;;1455056
-351152;&quot;stash&quot;;1468737
-313584;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC&quot;;589987
-254071;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library&quot;;589955
-254069;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup&quot;;589947
-254069;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support&quot;;589948
-204621;&quot;mobile/Media/DCIM/100APPLE/IMG_0199.mov&quot;;1454398
-181566;&quot;mobile/Library/VoiceServices/Assets/zh-CN&quot;;1453650
-181566;&quot;mobile/Library/VoiceServices/Assets&quot;;1453651
-181566;&quot;mobile/Library/VoiceServices&quot;;1453652
-143007;&quot;mobile/Library/Mail&quot;;1452332
-142401;&quot;stash/share.VNy9as&quot;;1468736
-140309;&quot;stash/Applications.50zavX&quot;;1466111
-139514;&quot;mobile/Library/VoiceServices/Assets/zh-CN/synth_ting-ting_full_155mrf22_270_06.dat&quot;;1453645
-134015;&quot;mobile/Media/PhotoData/Thumbnails&quot;;1455062
-131209;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/iphone&quot;;589920
-131208;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/iphone/1.0.226789.rsb&quot;;589919
-129490;&quot;mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3&quot;;556778
-129399;&quot;mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3/VoiceGuideAll.app&quot;;556774
-128167;&quot;mobile/Media/DCIM/100APPLE/IMG_0223.MOV&quot;;1454419
-122421;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/ipad2&quot;;589918
-122420;&quot;mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/ipad2/1.0.226789.rsb&quot;;589917
-116232;&quot;mobile/Applications/F32D96FF-8020-4BFE-BF3A-C22B7F4E6EF6&quot;;660087
-116131;&quot;mobile/Applications/F32D96FF-8020-4BFE-BF3A-C22B7F4E6EF6/PvZ-iPhone_ZH.app&quot;;660084
-114695;&quot;mobile/Applications/9ADE3F3B-D880-4918-A565-09B879094997&quot;;617869
-110752;&quot;mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3/VoiceGuideAll.app/data&quot;;556488
-105033;&quot;mobile/Applications/F8F8FE94-CA5A-4272-92C4-276948EE1706&quot;;663324
-105029;&quot;mobile/Applications/F8F8FE94-CA5A-4272-92C4-276948EE1706/AR.Rescue.app&quot;;663310
-99381;&quot;mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2&quot;;558084
-99379;&quot;mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2/MerriamWebster.app&quot;;558081
-97250;&quot;root&quot;;1458263
-94877;&quot;root/Library&quot;;1458252
-94852;&quot;root/Library/Caches&quot;;1458221
-94550;&quot;mobile/Media/DCIM/100APPLE/IMG_0172.mov&quot;;1454373
-89964;&quot;mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2/MerriamWebster.app/definitions.db&quot;;557980
-89116;&quot;mobile/Library/Mail/ExchangeActiveSync979797EC-C70C-4940-9076-2BA004C4C5DD&quot;;1451893
+<pre><code>"bytes";"dir";"id"
+10291118;"mobile";1458101
+5041749;"mobile/Library";1454199
+4542087;"mobile/Library/Caches";1450783
+4447000;"mobile/Library/Caches/com.apple.passd";1450713
+4442425;"mobile/Library/Caches/com.apple.passd/com.apple.Shoebox";1450711
+3070707;"mobile/Applications";664860
+2178545;"mobile/Media";1458099
+971237;"mobile/Media/DCIM";1454440
+970566;"mobile/Media/DCIM/100APPLE";1454439
+660713;"mobile/Media/PhotoStreamsData/1330973174";1458010
+660713;"mobile/Media/PhotoStreamsData";1458011
+638525;"mobile/Media/PhotoStreamsData/1330973174/100APPLE";1457952
+544488;"mobile/Media/PhotoData";1455066
+403330;"mobile/Media/PhotoData/Sync";1455058
+403251;"mobile/Media/PhotoData/Sync/100SYNCD";1455056
+351152;"stash";1468737
+313584;"mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC";589987
+254071;"mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library";589955
+254069;"mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup";589947
+254069;"mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support";589948
+204621;"mobile/Media/DCIM/100APPLE/IMG_0199.mov";1454398
+181566;"mobile/Library/VoiceServices/Assets/zh-CN";1453650
+181566;"mobile/Library/VoiceServices/Assets";1453651
+181566;"mobile/Library/VoiceServices";1453652
+143007;"mobile/Library/Mail";1452332
+142401;"stash/share.VNy9as";1468736
+140309;"stash/Applications.50zavX";1466111
+139514;"mobile/Library/VoiceServices/Assets/zh-CN/synth_ting-ting_full_155mrf22_270_06.dat";1453645
+134015;"mobile/Media/PhotoData/Thumbnails";1455062
+131209;"mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/iphone";589920
+131208;"mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/iphone/1.0.226789.rsb";589919
+129490;"mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3";556778
+129399;"mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3/VoiceGuideAll.app";556774
+128167;"mobile/Media/DCIM/100APPLE/IMG_0223.MOV";1454419
+122421;"mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/ipad2";589918
+122420;"mobile/Applications/68C74FC1-8A0C-4369-8E86-4E599335F7EC/Library/Application Support/No_Backup/ipad2/1.0.226789.rsb";589917
+116232;"mobile/Applications/F32D96FF-8020-4BFE-BF3A-C22B7F4E6EF6";660087
+116131;"mobile/Applications/F32D96FF-8020-4BFE-BF3A-C22B7F4E6EF6/PvZ-iPhone_ZH.app";660084
+114695;"mobile/Applications/9ADE3F3B-D880-4918-A565-09B879094997";617869
+110752;"mobile/Applications/06E1377D-3D25-4736-96B7-287255AC8DC3/VoiceGuideAll.app/data";556488
+105033;"mobile/Applications/F8F8FE94-CA5A-4272-92C4-276948EE1706";663324
+105029;"mobile/Applications/F8F8FE94-CA5A-4272-92C4-276948EE1706/AR.Rescue.app";663310
+99381;"mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2";558084
+99379;"mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2/MerriamWebster.app";558081
+97250;"root";1458263
+94877;"root/Library";1458252
+94852;"root/Library/Caches";1458221
+94550;"mobile/Media/DCIM/100APPLE/IMG_0172.mov";1454373
+89964;"mobile/Applications/0CCB1B6C-9EE9-4F4B-852F-1ED0C26113C2/MerriamWebster.app/definitions.db";557980
+89116;"mobile/Library/Mail/ExchangeActiveSync979797EC-C70C-4940-9076-2BA004C4C5DD";1451893
 </code></pre>
 </p>
       </div>
@@ -529,9 +472,7 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
 
       <div class="entry-content clearfix">
         <p><p>openerp 7的报表生成方式之一是用openoffice的sxw格式，转换成rml后，再生成pdf.</p>
-
 <p>但直接用openoffice新建文件，并保存为sxw格式时，openerp无法识别。在输出rml时，openoffice的报表插件也经常会出现无法响应的问题。开始以为是openoffice版本过高，换libreoffice 3,4都试了一下，问题依旧。</p>
-
 <ul>
 <li>解决方法一：直接编辑openerp直带sxw文件，再另存。此格式可识别。</li>
 <li>解决方法二：查询sxw并没有找到版本相关的问题，直接用openerp模块内的sxw2rm转换，有报uncode类错误。于是在ubuntu 12,utf-8语言环境下，用libreoffice 3,4生成新文件，发现无论sxw或odt格式，均能正确识别。可见python开发，还是linux下问题少点。</li>
@@ -583,16 +524,16 @@ mobile/Library/Caches/com.apple.passd/com.apple.Shoebox
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>

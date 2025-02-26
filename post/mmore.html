@@ -67,26 +67,22 @@
 
       <div class="entry-content clearfix">
         <p><p><a href="http://codex.wordpress.org/Customizing_the_Read_More">参考地址</a></p>
-
 <p>修改loop.php
-查找第二处&quot;continue reading&quot;，该行改为</p>
-
-<pre><code>&lt;?php the_content(&quot;......点此阅读&lt;span class=\&quot;widget-title\&quot;&gt;t &quot; . get_the_title(&#39;&#39;, &#39;&#39;, false) . &quot;&lt;/span&gt; 全文......&quot;); &gt;
+查找第二处"continue reading"，该行改为</p>
+<pre><code>&lt;?php the_content("......点此阅读&lt;span class=\"widget-title\"&gt;t " . get_the_title('', '', false) . "&lt;/span&gt; 全文......"); &gt;
 </code></pre>
-
 <p>function.php底部加入脚本，用于跳转到文章开头.</p>
-
 <pre><code>function remove_more_jump_link($link) { 
-    $offset = strpos($link, &#39;#more-&#39;);
+    $offset = strpos($link, '#more-');
     if ($offset) {
-        $end = strpos($link, &#39;&quot;&#39;,$offset);
+        $end = strpos($link, '"',$offset);
     }
     if ($end) {
-        $link = substr_replace($link, &#39;&#39;, $offset, $end-$offset);
+        $link = substr_replace($link, '', $offset, $end-$offset);
     }
     return $link;
 }
-add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
+add_filter('the_content_more_link', 'remove_more_jump_link');
 </code></pre>
 </p>
       </div>
@@ -122,16 +118,16 @@ add_filter(&#39;the_content_more_link&#39;, &#39;remove_more_jump_link&#39;);
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

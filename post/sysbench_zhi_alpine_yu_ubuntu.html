@@ -59,7 +59,8 @@
             <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
             <span class="tag-links">
               <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="../tag/notag.html" rel="tag">notag</a>
+              <a href="../tag/blog.html" rel="tag">blog</a>
+              <a href="../tag/linux.html" rel="tag">linux</a>
             </span>
           </div>
         </div>
@@ -67,26 +68,18 @@
 
       <div class="entry-content clearfix">
         <p><h3>说明</h3>
-
 <p>测试工具 sysbench
 主机环境 Macmini m4
 虚拟环境 OrbStack Alpine 3.21 and Ubuntu 24 arm
-测试参数
-- CPU 1 : sysbench cpu run
-- CPU 2 : sysbench --threads=2 cpu run
-- Memory: sysbench memory run</p>
-
+测试参数</p>
+<ul>
+<li>CPU 1 : sysbench cpu run</li>
+<li>CPU 2 : sysbench --threads=2 cpu run</li>
+<li>Memory: sysbench memory run</li>
+</ul>
 <h3>测试数据</h3>
-
 <p>CPU: events per second
 Memory: MiB/sec</p>
-
-<p>测试参数 | Alpine   | Ubuntu    |%
----     | ---   | --- | ---
-CPU 1   |10955.54          |12684.96    | 15.7
-CPU 2   |22058.52           |25551.73   | 15.8
-Memory  |9283.85           |13949.42    | 50.2</p>
-
 <table>
 <thead>
 <tr>
@@ -117,9 +110,37 @@ Memory  |9283.85           |13949.42    | 50.2</p>
 </tr>
 </tbody>
 </table>
-
+<table>
+<thead>
+<tr>
+<th align="left">测试参数</th>
+<th align="left">Alpine</th>
+<th align="left">Ubuntu</th>
+<th align="left">%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CPU 1</td>
+<td align="left">10955.54</td>
+<td align="left">12684.96</td>
+<td align="left">15.7</td>
+</tr>
+<tr>
+<td align="left">CPU 2</td>
+<td align="left">22058.52</td>
+<td align="left">25551.73</td>
+<td align="left">15.8</td>
+</tr>
+<tr>
+<td align="left">Memory</td>
+<td align="left">9283.85</td>
+<td align="left">13949.42</td>
+<td align="left">50.2</td>
+</tr>
+</tbody>
+</table>
 <h3>测试结论</h3>
-
 <p>Alpine Linux 由于使用 musllibc ，使得其体积远小于 Ubuntu，但其运行速度可能稍差于使用用 glibc 的 Ubuntu。
 虚拟机内的磁盘速度会降低更多，所以硬盘 IO 多的应用，至少应该用内存做缓存。
 sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信。</p>
@@ -157,16 +178,16 @@ sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信�
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

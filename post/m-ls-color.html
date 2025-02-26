@@ -68,36 +68,25 @@
 
       <div class="entry-content clearfix">
         <p><p>ls --color默认目录颜色是深蓝，在黑色背景下，看得很纠结．换成浅蓝就好多了．</p>
-
 <p>centos下， vi /etc/DIR_COLORS
 将</p>
-
 <pre><code>DIR 01;34       # directory
 </code></pre>
-
 <p>这行修改为</p>
-
 <pre><code>DIR 00;36       # directory
 </code></pre>
-
 <p>然后vi .bashrc
 加上</p>
-
-<pre><code>export LS_OPTIONS=&#39;-aCF --color=auto&#39;
-eval &quot;`dircolors -b /etc/DIR_COLORS`&quot;
-alias ls=&#39;ls $LS_OPTIONS&#39;
+<pre><code>export LS_OPTIONS='-aCF --color=auto'
+eval "`dircolors -b /etc/DIR_COLORS`"
+alias ls='ls $LS_OPTIONS'
 </code></pre>
-
 <p>顺便加上PS1</p>
-
-<pre><code>PS1=&quot;\[\033[37m\]\t\[\033[m\] \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]&gt;&quot;
+<pre><code>PS1="\[\033[37m\]\t\[\033[m\] \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]&gt;"
 </code></pre>
-
 <p>执行</p>
-
 <pre><code>. .bashrc
 </code></pre>
-
 <p>生效</p>
 </p>
       </div>
@@ -133,16 +122,16 @@ alias ls=&#39;ls $LS_OPTIONS&#39;
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

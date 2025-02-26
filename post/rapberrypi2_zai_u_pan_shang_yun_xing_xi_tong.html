@@ -68,42 +68,30 @@
 
       <div class="entry-content clearfix">
         <p><h2>场景</h2>
-
 <p>注:系统可以全部安装在 U 盘上,但引导必须有一个 SD 卡.</p>
-
 <ul>
 <li>小容量 microSD卡, 64M+即可,此处为8G</li>
 <li>大容量 U 盘,此处为16G,或 USB 外置硬盘,功耗要低点</li>
 </ul>
-
 <h2>安装步骤</h2>
-
 <p>按 [Rapberry Pi 2 运行 Docker]操作, 将 SD 卡部分换成大容量 U 盘.</p>
-
 <p>SD 卡格式化为 FAT或 FAT32, 放入电脑.</p>
-
 <p>将 U 盘上 FAT 分区中的所有文件 COPY 到 SD 卡根目录.</p>
-
+<pre><code>	
+</code></pre>
 <p>更改SD 卡 cmdline.txt 文件中的 root=/dev/mmcblk0p2为 root=/dev/sda2</p>
-
 <pre><code>+dwc_otg.lpm_enable=0 console=tty1 root=/dev/sda2 rootfstype=ext4 cgroup-enable=memory swapaccount=1 elevator=deadline rootwait console=ttyAMA0,115200 kgdboc=ttyAMA0,115200
 </code></pre>
-
 <p>sd卡,u 盘均插在 pi 2上并启动.</p>
-
 <p>启动后 u 盘容量没有完全使用,手工修正</p>
-
 <pre><code>fidks /dev/sda
 p
 </code></pre>
-
 <p>记下 sda2的起始点</p>
-
 <pre><code>/dev/sda2       133120 2429686 2296567  1.1G 83 Linux
+	
 </code></pre>
-
 <p>重做 sda2分区</p>
-
 <pre><code>d
 2
 n
@@ -112,17 +100,15 @@ p
 133120 或 回车
 回车
 w
+	
 </code></pre>
-
 <p>重启一下.</p>
-
 <pre><code>partprobe
 /sbin/resize2fs /dev/disk/by-label/root
 reboot
+	
 </code></pre>
-
 <p>df 一下.</p>
-
 <pre><code>df
 Filesystem     1K-blocks   Used Available Use% Mounted on
 /dev/root       14583904 800080  13134556   6% /
@@ -167,16 +153,16 @@ tmpfs             473852      0    473852   0% /sys/fs/cgroup
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

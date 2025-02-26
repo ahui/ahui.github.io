@@ -70,8 +70,7 @@
 
       <div class="entry-content clearfix">
         <p><p>一不小心提高到265,差二次全中.可惜了~~</p>
-
-<p><a href="http://ahui.us/wp-content/uploads/2011/03/DSC00333.jpg"><img src="http://ahui.us/wp-content/uploads/2011/03/DSC00333-300x200.jpg" alt="" title="wii265"></a></p>
+<p><a href="http://ahui.us/wp-content/uploads/2011/03/DSC00333.jpg"><img src="http://ahui.us/wp-content/uploads/2011/03/DSC00333-300x200.jpg" alt="" title="wii265" /></a></p>
 </p>
       </div>
 
@@ -105,13 +104,10 @@
 
       <div class="entry-content clearfix">
         <p><p>最简单的,在hosts文件中,加入</p>
-
 <pre><code>127.0.0.1 valf.atm.youku.com
 </code></pre>
-
 <p>就能去掉播放前的广告.
 要想去掉所有广告,则要在hosts文件中加入下列行:</p>
-
 <pre><code>127.0.0.1 atm.youku.com 
 127.0.0.1 Fvid.atm.youku.com 
 127.0.0.1 html.atm.youku.com 
@@ -128,13 +124,10 @@
 127.0.0.1 vid.atm.youku.com 
 127.0.0.1 walp.atm.youku.com
 </code></pre>
-
 <p>win7系统下
 C:\Users\当前用户\AppData\Roaming\Macromedia\Flash Player#SharedObjects\随机串
 static.youku.com目录改名，并新建同名文件。</p>
-
 <p>参考连接</p>
-
 <p>http://www.itopdog.cn/software-tech/noad.html
 http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaodezuiquanzuijiandanfangfa.htm</p>
 </p>
@@ -170,23 +163,16 @@ http://www.jcboy.info/2011/02/pingbiyoukutudoudengshipinwangzhan15miaoguanggaode
 
       <div class="entry-content clearfix">
         <p><p>大约一二周前,发现pidgin中的qq无法login,查看log显示</p>
-
 <p>QQ: Server busy for 尊敬的用户，您的QQ版本已经停止使用，</p>
-
 <p>请到http://im.qq.com</p>
-
 <p>下载并安装最新的QQ版本。</p>
-
 <p>给您带来不便，敬请谅解！</p>
-
 <p>看来是2008协议已经失效.查找了一下,只发现
 http://code.google.com/p/libqq-pidgin/
 在准备开发2010版本的qq协议,不过还不能使用.只能等待了.</p>
-
 <p>其实最佳方法,还是不要用QQ那玩意了.</p>
-
 <p>update:
-http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替换掉pidgin安装目录/plugins下的libqq.dll即可. </p>
+http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替换掉pidgin安装目录/plugins下的libqq.dll即可.</p>
 </p>
       </div>
 
@@ -223,15 +209,11 @@ http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替�
       <div class="entry-content clearfix">
         <p><p>刚搬的VPS因为硬件故障,不得已又新换了一家.
 再一次重做好整个站点后,索性全部打个包,下次只要解压下就能快速恢复.</p>
-
 <pre><code>tar vzcf vps.all.20101220.tar.gz /* --exclude /dev --exclude /home --exclude /lost+found --exclude /mnt --exclude /proc --exclude /tmp --exclude /var --exclude /boot --exclude /root --exclude /sys
 </code></pre>
-
 <p>如果网站数据没放在/usr/local/apache2/htdoc下,比如nginx常放在/home/www,则去掉--exclude /home或者单独再打个包</p>
-
 <pre><code>tar vzcf ahuiblog.20101220.tar.gz /home/www/
 </code></pre>
-
 <p>恢复系统时,先备份下/etc/sysconfig/network文件,再解开包. 然后还原network文件后重启动.</p>
 </p>
       </div>
@@ -267,36 +249,25 @@ http://code.google.com/p/libqq-pidgin/的插件已经能正常使用. win下替�
 
       <div class="entry-content clearfix">
         <p><p>ls --color默认目录颜色是深蓝，在黑色背景下，看得很纠结．换成浅蓝就好多了．</p>
-
 <p>centos下， vi /etc/DIR_COLORS
 将</p>
-
 <pre><code>DIR 01;34       # directory
 </code></pre>
-
 <p>这行修改为</p>
-
 <pre><code>DIR 00;36       # directory
 </code></pre>
-
 <p>然后vi .bashrc
 加上</p>
-
-<pre><code>export LS_OPTIONS=&#39;-aCF --color=auto&#39;
-eval &quot;`dircolors -b /etc/DIR_COLORS`&quot;
-alias ls=&#39;ls $LS_OPTIONS&#39;
+<pre><code>export LS_OPTIONS='-aCF --color=auto'
+eval "`dircolors -b /etc/DIR_COLORS`"
+alias ls='ls $LS_OPTIONS'
 </code></pre>
-
 <p>顺便加上PS1</p>
-
-<pre><code>PS1=&quot;\[\033[37m\]\t\[\033[m\] \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]&gt;&quot;
+<pre><code>PS1="\[\033[37m\]\t\[\033[m\] \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]&gt;"
 </code></pre>
-
 <p>执行</p>
-
 <pre><code>. .bashrc
 </code></pre>
-
 <p>生效</p>
 </p>
       </div>
@@ -333,9 +304,7 @@ alias ls=&#39;ls $LS_OPTIONS&#39;
 
       <div class="entry-content clearfix">
         <p><p>有热心人做了android x86的nightly builds,可驱车前往</p>
-
 <p>http://android-x86.moonman.dk/</p>
-
 <p>下载.</p>
 </p>
       </div>
@@ -375,22 +344,18 @@ alias ls=&#39;ls $LS_OPTIONS&#39;
 http://www.vpsee.com/2010/12/linux-kernel-root-level-exploit-leveraging-multiple-previous-vulnerabilities/
 脚本出处
 http://marc.info/?l=full-disclosure&amp;m=129175358621826&amp;w=2</p>
-
 <p>受影响系统：
 Debian Linux 5.0 x
 Linux kernel 2.6.0 - 2.6.36
 Linux kernel 2.6.0 - 2.6.26
 Ubuntu Linux 9.10 - 10.04</p>
-
 <p>已测试系统
 Ubuntu 10.4 提升成功
 Centos 5.5 提升失败</p>
-
 <p>脚本下载
 http://ahui.us/get/public/ahui/root.c.txt
 已编译脚本
 http://ahui.us/get/public/ahui/root.txt</p>
-
 <p>Acorn Econet/AUN 协议
 Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑上，用于访问文件和打印机服务器。它使用本地的Econet 网络卡。AUN 是高层的 Econet 协议，运行于通常的以太网连接，它运行在 UDP 包协议之上，这两个协议轮流运行于IP协议上。
 参考:http://en.wikipedia.org/wiki/Econet</p>
@@ -429,7 +394,6 @@ Econet 是一个相当老的和慢的网络协议，它主要用在Acorn电脑�
         <p><p>win7下把C:\Users[用户名]\AppData\Roaming.purple\certificates\x509\tls_peers
 下的omega.contacts.msn.com文件内容替换成下面内容.并加上只读属性.
 或者在 工具-&gt;证书里,替换掉同名证书.</p>
-
 <pre><code>-----BEGIN CERTIFICATE-----
 MIIGeDCCBWCgAwIBAgIKfdrgSQAIAAHIuTANBgkqhkiG9w0BAQUFADCBizETMBEG
 CgmSJomT8ixkARkWA2NvbTEZMBcGCgmSJomT8ixkARkWCW1pY3Jvc29mdDEUMBIG
@@ -468,13 +432,9 @@ lJuiRamxWgQoeNVTAI+J2YAsD8Qon1iZiHl08uHdgXWZiGDtLPcd9aIiL7/vi/+D
 7w3bhyHPFr+/13BCIWSfKnSRj/g6YoHnhF4gyQ==
 -----END CERTIFICATE-----
 </code></pre>
-
 <p>证书原地址:</p>
-
 <p>http://heiher.info/sftp/files/omega.contacts.msn.com</p>
-
 <p>or</p>
-
 <p>http://webupd8.googlecode.com/files/omega.contacts.msn.com</p>
 </p>
       </div>
@@ -523,16 +483,16 @@ lJuiRamxWgQoeNVTAI+J2YAsD8Qon1iZiHl08uHdgXWZiGDtLPcd9aIiL7/vi/+D
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>

@@ -68,67 +68,46 @@
 
       <div class="entry-content clearfix">
         <p><p>ABB(Ahui Blog Build)生成的静态html文件，可以用git比较方便的同步到VPS Server上。</p>
-
 <p>首先Server和Client二边都安装好git.</p>
-
 <p>VPS Server上做如下设定后，就不用管了：</p>
-
 <p>创建git仓库目录为www.git，要安全起见，可以换用个普通用户帐号，并修改相应目录及权限。</p>
-
 <pre><code>cd /root/tmp
 mkdir www.git
 cd www.git
 git --bare init
 </code></pre>
-
 <p>建立www根目录，并配置nginx指向。</p>
-
 <pre><code>mkdir /home/wwwstatic/public
 </code></pre>
-
 <p>建立git hook,在Client push文件后，自动checkout到指定的www根目录</p>
-
 <pre><code>cat &gt; hooks/post-receive
 #!/bin/bash
 GIT_WORK_TREE=/home/wwwstatic/public git checkout -f
 </code></pre>
-
 <p>加上可执行属性</p>
-
 <pre><code>chmod +x post-receive
 </code></pre>
-
 <p>Server端设置完毕。</p>
-
 <p>Client端如果还没有ssh key,则用</p>
-
-<pre><code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
+<pre><code>ssh-keygen -t rsa -C "your_email@example.com"
 </code></pre>
-
-<p>生成key,然后将~/.ssh/id<em>rsa.pub中的内容复制到Server端的 /root/.ssh/authorized</em>keys中。</p>
-
+<p>生成key,然后将~/.ssh/id_rsa.pub中的内容复制到Server端的 /root/.ssh/authorized_keys中。</p>
 <p>然后进入静态html生成目录，做一次初始化。</p>
-
 <pre><code>cd public
 git init
 git remote add ahuius root@ahui.us:/root/tmp/www.git
 </code></pre>
-
 <p>设定完毕。</p>
-
 <p>这样每次用abb bulid整个站点后，执行下sync.sh就可以将新生成的html文件同步到vps的www根目录了。</p>
-
 <pre><code>cat sync.sh
 
 #!/bin/bash
 cd public
 git add .
-git commit -m &quot;ok&quot;
+git commit -m "ok"
 git push -f ahuius master
 </code></pre>
-
 <p>这篇Blog是完成设定后第一篇被同步的文章.</p>
-
 <pre><code>./sync.sh
 [master 97bc2d2] ok
  84 files changed, 1000 insertions(+), 671 deletions(-)
@@ -175,16 +154,16 @@ To root@ahui.us:/root/tmp/www.git
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

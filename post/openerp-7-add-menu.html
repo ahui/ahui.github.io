@@ -71,17 +71,13 @@
         <p><p>菜单大体上分三层:顶层，侧边，子菜单
 添加子菜单分为二种情况，一是添加全新的菜单，此时必须先添加顶层和侧边菜单，只用指定name及id，然后挂上子菜单.
 其中顶层菜单不用指定parent,子菜单是必须指定action.</p>
-
-<pre><code>&lt;menuitem id=&quot;top_menu&quot; name=&quot;Top&quot;/&gt;
-&lt;menuitem id=&quot;section_top_menu&quot; parent=&quot;top_menu&quot; /&gt;
-&lt;menuitem id=&quot;sub_menu&quot; parent=&quot;section_top_menu&quot; action=&quot;your_action&quot;/&gt;
+<pre><code>&lt;menuitem id="top_menu" name="Top"/&gt;
+&lt;menuitem id="section_top_menu" parent="top_menu" /&gt;
+&lt;menuitem id="sub_menu" parent="section_top_menu" action="your_action"/&gt;
 </code></pre>
-
 <p>二是挂上已经存在的侧边菜单，此时parent的取值为:对象.菜单id</p>
-
-<pre><code>&lt;menuitem id=&quot;real_menu&quot; parent=&quot;name_of_module_of_parent.section_top_menu&quot; action=&quot;your_action&quot;&gt;;
+<pre><code>&lt;menuitem id="real_menu" parent="name_of_module_of_parent.section_top_menu" action="your_action"&gt;;
 </code></pre>
-
 <p>不指定对象则会重复建立同名菜单(三层均如此)，哪怕id值也相同。</p>
 </p>
       </div>
@@ -117,16 +113,16 @@
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

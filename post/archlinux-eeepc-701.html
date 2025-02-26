@@ -68,60 +68,86 @@
 
       <div class="entry-content clearfix">
         <p><ol>
-<li>下载archlinux-2010.05-core-i686.iso</li>
-<li>安装grub4dos到u盘</li>
-<li><p>copy archlinux-2010.05-core-i686.iso到u盘.编辑menu.lst,加入</p>
-
-<pre><code>title Arch CD ISO
-map --heads=0 --sectors-per-track=0 (hd0,0)/archlinux-2010.05-core-i686.iso (hd32)
-map --hook
-chainloader (hd32)
-boot
-</code></pre></li>
-<li><p>epc设置u盘启动</p></li>
-<li><p>没有找到安装源,自动跳出shell时运行</p>
-
-<pre><code>mkdir /iso
-mount –r –t vfat /dev/sdb1 /iso
-modprobe loop
-losetup /dev/loop6 /iso/archlinux-2010.05-core-i686.iso
-ln –s /dev/loop6 /dev/disk/by-label/ARCH_201005
-exit
-</code></pre></li>
-<li><p>继续安装,分区时,ssd 4g为ext2格式,全部mount到/,无swap</p></li>
-<li><p>编辑配置文件,fstab中,mount /时加入noatiome参数</p></li>
-<li><p>编辑配置文件,hosts.deny修改为ALL: ALL EXCEPT 192.168.2.*: DENY</p></li>
-<li><p>编辑配置文件,rc.local,禁用syslog-ng及netfs</p></li>
-<li><p>编辑配置文件,pacman.conf加入</p>
-
+<li>
+<p>下载archlinux-2010.05-core-i686.iso</p>
+</li>
+<li>
+<p>安装grub4dos到u盘</p>
+</li>
+<li>
+<p>copy archlinux-2010.05-core-i686.iso到u盘.编辑menu.lst,加入</p>
+<pre><code> title Arch CD ISO
+ map --heads=0 --sectors-per-track=0 (hd0,0)/archlinux-2010.05-core-i686.iso (hd32)
+ map --hook
+ chainloader (hd32)
+ boot
+</code></pre>
+</li>
+<li>
+<p>epc设置u盘启动</p>
+</li>
+<li>
+<p>没有找到安装源,自动跳出shell时运行</p>
+<pre><code> mkdir /iso
+ mount –r –t vfat /dev/sdb1 /iso
+ modprobe loop
+ losetup /dev/loop6 /iso/archlinux-2010.05-core-i686.iso
+ ln –s /dev/loop6 /dev/disk/by-label/ARCH_201005
+ exit
+</code></pre>
+</li>
+<li>
+<p>继续安装,分区时,ssd 4g为ext2格式,全部mount到/,无swap</p>
+</li>
+<li>
+<p>编辑配置文件,fstab中,mount /时加入noatiome参数</p>
+</li>
+<li>
+<p>编辑配置文件,hosts.deny修改为ALL: ALL EXCEPT 192.168.2.*: DENY</p>
+</li>
+<li>
+<p>编辑配置文件,rc.local,禁用syslog-ng及netfs</p>
+</li>
+<li>
+<p>编辑配置文件,pacman.conf加入</p>
 <pre><code>[eee]
 Server = http://code.toofishes.net/packages/eee
-</code></pre></li>
-<li><p>安装完成后.重启</p></li>
-<li><p>编辑配置文件/etc/pacman.d/mirrorlist,加入</p>
-
+</code></pre>
+</li>
+<li>
+<p>安装完成后.重启</p>
+</li>
+<li>
+<p>编辑配置文件/etc/pacman.d/mirrorlist,加入</p>
 <pre><code>Server = http://mirrors.163.com/archlinux/$repo/os/i686
-</code></pre></li>
-<li><p>pacman 安装openssh</p></li>
-<li><p>编辑rc.local,启动sshd,编辑hosts.allow,加入</p>
-
+</code></pre>
+</li>
+<li>
+<p>pacman 安装openssh</p>
+</li>
+<li>
+<p>编辑rc.local,启动sshd,编辑hosts.allow,加入</p>
 <pre><code>sshd:192.168.2.*:ALLOW
-</code></pre></li>
-<li><p>安装电源管理</p>
-
+</code></pre>
+</li>
+<li>
+<p>安装电源管理</p>
 <pre><code>wget http://www.ihku.biz/eee/acpi-eee/acpi-eee-10.0-1-i686.pkg.tar.gz
 pacman -U acpi-eee-10.0-1-i686.pkg.tar.gz
 </code></pre>
-
-<p>根据提示修改二处配置</p></li>
-<li><p>pacman -S kernel-eee</p></li>
-<li><p>编辑/boot/grub/menu.lst,加入后重启动</p>
-
+<p>根据提示修改二处配置</p>
+</li>
+<li>
+<p>pacman -S kernel-eee</p>
+</li>
+<li>
+<p>编辑/boot/grub/menu.lst,加入后重启动</p>
 <pre><code># (2) Arch Linux
 title  Arch Linux Eee kernel
 root   (hd0,0)
 kernel /boot/vmlinuzeee root=/dev/sda1 ro
-</code></pre></li>
+</code></pre>
+</li>
 </ol>
 </p>
       </div>
@@ -157,16 +183,16 @@ kernel /boot/vmlinuzeee root=/dev/sda1 ro
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>

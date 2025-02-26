@@ -69,15 +69,11 @@
 
       <div class="entry-content clearfix">
         <p><p>ssh 登录阿里云远VPS,提示</p>
-
 <pre><code>ssh_exchange_identification: read: Connection reset by peer
 </code></pre>
-
 <p>几月前出过一次同样问题, 表现在开发机无法登录阿里云 VPS,但可以正常登录HK VPS,而且 HK VPS 也可以正常登录阿里云VPS. 检查下来是阿里云机房误判攻击并阻断了我当前在用的移动IP(移动出网 ip 会被 nat 到一组特定 ip 上),提交工单后才解决.</p>
-
 <p>这次再用 HK VPS 检查,发现也无法登录,应该不是原来的老问题.
 本机详细登录日志:</p>
-
 <pre><code>#ssh ahui$ ssh -vvv -l root serverip
 OpenSSH_6.2p2, OSSLShim 0.9.8r 8 Dec 2011
 debug1: Reading configuration data /etc/ssh_config
@@ -87,7 +83,7 @@ debug2: ssh_connect: needpriv 0
 debug1: Connecting to serverip [serverip] port 22.
 debug1: Connection established.
 debug3: Incorrect RSA1 identifier
-debug3: Could not load &quot;/Users/ahui/.ssh/id_rsa&quot; as a RSA1 public key
+debug3: Could not load "/Users/ahui/.ssh/id_rsa" as a RSA1 public key
 debug1: identity file /Users/ahui/.ssh/id_rsa type 1
 debug1: identity file /Users/ahui/.ssh/id_rsa-cert type -1
 debug1: identity file /Users/ahui/.ssh/id_dsa type -1
@@ -96,32 +92,21 @@ debug1: Enabling compatibility mode for protocol 2.0
 debug1: Local version string SSH-2.0-OpenSSH_6.2
 ssh_exchange_identification: read: Connection reset by peer
 </code></pre>
-
 <p>本机改过 hostname,rsa 没做更改, 同样的 rsa 能登录 HK VPS,应该和证书没关系.</p>
-
 <p>阿里终端连接进去,发现 ssh localhost 居然也无法正常登录,问题应该在 sshd 服务本身.</p>
-
 <p>想到服务器几周前做过一次 apt-get upgrade, 应该是更新导致 sshd 出了问题. 重启 sshd, 问题依旧.</p>
-
 <p>google 结果大部分说是 hosts.allow 的问题,加入 sshd:ALL 后,问题依旧.</p>
-
 <p>最后查看 sshd log:</p>
-
 <pre><code>May  4 17:05:15 AY1407211542405399a6Z sshd[17586]: fatal: Missing privilege separation directory: /var/run/sshd
 </code></pre>
-
-<p>发现/var 下 run 目录不存在. </p>
-
+<p>发现/var 下 run 目录不存在.</p>
 <pre><code>cd /var
 mkdir run
 cd run
 mkdir sshd
 </code></pre>
-
 <p>重启 sshd,问题解决.</p>
-
 <p>问题可能出在 apt-get upgrade 后,服务器没重新启动导致问题出现. 或者本次 upgrade有 bug,重启也不能解决. 没证实. 记录下,系统为:</p>
-
 <pre><code>uname -a
 Linux AY1407211542405399a6Z 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
 cat /etc/issue
@@ -161,16 +146,16 @@ Ubuntu 14.04.2 LTS \n \l
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (3)</a></li>
-        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (27)</a></li>
+        <li class="cat-item"><a href="../tag/linux.html">linux &sdot; (42)</a></li>
         <li class="cat-item"><a href="../tag/network.html">network &sdot; (60)</a></li>
-        <li class="cat-item"><a href="../tag/blog.html">blog &sdot; (26)</a></li>
         <li class="cat-item"><a href="../tag/vps.html">vps &sdot; (4)</a></li>
         <li class="cat-item"><a href="../tag/turkey.html">turkey &sdot; (11)</a></li>
         <li class="cat-item"><a href="../tag/sofeware.html">sofeware &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/abb.html">abb &sdot; (3)</a></li>
         <li class="cat-item"><a href="../tag/game.html">game &sdot; (5)</a></li>
         <li class="cat-item"><a href="../tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="../tag/notag.html">notag &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/wow.html">wow &sdot; (1)</a></li>
         <li class="cat-item"><a href="../tag/mac.html">mac &sdot; (2)</a></li>
         <li class="cat-item"><a href="../tag/android.html">android &sdot; (1)</a></li>
