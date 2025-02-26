@@ -45,6 +45,246 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-05-04 06:15:48">
+            <a href="post/ssh_wu_fa_lian_jie.html" title="2015-05-04 06:15:48" rel="bookmark">
+              <span class="entry-date-day">04</span>
+              <span class="entry-date-month-year">2015-05</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/ssh_wu_fa_lian_jie.html">ssh无法连接</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/vps.html" rel="tag">vps</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>ssh 登录阿里云远VPS,提示</p>
+
+<pre><code>ssh_exchange_identification: read: Connection reset by peer
+</code></pre>
+
+<p>几月前出过一次同样问题, 表现在开发机无法登录阿里云 VPS,但可以正常登录HK VPS,而且 HK VPS 也可以正常登录阿里云VPS. 检查下来是阿里云机房误判攻击并阻断了我当前在用的移动IP(移动出网 ip 会被 nat 到一组特定 ip 上),提交工单后才解决.</p>
+
+<p>这次再用 HK VPS 检查,发现也无法登录,应该不是原来的老问题.
+本机详细登录日志:</p>
+
+<pre><code>#ssh ahui$ ssh -vvv -l root serverip
+OpenSSH_6.2p2, OSSLShim 0.9.8r 8 Dec 2011
+debug1: Reading configuration data /etc/ssh_config
+debug1: /etc/ssh_config line 20: Applying options for *
+debug1: /etc/ssh_config line 102: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to serverip [serverip] port 22.
+debug1: Connection established.
+debug3: Incorrect RSA1 identifier
+debug3: Could not load &quot;/Users/ahui/.ssh/id_rsa&quot; as a RSA1 public key
+debug1: identity file /Users/ahui/.ssh/id_rsa type 1
+debug1: identity file /Users/ahui/.ssh/id_rsa-cert type -1
+debug1: identity file /Users/ahui/.ssh/id_dsa type -1
+debug1: identity file /Users/ahui/.ssh/id_dsa-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.2
+ssh_exchange_identification: read: Connection reset by peer
+</code></pre>
+
+<p>本机改过 hostname,rsa 没做更改, 同样的 rsa 能登录 HK VPS,应该和证书没关系.</p>
+
+<p>阿里终端连接进去,发现 ssh localhost 居然也无法正常登录,问题应该在 sshd 服务本身.</p>
+
+<p>想到服务器几周前做过一次 apt-get upgrade, 应该是更新导致 sshd 出了问题. 重启 sshd, 问题依旧.</p>
+
+<p>google 结果大部分说是 hosts.allow 的问题,加入 sshd:ALL 后,问题依旧.</p>
+
+<p>最后查看 sshd log:</p>
+
+<pre><code>May  4 17:05:15 AY1407211542405399a6Z sshd[17586]: fatal: Missing privilege separation directory: /var/run/sshd
+</code></pre>
+
+<p>发现/var 下 run 目录不存在. </p>
+
+<pre><code>cd /var
+mkdir run
+cd run
+mkdir sshd
+</code></pre>
+
+<p>重启 sshd,问题解决.</p>
+
+<p>问题可能出在 apt-get upgrade 后,服务器没重新启动导致问题出现. 或者本次 upgrade有 bug,重启也不能解决. 没证实. 记录下,系统为:</p>
+
+<pre><code>uname -a
+Linux AY1407211542405399a6Z 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+cat /etc/issue
+Ubuntu 14.04.2 LTS \n \l
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-01-20 04:59:05">
+            <a href="post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html" title="2015-01-20 04:59:05" rel="bookmark">
+              <span class="entry-date-day">20</span>
+              <span class="entry-date-month-year">2015-01</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/p2pvpn_zhi_n2n_an_zhuang_shi_yong.html">p2p vpn 之 n2n 安装使用</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/vpn.html" rel="tag">vpn</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>n2n 是点对点类型的 vpn, 轻量级,容易安装与配置. </p>
+
+<p><a href="http://www.ntop.org/products/n2n/">官方网站在这里</a></p>
+
+<p>在安装使用中,还是碰到几个小坑,记录下来. 另外其版本有 v1,v2二个,这里都使用 v2版本. 其用法二个版本都一样,但不同版本通信协议不兼容, 所以所有节点都要使用相同的版本.</p>
+
+<h1>使用场景</h1>
+
+<p>边缘节点有三个</p>
+
+<ul>
+<li>zte h610b 路由器,安装 tomato, 无公网 ip</li>
+<li>RMBP 工作用电脑,安装 mac os, 内部 ip</li>
+<li>hk vps 一台,安装 ubuntu,有 固定公网 ip,地址为 a.b.c.d</li>
+</ul>
+
+<p>超级节点一个,也就是上面有 ip 的 vps.</p>
+
+<h1>安装记录</h1>
+
+<h2>hk vps</h2>
+
+<p>ubuntu 上安装最简单. 但 apt-get install n2n 是 v1的版本.我这里要用 v2,自己编译下.</p>
+
+<pre><code>sudo apt-get install subversion build-essential libssl-dev
+svn co https://svn.ntop.org/svn/ntop/trunk/n2n
+cd n2n/n2n_v2
+make
+</code></pre>
+
+<p>然后就能生成需要的二个文件,超级节点守护程序<code>supernode</code>及边缘节点通信程序<code>edge</code>.
+安装libssl-dev 有时候会进坑,报错说已经安装的 ssl 版本太新. 修复方式是在/etc/apt 源里,添加对应的 updates 源,更新后再安装.
+如:</p>
+
+<pre><code>deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted
+</code></pre>
+
+<p>首先启动超级节点,监听端口999</p>
+
+<pre><code>sudo ./supernode -l 999
+</code></pre>
+
+<p>然后本机也做为边缘节点启动</p>
+
+<pre><code>sudo ./edge -d n2n0 -a 10.1.1.10 -c ahuin2nvpn -u nobody -g nobody -k ahuin2nvpn -l a.b.c.d:999 -m ae:e0:4f:e7:47:1a
+</code></pre>
+
+<p>其中一个小坑就是 -m 参数. 如果不指定,会产生一个随机 mac 地址,这样至少调试的时候多次运行,会出现 mac 混乱. 但指定的 mac  地址,有些不会识别,比如随便写个 ab:ab:ab:ab:ab:ab, 程序不会识别并自动产生一个新的随机 mac. 跳坑方法是找个真实的 mac 地址,然后改动最后二位.</p>
+
+<h2>zte h610b 路由器</h2>
+
+<p>这个真的没有真 ip,用的移动光纤,给了个看上去象真的,其实是假的 ip.</p>
+
+<p>tomato 有人做好了现成的版本, 打开 jffs 并挂载,然后把编译好的 n2n 放在/jffs/n2n 中. 备注:我用的地址1上的版本.</p>
+
+<p><a href="http://right.com.cn/forum/thread-72025-1-1.html">下载地址1</a> 以及 <a href="http://tomato.groov.pl/repo/n2n_r5895-1_mipsel.ipk">下载地址2</a></p>
+
+<p>加载一下 tun 设备</p>
+
+<pre><code>modprobe tun
+</code></pre>
+
+<p>运行很简单</p>
+
+<pre><code>./edge -d n2n0 -a 10.1.1.20 -c ahuin2nvpn -u nobody -g nobody -k ahuin2nvpn -l a.b.c.d:999 -m ae:e0:4f:e7:47:2a
+</code></pre>
+
+<p>运行后,ping 10.1.1.10能通,反之不行.</p>
+
+<p>设置 iptables</p>
+
+<pre><code>iptables -I OUTPUT -o n2n0 -j ACCEPT
+iptables -I INPUT -i n2n0 -j ACCEPT
+iptables -I FORWARD -o n2n0 -j ACCEPT
+iptables -I FORWARD -i n2n0 -j ACCEPT
+</code></pre>
+
+<p>ok,现在能与10.1.1.10互相 ping 通. 此时二台机器可以认为在同一个局域网.</p>
+
+<h2>RMBP 工作用电脑</h2>
+
+<p>mac 上坑最多. 前提之一开发环境已经就绪,git svn 都 ok. 我这里用 git</p>
+
+<p>首先安装 tuntap, <a href="http://tuntaposx.sourceforge.net/">在这里下载</a></p>
+
+<p>下载源代码并编译:</p>
+
+<pre><code>git clone git://github.com/certik/n2n.git
+cd n2n/n2n_v1
+make
+</code></pre>
+
+<p>出错啦,编译失败. 有好人做了<a href="https://gist.github.com/tevino/9798566">补丁</a>, 打完后再 make, 通过. </p>
+
+<p>或者手动修改, 删除void tun<em>close(tuntap</em>dev *device); 这行,并将tun<em>close(device);替换为tuntap</em>close(device);,改动这二处就 ok.</p>
+
+<p>mac 下会自动生成 tun 设备 tap0, 所以运行时不用指定-d 参数:</p>
+
+<pre><code>./edge -a 10.1.1.30 -c ahuin2nvpn -u nobody -g nobody -k ahuin2nvpn -l a.b.c.d:999 -m ae:e0:4f:e7:47:3a
+</code></pre>
+
+<p>大功告成,现在10.1.1.10, 10.1.1.20, 10.1.1.30三个节点都能互相 ping 通, 并互相访问所有端口,就象在同一个局域网里面.</p>
+
+<h1>问题</h1>
+
+<p>理论上超级节点并不参与数据转发, 不过我测试的时候,ping 包至少是转发了的, 估计是与边缘结点没有公共 ip 有关. 其他流量没测试.</p>
+
+<p>n2n 是点对点的, 如果想要把边缘结点后面的局域网也连起来, 应该能 通过在节点上通过手动指定路由并做 nat来实现, 当然这样配置起来就麻烦多了.</p>
+
+<p>n2n 的最佳应用,应该是通过外网访问内网,特别是内网没有公共 ip 的时候,比如移动光纤...</p>
+
+<p>要通过 n2n 访问一些不存在的网站,要做额外工作,可能 openvpn 更适合. </p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2015-01-17 05:27:06">
             <a href="post/about.html" title="2015-01-17 05:27:06" rel="bookmark">
               <span class="entry-date-day">17</span>
@@ -403,153 +643,6 @@ sys     0m0.120s
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-05 15:40:08">
-            <a href="post/PYTENJINCACHE_wen_ti.html" title="2014-02-05 15:40:08" rel="bookmark">
-              <span class="entry-date-day">05</span>
-              <span class="entry-date-month-year">2014-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/PYTENJINCACHE_wen_ti.html">PYTENJIN CACHE问题</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/blog.html" rel="tag">blog</a>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/python.html" rel="tag">python</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>Tenjin是个好模板. (签名)</p>
-
-<p>满足我喜欢的三个要求：</p>
-
-<ul>
-<li>快速</li>
-<li>HTML友好</li>
-<li>能直接用python代码。</li>
-</ul>
-
-<p>当然能直接用python代码是件好事也是件坏事。</p>
-
-<p>在做静态html生成程序时，因为动态生成了不同内容的同名模板，导致Tenjin解析时总是取缓存中的内容。
-Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法为：</p>
-
-<ol>
-<li>sleep 1s吧，喝个茶什么的等缓存失效…</li>
-<li>将Tenjin里的timestamp_interval参数由原1s,改为一个更小的值，0.001什么的。小手术。</li>
-<li>给Tenjin添加个属性，记住文件大小，在文件大小改变时，总是重新生成缓存。大手术啊~~~~</li>
-<li>动态生成的模板，别用同样的文件名.</li>
-</ol>
-
-<p>1会带来时间浪费，测试中生成50+ html文件才半秒不到，不能浪费2倍的生命。
-2，3都要改动Tenjin,通用性不好。
-4算比较满意的，会稍提高点代码的复杂度。</p>
-
-<p>BTW,如果要压榨性能，通过2中将值改大，或者3增加文件大小检查，模板文件不变时直接用.cache文件，应该有不少的性能提升。</p>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2014-02-04 20:41:24">
-            <a href="post/wang_zhan_jing_tai_hua.html" title="2014-02-04 20:41:24" rel="bookmark">
-              <span class="entry-date-day">04</span>
-              <span class="entry-date-month-year">2014-02</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/wang_zhan_jing_tai_hua.html">网站静态化</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/python.html" rel="tag">python</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>连续碰到几次BLOG打开卡住的情形，在VPS上重启一下nginx及php就好了。原因不详，但有可能是因为wordpress连续升级导致？</p>
-
-<p>最好的解决方案就是将博客网站静态化。</p>
-
-<p>试用了一下现成的解决方案，比较好用的有<a href="http://zespia.tw/hexo/">hexo</a>以及<a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a>。
-这二个都有工具能将wordpress导出的xml转化为md格式的文件。</p>
-
-<p>其中hexo转化并生成静态网站后，效果相当不错。但问题是在使用时发现50+ md文件，生成时间在20s左右，这个速度太慢了一点。比较奇怪的是其他使用者都反应hexo是相当快的，所以也有可能是我这有个什么地方设置有问题。
-同样的环境下Pelican的速度相当理想，同样多的md文件，生成时间3s左右。问题是他自己生成的md文件格式有点奇怪，和hexo的相比有差别，且感觉hexo的md文件格式更好点。</p>
-
-<p>如果再考虑长远点，比如有海量的md文件要生成，那么就要求生成工具要么有极快的速度，要么有增量生成功能(已经生成的文件不用再生成)。这样hexo一者因为速度原因不能不放弃，二者可惜是node写的，我更偏好python一点。而pelican刚可能要修改一下格式问题，以及增加其他功能。</p>
-
-<p>本着轮子不怕多的精神，干脆再做个相关工具好了。</p>
-
-<p>初期目标</p>
-
-<p>博客类小型网站，静态页面生成</p>
-
-<p>生成方式</p>
-
-<ol>
-<li>全静态生成，所有文件需要更新。可用目录控制生成层次。</li>
-<li>shtml包含，只更新必要文件</li>
-<li>ajax包含，只更新必要文件</li>
-</ol>
-
-<p>工作方式</p>
-
-<ol>
-<li>cli</li>
-<li>web gui</li>
-</ol>
-
-<p>文章分类(初期只考虑tag)</p>
-
-<ol>
-<li>分类，一对一或一对多</li>
-<li>tag标记，一对多</li>
-</ol>
-
-<p>页面分类</p>
-
-<ol>
-<li>index.html</li>
-<li>tags.html</li>
-<li>tag.html</li>
-<li>comment.html</li>
-<li>side_right.html</li>
-<li>side_left.html</li>
-<li>head.html</li>
-<li>body.html -&gt;要生成的主体文件</li>
-<li>foot.html</li>
-</ol>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -591,27 +684,27 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (243)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (355)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (149)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (24)</a></li>
-        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (18)</a></li>
-        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (11)</a></li>
-        <li class="cat-item"><a href="tag/game.html">game &sdot; (30)</a></li>
-        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (18)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/android.html">android &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (29)</a></li>
-        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (11)</a></li>
-        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (55)</a></li>
-        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (10)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (26)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
       </ul>
     </div>
   </div>
@@ -620,6 +713,8 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/sysbench_zhi_alpine_yu_ubuntu.html'>sysbench 之 Alpine 与 Ubuntu</a></li>
+        <li><a href='post/abb_jing_tai_wen_jian_fang_an.html'>A B B   静 态 文 件 方 案</a></li>
         <li><a href='post/abb_geng_xin_0.3.html'>A B B   更 新   0 . 3</a></li>
         <li><a href='post/canadianreferralcodeformodelxnew.html'>Canadian referral code for tesla Model X and S = save  CAD 1400,  153 days left</a></li>
         <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
@@ -628,8 +723,6 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
         <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
-        <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
-        <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
       </ul>
     </div>
   </div>
@@ -662,6 +755,6 @@ Tenjin对1秒内生成的缓存文件总是做有效处理，这样解决办法�
       </div>
 
     </div>
-
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f71bfeca-c575-43b9-81c8-438d08dad5e8"></script>
   </body>
   </html>

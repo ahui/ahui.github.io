@@ -45,6 +45,156 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2025-02-25 11:09:51">
+            <a href="post/sysbench_zhi_alpine_yu_ubuntu.html" title="2025-02-25 11:09:51" rel="bookmark">
+              <span class="entry-date-day">25</span>
+              <span class="entry-date-month-year">2025-02</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/sysbench_zhi_alpine_yu_ubuntu.html">sysbench 之 Alpine 与 Ubuntu</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/notag.html" rel="tag">notag</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h3>说明</h3>
+
+<p>测试工具 sysbench
+主机环境 Macmini m4
+虚拟环境 OrbStack Alpine 3.21 and Ubuntu 24 arm
+测试参数
+- CPU 1 : sysbench cpu run
+- CPU 2 : sysbench --threads=2 cpu run
+- Memory: sysbench memory run</p>
+
+<h3>测试数据</h3>
+
+<p>CPU: events per second
+Memory: MiB/sec</p>
+
+<p>测试参数 | Alpine   | Ubuntu    |%
+---     | ---   | --- | ---
+CPU 1   |10955.54          |12684.96    | 15.7
+CPU 2   |22058.52           |25551.73   | 15.8
+Memory  |9283.85           |13949.42    | 50.2</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">测试参数</th>
+<th align="left">Alpine</th>
+<th align="left">Ubuntu</th>
+<th align="left">%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CPU 1</td>
+<td align="left">10955.54</td>
+<td align="left">12684.96</td>
+<td align="left">15.7</td>
+</tr>
+<tr>
+<td align="left">CPU 2</td>
+<td align="left">22058.52</td>
+<td align="left">25551.73</td>
+<td align="left">15.8</td>
+</tr>
+<tr>
+<td align="left">Memory</td>
+<td align="left">9283.85</td>
+<td align="left">13949.42</td>
+<td align="left">50.2</td>
+</tr>
+</tbody>
+</table>
+
+<h3>测试结论</h3>
+
+<p>Alpine Linux 由于使用 musllibc ，使得其体积远小于 Ubuntu，但其运行速度可能稍差于使用用 glibc 的 Ubuntu。
+虚拟机内的磁盘速度会降低更多，所以硬盘 IO 多的应用，至少应该用内存做缓存。
+sysbench 在 mac m4 本机上运行时，CPU 速度出奇的高，无法采信。</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2025-02-23 09:44:55">
+            <a href="post/abb_jing_tai_wen_jian_fang_an.html" title="2025-02-23 09:44:55" rel="bookmark">
+              <span class="entry-date-day">23</span>
+              <span class="entry-date-month-year">2025-02</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/abb_jing_tai_wen_jian_fang_an.html">A B B   静 态 文 件 方 案</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/abb.html" rel="tag">abb</a>
+              <a href="tag/blog.html" rel="tag">blog</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>这是用 ABB 0.3 写的第一篇文章。</p>
+
+<p>原站图片虽然不能正常显示，但还好原文件还在。</p>
+
+<p>图片等比较大的静态文件，有三种处理方案。</p>
+
+<h3>第一种：直接与 css,js 一样，与生成的 html 文件放在一起。</h3>
+
+<ul>
+<li><p>优点：最方便的处理方式，统一放在 img 目录就可以了。</p></li>
+<li><p>缺点：图片体积相对来说比较大，对单独服务器来说，带宽和流量都会有压力。</p></li>
+</ul>
+
+<h3>第二种：使用 cloudflare 的 R2。</h3>
+
+<ul>
+<li><p>优点：速度上没问题，cf 也会自动分发。</p></li>
+<li><p>缺点：图片上传到 R2 比较不方便， 只能手工处理上传或者用 S3 API 上传。</p></li>
+</ul>
+
+<h3>第三种: 使用 github 仓库保存图片，然后用 jsdelivr 进行加速。</h3>
+
+<ul>
+<li><p>优点：图片可以用 git 进行管理。</p></li>
+<li><p>缺点：非要找个问题，github 仓库会有容量限制。</p></li>
+</ul>
+
+<p>ABB 采用第三种方案，这样可以统一用 git 进行管理。如果碰到容量限制，可以再开新仓库存放。</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2025-02-18 09:31:14">
             <a href="post/abb_geng_xin_0.3.html" title="2025-02-18 09:31:14" rel="bookmark">
               <span class="entry-date-day">18</span>
@@ -479,144 +629,6 @@ our own package repository to easily update individual components
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2015-11-11 02:13:17">
-            <a href="post/shu_ju_ku_cun_qu_su_du_you_hua.html" title="2015-11-11 02:13:17" rel="bookmark">
-              <span class="entry-date-day">11</span>
-              <span class="entry-date-month-year">2015-11</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/shu_ju_ku_cun_qu_su_du_you_hua.html">数据库存取速度优化</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/network.html" rel="tag">network</a>
-              <a href="tag/python.html" rel="tag">python</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><h2>sqlite3</h2>
-
-<p><strong>使用场景</strong></p>
-
-<p>使用 pony 作为 orm读取 20w 条左右数据</p>
-
-<p><strong>慢</strong></p>
-
-<p>取得所有字段,会自动封装成对象
-select(u for u in User)</p>
-
-<p><strong>优化</strong></p>
-
-<p>只取需要的字段
-select(u.id for u in User)</p>
-
-<h2>redis</h2>
-
-<p><strong>使用场景</strong></p>
-
-<pre><code>使用 redis.py 作为  写入 20w 条左右数据
-</code></pre>
-
-<p><strong>慢</strong></p>
-
-<pre><code>m.incr(&#39;u_&#39;+u[:7])
-</code></pre>
-
-<p><strong>优化</strong></p>
-
-<p><em>使用连接池</em></p>
-
-<pre><code>pool = redis.ConnectionPool(host=&#39;127.0.0.1&#39;, port=6379, db=15)
-m = redis.StrictRedis(connection_pool=pool)
-</code></pre>
-
-<p><em>使用批量提交</em></p>
-
-<pre><code>pipe = m.pipeline()
-pipe.incr(&#39;u_&#39;+u[:7])
-pipe.set()
-pipe.execute()
-</code></pre>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2015-08-20 10:27:58">
-            <a href="post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html" title="2015-08-20 10:27:58" rel="bookmark">
-              <span class="entry-date-day">20</span>
-              <span class="entry-date-month-year">2015-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html">Ubuntu 14 grub 2 取消重启挂住</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/linux.html" rel="tag">linux</a>
-              <a href="tag/network.html" rel="tag">network</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><p>Ubuntu 14.04 在升级内核或是不安全断电情况下,重启后GRUB 会停留在系统选择界面,并不会自动超时,需要手动选择并按回车才能继续启动. 在不方便接触物理机或 VPS 远程开机时,是个很麻烦的事.</p>
-
-<p>主要原因是/boot/grub/grub.cfg 把 timeout 设置成了&#39;-1&#39;.</p>
-
-<pre><code>  if [ &quot;${recordfail}&quot; = 1 ] ; then
-   set timeout=-1
-  else
-   if [ x$feature_timeout_style = xy ] ; then
-     set timeout_style=hidden
-     set timeout=0
-   # Fallback hidden-timeout code in case the timeout_style feature is
-   # unavailable.
-   elif sleep --interruptible 0 ; then
-     set timeout=0
-   fi
-  fi
-</code></pre>
-
-<p>grub.cfg 会被重写覆盖,得修改/etc/default/grub,加入一行</p>
-
-<pre><code>  GRUB_RECORDFAIL_TIMEOUT=5
-</code></pre>
-
-<p>更新 grub.cfg</p>
-
-<pre><code>  update-grub
-</code></pre>
-
-<p>然后&#39;-1&#39;的设置会变更为&#39;5&#39;,这样不用手动操作,系统会在5秒超时会继续启动,不再挂住.</p>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -658,27 +670,27 @@ pipe.execute()
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (243)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (355)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (149)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (24)</a></li>
-        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (18)</a></li>
-        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (11)</a></li>
-        <li class="cat-item"><a href="tag/game.html">game &sdot; (30)</a></li>
-        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (18)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/android.html">android &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (29)</a></li>
-        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (11)</a></li>
-        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (55)</a></li>
-        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (10)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (26)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
       </ul>
     </div>
   </div>
@@ -687,6 +699,8 @@ pipe.execute()
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/sysbench_zhi_alpine_yu_ubuntu.html'>sysbench 之 Alpine 与 Ubuntu</a></li>
+        <li><a href='post/abb_jing_tai_wen_jian_fang_an.html'>A B B   静 态 文 件 方 案</a></li>
         <li><a href='post/abb_geng_xin_0.3.html'>A B B   更 新   0 . 3</a></li>
         <li><a href='post/canadianreferralcodeformodelxnew.html'>Canadian referral code for tesla Model X and S = save  CAD 1400,  153 days left</a></li>
         <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
@@ -695,8 +709,6 @@ pipe.execute()
         <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
-        <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
-        <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
       </ul>
     </div>
   </div>
@@ -729,6 +741,6 @@ pipe.execute()
       </div>
 
     </div>
-
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f71bfeca-c575-43b9-81c8-438d08dad5e8"></script>
   </body>
   </html>

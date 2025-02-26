@@ -45,6 +45,144 @@
     <div class="post type-post status-publish format-standard hentry">
       <div class="entry-meta-group clearfix">
         <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-11-11 02:13:17">
+            <a href="post/shu_ju_ku_cun_qu_su_du_you_hua.html" title="2015-11-11 02:13:17" rel="bookmark">
+              <span class="entry-date-day">11</span>
+              <span class="entry-date-month-year">2015-11</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/shu_ju_ku_cun_qu_su_du_you_hua.html">数据库存取速度优化</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/network.html" rel="tag">network</a>
+              <a href="tag/python.html" rel="tag">python</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><h2>sqlite3</h2>
+
+<p><strong>使用场景</strong></p>
+
+<p>使用 pony 作为 orm读取 20w 条左右数据</p>
+
+<p><strong>慢</strong></p>
+
+<p>取得所有字段,会自动封装成对象
+select(u for u in User)</p>
+
+<p><strong>优化</strong></p>
+
+<p>只取需要的字段
+select(u.id for u in User)</p>
+
+<h2>redis</h2>
+
+<p><strong>使用场景</strong></p>
+
+<pre><code>使用 redis.py 作为  写入 20w 条左右数据
+</code></pre>
+
+<p><strong>慢</strong></p>
+
+<pre><code>m.incr(&#39;u_&#39;+u[:7])
+</code></pre>
+
+<p><strong>优化</strong></p>
+
+<p><em>使用连接池</em></p>
+
+<pre><code>pool = redis.ConnectionPool(host=&#39;127.0.0.1&#39;, port=6379, db=15)
+m = redis.StrictRedis(connection_pool=pool)
+</code></pre>
+
+<p><em>使用批量提交</em></p>
+
+<pre><code>pipe = m.pipeline()
+pipe.incr(&#39;u_&#39;+u[:7])
+pipe.set()
+pipe.execute()
+</code></pre>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
+          <time class="entry-date entry-time updated" datetime="2015-08-20 10:27:58">
+            <a href="post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html" title="2015-08-20 10:27:58" rel="bookmark">
+              <span class="entry-date-day">20</span>
+              <span class="entry-date-month-year">2015-08</span>
+            </a>
+          </time>
+        </div>
+        <div class="grid_8 omega">
+          <h1 class="entry-title entry-title-single">
+            <a href="post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html">Ubuntu 14 grub 2 取消重启挂住</a>
+          </h1>
+          <div class="entry-meta">    
+            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
+            <span class="tag-links">
+              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
+              <a href="tag/linux.html" rel="tag">linux</a>
+              <a href="tag/network.html" rel="tag">network</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry-content clearfix">
+        <p><p>Ubuntu 14.04 在升级内核或是不安全断电情况下,重启后GRUB 会停留在系统选择界面,并不会自动超时,需要手动选择并按回车才能继续启动. 在不方便接触物理机或 VPS 远程开机时,是个很麻烦的事.</p>
+
+<p>主要原因是/boot/grub/grub.cfg 把 timeout 设置成了&#39;-1&#39;.</p>
+
+<pre><code>  if [ &quot;${recordfail}&quot; = 1 ] ; then
+   set timeout=-1
+  else
+   if [ x$feature_timeout_style = xy ] ; then
+     set timeout_style=hidden
+     set timeout=0
+   # Fallback hidden-timeout code in case the timeout_style feature is
+   # unavailable.
+   elif sleep --interruptible 0 ; then
+     set timeout=0
+   fi
+  fi
+</code></pre>
+
+<p>grub.cfg 会被重写覆盖,得修改/etc/default/grub,加入一行</p>
+
+<pre><code>  GRUB_RECORDFAIL_TIMEOUT=5
+</code></pre>
+
+<p>更新 grub.cfg</p>
+
+<pre><code>  update-grub
+</code></pre>
+
+<p>然后&#39;-1&#39;的设置会变更为&#39;5&#39;,这样不用手动操作,系统会在5秒超时会继续启动,不再挂住.</p>
+</p>
+      </div>
+
+    </div>
+
+ 
+  </div>  <div id="content">    
+    <div class="post type-post status-publish format-standard hentry">
+      <div class="entry-meta-group clearfix">
+        <div class="grid_2 alpha">
           <time class="entry-date entry-time updated" datetime="2015-08-15 02:21:56">
             <a href="post/2015turkey_you_ji_day13-16istanbul.html" title="2015-08-15 02:21:56" rel="bookmark">
               <span class="entry-date-day">15</span>
@@ -434,133 +572,6 @@
     </div>
 
  
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2015-08-15 02:11:37">
-            <a href="post/2015turkey_you_ji_day5marmaris.html" title="2015-08-15 02:11:37" rel="bookmark">
-              <span class="entry-date-day">15</span>
-              <span class="entry-date-month-year">2015-08</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/2015turkey_you_ji_day5marmaris.html">2015 turkey 游记 day 5 Marmaris</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/turkey.html" rel="tag">turkey</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><h1>day 5 Marmaris</h1>
-
-<ul>
-<li>7.25</li>
-</ul>
-
-<p>早早 check out,临时决定去 Marmaris, 车程150KM 左右. D 级路. 快到时加了200TL 油,里程表777公里.</p>
-
-<p>酒店没有预订,开进市区后沿海走了小半圈,订到一个刚开业的小酒店,除了没停车位,其他都还不错,特别是就在海滩边上.</p>
-
-<p>Marmaris 是整个行程给人感觉最干净漂亮的地方, 如果喜欢海边,一定要在这多呆几天. 可惜的是,因为昨天 HOTEL 条件太差,也没睡好, 一到 Marmaris 就感冒了, 眼看着诱人的海水,却没法下海玩. </p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2215.JPG" onclick="popme(this.src)" /></p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2224.JPG" onclick="popme(this.src)" /></p>
-
-<h2>tips</h2>
-
-<ul>
-<li>Marmaris 人明显少得多.消费稍低一点.</li>
-<li>路上一个连续下坡接上坡的地方有大 BUS 连环撞. 限速提示总是有它的理由的. </li>
-<li>冷热交替,小心感冒. 现在38.4了,小药箱没白带.</li>
-<li>所有的海边小镇,都可以自己去提交预订第二天的出海游. 费用和一船能容纳的人数有关系, 从10多块 TL 到100多 TL 都有.</li>
-<li>非特别热门的地方,都可以到了地方再找满意的宾馆. 网上图片不可全信.</li>
-</ul>
-</p>
-      </div>
-
-    </div>
-
- 
-  </div>  <div id="content">    
-    <div class="post type-post status-publish format-standard hentry">
-      <div class="entry-meta-group clearfix">
-        <div class="grid_2 alpha">
-          <time class="entry-date entry-time updated" datetime="2015-07-28 11:54:07">
-            <a href="post/2015turkey_you_ji_day4bodrum.html" title="2015-07-28 11:54:07" rel="bookmark">
-              <span class="entry-date-day">28</span>
-              <span class="entry-date-month-year">2015-07</span>
-            </a>
-          </time>
-        </div>
-        <div class="grid_8 omega">
-          <h1 class="entry-title entry-title-single">
-            <a href="post/2015turkey_you_ji_day4bodrum.html">2015 turkey 游记 day 4 Bodrum</a>
-          </h1>
-          <div class="entry-meta">    
-            <span class="entry-meta-sep"><a href="http://ahui.us/" title="Ahui">Ahui</a> &sdot;</span>
-            <span class="tag-links">
-              <span class="entry-utility-prep entry-utility-prep-tag-links">Tagged:</span>
-              <a href="tag/turkey.html" rel="tag">turkey</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry-content clearfix">
-        <p><h1>day 4 Bodrum</h1>
-
-<ul>
-<li>7.24</li>
-</ul>
-
-<p>吃完早餐去 Efes,早餐做得很不错,种类很丰富,味道也挺好,有好吃的大樱桃. 一直到后来吃了不少家的早餐,这家都能排在前列.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_1958.JPG" onclick="popme(this.src)" /></p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_1965.JPG" onclick="popme(this.src)" /></p>
-
-<p>efes 很近,2KM 左右.早一点去的好,不会太热. 10点后人一下多了起来, 团体旅客也相当多. 就是去得稍晚,有点热.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_1997.JPG" onclick="popme(this.src)" /></p>
-
-<p>再顺着开20KM 左右,到kusadasi吃完午饭,然后开车到150KM 外的Bodrum. 
-Kusadasi 是个干净漂亮的海边小镇,估计游客很少来.</p>
-
-<p>全程 D 级路,进市区时红灯时间奇长.</p>
-
-<p>入住的宾馆出乎意料的差,4点到达,check in 骗我们等半小时最多了，结果居然等了一个半小时.房间在破仓库边上，一进门就是床垫，而且居然是地上铺个床垫,满屋都是蚊子也不去说，连个桌子都没有，简陋的比招待所还差，EUR60的酒店居然这么差，果断第二天不退钱也不住了，马上就修改行程.</p>
-
-<p>也因此整个行程下来, Bodrum 给人的感觉很差. 如果自驾, 建议跳过这个地方.</p>
-
-<p>晚餐吃上了正宗土耳其烤肉.</p>
-
-<p><img src="https://pic.ahuihome.eu.org/turkeyIMG_2195.JPG" onclick="popme(this.src)" />
-<img src="https://pic.ahuihome.eu.org/turkeyIMG_2199.JPG" onclick="popme(this.src)" /></p>
-
-<h2>tips</h2>
-
-<ul>
-<li>Bodrum消费果然和 istanbul 差不多,油费也普遍贵一点.</li>
-<li>海边有一溜的船可以提前租.</li>
-<li>土国做菜,大概除了烤,也只会烤了.</li>
-<li>kusadasi游人少得多,自驾可以考虑下代替其他人多城市.</li>
-</ul>
-</p>
-      </div>
-
-    </div>
-
- 
   </div>
  
 <div id="loop-nav-numeric" class="nav-numeric">
@@ -602,27 +613,27 @@ Kusadasi 是个干净漂亮的海边小镇,估计游客很少来.</p>
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">标签</h3>
       <ul>
-        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (243)</a></li>
-        <li class="cat-item"><a href="tag/network.html">network &sdot; (355)</a></li>
-        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (149)</a></li>
-        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (24)</a></li>
-        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (18)</a></li>
-        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (11)</a></li>
-        <li class="cat-item"><a href="tag/game.html">game &sdot; (30)</a></li>
-        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (18)</a></li>
-        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/android.html">android &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/python.html">python &sdot; (29)</a></li>
-        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (12)</a></li>
-        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (11)</a></li>
-        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (6)</a></li>
-        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (55)</a></li>
-        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (10)</a></li>
+        <li class="cat-item"><a href="tag/notag.html">notag &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/linux.html">linux &sdot; (41)</a></li>
+        <li class="cat-item"><a href="tag/network.html">network &sdot; (60)</a></li>
+        <li class="cat-item"><a href="tag/blog.html">blog &sdot; (26)</a></li>
+        <li class="cat-item"><a href="tag/vps.html">vps &sdot; (4)</a></li>
+        <li class="cat-item"><a href="tag/turkey.html">turkey &sdot; (11)</a></li>
+        <li class="cat-item"><a href="tag/sofeware.html">sofeware &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/abb.html">abb &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/game.html">game &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/wii.html">wii &sdot; (3)</a></li>
+        <li class="cat-item"><a href="tag/wow.html">wow &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/mac.html">mac &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/android.html">android &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/tesla.html">tesla &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/python.html">python &sdot; (5)</a></li>
+        <li class="cat-item"><a href="tag/openerp.html">openerp &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/sip.html">sip &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/vpn.html">vpn &sdot; (1)</a></li>
+        <li class="cat-item"><a href="tag/ssh.html">ssh &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/ipv6.html">ipv6 &sdot; (2)</a></li>
+        <li class="cat-item"><a href="tag/aboutme.html">aboutme &sdot; (1)</a></li>
       </ul>
     </div>
   </div>
@@ -631,6 +642,8 @@ Kusadasi 是个干净漂亮的海边小镇,估计游客很少来.</p>
     <div class="widget-wrap widget-inside">
       <h3 class="widget-title">最新文章</h3>
       <ul> 
+        <li><a href='post/sysbench_zhi_alpine_yu_ubuntu.html'>sysbench 之 Alpine 与 Ubuntu</a></li>
+        <li><a href='post/abb_jing_tai_wen_jian_fang_an.html'>A B B   静 态 文 件 方 案</a></li>
         <li><a href='post/abb_geng_xin_0.3.html'>A B B   更 新   0 . 3</a></li>
         <li><a href='post/canadianreferralcodeformodelxnew.html'>Canadian referral code for tesla Model X and S = save  CAD 1400,  153 days left</a></li>
         <li><a href='post/canadianreferralcodeformodelx.html'>Canadian referral code for tesla Model X and S = save  CAD 1200,  80 days left</a></li>
@@ -639,8 +652,6 @@ Kusadasi 是个干净漂亮的海边小镇,估计游客很少来.</p>
         <li><a href='post/rapberrypi2_yun_xing_docker.html'>Rapberry Pi 2 运行 Docker</a></li>
         <li><a href='post/shu_ju_ku_cun_qu_su_du_you_hua.html'>数据库存取速度优化</a></li>
         <li><a href='post/ubuntu14grub2_qu_xiao_zhong_qi_gua_zhu.html'>Ubuntu 14 grub 2 取消重启挂住</a></li>
-        <li><a href='post/2015turkey_you_ji_day13-16istanbul.html'>2015 turkey 游记 day 13-16 Istanbul</a></li>
-        <li><a href='post/2015turkey_you_ji_day12ankayle.html'>2015 turkey 游记 day 12 Ankara</a></li>
       </ul>
     </div>
   </div>
@@ -673,6 +684,6 @@ Kusadasi 是个干净漂亮的海边小镇,估计游客很少来.</p>
       </div>
 
     </div>
-
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f71bfeca-c575-43b9-81c8-438d08dad5e8"></script>
   </body>
   </html>
