@@ -111,36 +111,6 @@ Memory: MiB/sec</p>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th align="left">测试参数</th>
-<th align="left">Alpine</th>
-<th align="left">Ubuntu</th>
-<th align="left">%</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">CPU 1</td>
-<td align="left">10955.54</td>
-<td align="left">12684.96</td>
-<td align="left">15.7</td>
-</tr>
-<tr>
-<td align="left">CPU 2</td>
-<td align="left">22058.52</td>
-<td align="left">25551.73</td>
-<td align="left">15.8</td>
-</tr>
-<tr>
-<td align="left">Memory</td>
-<td align="left">9283.85</td>
-<td align="left">13949.42</td>
-<td align="left">50.2</td>
-</tr>
-</tbody>
-</table>
 <h3>测试结论</h3>
 <p>Alpine Linux 由于使用 musllibc ，使得其体积远小于 Ubuntu，但其运行速度可能稍差于使用用 glibc 的 Ubuntu。
 虚拟机内的磁盘速度会降低更多，所以硬盘 IO 多的应用，至少应该用内存做缓存。
