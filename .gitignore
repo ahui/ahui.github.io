@@ -1,0 +1,11 @@
+*.bak/
+public/
+public1/
+sources.p/
+tmp/
+static.github/
+backup/
+*.log
+*.cache
+*.pyc
+.DS_Store
